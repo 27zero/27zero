@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand & Identity Design — 27zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
+    </a>
+    <nav class="links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing-agency" class="current">EdTech Marketing</a>
+      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/lets-talk" class="navcta">Let's Talk!</a>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="wrap narrow">
+    <div class="hero-rule"></div>
+    <div class="eyebrow"><a href="/edtech-marketing-agency/agile-brand-development">Agile Brand Development</a></div>
+    <h1>Brand & <em class="acc">Identity Design</em></h1>
+    <p class="sub">Brand concepts, naming, storytelling, and identity systems that keep your brand consistent and top of mind.</p>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>End-to-end brand development, delivered through structured sprints — from brand strategy and naming through visual identity, design systems, and brand guidelines. All work is platform-agnostic and handed off in Figma with full developer specifications, with two rounds of revisions built into every deliverable.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      <div class="ditem">
+  <h3>Messaging & Narrative System</h3>
+  <p>A complete brand messaging architecture: core narrative, positioning statement, 3–5 value pillars, a messaging hierarchy from company to product to feature level, and tone-of-voice guidelines.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Visual Identity Evolution</h3>
+  <p>An expansion of an existing identity system: a defined core palette with usage ratios, a visual motif system, photography direction, and motion principles — delivered as a Figma system and usage guide.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Brand Guidelines & Toolkit</h3>
+  <p>The master reference for using the brand correctly: logo rules, color specifications, typography hierarchy, photography direction, and tone of voice — written as practical usage guidance.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Brand Enablement Sessions</h3>
+  <p>Two facilitated sessions closing the gap between a guidelines document and confident real-world use: one for sales, one for leadership.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Master Deck / Pitch Deck</h3>
+  <p>The primary branded presentation for sales and leadership — company story, product overview, differentiation, customer proof, next steps. Co-built with your marketing lead.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Channel Marketing Asset Kits</h3>
+  <p>A complete set of branded templates organized for distribution channels — partners, resellers, regional teams: presentations, brochures, email templates, social assets, sell sheets.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Social Templates (Static + Motion)</h3>
+  <p>A library of branded, editable templates for the most common social formats — built in Canva so your team can produce on-brand content without design software.</p>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<div class="wrap belongs">
+  <a href="/edtech-marketing-agency/agile-brand-development">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    Part of Agile Brand Development
+  </a>
+</div>
+
+
+<section class="ctaf">
+  <div class="wrap narrow">
+    <h2>Give your brand a system <em class="acc">that scales with you.</em></h2>
+    <a href="/lets-talk" class="btn-primary">Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 27zero. All rights reserved.</span>
+    <span>Bogotá, Colombia · Granville, OH</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll(
+    '.pcard, .ditem, .look-item, .client-card, .apart-col, .mitem, .subitem, .cycle-step, .sec-head'
+  );
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('reveal-init', 'in-view'); });
+    return;
+  }
+  targets.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

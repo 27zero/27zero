@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer, sub_link %}
+{% block title %}Customer Marketing — 27zero{% endblock %}
+{% set nav_current = 'marketing' %}
+{% block content %}
+
+{{ hero("EdTech Marketing", "/edtech-marketing-agency", 'Turning communities into <em class="acc">growth engines.</em>', "Elevating the voices of users, educators, students, and partners creates authenticity and relevance. Peer-driven storytelling strengthens credibility and drives long-term growth because people trust those who share their experiences.") }}
+
+<section class="practice-intro">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The practice</div>
+      <h2>We do not just observe the EdTech market, <em class="acc">we help shape it.</em></h2>
+    </div>
+    <p class="lede">Through The EdTech Mentor, our in-house customer marketing initiative, we engage more than 6,500 subscribers and over 80 practitioners across our Essentials, Founders, and Investor series. This active community, combined with our research capabilities, keeps us close to emerging trends, audience behaviors, and product innovations — fueling every strategy with actionable insight.</p>
+    <div class="covers">
+      <span>Case study production</span>
+      <span>Customer Spotlights video series</span>
+      <span>Thought leadership programs</span>
+      <span>Community-driven content</span>
+      <span>The EdTech Mentor initiative</span>
+      <span>Interview series — Essentials, Founders, Investor</span>
+    </div>
+  </div>
+</section>
+
+<section class="clients">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Clients</div>
+      <h2>Brands we've turned into <em class="acc">growth engines.</em></h2>
+    </div>
+    <div class="client-grid">
+      <div class="client-card">
+        <h3>Busuu</h3>
+        <p>Language learning platform. We produced a series of filmed customer spotlights with world-renowned brands across Europe, turning Busuu's best customers into its most effective advocates.</p>
+      </div>
+      <div class="client-card">
+        <h3>D2L (Brightspace)</h3>
+        <p>A consistent #3 in LMS market share. We support D2L's content marketing across Latin America as the company invests in its "Lumi" AI suite — adaptive course delivery and personalized learning pathways.</p>
+      </div>
+      <div class="client-card">
+        <h3>Anthology</h3>
+        <p>One of our most prominent relationships. Work has included celebrating leadership in higher education and amplifying Anthology's presence in Latin America through the "Antología" initiative.</p>
+      </div>
+      <div class="client-card">
+        <h3>Instructure (Canvas)</h3>
+        <p>The fastest-growing LMS in US higher education. We apply deep sector knowledge of both the higher-ed and K–12 buyer landscape to support Instructure's marketing in a highly competitive market.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="looks">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What this looks like</div>
+      <h2>From a single conversation <em class="acc">to a content engine.</em></h2>
+    </div>
+    <div class="look-list">
+      <div class="look-item">
+        <h3>The EdTech Mentor</h3>
+        <p>Our owned thought-leadership publication, and the clearest expression of this practice. Long-form interviews with EdTech founders, investors, and operators, produced end-to-end: questionnaire, recording, full video, article, illustration, teaser clip, and newsletter distribution.</p>
+      </div>
+      <div class="look-item">
+        <h3>Customer Spotlights</h3>
+        <p>Filmed customer success stories that move beyond the traditional case study — interview planning, filming, editing, and a full content suite generated from a single round of interviewing: video, photos, blog articles, social posts, and ad creative.</p>
+      </div>
+      <div class="look-item">
+        <h3>Community-Driven Content</h3>
+        <p>Editorial strategy documents that define a thought-leadership program's purpose, target audience, guest criteria, and thematic pillars before a single piece of content gets produced — establishing the "why" before the "what."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="subservices">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Services in this practice</div>
+      <h2>Where to start.</h2>
+    </div>
+    <div class="sub-grid">
+      {{ sub_link("/edtech-marketing-agency/thought-leadership-executive-content", "Thought Leadership & Executive Content") }}
+      {{ sub_link("/edtech-marketing-agency/video-motion-editorial-content", "Video, Motion & Editorial Content") }}
+    </div>
+  </div>
+</section>
+
+{{ cta_footer('Turn your customers into <em class="acc">your growth engine.</em>', large=True) }}
+
+{% endblock %}

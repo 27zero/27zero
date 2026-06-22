@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero %}
+{% block title %}Let's Talk: How can we help your EdTech team thrive? — 27zero{% endblock %}
+{% block meta %}
+<meta name="description" content="Let's start a transformative conversation today.">
+{% endblock %}
+{% block content %}
+
+{{ hero("Let's Talk", None, 'How can we help your <em class="acc">EdTech team thrive?</em>', "Looking for marketing ideas to help your EdTech business thrive? Let's start a transformative conversation today.", large=True) }}
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Two ways to start <em class="acc">the conversation.</em></h2>
+    </div>
+    <div class="ctarow">
+      <a href="https://meetings.hubspot.com/laureano-diaz" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7057097071853461504" class="btn-primary btn-secondary">Subscribe to The EdTech Mentor
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section-mist">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Our offices</div>
+      <h2>Bridging North America <em class="acc">and Latin America.</em></h2>
+    </div>
+    <div class="client-grid cols-2">
+      <div class="client-card">
+        <h3>United States</h3>
+        <p>Granville, OH<br>110 Bedwen Bach Lane, 43023<br>+1 (317) 201-0890</p>
+      </div>
+      <div class="client-card">
+        <h3>Colombia</h3>
+        <p>Bogotá<br>Cra 7 # 116-50<br>+57 (304) 576-0752</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

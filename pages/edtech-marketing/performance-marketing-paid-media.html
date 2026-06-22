@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer, belongs, deliverable %}
+{% block title %}Performance Marketing & Paid Media — 27zero{% endblock %}
+{% set nav_current = 'marketing' %}
+{% block content %}
+
+{{ hero("Granular Marketing Programs", "/edtech-marketing-agency/granular-marketing-programs", 'Performance Marketing <em class="acc">& Paid Media</em>', "Paid search, social, and conversion rate optimization programs built to reach the right decision-makers and deliver measurable results.", narrow=True) }}
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>Google and LinkedIn play different roles in the B2B EdTech buying journey, and we run them differently on purpose. Google Search captures demand that already exists. LinkedIn Ads creates demand among people who aren't searching yet — reaching the exact job title at the exact institution. In EdTech, LinkedIn is the only paid channel where you can target job title, company industry, and seniority simultaneously — built for reaching CIOs, provosts, and superintendents without wasting budget on the wrong audience.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      {{ deliverable("Platform Audit & Preliminary Recommendations", "A pre-engagement audit of an existing ad account, identifying misconfigured campaigns, wasted spend, and quick wins — delivered with annotated findings and specific corrective actions.") }}
+      {{ deliverable("Performance Marketing Strategy", "A campaign roadmap covering measurable goals, KPI selection, budget allocation based on projected ROI, and a content strategy tailored to the platform — typically preceded by a two-week discovery phase.") }}
+      {{ deliverable("Campaign Setup & Audience Configuration", "The technical build of every campaign: objective selection matched to the actual goal, precise geographic targeting, audience logic, and a documented rationale for every configuration decision.") }}
+      {{ deliverable("Ad Creative Development", "Designed ad visuals and copy produced together as a single unit — static images, carousels, and display formats sized for each platform, built to stop the scroll, not just describe the product.") }}
+      {{ deliverable("Ongoing Optimization & Reporting", "Recurring review confirming the right job titles and institutions are being reached, plus a monthly strategic review covering funnel efficiency, creative fatigue, and new channel testing.") }}
+      {{ deliverable("HubSpot–Ads Integration & Lead Routing", "The technical bridge between ad platforms and your CRM — UTM-to-property mapping, campaign-level attribution, lifecycle stage automation, and remarketing exclusion lists.") }}
+    </div>
+  </div>
+</section>
+
+{{ belongs("Part of Granular Marketing Programs", "/edtech-marketing-agency/granular-marketing-programs") }}
+
+{{ cta_footer('Reach buyers who are searching — <em class="acc">and the ones who aren\'t yet.</em>', narrow=True) }}
+
+{% endblock %}

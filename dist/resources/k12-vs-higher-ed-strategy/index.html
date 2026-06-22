@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K-12 vs. Higher Education Strategy — Resources — 27zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
+    </a>
+    <nav class="links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing-agency">EdTech Marketing</a>
+      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/lets-talk" class="navcta">Let's Talk!</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap narrow">
+    <div class="hero-rule"></div>
+    <div class="eyebrow"><a href="/resources">Resources</a></div>
+    <h1>Tailoring strategy for <em class="acc">K-12 versus higher education.</em></h1>
+    <p class="sub">Why treating these markets as interchangeable risks both credibility and pipeline.</p>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="article-meta">June 19, 2026</div>
+    <div class="article-body">
+      <p>Education buyers are increasingly savvy, demanding more than generic messaging or broad-strokes campaigns. The stark contrasts between K-12, higher education, and corporate learning mean that successful EdTech marketing agencies must design sector-specific strategies from the ground up — treating these markets as interchangeable risks not only credibility but also sales pipeline.</p>
+      <p>For a comprehensive look at agency selection, see our <a href="/resources/best-ed-tech-marketing-agency">Best EdTech marketing agency</a> guide or explore the main <a href="/resources/edtech-marketing-agency">EdTech Marketing Agency</a> resource.</p>
+    </div>
+  </div>
+</section>
+<section class="ctaf">
+  <div class="wrap narrow">
+    <h2>Build a strategy grounded in <em class="acc">real sector knowledge.</em></h2>
+    <a href="/lets-talk" class="btn-primary">Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 27zero. All rights reserved.</span>
+    <span>Bogotá, Colombia · Granville, OH</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll(
+    '.pcard, .ditem, .look-item, .client-card, .apart-col, .mitem, .subitem, .cycle-step, .sec-head'
+  );
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('reveal-init', 'in-view'); });
+    return;
+  }
+  targets.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

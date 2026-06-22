@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer, belongs, deliverable %}
+{% block title %}Brand & Identity Design — 27zero{% endblock %}
+{% set nav_current = 'marketing' %}
+{% block content %}
+
+{{ hero("Agile Brand Development", "/edtech-marketing-agency/agile-brand-development", 'Brand & <em class="acc">Identity Design</em>', "Brand concepts, naming, storytelling, and identity systems that keep your brand consistent and top of mind.", narrow=True) }}
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>End-to-end brand development, delivered through structured sprints — from brand strategy and naming through visual identity, design systems, and brand guidelines. All work is platform-agnostic and handed off in Figma with full developer specifications, with two rounds of revisions built into every deliverable.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      {{ deliverable("Messaging & Narrative System", "A complete brand messaging architecture: core narrative, positioning statement, 3–5 value pillars, a messaging hierarchy from company to product to feature level, and tone-of-voice guidelines.") }}
+      {{ deliverable("Visual Identity Evolution", "An expansion of an existing identity system: a defined core palette with usage ratios, a visual motif system, photography direction, and motion principles — delivered as a Figma system and usage guide.") }}
+      {{ deliverable("Brand Guidelines & Toolkit", "The master reference for using the brand correctly: logo rules, color specifications, typography hierarchy, photography direction, and tone of voice — written as practical usage guidance.") }}
+      {{ deliverable("Brand Enablement Sessions", "Two facilitated sessions closing the gap between a guidelines document and confident real-world use: one for sales, one for leadership.") }}
+      {{ deliverable("Master Deck / Pitch Deck", "The primary branded presentation for sales and leadership — company story, product overview, differentiation, customer proof, next steps. Co-built with your marketing lead.") }}
+      {{ deliverable("Channel Marketing Asset Kits", "A complete set of branded templates organized for distribution channels — partners, resellers, regional teams: presentations, brochures, email templates, social assets, sell sheets.") }}
+      {{ deliverable("Social Templates (Static + Motion)", "A library of branded, editable templates for the most common social formats — built in Canva so your team can produce on-brand content without design software.") }}
+    </div>
+  </div>
+</section>
+
+{{ belongs("Part of Agile Brand Development", "/edtech-marketing-agency/agile-brand-development") }}
+
+{{ cta_footer('Give your brand a system <em class="acc">that scales with you.</em>', narrow=True) }}
+
+{% endblock %}

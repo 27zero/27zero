@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video, Motion & Editorial Content — 27zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
+    </a>
+    <nav class="links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing-agency" class="current">EdTech Marketing</a>
+      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/lets-talk" class="navcta">Let's Talk!</a>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="wrap narrow">
+    <div class="hero-rule"></div>
+    <div class="eyebrow"><a href="/edtech-marketing-agency/customer-marketing">Customer Marketing</a></div>
+    <h1>Video, Motion & <em class="acc">Editorial Content</em></h1>
+    <p class="sub">Video, motion, and editorial content designed to travel across channels — social, email, print, and beyond.</p>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>A single conversation, well produced, can fuel an entire quarter of content. We build editorial and video content as connected systems rather than one-off assets — every piece designed from the outset to be cut, repurposed, and redistributed across the channels your buyers actually use.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      <div class="ditem">
+  <h3>Long-Form Video</h3>
+  <p>2–10 minutes, covering a brand story, product explanation, or expert interview. Produced for YouTube and built to be broken into reusable clips: a 30-second teaser, a 5-second animation, social cutdowns.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Short Promotional Video / Clips</h3>
+  <p>15-to-60-second produced videos optimized for LinkedIn and social — animated text, motion-overlaid screen recordings, or lightly edited talking-head clips, built for feed-stopping attention.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Short Animation / Explainer Clips</h3>
+  <p>Motion graphics explaining a feature, concept, or data point — produced without filming. Useful when a topic needs visual clarity that live footage can't deliver.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Customer Spotlights</h3>
+  <p>Filmed customer success stories — interview planning, on-site or remote production, editing, and a full content suite generated from one shoot: video, photography, blog content, social assets.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Blog Articles & Core Content Campaigns</h3>
+  <p>1,000–2,000 word articles optimized for SEO, typically bundled into a campaign package alongside a LinkedIn static post, a carousel, a video clip, and an email — all from one creative concept.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Illustration & Visual Concepts</h3>
+  <p>Custom digital illustrations used as editorial or campaign visual anchors when a topic or guest needs a distinctive treatment that photography can't provide.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Infographics & Data Graphics</h3>
+  <p>Visually driven assets presenting data, a process, or a comparison in a scannable format — built from real data sources and optimized for LinkedIn, blog embedding, and email.</p>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<div class="wrap belongs">
+  <a href="/edtech-marketing-agency/customer-marketing">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    Part of Customer Marketing
+  </a>
+</div>
+
+
+<section class="ctaf">
+  <div class="wrap narrow">
+    <h2>Make one good story work <em class="acc">across every channel.</em></h2>
+    <a href="/lets-talk" class="btn-primary">Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 27zero. All rights reserved.</span>
+    <span>Bogotá, Colombia · Granville, OH</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll(
+    '.pcard, .ditem, .look-item, .client-card, .apart-col, .mitem, .subitem, .cycle-step, .sec-head'
+  );
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('reveal-init', 'in-view'); });
+    return;
+  }
+  targets.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

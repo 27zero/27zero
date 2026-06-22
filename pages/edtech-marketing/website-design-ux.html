@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer, belongs, deliverable %}
+{% block title %}Website Design & UX — 27zero{% endblock %}
+{% set nav_current = 'marketing' %}
+{% block content %}
+
+{{ hero("Agile Brand Development", "/edtech-marketing-agency/agile-brand-development", 'Website Design <em class="acc">& UX</em>', "Web design, user experience, user interface, copy, and optimization that make your brand look good and perform better.", narrow=True) }}
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>Your website is your most heavily trafficked sales asset, and it has to do two jobs at once: express the brand and convert the visitor. We deliver web work as platform-agnostic, developer-ready Figma assets — whether the project is a full redesign or the ongoing adjustments that keep an existing site current.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      {{ deliverable("Web Page Directions", "Annotated, page-by-page direction documents showing how key pages should be restructured to reflect new brand messaging — hierarchy, section order, headline direction, visual placement, CTA logic.") }}
+      {{ deliverable("Information Architecture & Wireframes", "The structural foundation of a site or page — content hierarchy, navigation logic, layout structure — built before visual design starts.") }}
+      {{ deliverable("High-Fidelity, Responsive UI Design", "Full visual design delivered as developer-ready Figma files — accessible to WCAG AA standards, responsive across devices, built within the brand's design system.") }}
+      {{ deliverable("Website Redesign (Project Engagement)", "A complete, phased website rebuild — structured across distinct workstreams, with milestone-based delivery from kickoff through developer handoff.") }}
+      {{ deliverable("Ongoing Website Adjustments & Updates", "Incremental updates within an existing site — page content changes, copy adjustments, UX/UI improvements — calibrated by complexity, delivered on a recurring basis.") }}
+      {{ deliverable("Landing Pages", "Built in Webflow, HubSpot, or your existing CMS for a single conversion action — UX layout, copywriting, hero imagery, CTA, form integration, tracking setup.") }}
+      {{ deliverable("Developer Handoff & QA", "Full specification handoff to your development team, plus QA support after launch — and, where needed, a dedicated post-launch CRO program of A/B testing and iterative improvement.") }}
+    </div>
+  </div>
+</section>
+
+{{ belongs("Part of Agile Brand Development", "/edtech-marketing-agency/agile-brand-development") }}
+
+{{ cta_footer('Make your website work as hard <em class="acc">as your brand does.</em>', narrow=True) }}
+
+{% endblock %}

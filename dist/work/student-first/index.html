@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student First — Brand Essentials — 27zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
+    </a>
+    <nav class="links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing-agency">EdTech Marketing</a>
+      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/lets-talk" class="navcta">Let's Talk!</a>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="wrap narrow">
+    <div class="hero-rule"></div>
+    <div class="eyebrow"><a href="/work">Work</a></div>
+    <h1>Launch a revolutionary product in <em class="acc">an established market.</em></h1>
+    <p class="sub">Student First — Brand Essentials</p>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <div class="eyebrow">The Brief</div>
+    <p>A brand lift, modern website, and strategic messaging empowers Student First to confidently navigate the challenges of the SIS market.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Challenge</div></div>
+    <p>Confronted with a higher education landscape known for its complexity and resistance to change, Student First needed to engage multiple buyer personas and C-level decision-makers, each with unique concerns and priorities. These hurdles required a strategic approach, beginning with a brand lift that would convey the right look, feel, and messaging to diverse target audiences.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Solution</div><h2>A transformative brand journey from the ground up.</h2></div>
+    <p>We provided a comprehensive brand lift, infusing every aspect with strategic messaging and stunning visuals. At the heart of the solution was a modern website, meticulously designed to showcase Student First's value proposition with clarity and impact. The Brand Essentials package elevated Student First's identity, ensuring consistency and resonance across all touchpoints — empowering the team to confidently navigate the SIS market and make a compelling case for change.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">The Impact</div></div>
+    <div class="look-list">
+      <div class="look-item"><h3>Designed</h3><p>A striking brand look and feel that captivated audiences, evoking a sense of playfulness and ease simultaneously.</p></div>
+      <div class="look-item"><h3>Developed</h3><p>Messaging that resonated with a diverse audience, making the value proposition evident for administrators, donors, and students alike.</p></div>
+      <div class="look-item"><h3>Accelerated</h3><p>Time to value by delivering a brand essentials kit and website in just under two months.</p></div>
+      <div class="look-item"><h3>Delivered</h3><p>Sales enablement and support tools to empower the sales team and drive conversion.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">More of our work</div></div>
+    <div class="dgrid">
+      <a href="/work/doctums" class="ditem"><h3>Doctums — Brand Essentials &amp; Marketing Programs</h3><p>Scaling the business by transitioning from referral-based sales to a structured marketing and sales operation.</p></a>
+      <a href="/work/scholarship-magic" class="ditem"><h3>Scholarship Magic — Brand Essentials</h3><p>Launching a new paradigm in financial aid and institutional advancement.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="ctaf">
+  <div class="wrap narrow">
+    <h2>Begin your journey <em class="acc">to growth.</em></h2>
+    <a href="/lets-talk" class="btn-primary">Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 27zero. All rights reserved.</span>
+    <span>Bogotá, Colombia · Granville, OH</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll(
+    '.pcard, .ditem, .look-item, .client-card, .apart-col, .mitem, .subitem, .cycle-step, .sec-head'
+  );
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('reveal-init', 'in-view'); });
+    return;
+  }
+  targets.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

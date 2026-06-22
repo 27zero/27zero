@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer %}
+{% block title %}Universidad de los Andes — Marketing Programs — 27zero{% endblock %}
+{% block content %}
+
+{{ hero("Work", "/work", 'Boost brand recognition as a top institution with <em class="acc">innovative programs.</em>', "Universidad de los Andes — Marketing Programs", narrow=True) }}
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="video-embed"><iframe src="https://player.vimeo.com/video/916792830" title="Universidad de los Andes — Marketing Programs" loading="lazy" allowfullscreen></iframe></div>
+  </div>
+</section>
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <div class="eyebrow">The Brief</div>
+    <p>Market two groundbreaking master's programs to a global audience in partnership with Coursera.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Challenge</div></div>
+    <p>Position Universidad de los Andes as a leading educational institution beyond its local network — building a marketing campaign with aspirational animations and art pieces to promote cutting-edge programs, showcasing the university at the forefront of innovation and knowledge.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Solution</div><h2>A sophisticated, globally aspirational campaign.</h2></div>
+    <p>We designed a sophisticated global advertising campaign characterized by visually stunning art pieces and animation — effectively capturing the aspirational, cutting-edge essence of the two master's programs and amplifying the university's reach beyond its regional borders.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">The Impact</div></div>
+    <div class="look-list">
+      <div class="look-item"><h3>Expanded</h3><p>Global reach and influence, positioning Universidad de los Andes as a key player in shaping the future across fields.</p></div>
+      <div class="look-item"><h3>Increased</h3><p>Enrollment and interest from prospective students seeking innovative educational opportunities, locally and internationally.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">More of our work</div></div>
+    <div class="dgrid">
+      <a href="/work/d2l-connection-cdmx" class="ditem"><h3>D2L — Connection Experience</h3><p>Designing and executing an event series engaging D2L leaders with customers.</p></a>
+      <a href="/work/ellucian-edtech-sessions-experience" class="ditem"><h3>Ellucian — EdTech Sessions Experience</h3><p>LACUC 2024 — an immersive event blending Cartagena's magic with Ellucian's vision.</p></a>
+    </div>
+  </div>
+</section>
+
+{{ cta_footer('Begin your journey <em class="acc">to growth.</em>', narrow=True) }}
+
+{% endblock %}

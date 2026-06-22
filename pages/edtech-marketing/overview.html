@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer, menu_link %}
+{% block title %}EdTech Marketing — 27zero{% endblock %}
+{% set nav_current = 'marketing' %}
+{% block content %}
+
+{{ hero("EdTech Marketing", None, 'The first and only agency built <em class="acc">for EdTech.</em>', "Three practices. One goal: helping EdTech brands turn purpose into lasting impact.", large=True, micro="Free. 30 min. No sales pitch.") }}
+
+<section class="apart">
+  <div class="wrap">
+    <div class="apart-head">
+      <h2>What sets 27zero <em class="acc">apart.</em></h2>
+      <p>Our foundations connect insight, creativity, and efficient execution — helping EdTech brands turn purpose into lasting impact.</p>
+    </div>
+
+    <div class="venn" role="img" aria-label="Three overlapping circles representing Research Enhanced Industry Knowledge, Creativity that Drives Effectiveness, and Execution that Scales">
+      <svg viewBox="0 0 420 320">
+        <circle cx="170" cy="120" r="100" fill="var(--r-gray)" opacity="0.9"/>
+        <circle cx="140" cy="210" r="100" fill="var(--violet)" opacity="0.85"/>
+        <circle cx="250" cy="210" r="100" fill="var(--ink)" opacity="0.92"/>
+        <text class="venn-label" x="150" y="80">RESEARCH</text>
+        <text class="venn-label" x="150" y="96">ENHANCED</text>
+        <text class="venn-label on-dark" x="115" y="240">CREATIVITY</text>
+        <text class="venn-label on-dark" x="285" y="240">EXECUTION</text>
+        <text class="venn-label" x="195" y="190" style="font-size:10px;">27</text>
+      </svg>
+    </div>
+
+    <div class="apart-cols">
+      <div class="apart-col" data-k="gray">
+        <h3>Research Enhanced Industry Knowledge</h3>
+        <p>We do not just observe the EdTech market, we help shape it. Through The EdTech Mentor, our in-house customer marketing initiative, we engage more than 6,500 subscribers and over 80 practitioners across our Essentials, Founders, and Investor series.</p>
+      </div>
+      <div class="apart-col" data-k="violet">
+        <h3>Creativity that Drives Effectiveness</h3>
+        <p>In B2B EdTech, creativity is not cosmetic, it is what makes complex ideas connect. We translate insight into campaigns that balance originality and clarity, ensuring every concept supports tangible business outcomes.</p>
+      </div>
+      <div class="apart-col" data-k="ink">
+        <h3>Execution that Scales</h3>
+        <p>We deliver the complete capability of a full-service agency with the focus of a boutique partner — with regional expertise in North America and Europe, and agile production in Latin America.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="practices">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">How we work</div>
+      <h2>Three practices. <em class="acc">One goal.</em></h2>
+      <p>Elevating real voices, layering audiences with precision, and building brand equity that compounds — together, the engine behind every client's go-to-market success.</p>
+    </div>
+
+    <div class="pcards">
+      <a href="/edtech-marketing-agency/customer-marketing" class="pcard">
+        <h3>Customer Marketing</h3>
+        <p class="tag">Turning communities into growth engines. Peer-driven storytelling strengthens credibility because people trust those who share their experiences.</p>
+        <div class="clients">Clients<span>Busuu · D2L · Anthology · Instructure</span></div>
+        <div class="go">Explore the practice
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+      <a href="/edtech-marketing-agency/granular-marketing-programs" class="pcard">
+        <h3>Granular Marketing Programs</h3>
+        <p class="tag">Driving relevance within niche audiences. Audience layering aligns messages to specific needs across the entire B2B EdTech buying journey.</p>
+        <div class="clients">Clients<span>Student First · Doctums · Ellucian</span></div>
+        <div class="go">Explore the practice
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+      <a href="/edtech-marketing-agency/agile-brand-development" class="pcard">
+        <h3>Agile Brand Development</h3>
+        <p class="tag">Scalable branding for evolving realities. Steady, on-demand brand assets keep you top of mind, so recognition drives preference.</p>
+        <div class="clients">Clients<span>Salesforce · OpenLMS · WorldQuant Learning</span></div>
+        <div class="go">Explore the practice
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The full menu</div>
+      <h2>What's on <em class="acc">the menu?</em></h2>
+      <p>Wherever you are in your marketing cycle, we have something cooking — strategy, creativity, and execution, ready to serve when you are.</p>
+    </div>
+
+    <div class="menu-group">
+      <div class="menu-group-h">Customer Marketing</div>
+      <div class="menu-grid">
+        {{ menu_link("/edtech-marketing-agency/thought-leadership-executive-content", "Thought Leadership & Executive Content", "Ghostwriting, branded series, webinars, and content that turn expertise into influence.") }}
+        {{ menu_link("/edtech-marketing-agency/video-motion-editorial-content", "Video, Motion & Editorial Content", "Content designed to travel across channels — social, email, print, and beyond.") }}
+      </div>
+    </div>
+
+    <div class="menu-group">
+      <div class="menu-group-h">Granular Marketing Programs</div>
+      <div class="menu-grid">
+        {{ menu_link("/edtech-marketing-agency/gtm-playbooks-launch-campaigns", "GTM Playbooks & Launch Campaigns", "Strategies and launch campaigns that help EdTech brands stand out and scale.") }}
+        {{ menu_link("/edtech-marketing-agency/marketing-operations-crm", "Marketing Operations & CRM", "Automation, CRM management, and orchestration so your systems run smoothly.") }}
+        {{ menu_link("/edtech-marketing-agency/market-research-audience-insights", "Market Research & Audience Insights", "Segmentation, benchmarking, and persona development grounded in real insight.") }}
+        {{ menu_link("/edtech-marketing-agency/events-experiences", "Events & Experiences", "Booth design, event campaigns, and engagement that create buzz before, during, after.") }}
+        {{ menu_link("/edtech-marketing-agency/performance-marketing-paid-media", "Performance Marketing & Paid Media", "Paid search, social, and CRO built to reach the right decision-makers.") }}
+      </div>
+    </div>
+
+    <div class="menu-group">
+      <div class="menu-group-h">Agile Brand Development</div>
+      <div class="menu-grid">
+        {{ menu_link("/edtech-marketing-agency/brand-identity-design", "Brand & Identity Design", "Concepts, naming, storytelling, and identity systems that stay consistent and top of mind.") }}
+        {{ menu_link("/edtech-marketing-agency/website-design-ux", "Website Design & UX", "Design, UX, UI, copy, and optimization that make your brand look good and perform.") }}
+      </div>
+    </div>
+
+    <p class="menu-off">And if you are craving something special, we will happily go off menu.</p>
+  </div>
+</section>
+
+{{ cta_footer('Let\'s partner to articulate and unpack <em class="acc">meaningful results.</em>', large=True) }}
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer, belongs, deliverable %}
+{% block title %}Video, Motion & Editorial Content — 27zero{% endblock %}
+{% set nav_current = 'marketing' %}
+{% block content %}
+
+{{ hero("Customer Marketing", "/edtech-marketing-agency/customer-marketing", 'Video, Motion & <em class="acc">Editorial Content</em>', "Video, motion, and editorial content designed to travel across channels — social, email, print, and beyond.", narrow=True) }}
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>A single conversation, well produced, can fuel an entire quarter of content. We build editorial and video content as connected systems rather than one-off assets — every piece designed from the outset to be cut, repurposed, and redistributed across the channels your buyers actually use.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      {{ deliverable("Long-Form Video", "2–10 minutes, covering a brand story, product explanation, or expert interview. Produced for YouTube and built to be broken into reusable clips: a 30-second teaser, a 5-second animation, social cutdowns.") }}
+      {{ deliverable("Short Promotional Video / Clips", "15-to-60-second produced videos optimized for LinkedIn and social — animated text, motion-overlaid screen recordings, or lightly edited talking-head clips, built for feed-stopping attention.") }}
+      {{ deliverable("Short Animation / Explainer Clips", "Motion graphics explaining a feature, concept, or data point — produced without filming. Useful when a topic needs visual clarity that live footage can't deliver.") }}
+      {{ deliverable("Customer Spotlights", "Filmed customer success stories — interview planning, on-site or remote production, editing, and a full content suite generated from one shoot: video, photography, blog content, social assets.") }}
+      {{ deliverable("Blog Articles & Core Content Campaigns", "1,000–2,000 word articles optimized for SEO, typically bundled into a campaign package alongside a LinkedIn static post, a carousel, a video clip, and an email — all from one creative concept.") }}
+      {{ deliverable("Illustration & Visual Concepts", "Custom digital illustrations used as editorial or campaign visual anchors when a topic or guest needs a distinctive treatment that photography can't provide.") }}
+      {{ deliverable("Infographics & Data Graphics", "Visually driven assets presenting data, a process, or a comparison in a scannable format — built from real data sources and optimized for LinkedIn, blog embedding, and email.") }}
+    </div>
+  </div>
+</section>
+
+{{ belongs("Part of Customer Marketing", "/edtech-marketing-agency/customer-marketing") }}
+
+{{ cta_footer('Make one good story work <em class="acc">across every channel.</em>', narrow=True) }}
+
+{% endblock %}

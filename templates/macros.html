@@ -1,0 +1,69 @@
+{% macro hero(eyebrow_text, eyebrow_href, title_html, subtitle, large=False, micro=None, narrow=False) %}
+<section class="hero{% if large %} hero-lg{% endif %}">
+  <div class="wrap{% if narrow %} narrow{% endif %}">
+    <div class="hero-rule"></div>
+    <div class="eyebrow">{% if eyebrow_href %}<a href="{{ eyebrow_href }}">{{ eyebrow_text }}</a>{% else %}{{ eyebrow_text }}{% endif %}</div>
+    <h1>{{ title_html|safe }}</h1>
+    <p class="sub">{{ subtitle }}</p>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      {% if micro %}<span class="micro">{{ micro }}</span>{% endif %}
+    </div>
+  </div>
+</section>
+{% endmacro %}
+
+{% macro cta_footer(title_html, large=False, narrow=False) %}
+<section class="ctaf{% if large %} lg{% endif %}">
+  <div class="wrap{% if narrow %} narrow{% endif %}">
+    {% if large %}<div class="eyebrow center">Begin your journey to growth</div>{% endif %}
+    <h2>{{ title_html|safe }}</h2>
+    <a href="/lets-talk" class="btn-primary">Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+{% endmacro %}
+
+{% macro belongs(text, href) %}
+<div class="wrap belongs">
+  <a href="{{ href }}">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    {{ text }}
+  </a>
+</div>
+{% endmacro %}
+
+{% macro menu_link(href, label, desc=None) %}
+<a href="{{ href }}" class="mitem">
+  <div><h4>{{ label }}</h4>{% if desc %}<p>{{ desc }}</p>{% endif %}</div>
+  <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+</a>
+{% endmacro %}
+
+{% macro sub_link(href, label) %}
+<a href="{{ href }}" class="subitem">
+  <h4>{{ label }}</h4>
+  <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+</a>
+{% endmacro %}
+
+{% macro deliverable(title, desc) %}
+<div class="ditem">
+  <h3>{{ title }}</h3>
+  <p>{{ desc }}</p>
+</div>
+{% endmacro %}
+
+{% macro proof_point(text) %}
+<section class="tight flush-top">
+  <div class="wrap narrow">
+    <div class="proof">
+      <div class="eyebrow">Proof point</div>
+      <p>{{ text }}</p>
+    </div>
+  </div>
+</section>
+{% endmacro %}

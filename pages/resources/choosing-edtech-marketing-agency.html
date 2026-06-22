@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer %}
+{% block title %}Choosing an EdTech Marketing Agency — Resources — 27zero{% endblock %}
+{% block content %}
+{{ hero("Resources", "/resources", 'What should I look for when choosing <em class="acc">an EdTech marketing agency?</em>', "A guide to finding the partner that fits your specific product and audience.", narrow=True) }}
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="article-meta">June 19, 2026</div>
+    <div class="article-body">
+      <p>Building a successful EdTech brand requires more than creativity. It demands a strategic partnership that understands the complexities of the education landscape: the long buying cycles, the mission-driven buyers, the institutional hierarchies, and the category nuances that shift faster than most generalist agencies can track. The agency you choose can be the catalyst that propels your brand forward — or the reason it gets lost in the noise.</p>
+      <p>The essential factors to weigh: specialized EdTech experience over generalist breadth, a track record of measurable outcomes (not just creative awards), whether the agency operates as an embedded extended team or an arm's-length vendor, and fluency in your specific segment — K-12, higher education, or lifelong learning each have meaningfully different buying dynamics. For the full strategic picture, see our <a href="/resources/edtech-marketing-agency">EdTech Marketing Agency</a> pillar guide.</p>
+    </div>
+  </div>
+</section>
+{{ cta_footer('Find the partner that actually <em class="acc">knows your market.</em>', narrow=True) }}
+{% endblock %}

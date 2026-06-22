@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Research & Audience Insights — 27zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
+    </a>
+    <nav class="links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing-agency" class="current">EdTech Marketing</a>
+      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/lets-talk" class="navcta">Let's Talk!</a>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="wrap narrow">
+    <div class="hero-rule"></div>
+    <div class="eyebrow"><a href="/edtech-marketing-agency/granular-marketing-programs">Granular Marketing Programs</a></div>
+    <h1>Market Research & <em class="acc">Audience Insights</em></h1>
+    <p class="sub">Market research, audience segmentation, benchmarking, and persona development that keep your strategy grounded in real EdTech insight.</p>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>Audience layering only works if the underlying data is right. Before any campaign launches, we build and enrich the audience it's targeting — then keep validating that targeting throughout the engagement rather than setting it once and hoping it holds.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      <div class="ditem">
+  <h3>Audience Segmentation & Contact List</h3>
+  <p>A curated, enriched list of target contacts built from Ideal Customer Profile criteria — institution type, role, geography, company size, technology stack. Built with Clay, Apollo, and LinkedIn Sales Navigator, segmented in HubSpot.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Initial Strategy Workshop</h3>
+  <p>A structured kickoff session used to validate the Ideal Customer Profile and personas against real account data — not assumptions — before campaign planning starts.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Competitive & Benchmarking Analysis</h3>
+  <p>Research into how target accounts and competitors are positioned, messaged, and performing — used to sharpen differentiation and find where a campaign can win attention competitors aren't contesting.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Persona Development</h3>
+  <p>Structured definitions of the buyer roles a campaign needs to reach — built from CRM data, stakeholder interviews, and platform-level audience reporting.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Ongoing Audience Validation</h3>
+  <p>Recurring review of who is actually engaging — by company, job title, seniority, and geography — used to confirm the Ideal Customer Profile is being reached, or correct course when targeting drifts.</p>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<div class="wrap belongs">
+  <a href="/edtech-marketing-agency/granular-marketing-programs">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    Part of Granular Marketing Programs
+  </a>
+</div>
+
+
+<section class="ctaf">
+  <div class="wrap narrow">
+    <h2>Ground every campaign in <em class="acc">who's actually buying.</em></h2>
+    <a href="/lets-talk" class="btn-primary">Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 27zero. All rights reserved.</span>
+    <span>Bogotá, Colombia · Granville, OH</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll(
+    '.pcard, .ditem, .look-item, .client-card, .apart-col, .mitem, .subitem, .cycle-step, .sec-head'
+  );
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('reveal-init', 'in-view'); });
+    return;
+  }
+  targets.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

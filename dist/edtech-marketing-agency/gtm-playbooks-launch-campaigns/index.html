@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go-to-Market Playbooks & Launch Campaigns — 27zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
+    </a>
+    <nav class="links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing-agency" class="current">EdTech Marketing</a>
+      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/lets-talk" class="navcta">Let's Talk!</a>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="wrap narrow">
+    <div class="hero-rule"></div>
+    <div class="eyebrow"><a href="/edtech-marketing-agency/granular-marketing-programs">Granular Marketing Programs</a></div>
+    <h1>Go-to-Market Playbooks & <em class="acc">Launch Campaigns</em></h1>
+    <p class="sub">Go-to-market playbooks and launch campaigns that help EdTech brands stand out and scale.</p>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>Every campaign at 27zero starts with a decision record, not a moodboard. Before a single creative asset gets produced, we document the strategy, the audience, the messaging hierarchy, and how success will be measured — so creative and execution teams are building toward the same target from day one. Used for product launches, market entries, and competitive repositioning.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      <div class="ditem">
+  <h3>Marketing Plan / GTM Strategy</h3>
+  <p>The master acquisition strategy for an engagement — Ideal Customer Profile definition, budget guidance, event selection, CRM strategy, lead qualification logic, and a content calendar. Typically the first deliverable, gating everything that follows.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Campaign Playbook</h3>
+  <p>A structured document produced before each campaign launches — strategy, creative concept, audience targeting, messaging hierarchy, asset list, deployment timeline, and measurement. The complete decision record every downstream asset traces back to.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Creative Concept</h3>
+  <p>The overarching idea that unifies a campaign: central theme, visual direction, tonal approach — presented for approval before design begins.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Initial Strategy Workshop</h3>
+  <p>A structured kickoff session to align on objectives, validate the Ideal Customer Profile and personas, confirm message priorities, and co-build the quarterly planning framework.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Live Deployment Recommendations</h3>
+  <p>A written brief produced before each campaign goes live, specifying audience targeting, timing, cadence, platform placement, and A/B testing parameters.</p>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<div class="wrap belongs">
+  <a href="/edtech-marketing-agency/granular-marketing-programs">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    Part of Granular Marketing Programs
+  </a>
+</div>
+
+
+<section class="ctaf">
+  <div class="wrap narrow">
+    <h2>Launch with a plan, <em class="acc">not just a deadline.</em></h2>
+    <a href="/lets-talk" class="btn-primary">Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 27zero. All rights reserved.</span>
+    <span>Bogotá, Colombia · Granville, OH</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll(
+    '.pcard, .ditem, .look-item, .client-card, .apart-col, .mitem, .subitem, .cycle-step, .sec-head'
+  );
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('reveal-init', 'in-view'); });
+    return;
+  }
+  targets.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events & Experiences — 27zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
+    </a>
+    <nav class="links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing-agency" class="current">EdTech Marketing</a>
+      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/lets-talk" class="navcta">Let's Talk!</a>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="wrap narrow">
+    <div class="hero-rule"></div>
+    <div class="eyebrow"><a href="/edtech-marketing-agency/granular-marketing-programs">Granular Marketing Programs</a></div>
+    <h1>Events & <em class="acc">Experiences</em></h1>
+    <p class="sub">Booth design, event campaigns, and engagement programs that create buzz before, during, and after your event.</p>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>An event is a campaign with a deadline that doesn't move. We treat every event as a complete arc — pre-event awareness, on-site experience, and post-event follow-through — not a booth and a stack of business cards. This is also where our production scale shows most clearly: we've built full user conferences, not just exhibitor presence.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      <div class="ditem">
+  <h3>Event Marketing Package (Pre / During / Post)</h3>
+  <p>A complete set of assets built around a single event participation: a landing page, social posts across all three phases, supporting collateral, and event emails — produced as a campaign, not one-off assets.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Trade Show / Event Booth System</h3>
+  <p>A full booth presence system: hero messaging, a visual composition system that scales across booth formats and sizes, standee and banner designs, and tabletop display direction.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Event-in-a-Box</h3>
+  <p>A self-contained design kit for a specific event — booth banner, printed handout, branded materials, and a social kit for pre/during/post posting — standardizing event presence across multiple conferences.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Meeting-Booking Outreach</h3>
+  <p>Pre-event outbound built around securing meetings with attendees — pairing a contact list with a HubSpot scheduling page so event presence converts into real conversations.</p>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<section class="tight flush-top">
+  <div class="wrap narrow">
+    <div class="proof">
+      <div class="eyebrow">Proof point</div>
+      <p>We organized the 2024 Ellucian LAC User Conference in Cartagena — a bold, immersive event blending the city's cultural richness with Ellucian's vision for higher education across Latin America. We also support clients at FETC, EDUCAUSE, and other major industry events.</p>
+    </div>
+  </div>
+</section>
+
+
+<div class="wrap belongs">
+  <a href="/edtech-marketing-agency/granular-marketing-programs">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    Part of Granular Marketing Programs
+  </a>
+</div>
+
+
+<section class="ctaf">
+  <div class="wrap narrow">
+    <h2>Make your next event <em class="acc">more than a booth.</em></h2>
+    <a href="/lets-talk" class="btn-primary">Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 27zero. All rights reserved.</span>
+    <span>Bogotá, Colombia · Granville, OH</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll(
+    '.pcard, .ditem, .look-item, .client-card, .apart-col, .mitem, .subitem, .cycle-step, .sec-head'
+  );
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('reveal-init', 'in-view'); });
+    return;
+  }
+  targets.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

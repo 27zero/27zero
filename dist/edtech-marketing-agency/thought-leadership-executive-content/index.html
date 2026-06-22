@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thought Leadership & Executive Content — 27zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
+    </a>
+    <nav class="links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing-agency" class="current">EdTech Marketing</a>
+      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/lets-talk" class="navcta">Let's Talk!</a>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="wrap narrow">
+    <div class="hero-rule"></div>
+    <div class="eyebrow"><a href="/edtech-marketing-agency/customer-marketing">Customer Marketing</a></div>
+    <h1>Thought Leadership & <em class="acc">Executive Content</em></h1>
+    <p class="sub">Executive ghostwriting, branded interview series, webinars, and thought leadership content that turn expertise into influence.</p>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>Influence in EdTech is earned through consistent, credible expertise — not a single viral post. We build owned thought-leadership programs the same way we built our own: The EdTech Mentor, our interview series, now reaches more than 6,500 subscribers and has featured over 80 practitioners across three series — Essentials, Founders, Investor. We bring that exact production model to client brands.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      <div class="ditem">
+  <h3>Editorial Strategy: Concept, Positioning & Framework</h3>
+  <p>The strategic foundation for a thought-leadership or interview program — purpose, target audience, guest-profile criteria, thematic pillars, and how the brand positions itself as host or curator. Establishes the "why" before the "what."</p>
+</div>
+
+      <div class="ditem">
+  <h3>Guest Sourcing & Interview Production</h3>
+  <p>End-to-end production of one episode: a guest-specific questionnaire, remote HD recording, edited transcript, a full video, a website and LinkedIn article, two illustration concepts, a short animation, a teaser clip, and newsletter distribution.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Expert Interview / Core Content</h3>
+  <p>A structured interview with a customer, prospect, or internal specialist, turned into a 1,500-word document that becomes the raw material for an entire content campaign — blog post, social posts, email, and newsletter.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Whitepaper / Research Content</h3>
+  <p>Long-form, authoritative content (2,500–5,000 words) presenting original analysis or expert perspective on institutional pain points — delivered as a designed PDF, commonly used as a gated lead magnet.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Executive Ghostwriting</h3>
+  <p>Branded, executive-voiced content — op-eds, LinkedIn thought pieces, and webinar scripting — that puts your leadership team's expertise in front of the audience that needs to hear it.</p>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<section class="tight flush-top">
+  <div class="wrap narrow">
+    <div class="proof">
+      <div class="eyebrow">Proof point</div>
+      <p>WorldQuant Learning's 2026 thought-leadership program runs 12 interviews a year, each with full production: questionnaire, recording, transcript, video, article, two illustrations, animation, teaser, and newsletter distribution. It's the same model, scoped for a client brand instead of our own.</p>
+    </div>
+  </div>
+</section>
+
+
+<div class="wrap belongs">
+  <a href="/edtech-marketing-agency/customer-marketing">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    Part of Customer Marketing
+  </a>
+</div>
+
+
+<section class="ctaf">
+  <div class="wrap narrow">
+    <h2>Turn your team's expertise into <em class="acc">an owned media channel.</em></h2>
+    <a href="/lets-talk" class="btn-primary">Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 27zero. All rights reserved.</span>
+    <span>Bogotá, Colombia · Granville, OH</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll(
+    '.pcard, .ditem, .look-item, .client-card, .apart-col, .mitem, .subitem, .cycle-step, .sec-head'
+  );
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('reveal-init', 'in-view'); });
+    return;
+  }
+  targets.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

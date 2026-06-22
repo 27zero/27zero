@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer %}
+{% block title %}Busuu — Customer Spotlights — 27zero{% endblock %}
+{% block content %}
+
+{{ hero("Work", "/work", 'Getting your best customers to <em class="acc">share their stories.</em>', "Busuu — Customer Spotlights", narrow=True) }}
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="video-embed"><iframe src="https://player.vimeo.com/video/771713699" title="Busuu Customer Spotlights" loading="lazy" allowfullscreen></iframe></div>
+  </div>
+</section>
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <div class="eyebrow">The Brief</div>
+    <p>Film and produce a series of case studies with world-renowned brands across Europe.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Challenge</div></div>
+    <p>Communicate the key benefits of the Busuu B2B offering, building on the well-established consumer language-learning platform, using only filmed customer interviews shot in various locations across the continent.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Solution</div><h2>A standardized production process for global teams.</h2></div>
+    <p>While our team is experienced in managing demanding filming and interview schedules for Customer Spotlights, this project presented an additional challenge: establishing a process that could be replicated consistently by external video teams worldwide. The editing process was centralized using visual templates that highlighted previously unexplored elements of the Busuu brand.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">The Impact</div></div>
+    <div class="look-list">
+      <div class="look-item"><h3>Showcased</h3><p>Customer Spotlights highlighting users from world-renowned brands such as PUMA and L'Oréal.</p></div>
+      <div class="look-item"><h3>Highlighted</h3><p>Product Spotlights, showcasing the key benefits of learning languages at scale.</p></div>
+      <div class="look-item"><h3>Featured</h3><p>Industry Spotlights, emphasizing the specific benefits for industries where language learning is essential.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">More of our work</div></div>
+    <div class="dgrid">
+      <a href="/work/uplanner-customer-spotlight" class="ditem"><h3>uPlanner — Customer Spotlights</h3><p>Bringing customer success stories to life across Latin America.</p></a>
+      <a href="/work/d2l-connection-cdmx" class="ditem"><h3>D2L — Connection Experience</h3><p>Designing and executing an event series engaging D2L leaders with customers.</p></a>
+    </div>
+  </div>
+</section>
+
+{{ cta_footer('Begin your journey <em class="acc">to growth.</em>', narrow=True) }}
+
+{% endblock %}

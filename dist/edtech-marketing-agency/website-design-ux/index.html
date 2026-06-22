@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Design & UX — 27zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
+    </a>
+    <nav class="links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing-agency" class="current">EdTech Marketing</a>
+      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/lets-talk" class="navcta">Let's Talk!</a>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="wrap narrow">
+    <div class="hero-rule"></div>
+    <div class="eyebrow"><a href="/edtech-marketing-agency/agile-brand-development">Agile Brand Development</a></div>
+    <h1>Website Design <em class="acc">& UX</em></h1>
+    <p class="sub">Web design, user experience, user interface, copy, and optimization that make your brand look good and perform better.</p>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>Your website is your most heavily trafficked sales asset, and it has to do two jobs at once: express the brand and convert the visitor. We deliver web work as platform-agnostic, developer-ready Figma assets — whether the project is a full redesign or the ongoing adjustments that keep an existing site current.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      <div class="ditem">
+  <h3>Web Page Directions</h3>
+  <p>Annotated, page-by-page direction documents showing how key pages should be restructured to reflect new brand messaging — hierarchy, section order, headline direction, visual placement, CTA logic.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Information Architecture & Wireframes</h3>
+  <p>The structural foundation of a site or page — content hierarchy, navigation logic, layout structure — built before visual design starts.</p>
+</div>
+
+      <div class="ditem">
+  <h3>High-Fidelity, Responsive UI Design</h3>
+  <p>Full visual design delivered as developer-ready Figma files — accessible to WCAG AA standards, responsive across devices, built within the brand's design system.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Website Redesign (Project Engagement)</h3>
+  <p>A complete, phased website rebuild — structured across distinct workstreams, with milestone-based delivery from kickoff through developer handoff.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Ongoing Website Adjustments & Updates</h3>
+  <p>Incremental updates within an existing site — page content changes, copy adjustments, UX/UI improvements — calibrated by complexity, delivered on a recurring basis.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Landing Pages</h3>
+  <p>Built in Webflow, HubSpot, or your existing CMS for a single conversion action — UX layout, copywriting, hero imagery, CTA, form integration, tracking setup.</p>
+</div>
+
+      <div class="ditem">
+  <h3>Developer Handoff & QA</h3>
+  <p>Full specification handoff to your development team, plus QA support after launch — and, where needed, a dedicated post-launch CRO program of A/B testing and iterative improvement.</p>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<div class="wrap belongs">
+  <a href="/edtech-marketing-agency/agile-brand-development">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    Part of Agile Brand Development
+  </a>
+</div>
+
+
+<section class="ctaf">
+  <div class="wrap narrow">
+    <h2>Make your website work as hard <em class="acc">as your brand does.</em></h2>
+    <a href="/lets-talk" class="btn-primary">Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 27zero. All rights reserved.</span>
+    <span>Bogotá, Colombia · Granville, OH</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll(
+    '.pcard, .ditem, .look-item, .client-card, .apart-col, .mitem, .subitem, .cycle-step, .sec-head'
+  );
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('reveal-init', 'in-view'); });
+    return;
+  }
+  targets.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer, sub_link %}
+{% block title %}Agile Brand Development — 27zero{% endblock %}
+{% set nav_current = 'marketing' %}
+{% block content %}
+
+{{ hero("EdTech Marketing", "/edtech-marketing-agency", 'Scalable branding for <em class="acc">evolving realities.</em>', "Building brand equity gradually, through essential on-demand assets delivered with consistency, creates stronger and more resilient brands. Steady, scalable brand expression keeps you top of mind, so when the moment to choose arrives, recognition drives preference.") }}
+
+<section class="practice-intro">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The practice</div>
+      <h2>Brand equity, delivered in <em class="acc">consistent increments.</em></h2>
+    </div>
+    <p class="lede">EdTech brands rarely get the luxury of a single, complete rebrand moment. Products evolve, new categories get added, markets expand — and the brand has to keep pace without losing coherence. This practice is built for that reality: instead of one large, slow-moving identity project, we deliver brand equity in on-demand increments — a system that can expand as fast as the product does.</p>
+    <div class="covers">
+      <span>Brand concepts & naming</span>
+      <span>Visual identity systems</span>
+      <span>Messaging frameworks</span>
+      <span>Tone-of-voice definition</span>
+      <span>UX/UI design</span>
+      <span>Website redesign</span>
+      <span>Design systems</span>
+      <span>Brand guidelines</span>
+      <span>Collateral</span>
+    </div>
+  </div>
+</section>
+
+<section class="clients">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Clients</div>
+      <h2>Brands built to <em class="acc">scale with you.</em></h2>
+    </div>
+    <div class="client-grid">
+      <div class="client-card">
+        <h3>Salesforce</h3>
+        <p>Global enterprise software leader. Our work applies EdTech-specific brand development expertise within the education vertical of Salesforce's broader ecosystem.</p>
+      </div>
+      <div class="client-card">
+        <h3>OpenLMS</h3>
+        <p>Moodle-based learning management system. We produced visually compelling case studies in video and print to showcase OpenLMS's impact across Latin America and Europe.</p>
+      </div>
+      <div class="client-card">
+        <h3>WorldQuant Learning</h3>
+        <p>A data science and fintech education platform founded by quantitative finance veteran Igor Tulchinsky. As the company expanded with Keystone, we supported the brand expression of that growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="looks">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What this looks like</div>
+      <h2>A system, not a <em class="acc">one-time project.</em></h2>
+    </div>
+    <div class="look-list">
+      <div class="look-item">
+        <h3>Messaging & Narrative System</h3>
+        <p>A complete brand messaging architecture covering the brand's core narrative, positioning statement, 3–5 value pillars, a messaging hierarchy from company to product to feature level, and tone-of-voice guidelines. This document anchors everything downstream.</p>
+      </div>
+      <div class="look-item">
+        <h3>Visual Identity Evolution</h3>
+        <p>Not always a full rebuild — often a system expansion. A defined palette and usage ratios, a visual motif system, photography direction, and motion principles, delivered as a Figma system plus a practical usage guide.</p>
+      </div>
+      <div class="look-item">
+        <h3>Brand Guidelines & Enablement</h3>
+        <p>A master reference for using the brand correctly, paired with live enablement sessions for sales and leadership teams — so the brand becomes something the team actually uses, not a PDF that sits in a folder.</p>
+      </div>
+      <div class="look-item">
+        <h3>Channel Marketing Asset Kits</h3>
+        <p>Branded presentation decks, brochures, email templates, social assets, and sell sheets, organized into structured kits by campaign, product, or audience — including bilingual localization for LatAm-facing brands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="subservices">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Services in this practice</div>
+      <h2>Where to start.</h2>
+    </div>
+    <div class="sub-grid">
+      {{ sub_link("/edtech-marketing-agency/brand-identity-design", "Brand & Identity Design") }}
+      {{ sub_link("/edtech-marketing-agency/website-design-ux", "Website Design & UX") }}
+    </div>
+  </div>
+</section>
+
+{{ cta_footer('Build a brand that scales <em class="acc">as fast as you do.</em>', large=True) }}
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer, belongs, deliverable %}
+{% block title %}Market Research & Audience Insights — 27zero{% endblock %}
+{% set nav_current = 'marketing' %}
+{% block content %}
+
+{{ hero("Granular Marketing Programs", "/edtech-marketing-agency/granular-marketing-programs", 'Market Research & <em class="acc">Audience Insights</em>', "Market research, audience segmentation, benchmarking, and persona development that keep your strategy grounded in real EdTech insight.", narrow=True) }}
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>Audience layering only works if the underlying data is right. Before any campaign launches, we build and enrich the audience it's targeting — then keep validating that targeting throughout the engagement rather than setting it once and hoping it holds.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      {{ deliverable("Audience Segmentation & Contact List", "A curated, enriched list of target contacts built from Ideal Customer Profile criteria — institution type, role, geography, company size, technology stack. Built with Clay, Apollo, and LinkedIn Sales Navigator, segmented in HubSpot.") }}
+      {{ deliverable("Initial Strategy Workshop", "A structured kickoff session used to validate the Ideal Customer Profile and personas against real account data — not assumptions — before campaign planning starts.") }}
+      {{ deliverable("Competitive & Benchmarking Analysis", "Research into how target accounts and competitors are positioned, messaged, and performing — used to sharpen differentiation and find where a campaign can win attention competitors aren't contesting.") }}
+      {{ deliverable("Persona Development", "Structured definitions of the buyer roles a campaign needs to reach — built from CRM data, stakeholder interviews, and platform-level audience reporting.") }}
+      {{ deliverable("Ongoing Audience Validation", "Recurring review of who is actually engaging — by company, job title, seniority, and geography — used to confirm the Ideal Customer Profile is being reached, or correct course when targeting drifts.") }}
+    </div>
+  </div>
+</section>
+
+{{ belongs("Part of Granular Marketing Programs", "/edtech-marketing-agency/granular-marketing-programs") }}
+
+{{ cta_footer('Ground every campaign in <em class="acc">who\'s actually buying.</em>', narrow=True) }}
+
+{% endblock %}

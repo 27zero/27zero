@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer %}
+{% block title %}uPlanner — Customer Spotlights — 27zero{% endblock %}
+{% block content %}
+
+{{ hero("Work", "/work", 'Bringing customer success stories <em class="acc">to life.</em>', "uPlanner — Customer Spotlights", narrow=True) }}
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <div class="eyebrow">The Brief</div>
+    <p>Produce visually stunning case studies through video and print to showcase uPlanner's capability and impact in Latin America and drive growth.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Challenge</div></div>
+    <p>While uPlanner had established relationships with leading universities in Latin America, their success stories remained largely undocumented. To expand brand presence regionally and globally, uPlanner sought to create a portfolio of case studies across the region — fueling pipeline, solidifying its refreshed branding, and strengthening relationships with existing clients.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Solution</div><h2>Brand trust through customer voice.</h2></div>
+    <p>We built brand trust and credibility by engaging customers to share their experience with uPlanner through video and print, creating a case study portfolio usable across varying formats and diverse campaigns to help close deal opportunities and bring in new leads.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">The Impact</div></div>
+    <div class="look-list">
+      <div class="look-item"><h3>Produced</h3><p>10+ customer spotlights across varying countries, highlighting experiences and results across the diverse portfolio offering.</p></div>
+      <div class="look-item"><h3>Leveraged</h3><p>Existing customer relationships, giving them a voice to share their institutional successes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">More of our work</div></div>
+    <div class="dgrid">
+      <a href="/work/busuu" class="ditem"><h3>Busuu — Customer Spotlights</h3><p>Getting your best customers to share their stories.</p></a>
+      <a href="/work/uplanner-brand" class="ditem"><h3>uPlanner — Brand Essentials</h3><p>Making a great brand poised for growth.</p></a>
+    </div>
+  </div>
+</section>
+
+{{ cta_footer('Begin your journey <em class="acc">to growth.</em>', narrow=True) }}
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer %}
+{% block title %}D2L — EdTech Sessions Experience — 27zero{% endblock %}
+{% block content %}
+
+{{ hero("Work", "/work", 'An EdTech icon fosters a <em class="acc">community of practice.</em>', "D2L — EdTech Sessions Experience", narrow=True) }}
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <div class="eyebrow">The Brief</div>
+    <p>Transforming digital education through curated content and best practices.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Challenge</div></div>
+    <p>Create an event that facilitated valuable community interactions among management-level attendees from various higher education institutions.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Solution</div><h2>A space built for shared experience.</h2></div>
+    <p>The 27zero events team created a series of events for D2L where attendees could share experiences, challenges, and solutions — making the event an ideal space to build a community of practice.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">The Impact</div></div>
+    <div class="look-list">
+      <div class="look-item"><h3>Orchestrated</h3><p>A multi-city event format spanning 9 cities across 4 countries, meticulously planning touchpoints, dynamics, flow, location, and resources.</p></div>
+      <div class="look-item"><h3>Tailored</h3><p>Event content to resonate with the target audience's buyer personas, ensuring high participant satisfaction.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">More of our work</div></div>
+    <div class="dgrid">
+      <a href="/work/d2l-connection-cdmx" class="ditem"><h3>D2L — Connection Experience</h3><p>Designing and executing an event series engaging D2L leaders with customers.</p></a>
+      <a href="/work/ellucian-edtech-sessions-experience" class="ditem"><h3>Ellucian — EdTech Sessions Experience</h3><p>LACUC 2024 — an immersive event blending Cartagena's magic with Ellucian's vision.</p></a>
+    </div>
+  </div>
+</section>
+
+{{ cta_footer('Begin your journey <em class="acc">to growth.</em>', narrow=True) }}
+
+{% endblock %}

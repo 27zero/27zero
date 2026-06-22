@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer, belongs, deliverable %}
+{% block title %}Go-to-Market Playbooks & Launch Campaigns — 27zero{% endblock %}
+{% set nav_current = 'marketing' %}
+{% block content %}
+
+{{ hero("Granular Marketing Programs", "/edtech-marketing-agency/granular-marketing-programs", 'Go-to-Market Playbooks & <em class="acc">Launch Campaigns</em>', "Go-to-market playbooks and launch campaigns that help EdTech brands stand out and scale.", narrow=True) }}
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <p>Every campaign at 27zero starts with a decision record, not a moodboard. Before a single creative asset gets produced, we document the strategy, the audience, the messaging hierarchy, and how success will be measured — so creative and execution teams are building toward the same target from day one. Used for product launches, market entries, and competitive repositioning.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">What this looks like</div></div>
+    <div class="dgrid">
+      {{ deliverable("Marketing Plan / GTM Strategy", "The master acquisition strategy for an engagement — Ideal Customer Profile definition, budget guidance, event selection, CRM strategy, lead qualification logic, and a content calendar. Typically the first deliverable, gating everything that follows.") }}
+      {{ deliverable("Campaign Playbook", "A structured document produced before each campaign launches — strategy, creative concept, audience targeting, messaging hierarchy, asset list, deployment timeline, and measurement. The complete decision record every downstream asset traces back to.") }}
+      {{ deliverable("Creative Concept", "The overarching idea that unifies a campaign: central theme, visual direction, tonal approach — presented for approval before design begins.") }}
+      {{ deliverable("Initial Strategy Workshop", "A structured kickoff session to align on objectives, validate the Ideal Customer Profile and personas, confirm message priorities, and co-build the quarterly planning framework.") }}
+      {{ deliverable("Live Deployment Recommendations", "A written brief produced before each campaign goes live, specifying audience targeting, timing, cadence, platform placement, and A/B testing parameters.") }}
+    </div>
+  </div>
+</section>
+
+{{ belongs("Part of Granular Marketing Programs", "/edtech-marketing-agency/granular-marketing-programs") }}
+
+{{ cta_footer('Launch with a plan, <em class="acc">not just a deadline.</em>', narrow=True) }}
+
+{% endblock %}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctums — Brand Essentials &amp; Marketing Programs — 27zero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
+    </a>
+    <nav class="links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing-agency">EdTech Marketing</a>
+      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/lets-talk" class="navcta">Let's Talk!</a>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="wrap narrow">
+    <div class="hero-rule"></div>
+    <div class="eyebrow"><a href="/work">Work</a></div>
+    <h1>Expand through strategic brand and <em class="acc">marketing amplification.</em></h1>
+    <p class="sub">Doctums — Brand Essentials and Marketing Programs</p>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="overview tight">
+  <div class="wrap narrow">
+    <div class="eyebrow">The Brief</div>
+    <p>Scale the business by transitioning from referral-based sales to a structured marketing and sales operation.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Challenge</div></div>
+    <p>Doctums faced the challenge of creating campaigns that resonated with multiple Ideal Customer Profiles across diverse areas of practice, all while aligning its product offering within LMS ecosystems. Historically reliant on ad spend for performance, the branding needed a gradual evolution to stay relevant and cohesive across touchpoints.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">Solution</div><h2>A complete brand essentials overhaul, paired with demand generation.</h2></div>
+    <p>We delivered a complete overhaul of Doctums' brand essentials, including positioning statements and messaging, ensuring a cohesive and impactful presence across digital channels and collateral. We then deployed demand-generation campaigns tailored to diverse audiences and markets, organizing bespoke events and experiences that generated interest and fostered meaningful connections with potential customers and partners.</p>
+  </div>
+</section>
+
+<section class="tight section-mist">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">The Impact</div></div>
+    <div class="look-list">
+      <div class="look-item"><h3>Implemented</h3><p>Branding and brand positioning for greater market visibility and credibility.</p></div>
+      <div class="look-item"><h3>Orchestrated</h3><p>Demand generation campaigns and curated bespoke events, driving engagement and meaningful connections.</p></div>
+      <div class="look-item"><h3>Transitioned</h3><p>From referral-based sales to a structured marketing and sales operation.</p></div>
+      <div class="look-item"><h3>Enabled</h3><p>Accurate sales projections and ROI measurement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap narrow">
+    <div class="sec-head"><div class="eyebrow">More of our work</div></div>
+    <div class="dgrid">
+      <a href="/work/student-first" class="ditem"><h3>Student First — Brand Essentials</h3><p>Launching a revolutionary product in an established market.</p></a>
+      <a href="/work/atomic-jolt-marketing-programs" class="ditem"><h3>Atomic Jolt — Marketing Programs</h3><p>Scaling a marketing operation to support ambitious growth.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="ctaf">
+  <div class="wrap narrow">
+    <h2>Begin your journey <em class="acc">to growth.</em></h2>
+    <a href="/lets-talk" class="btn-primary">Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 27zero. All rights reserved.</span>
+    <span>Bogotá, Colombia · Granville, OH</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll(
+    '.pcard, .ditem, .look-item, .client-card, .apart-col, .mitem, .subitem, .cycle-step, .sec-head'
+  );
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    targets.forEach(function(el){ el.classList.add('reveal-init', 'in-view'); });
+    return;
+  }
+  targets.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  targets.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
