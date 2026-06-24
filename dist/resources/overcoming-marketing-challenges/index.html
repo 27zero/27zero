@@ -178,7 +178,7 @@
 /* Scroll-reveal: IntersectionObserver adds .in-view */
 (function () {
   var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sel = '.pcard,.ditem,.look-item,.client-card,.apart-col,.mitem,.subitem,.cycle-step,.sec-head,.stat';
+  var sel = '.pcard,.ditem,.look-item,.client-card,.apart-col,.mitem,.subitem,.cycle-step,.sec-head,.stat,.stat-v2,.work-card,.testi-card,.mentor-card,.about-pillar';
   var els = document.querySelectorAll(sel);
   if (rm || !('IntersectionObserver' in window)) {
     els.forEach(function (el) { el.classList.add('reveal-init', 'in-view'); });
