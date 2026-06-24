@@ -1,5 +1,5 @@
 {
-  "buildCommand": "python -m pip install --break-system-packages jinja2 && python build.py",
+  "buildCommand": "pip install jinja2 && python build.py",
   "outputDirectory": "dist",
-  "installCommand": "python -m pip install --break-system-packages jinja2"
+  "installCommand": "pip install jinja2"
 }
