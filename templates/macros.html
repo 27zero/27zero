@@ -18,11 +18,14 @@
 {% macro cta_footer(title_html, large=False, narrow=False) %}
 <section class="ctaf{% if large %} lg{% endif %}">
   <div class="wrap{% if narrow %} narrow{% endif %}">
-    {% if large %}<div class="eyebrow center">Begin your journey to growth</div>{% endif %}
+    {% if large %}<div class="eyebrow center" style="justify-content:center;margin-bottom:18px">Begin your journey to growth</div>{% endif %}
     <h2>{{ title_html|safe }}</h2>
-    <a href="/lets-talk" class="btn-primary">Book a strategy session
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
+    <div class="ctarow" style="justify-content:center;margin-top:32px">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="/work" class="btn-primary btn-secondary">See our work</a>
+    </div>
   </div>
 </section>
 {% endmacro %}

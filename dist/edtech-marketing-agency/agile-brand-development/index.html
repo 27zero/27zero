@@ -6,26 +6,55 @@
 <title>Agile Brand Development — 27zero</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
+<meta name="theme-color" content="#0a0a0f">
 </head>
 <body>
 
-<header class="site">
+<!-- NAV -->
+<header class="site" id="site-header">
   <div class="navrow">
     <a href="/" class="logo-mark-link" aria-label="27zero — home">
       <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
     </a>
-    <nav class="links">
+    <nav class="links" aria-label="Main navigation">
       <a href="/work">Work</a>
-      <a href="/edtech-marketing-agency" class="current">EdTech Marketing</a>
+      <a href="/edtech-marketing-agency" class="current">Services</a>
       <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
       <a href="/resources">Resources</a>
       <a href="/about">About</a>
     </nav>
-    <a href="/lets-talk" class="navcta">Let's Talk!</a>
+    <div class="nav-right">
+      <a href="/lets-talk" class="navcta">Let's Talk
+        <svg viewBox="0 0 16 16" fill="none" width="12" height="12" stroke="currentColor" stroke-width="2"><path d="M2 8h12M9 4l4 4-4 4"/></svg>
+      </a>
+      <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="2" y1="5" x2="18" y2="5"/>
+          <line x1="2" y1="10" x2="18" y2="10"/>
+          <line x1="2" y1="15" x2="18" y2="15"/>
+        </svg>
+      </button>
+    </div>
   </div>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button class="mobile-close" id="mobile-close" aria-label="Close menu">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="3" y1="3" x2="17" y2="17"/>
+      <line x1="17" y1="3" x2="3" y2="17"/>
+    </svg>
+  </button>
+  <a href="/work">Work</a>
+  <a href="/edtech-marketing-agency">Services</a>
+  <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+  <a href="/resources">Resources</a>
+  <a href="/about">About</a>
+  <a href="/lets-talk" style="color:var(--accent)">Let's Talk →</a>
+</div>
 
 
 <section class="hero">
@@ -137,44 +166,103 @@
 
 <section class="ctaf lg">
   <div class="wrap">
-<div class="eyebrow center">Begin your journey to growth</div>    <h2>Build a brand that scales <em class="acc">as fast as you do.</em></h2>
-    <a href="/lets-talk" class="btn-primary">Book a strategy session
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
+<div class="eyebrow center" style="justify-content:center;margin-bottom:18px">Begin your journey to growth</div>    <h2>Build a brand that scales <em class="acc">as fast as you do.</em></h2>
+    <div class="ctarow" style="justify-content:center;margin-top:32px">
+      <a href="/lets-talk" class="btn-primary">Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="/work" class="btn-primary btn-secondary">See our work</a>
+    </div>
   </div>
 </section>
 
 
 
+<!-- FOOTER -->
 <footer class="site">
   <div class="wrap">
-    <span>© 2026 27zero. All rights reserved.</span>
-    <span>Bogotá, Colombia · Granville, OH</span>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark">
+        <p style="margin-top:14px">The world's only EdTech-exclusive marketing agency — turning purpose into brand power since 2001.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <a href="/edtech-marketing-agency/customer-marketing">Customer Marketing</a>
+        <a href="/edtech-marketing-agency/granular-marketing-programs">Granular Programs</a>
+        <a href="/edtech-marketing-agency/agile-brand-development">Brand Development</a>
+        <a href="/edtech-marketing-agency/video-motion-editorial-content">Video &amp; Motion</a>
+        <a href="/edtech-marketing-agency">All Services →</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="/work">Work</a>
+        <a href="/about">About</a>
+        <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+        <a href="/resources">Resources</a>
+        <a href="/lets-talk">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="https://meetings.hubspot.com/laureano-diaz" target="_blank" rel="noopener">Book a strategy call</a>
+        <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hello@27zero.agency">hello@27zero.agency</a>
+        <p style="font-size:13px;color:var(--text-muted);margin-top:12px;">Bogotá · Granville, OH</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 27zero. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://meetings.hubspot.com/laureano-diaz" target="_blank" rel="noopener">Book a Call</a>
+      </div>
+    </div>
   </div>
 </footer>
 
 <script>
+// Nav scroll
+(function(){
+  var h = document.getElementById('site-header');
+  if(!h) return;
+  function tick(){ h.classList.toggle('scrolled', window.scrollY > 50); }
+  window.addEventListener('scroll', tick, {passive:true});
+  tick();
+})();
+
+// Mobile menu
+(function(){
+  var btn   = document.getElementById('nav-burger');
+  var menu  = document.getElementById('mobile-menu');
+  var close = document.getElementById('mobile-close');
+  if(!btn||!menu||!close) return;
+  function open(){  menu.classList.add('open'); document.body.style.overflow='hidden'; btn.setAttribute('aria-expanded','true'); }
+  function shut(){  menu.classList.remove('open'); document.body.style.overflow=''; btn.setAttribute('aria-expanded','false'); }
+  btn.addEventListener('click', open);
+  close.addEventListener('click', shut);
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') shut(); });
+})();
+
+// Scroll reveal
 (function(){
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var targets = document.querySelectorAll(
-    '.pcard, .ditem, .look-item, .client-card, .apart-col, .mitem, .subitem, .cycle-step, .sec-head'
-  );
-  if (reduceMotion || !('IntersectionObserver' in window)) {
-    targets.forEach(function(el){ el.classList.add('reveal-init', 'in-view'); });
+  var sel = '.pcard,.ditem,.look-item,.client-card,.apart-col,.mitem,.subitem,.cycle-step,.sec-head,.stat-item';
+  var targets = document.querySelectorAll(sel);
+  if(reduceMotion || !('IntersectionObserver' in window)){
+    targets.forEach(function(el){ el.classList.add('reveal-init','in-view'); });
     return;
   }
   targets.forEach(function(el){ el.classList.add('reveal-init'); });
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        io.unobserve(entry.target);
-      }
+      if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  },{threshold:0.1, rootMargin:'0px 0px -40px 0px'});
   targets.forEach(function(el){ io.observe(el); });
 })();
 </script>
+
 
 </body>
 </html>
