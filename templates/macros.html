@@ -1,13 +1,13 @@
-{# ──────────────────────────────────────────────────────────────────────────
-   27zero — shared Jinja2 macros
-   Used by every page template via:  {% from "macros.html" import hero, ... %}
-   ────────────────────────────────────────────────────────────────────────── #}
+{# ─────────────────────────────────────────────────────────────────────────
+   27zero — Jinja2 shared macros
+   Matching the live www.27zero.agency design patterns exactly.
+   ───────────────────────────────────────────────────────────────────────── #}
 
 {# Standard interior-page hero ─────────────────────────────────────────── #}
 {% macro hero(eyebrow_text, eyebrow_href, title_html, subtitle, large=False, micro=None, narrow=False) %}
-<section class="hero{% if large %} hero-lg{% endif %}">
+<section class="hero{% if large %} hero-lg{% endif %}" aria-label="{{ eyebrow_text }} hero">
   <div class="wrap{% if narrow %} narrow{% endif %}">
-    <div class="hero-rule"></div>
+    <div class="hero-rule" aria-hidden="true"></div>
     <div class="eyebrow">
       {% if eyebrow_href %}<a href="{{ eyebrow_href }}">{{ eyebrow_text }}</a>
       {% else %}{{ eyebrow_text }}{% endif %}
@@ -17,7 +17,7 @@
     <div class="ctarow">
       <a href="/lets-talk" class="btn-primary">
         Book a strategy session
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       {% if micro %}<span class="micro">{{ micro }}</span>{% endif %}
     </div>
@@ -25,22 +25,16 @@
 </section>
 {% endmacro %}
 
-{# Bottom CTA section — used on almost every page ──────────────────────── #}
+{# Bottom CTA section ──────────────────────────────────────────────────── #}
 {% macro cta_footer(title_html, large=False, narrow=False) %}
 <section class="ctaf{% if large %} lg{% endif %}">
   <div class="wrap{% if narrow %} narrow{% endif %}">
-    {% if large %}
-    <div class="eyebrow center" style="justify-content:center;margin-bottom:20px">Begin your journey to growth</div>
-    {% endif %}
+    {% if large %}<div class="eyebrow center" style="justify-content:center;margin-bottom:20px">Begin your journey to growth</div>{% endif %}
     <h2>{{ title_html|safe }}</h2>
-    <div class="ctarow center" style="margin-top:36px">
-      <a href="https://meetings.hubspot.com/laureano-diaz" target="_blank" rel="noopener" class="btn-primary">
-        Book a free strategy session
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="/work" class="btn-primary btn-secondary">See our work</a>
-    </div>
-    <p class="micro" style="text-align:center;margin-top:16px">Free · 30 minutes · No sales pitch</p>
+    <a href="/lets-talk" class="btn-primary" style="margin:0 auto;display:inline-flex">
+      Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
   </div>
 </section>
 {% endmacro %}
@@ -49,36 +43,29 @@
 {% macro belongs(text, href) %}
 <div class="wrap belongs">
   <a href="{{ href }}">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     {{ text }}
   </a>
 </div>
 {% endmacro %}
 
-{# Dark menu card — used on service overview ────────────────────────────── #}
+{# Dark menu card ──────────────────────────────────────────────────────── #}
 {% macro menu_link(href, label, desc=None) %}
 <a href="{{ href }}" class="mitem">
-  <div>
-    <h4>{{ label }}</h4>
-    {% if desc %}<p>{{ desc }}</p>{% endif %}
-  </div>
-  <div class="arrow">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-  </div>
+  <div><h4>{{ label }}</h4>{% if desc %}<p>{{ desc }}</p>{% endif %}</div>
+  <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
 </a>
 {% endmacro %}
 
-{# Subservice row — used inside practice pages ──────────────────────────── #}
+{# Subservice row ──────────────────────────────────────────────────────── #}
 {% macro sub_link(href, label) %}
 <a href="{{ href }}" class="subitem">
   <h4>{{ label }}</h4>
-  <div class="arrow">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-  </div>
+  <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
 </a>
 {% endmacro %}
 
-{# Deliverable card ─────────────────────────────────────────────────────── #}
+{# Deliverable card ────────────────────────────────────────────────────── #}
 {% macro deliverable(title, desc) %}
 <div class="ditem">
   <h3>{{ title }}</h3>
@@ -86,7 +73,7 @@
 </div>
 {% endmacro %}
 
-{# Proof-point callout ──────────────────────────────────────────────────── #}
+{# Proof-point callout ─────────────────────────────────────────────────── #}
 {% macro proof_point(text) %}
 <section class="tight flush-top">
   <div class="wrap narrow">

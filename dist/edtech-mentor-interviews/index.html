@@ -4,60 +4,68 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The EdTech Mentor Interview Series — 27zero</title>
-<meta name="theme-color" content="#080b12">
+<meta name="theme-color" content="#ffffff">
 <meta name="description" content="Global EdTech leaders sharing their perspectives, experiences, and valuable lessons from their journey in this formidable industry.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+<a href="#main-content" class="sr-only" style="position:absolute;left:-9999px">Skip to content</a>
 
-<!-- ── NAVIGATION ─────────────────────────────────────────────────────── -->
-<header class="site" id="site-nav">
+<header class="site" id="site-header" role="banner">
   <div class="navrow">
-    <a href="/" class="logo-mark-link" aria-label="27zero home">
-      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark" width="110" height="22">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark" width="115" height="23">
     </a>
 
-    <nav class="links" aria-label="Primary">
+    <nav class="links" aria-label="Primary navigation">
       <a href="/work">Work</a>
-      <a href="/edtech-marketing-agency">Services</a>
+      <a href="/edtech-marketing-agency">Edtech Marketing</a>
       <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
       <a href="/resources">Resources</a>
       <a href="/about">About</a>
     </nav>
 
-    <div style="display:flex;align-items:center;gap:12px">
-      <a href="/lets-talk" class="navcta">Let's Talk
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:11px;height:11px"><path d="M1 7h12M8 3l4 4-4 4"/></svg>
-      </a>
-      <button class="nav-burger" id="nav-open" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/></svg>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="/lets-talk" class="navcta">Let's Talk!</a>
+      <button class="nav-burger" id="nav-burger-btn"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="mobile-nav-menu">
+        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="2" y1="5" x2="20" y2="5"/>
+          <line x1="2" y1="11" x2="20" y2="11"/>
+          <line x1="2" y1="17" x2="20" y2="17"/>
+        </svg>
       </button>
     </div>
   </div>
 </header>
 
-<!-- ── MOBILE MENU ─────────────────────────────────────────────────────── -->
-<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
-  <button class="mobile-menu-close" id="nav-close" aria-label="Close menu">
-    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="3" x2="17" y2="17"/><line x1="17" y1="3" x2="3" y2="17"/></svg>
+<div class="mobile-menu" id="mobile-nav-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="mobile-menu-close" id="mobile-close-btn" aria-label="Close navigation menu">
+    <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <line x1="3" y1="3" x2="19" y2="19"/>
+      <line x1="19" y1="3" x2="3" y2="19"/>
+    </svg>
   </button>
-  <nav>
+  <nav aria-label="Mobile navigation">
     <a href="/work">Work</a>
-    <a href="/edtech-marketing-agency">Services</a>
+    <a href="/edtech-marketing-agency">Edtech Marketing</a>
     <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
     <a href="/resources">Resources</a>
     <a href="/about">About</a>
-    <a href="/lets-talk" style="color:var(--accent)">Let's Talk →</a>
+    <a href="/lets-talk" class="cta-link">Let's Talk!</a>
   </nav>
 </div>
 
+<main id="main-content">
 
-<section class="hero hero-lg">
+<section class="hero hero-lg" aria-label="The EdTech Mentor hero">
   <div class="wrap">
-    <div class="hero-rule"></div>
+    <div class="hero-rule" aria-hidden="true"></div>
     <div class="eyebrow">
 The EdTech Mentor    </div>
     <h1>Pearls of <em class="acc">wisdom.</em></h1>
@@ -65,7 +73,7 @@ The EdTech Mentor    </div>
     <div class="ctarow">
       <a href="/lets-talk" class="btn-primary">
         Book a strategy session
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
   </div>
@@ -122,118 +130,92 @@ The EdTech Mentor    </div>
 
 <section class="ctaf lg">
   <div class="wrap">
-    <div class="eyebrow center" style="justify-content:center;margin-bottom:20px">Begin your journey to growth</div>
-    <h2>Subscribe to <em class="acc">The EdTech Mentor.</em></h2>
-    <div class="ctarow center" style="margin-top:36px">
-      <a href="https://meetings.hubspot.com/laureano-diaz" target="_blank" rel="noopener" class="btn-primary">
-        Book a free strategy session
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="/work" class="btn-primary btn-secondary">See our work</a>
-    </div>
-    <p class="micro" style="text-align:center;margin-top:16px">Free · 30 minutes · No sales pitch</p>
+<div class="eyebrow center" style="justify-content:center;margin-bottom:20px">Begin your journey to growth</div>    <h2>Subscribe to <em class="acc">The EdTech Mentor.</em></h2>
+    <a href="/lets-talk" class="btn-primary" style="margin:0 auto;display:inline-flex">
+      Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
   </div>
 </section>
 
 
+</main>
 
-<!-- ── FOOTER ──────────────────────────────────────────────────────────── -->
-<footer class="site">
-  <div class="wrap">
-    <div class="footer-grid">
+<footer class="site" role="contentinfo">
+  <nav aria-label="Footer navigation">
+    <ul class="footer-nav-list">
+      <li class="footer-nav-item"><a href="/" class="footer-nav-link">Home</a></li>
+      <li class="footer-nav-item"><a href="/work" class="footer-nav-link">Work</a></li>
+      <li class="footer-nav-item"><a href="/edtech-marketing-agency" class="footer-nav-link">Services</a></li>
+      <li class="footer-nav-item"><a href="/edtech-mentor-interviews" class="footer-nav-link">The EdTech Mentor</a></li>
+      <li class="footer-nav-item"><a href="/about" class="footer-nav-link">About</a></li>
+      <li class="footer-nav-item"><a href="/lets-talk" class="footer-nav-link">Let's Talk!</a></li>
+      <li class="footer-nav-item"><a href="/about#careers" class="footer-nav-link">Careers</a></li>
+    </ul>
+  </nav>
 
-      <div class="footer-brand">
-        <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark" width="100" height="20">
-        <p>The world's only EdTech-exclusive marketing agency. Turning purpose into brand power since 2001.</p>
-      </div>
+  <div class="footer-social-block">
+    <div class="footer-social-label">Social media</div>
+    <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+  </div>
 
-      <div class="footer-col">
-        <h5>Services</h5>
-        <a href="/edtech-marketing-agency/customer-marketing">Customer Marketing</a>
-        <a href="/edtech-marketing-agency/granular-marketing-programs">Granular Programs</a>
-        <a href="/edtech-marketing-agency/agile-brand-development">Brand Development</a>
-        <a href="/edtech-marketing-agency/video-motion-editorial-content">Video &amp; Motion</a>
-        <a href="/edtech-marketing-agency">All Services →</a>
-      </div>
-
-      <div class="footer-col">
-        <h5>Company</h5>
-        <a href="/work">Work</a>
-        <a href="/about">About</a>
-        <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
-        <a href="/resources">Resources</a>
-        <a href="/lets-talk">Contact</a>
-      </div>
-
-      <div class="footer-col">
-        <h5>Get in touch</h5>
-        <a href="https://meetings.hubspot.com/laureano-diaz" target="_blank" rel="noopener">Book a strategy call</a>
-        <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:hello@27zero.agency">hello@27zero.agency</a>
-        <span style="font-size:13px;color:var(--text-lo);margin-top:8px;display:block">Bogotá · Granville, OH</span>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 27zero. All rights reserved.</span>
-      <div class="footer-social">
-        <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://meetings.hubspot.com/laureano-diaz" target="_blank" rel="noopener">Book a call</a>
-      </div>
-    </div>
+  <div class="footer-bottom-bar">
+    <img src="/assets/images/27zero-logo.svg" alt="27zero" style="height:22px;width:auto;display:block;">
+    <span style="font-size:12px;color:var(--graphite);">© 2026 27zero. All rights reserved.</span>
+    <span style="font-size:12px;color:var(--graphite);">Bogotá, Colombia · Granville, OH</span>
   </div>
 </footer>
 
-<!-- ── SCRIPTS ─────────────────────────────────────────────────────────── -->
 <script>
-/* Nav: transparent → frosted on scroll */
-(function () {
-  var nav = document.getElementById('site-nav');
-  if (!nav) return;
-  var tick = function () { nav.classList.toggle('nav-scrolled', window.scrollY > 40); };
-  window.addEventListener('scroll', tick, { passive: true });
+/* Nav: sticky white → purple pill on scroll */
+(function(){
+  var header = document.getElementById('site-header');
+  if(!header) return;
+  function tick(){ header.classList.toggle('nav-scrolled', window.scrollY > 60); }
+  window.addEventListener('scroll', tick, {passive:true});
   tick();
 }());
 
 /* Mobile menu */
-(function () {
-  var open  = document.getElementById('nav-open');
-  var close = document.getElementById('nav-close');
-  var menu  = document.getElementById('mobile-menu');
-  if (!open || !close || !menu) return;
-  function show() {
+(function(){
+  var burger = document.getElementById('nav-burger-btn');
+  var menu   = document.getElementById('mobile-nav-menu');
+  var close  = document.getElementById('mobile-close-btn');
+  if(!burger||!menu||!close) return;
+  function open(){
     menu.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    open.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow='hidden';
+    burger.setAttribute('aria-expanded','true');
+    close.focus();
   }
-  function hide() {
+  function shut(){
     menu.classList.remove('is-open');
-    document.body.style.overflow = '';
-    open.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow='';
+    burger.setAttribute('aria-expanded','false');
+    burger.focus();
   }
-  open.addEventListener('click', show);
-  close.addEventListener('click', hide);
-  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', hide); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+  burger.addEventListener('click', open);
+  close.addEventListener('click', shut);
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') shut(); });
 }());
 
-/* Scroll-reveal: IntersectionObserver adds .in-view */
-(function () {
-  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sel = '.pcard,.ditem,.look-item,.client-card,.apart-col,.mitem,.subitem,.cycle-step,.sec-head,.stat,.stat-v2,.work-card,.testi-card,.mentor-card,.about-pillar';
+/* Scroll reveal */
+(function(){
+  var rm = window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sel = '.pcard,.ditem,.look-item,.client-card,.apart-col,.mitem,.subitem,.cycle-step,.sec-head,.mentor-card-item,.work-card,.testi-slide';
   var els = document.querySelectorAll(sel);
-  if (rm || !('IntersectionObserver' in window)) {
-    els.forEach(function (el) { el.classList.add('reveal-init', 'in-view'); });
+  if(rm||!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('reveal-init','in-view'); });
     return;
   }
-  els.forEach(function (el) { el.classList.add('reveal-init'); });
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+  els.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
-  els.forEach(function (el) { io.observe(el); });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ io.observe(el); });
 }());
 </script>
 

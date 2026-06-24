@@ -4,59 +4,67 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EdTech Marketing Agency — 27zero</title>
-<meta name="theme-color" content="#080b12">
-<meta name="description" content="The world's only EdTech-exclusive marketing agency. 27zero helps EdTech companies grow demand, build brands, and win markets — backed by 20+ years of deep industry expertise.">
-<meta property="og:title" content="27zero — The EdTech Marketing Agency">
-<meta property="og:description" content="Turn EdTech purpose into brand power. 20+ years. 50+ clients. 100% EdTech.">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="Marketing programs designed to amplify the impact of EdTech companies. 27zero is a leading EdTech marketing agency helping educational brands grow and engage their audience through strategies built specifically for this industry.">
+<meta property="og:title" content="27zero — EdTech Marketing Agency">
+<meta property="og:description" content="Turn EdTech purpose into brand power.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+<a href="#main-content" class="sr-only" style="position:absolute;left:-9999px">Skip to content</a>
 
-<!-- ── NAVIGATION ─────────────────────────────────────────────────────── -->
-<header class="site" id="site-nav">
+<header class="site" id="site-header" role="banner">
   <div class="navrow">
-    <a href="/" class="logo-mark-link" aria-label="27zero home">
-      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark" width="110" height="22">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark" width="115" height="23">
     </a>
 
-    <nav class="links" aria-label="Primary">
+    <nav class="links" aria-label="Primary navigation">
       <a href="/work">Work</a>
-      <a href="/edtech-marketing-agency">Services</a>
+      <a href="/edtech-marketing-agency">Edtech Marketing</a>
       <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
       <a href="/resources">Resources</a>
       <a href="/about">About</a>
     </nav>
 
-    <div style="display:flex;align-items:center;gap:12px">
-      <a href="/lets-talk" class="navcta">Let's Talk
-        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:11px;height:11px"><path d="M1 7h12M8 3l4 4-4 4"/></svg>
-      </a>
-      <button class="nav-burger" id="nav-open" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/></svg>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="/lets-talk" class="navcta">Let's Talk!</a>
+      <button class="nav-burger" id="nav-burger-btn"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="mobile-nav-menu">
+        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="2" y1="5" x2="20" y2="5"/>
+          <line x1="2" y1="11" x2="20" y2="11"/>
+          <line x1="2" y1="17" x2="20" y2="17"/>
+        </svg>
       </button>
     </div>
   </div>
 </header>
 
-<!-- ── MOBILE MENU ─────────────────────────────────────────────────────── -->
-<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation">
-  <button class="mobile-menu-close" id="nav-close" aria-label="Close menu">
-    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="3" x2="17" y2="17"/><line x1="17" y1="3" x2="3" y2="17"/></svg>
+<div class="mobile-menu" id="mobile-nav-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="mobile-menu-close" id="mobile-close-btn" aria-label="Close navigation menu">
+    <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <line x1="3" y1="3" x2="19" y2="19"/>
+      <line x1="19" y1="3" x2="3" y2="19"/>
+    </svg>
   </button>
-  <nav>
+  <nav aria-label="Mobile navigation">
     <a href="/work">Work</a>
-    <a href="/edtech-marketing-agency">Services</a>
+    <a href="/edtech-marketing-agency">Edtech Marketing</a>
     <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
     <a href="/resources">Resources</a>
     <a href="/about">About</a>
-    <a href="/lets-talk" style="color:var(--accent)">Let's Talk →</a>
+    <a href="/lets-talk" class="cta-link">Let's Talk!</a>
   </nav>
 </div>
 
+<main id="main-content">
 
 <section class="hero hero-lg hero-home-video" aria-label="Homepage hero">
   <video class="hero-video" autoplay muted loop playsinline
@@ -64,722 +72,567 @@
     <source src="/assets/videos/27zero-hero-loop.mp4" type="video/mp4">
   </video>
   <div class="hero-video-overlay" aria-hidden="true"></div>
-
   <div class="wrap">
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      The only agency built 100% for EdTech
-    </div>
-
-    <h1 class="hero-v2-h1">
-      Marketing that<br>moves <em class="acc">EdTech forward.</em>
-    </h1>
-
-    <p class="hero-v2-sub">
-      We help EdTech companies generate demand, build brand authority, and grow revenue — with strategies forged from 20+ years of deep education market expertise. No generalists. No guesswork.
-    </p>
-
-    <div class="ctarow" style="margin-top:36px">
-      <a href="https://meetings.hubspot.com/laureano-diaz" target="_blank" rel="noopener"
-         class="btn-primary" style="font-size:15px;padding:15px 30px">
-        Book a Strategy Session
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    <div class="hero-rule" aria-hidden="true"></div>
+    <div class="eyebrow">27zero</div>
+    <h1>Turn EdTech purpose<br>into <em class="acc">brand power.</em></h1>
+    <div class="ctarow">
+      <a href="/lets-talk" class="btn-primary">
+        Book a strategy session
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <a href="/work" class="btn-primary btn-secondary" style="font-size:15px;padding:15px 30px">
-        See Client Work
-      </a>
-    </div>
-
-    <div class="hero-trust-proof">
-      <div class="hero-trust-proof-item">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        Trusted by 50+ EdTech brands
-      </div>
-      <div class="hero-trust-proof-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Free 30-min strategy session
-      </div>
-      <div class="hero-trust-proof-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        No obligation · No hard pitch
-      </div>
+      <span class="micro">Free. 30 min. No sales pitch.</span>
     </div>
   </div>
 </section>
 <script>
 (function(){
   var v = document.querySelector('.hero-video');
-  if (v && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if(v && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     v.removeAttribute('autoplay'); v.pause();
   }
 }());
 </script>
 
-<div class="trust-bar" aria-label="Clients we've served">
-  <div class="trust-bar-inner">
-    <div class="trust-bar-label">Trusted by</div>
-    <div class="trust-bar-logos">
-      <div class="trust-bar-track" aria-hidden="true">
-        <span class="trust-logo tl-anthology">Anthology</span>
-        <span class="trust-logo tl-d2l">D2L</span>
-        <span class="trust-logo tl-busuu">Busuu</span>
-        <span class="trust-logo tl-turnitin">Turnitin</span>
-        <span class="trust-logo tl-openlms">Open LMS</span>
-        <span class="trust-logo tl-ellucian">Ellucian</span>
-        <span class="trust-logo tl-wevideo">WeVideo</span>
-        <span class="trust-logo tl-uplan">uPlanner</span>
-        <span class="trust-logo">Atomic Jolt</span>
-        <span class="trust-logo">Instructure</span>
-        <span class="trust-logo">Scholarship Magic</span>
-        <span class="trust-logo">Doctums</span>
-        <span class="trust-logo">WorldQuant Learning</span>
-        <span class="trust-logo tl-anthology">Anthology</span>
-        <span class="trust-logo tl-d2l">D2L</span>
-        <span class="trust-logo tl-busuu">Busuu</span>
-        <span class="trust-logo tl-turnitin">Turnitin</span>
-        <span class="trust-logo tl-openlms">Open LMS</span>
-        <span class="trust-logo tl-ellucian">Ellucian</span>
-        <span class="trust-logo tl-wevideo">WeVideo</span>
-        <span class="trust-logo tl-uplan">uPlanner</span>
-        <span class="trust-logo">Atomic Jolt</span>
-        <span class="trust-logo">Instructure</span>
-        <span class="trust-logo">Scholarship Magic</span>
-        <span class="trust-logo">Doctums</span>
-        <span class="trust-logo">WorldQuant Learning</span>
-      </div>
-    </div>
+<div class="logo-strip" aria-label="Clients we've worked with">
+  <div class="logo-strip-track" aria-hidden="true">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65d765c177039ff0aa770ee4_Scholarship%20Magic.png"
+         alt="Scholarship Magic" class="logo-strip-item" style="height:28px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/6514503cf81e333f3bca2fd7_Anthology%20logo.svg"
+         alt="Anthology" class="logo-strip-item" style="height:22px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d2f2e1d7da26acfab7271_D2L_Logo.webp"
+         alt="D2L" class="logo-strip-item" style="height:26px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d2f9e9b1172a29507b5aa_uPlanner%20Logo.webp"
+         alt="uPlanner" class="logo-strip-item" style="height:22px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/6514503d15006ea9efe4ba3f_Busuu.webp"
+         alt="Busuu" class="logo-strip-item" style="height:24px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d301a7c051d3716d7f17a_Open%20LMS%20logo.webp"
+         alt="Open LMS" class="logo-strip-item" style="height:22px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d2fd7e00adb3d263280e4_atomic-jolt%20logo.webp"
+         alt="Atomic Jolt" class="logo-strip-item" style="height:22px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d30417ccee19ce869daee_Turnitin_logo.webp"
+         alt="Turnitin" class="logo-strip-item" style="height:26px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d3064b7806c59a4c6b247_Logo.svg"
+         alt="Ellucian" class="logo-strip-item" style="height:20px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65d765c177039ff0aa770ee4_Scholarship%20Magic.png"
+         alt="" aria-hidden="true" class="logo-strip-item" style="height:28px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/6514503cf81e333f3bca2fd7_Anthology%20logo.svg"
+         alt="" aria-hidden="true" class="logo-strip-item" style="height:22px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d2f2e1d7da26acfab7271_D2L_Logo.webp"
+         alt="" aria-hidden="true" class="logo-strip-item" style="height:26px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d2f9e9b1172a29507b5aa_uPlanner%20Logo.webp"
+         alt="" aria-hidden="true" class="logo-strip-item" style="height:22px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/6514503d15006ea9efe4ba3f_Busuu.webp"
+         alt="" aria-hidden="true" class="logo-strip-item" style="height:24px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d301a7c051d3716d7f17a_Open%20LMS%20logo.webp"
+         alt="" aria-hidden="true" class="logo-strip-item" style="height:22px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d2fd7e00adb3d263280e4_atomic-jolt%20logo.webp"
+         alt="" aria-hidden="true" class="logo-strip-item" style="height:22px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d30417ccee19ce869daee_Turnitin_logo.webp"
+         alt="" aria-hidden="true" class="logo-strip-item" style="height:26px;">
+    <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d3064b7806c59a4c6b247_Logo.svg"
+         alt="" aria-hidden="true" class="logo-strip-item" style="height:20px;">
   </div>
 </div>
-
-<section class="stats-v2" aria-label="Company metrics">
-  <div class="wrap">
-    <div class="stats-v2-grid">
-      <div class="stat-v2">
-        <div class="stat-v2-num">20<em>+</em></div>
-        <div class="stat-v2-label">Years in EdTech</div>
-        <div class="stat-v2-sub">Embedded in education markets since 2001</div>
-      </div>
-      <div class="stat-v2">
-        <div class="stat-v2-num">50<em>+</em></div>
-        <div class="stat-v2-label">EdTech Client Engagements</div>
-        <div class="stat-v2-sub">From startups to global platforms</div>
-      </div>
-      <div class="stat-v2">
-        <div class="stat-v2-num">3<em>x</em></div>
-        <div class="stat-v2-label">Average Pipeline Growth</div>
-        <div class="stat-v2-sub">Across structured marketing programs</div>
-      </div>
-      <div class="stat-v2">
-        <div class="stat-v2-num">100<em>%</em></div>
-        <div class="stat-v2-label">EdTech-Exclusive Focus</div>
-        <div class="stat-v2-sub">No generalist clients. Ever.</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="practices">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">How we work</div>
       <h2>Three practices. <em class="acc">One goal.</em></h2>
-      <p>Elevating real voices, layering audiences with precision, and building brand equity that compounds — the engine behind every client's go-to-market success.</p>
+      <p>Elevating real voices, layering audiences with precision, and building brand equity that compounds — together, the engine behind every client's go-to-market success.</p>
     </div>
-
     <div class="pcards">
       <a href="/edtech-marketing-agency/customer-marketing" class="pcard">
-        <div class="pcard-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
-        </div>
         <h3>Customer Marketing</h3>
-        <p class="tag">Turning communities into growth engines. Peer-driven storytelling strengthens credibility because EdTech buyers trust those who share their own experiences — not marketing copy.</p>
-        <div class="clients">EdTech clients<span>Busuu · D2L · Anthology · Instructure</span></div>
-        <div class="go">Explore practice <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <p class="tag">Turning communities into growth engines. Peer-driven storytelling strengthens credibility because people trust those who share their experiences.</p>
+        <div class="clients">Clients<span>Busuu · D2L · Anthology · Instructure</span></div>
+        <div class="go">Explore the practice
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
       </a>
-
       <a href="/edtech-marketing-agency/granular-marketing-programs" class="pcard">
-        <div class="pcard-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-        </div>
         <h3>Granular Marketing Programs</h3>
-        <p class="tag">Driving relevance within niche audiences. Audience layering aligns messages to specific needs across the entire B2B EdTech buying journey — quarter by quarter.</p>
-        <div class="clients">EdTech clients<span>Student First · Doctums · Ellucian</span></div>
-        <div class="go">Explore practice <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <p class="tag">Driving relevance within niche audiences. Audience layering aligns messages to specific needs across the entire B2B EdTech buying journey.</p>
+        <div class="clients">Clients<span>Student First · Doctums · Ellucian</span></div>
+        <div class="go">Explore the practice
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
       </a>
-
       <a href="/edtech-marketing-agency/agile-brand-development" class="pcard">
-        <div class="pcard-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
-        </div>
         <h3>Agile Brand Development</h3>
-        <p class="tag">Scalable branding for evolving EdTech realities. On-demand brand assets keep you top of mind so recognition drives preference — at every stage of the education buyer's journey.</p>
-        <div class="clients">EdTech clients<span>Salesforce · OpenLMS · WorldQuant Learning</span></div>
-        <div class="go">Explore practice <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <p class="tag">Scalable branding for evolving realities. Steady, on-demand brand assets keep you top of mind, so recognition drives preference.</p>
+        <div class="clients">Clients<span>Salesforce · OpenLMS · WorldQuant Learning</span></div>
+        <div class="go">Explore the practice
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
       </a>
     </div>
-
     <div class="center-x block-spaced">
-      <a href="/edtech-marketing-agency" class="btn-primary">
-        Explore all services
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <a href="/edtech-marketing-agency" class="btn-primary">Explore EdTech Marketing
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
   </div>
 </section>
 
-<section class="section-mist">
+<section class="mentor-slider-section" aria-label="The EdTech Mentor interview series">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Our work</div>
-      <h2>Campaigns that <em class="acc">moved the needle.</em></h2>
-      <p>From brand launches to event experiences to documentary series — work built specifically for how EdTech buyers think and buy.</p>
+    <div class="mentor-slider-header">
+      <div>
+        <div class="eyebrow" style="color:var(--ink)"><a href="/edtech-mentor-interviews" style="color:inherit">The EdTech Mentor</a></div>
+        <h2 style="color:var(--ink);font-size:clamp(26px,3.5vw,44px);margin-top:14px">The EdTech Mentor<br><em class="acc" style="color:var(--ink);font-style:italic">pearls of wisdom.</em></h2>
+        <p style="color:var(--ink);opacity:.7;margin-top:10px;font-size:15px">Long-form interviews with EdTech founders, investors, and operators.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
+        <a href="/edtech-mentor-interviews" class="btn-primary" style="background:var(--ink);color:#fff">
+          The EdTech Mentor
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <div class="mentor-slider-arrows">
+          <button class="slider-arrow" id="mentor-prev" aria-label="Previous interviews">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          </button>
+          <button class="slider-arrow" id="mentor-next" aria-label="Next interviews">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="work-cards">
-      <a href="/work/anthology-legacy-conversations" class="work-card work-card-featured">
-        <div class="work-card-vis" data-client="anthology">
-          <div class="work-card-vis-bg"></div>
-          <span class="work-card-vis-label">Anthology · Event Series</span>
+    <div class="mentor-persons" id="mentor-persons">
+      <div class="mentor-person active">
+        <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/674f05e65989512b949d16b9_1644494890639.webp"
+             alt="Frederico Bello" class="mentor-person-photo" loading="lazy">
+        <div class="mentor-person-info">
+          <div class="mentor-person-role">Founder &amp; CEO at Luca</div>
+          <div class="mentor-person-name">Frederico Bello</div>
         </div>
-        <div class="work-card-body">
-          <div class="work-card-client">Anthology — Featured Work</div>
-          <div class="work-card-title">Legacy Conversations: Engaging Higher Education Decision-Makers</div>
-          <div class="work-card-meta">
-            <div class="work-card-row">
-              <span class="work-card-tag challenge">Challenge</span>
-              <p>Anthology needed to deepen relationships with senior HE leaders in Latin America without traditional sales pressure.</p>
-            </div>
-            <div class="work-card-row">
-              <span class="work-card-tag solution">Solution</span>
-              <p>A curated event series celebrating leadership, creating peer-to-peer moments that positioned Anthology as a true partner.</p>
-            </div>
-            <div class="work-card-row">
-              <span class="work-card-tag impact">Impact</span>
-              <p>Strengthened regional presence and opened pipeline with top institutional decision-makers across LatAm.</p>
-            </div>
-          </div>
-          <div class="work-card-cta">
-            Read case study
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </div>
+      </div>
+      <div class="mentor-person">
+        <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/65fe05d261e9120bf5de12d6_4639802f93e0ace6248297332d432184.webp"
+             alt="Phil Hill" class="mentor-person-photo" loading="lazy">
+        <div class="mentor-person-info">
+          <div class="mentor-person-role">EdTech market analyst</div>
+          <div class="mentor-person-name">Phil Hill</div>
         </div>
-      </a>
-
-      <a href="/work/student-first" class="work-card">
-        <div class="work-card-vis" data-client="student-first">
-          <div class="work-card-vis-bg"></div>
-          <span class="work-card-vis-label">Student First · Brand</span>
+      </div>
+      <div class="mentor-person">
+        <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/67acb2fd5d482922d75b2949_1728311625944.webp"
+             alt="Kate Valenti" class="mentor-person-photo" loading="lazy">
+        <div class="mentor-person-info">
+          <div class="mentor-person-role">CEO of Unicon Inc.</div>
+          <div class="mentor-person-name">Kate Valenti</div>
         </div>
-        <div class="work-card-body">
-          <div class="work-card-client">Student First</div>
-          <div class="work-card-title">Brand Essentials: Launching in an Established Market</div>
-          <div class="work-card-meta">
-            <div class="work-card-row">
-              <span class="work-card-tag challenge">Challenge</span>
-              <p>New SIS entrant needed to establish credibility fast against incumbents.</p>
-            </div>
-            <div class="work-card-row">
-              <span class="work-card-tag impact">Impact</span>
-              <p>Brand lift, modern site, and messaging framework delivered pipeline-ready positioning.</p>
-            </div>
-          </div>
-          <div class="work-card-cta">Read case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="mentor-person">
+        <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/6752476b4daeb1376ef735a4_Rob-Sparks_1.webp"
+             alt="Rob Sparks" class="mentor-person-photo" loading="lazy">
+        <div class="mentor-person-info">
+          <div class="mentor-person-role">Chief Strategy Officer at WeVideo</div>
+          <div class="mentor-person-name">Rob Sparks</div>
         </div>
-      </a>
-
-      <a href="/work/busuu" class="work-card">
-        <div class="work-card-vis" data-client="busuu">
-          <div class="work-card-vis-bg"></div>
-          <span class="work-card-vis-label">Busuu · Video Production</span>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-client">Busuu</div>
-          <div class="work-card-title">Customer Spotlights: Stories from Global Enterprise Brands</div>
-          <div class="work-card-meta">
-            <div class="work-card-row">
-              <span class="work-card-tag challenge">Challenge</span>
-              <p>Busuu needed proof points for enterprise sales — trusted voices at scale across Europe.</p>
-            </div>
-            <div class="work-card-row">
-              <span class="work-card-tag impact">Impact</span>
-              <p>Multi-format case study series filmed with world-renowned brands, directly supporting sales conversations.</p>
-            </div>
-          </div>
-          <div class="work-card-cta">Read case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        </div>
-      </a>
-
-      <a href="/work/doctums" class="work-card">
-        <div class="work-card-vis" data-client="doctums">
-          <div class="work-card-vis-bg"></div>
-          <span class="work-card-vis-label">Doctums · Brand + GTM</span>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-client">Doctums</div>
-          <div class="work-card-title">From Referral-Based to Scalable Marketing Operation</div>
-          <div class="work-card-meta">
-            <div class="work-card-row">
-              <span class="work-card-tag challenge">Challenge</span>
-              <p>Growth stalled by dependence on referrals with no structured marketing or sales motion.</p>
-            </div>
-            <div class="work-card-row">
-              <span class="work-card-tag impact">Impact</span>
-              <p>Stronger pipeline, broader market recognition, and a repeatable go-to-market framework.</p>
-            </div>
-          </div>
-          <div class="work-card-cta">Read case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        </div>
-      </a>
-
-      <a href="/work/atomic-jolt-marketing-programs" class="work-card">
-        <div class="work-card-vis" data-client="atomic-jolt">
-          <div class="work-card-vis-bg"></div>
-          <span class="work-card-vis-label">Atomic Jolt · Programs</span>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-client">Atomic Jolt</div>
-          <div class="work-card-title">Scaling Marketing to Match Ambitious Growth Goals</div>
-          <div class="work-card-meta">
-            <div class="work-card-row">
-              <span class="work-card-tag challenge">Challenge</span>
-              <p>Fast-growing EdTech needed a full marketing operation built from the ground up.</p>
-            </div>
-            <div class="work-card-row">
-              <span class="work-card-tag impact">Impact</span>
-              <p>Campaign programs reached key personas through coordinated multi-channel execution.</p>
-            </div>
-          </div>
-          <div class="work-card-cta">Read case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        </div>
-      </a>
-
-      <a href="/work/d2l-connection-cdmx" class="work-card">
-        <div class="work-card-vis" data-client="d2l">
-          <div class="work-card-vis-bg"></div>
-          <span class="work-card-vis-label">D2L · Event Experience</span>
-        </div>
-        <div class="work-card-body">
-          <div class="work-card-client">D2L</div>
-          <div class="work-card-title">Connection Experience: Building Regional Market Presence</div>
-          <div class="work-card-meta">
-            <div class="work-card-row">
-              <span class="work-card-tag challenge">Challenge</span>
-              <p>D2L needed meaningful executive engagement with customers in a new regional market.</p>
-            </div>
-            <div class="work-card-row">
-              <span class="work-card-tag impact">Impact</span>
-              <p>Event series created lasting relationships and established D2L's footprint across LatAm.</p>
-            </div>
-          </div>
-          <div class="work-card-cta">Read case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
-        </div>
-      </a>
+      </div>
     </div>
 
-    <div class="center-x block-spaced">
-      <a href="/work" class="btn-primary">
-        View all case studies
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+    <div class="mentor-cards-track-wrap" id="mentor-track-wrap">
+      <div class="mentor-cards-track" id="mentor-cards-track">
+        <a href="/edtech-mentor-interviews/frederico-bello" class="mentor-card-item">
+          <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/6792475776d4fb1f6c97fb1f_Frederico-Bello.webp"
+               alt="Frederico Bello interview cover" class="mentor-card-img" loading="lazy">
+          <span class="mentor-card-badge founders">Founders</span>
+          <div class="mentor-card-overlay">
+            <div class="mentor-card-cta" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/edtech-mentor-interviews/industry-insiders-call-him-phil-his-full-name-is-phil-hill" class="mentor-card-item">
+          <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/65fe065c37d6348bf6e06ac5_Final-Phil-Hill-Portada-(1).webp"
+               alt="Phil Hill interview cover" class="mentor-card-img" loading="lazy">
+          <span class="mentor-card-badge essentials">Essentials</span>
+          <div class="mentor-card-overlay">
+            <div class="mentor-card-cta" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/edtech-mentor-interviews/kate-valenti" class="mentor-card-item">
+          <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/67acb51e03411b64c1cd2342_KateMesa%20de%20trabajo%203%20copia.webp"
+               alt="Kate Valenti interview cover" class="mentor-card-img" loading="lazy">
+          <span class="mentor-card-badge essentials">Essentials</span>
+          <div class="mentor-card-overlay">
+            <div class="mentor-card-cta" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/edtech-mentor-interviews/rob-sparks" class="mentor-card-item">
+          <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/67607549a472213f2da1cf82_27zero_edtechmentor_Rob-Sparks.webp"
+               alt="Rob Sparks interview cover" class="mentor-card-img" loading="lazy">
+          <span class="mentor-card-badge essentials">Essentials</span>
+          <div class="mentor-card-overlay">
+            <div class="mentor-card-cta" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/edtech-mentor-interviews/jim-brigadier" class="mentor-card-item">
+          <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/67927e6be7e7b3c2e79c9a84_Jim-Brigadier.webp"
+               alt="Jim Brigadier interview cover" class="mentor-card-img" loading="lazy">
+          <span class="mentor-card-badge founders">Founders</span>
+          <div class="mentor-card-overlay">
+            <div class="mentor-card-cta" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="/edtech-mentor-interviews/mark-miller" class="mentor-card-item">
+          <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/679246685aeea3dc85f6495d_MarkMiller_1.webp"
+               alt="Mark Miller interview cover" class="mentor-card-img" loading="lazy">
+          <span class="mentor-card-badge investors">Investors</span>
+          <div class="mentor-card-overlay">
+            <div class="mentor-card-cta" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<section>
+<section class="work-grid-section">
+  <div class="wrap">
+    <div class="work-grid-header">
+      <h2>The marketing team<br>EdTech brands turn to<br><em class="acc" style="color:var(--ink)">for growth and impact.</em></h2>
+      <div class="work-grid-btns">
+        <a href="https://www.youtube.com/watch?v=lpQ8YHYfGdw" target="_blank" rel="noopener"
+           class="btn-primary" style="background:transparent;border:1.5px solid var(--ink);color:var(--ink);">
+          Play Showreel
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="/work" class="btn-primary">See all work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <p class="sub" style="color:var(--ink);opacity:.75">Get inspired by our portfolio.</p>
+    </div>
+
+    <a href="/work/anthology-legacy-conversations" class="work-card" style="min-height:440px;">
+      <div class="work-card-bg" style="background-image:url('https://cdn.prod.website-files.com/651459062a0cabb77e339955/65d7e6728c8f6b265c71723f_Card-Legacy.webp');"></div>
+      <div class="work-card-overlay"></div>
+      <div class="work-card-body">
+        <div class="work-card-client">Anthology — Legacy Conversations</div>
+        <div class="work-card-title">A novel way to engage with Higher Education leaders.</div>
+        <div class="work-card-desc">Celebrating leadership in higher education, engaging top decision-makers and amplifying Anthology's presence in Latin America.</div>
+      </div>
+      <div class="work-card-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+    </a>
+
+    <div class="work-cards-grid">
+      <a href="/work/student-first" class="work-card sm">
+        <div class="work-card-bg" style="background-image:url('https://cdn.prod.website-files.com/651459062a0cabb77e339955/65c15352c154921b010ab7c2_Image-Card.png');"></div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body">
+          <div class="work-card-client">Student First — Brand Essentials</div>
+          <div class="work-card-title">Launch a revolutionary product in an established market.</div>
+          <div class="work-card-desc">A brand lift, modern website, and strategic messaging empowers Student First to navigate the SIS market.</div>
+        </div>
+        <div class="work-card-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+      <a href="/work/atomic-jolt-marketing-programs" class="work-card sm">
+        <div class="work-card-bg" style="background-image:url('https://cdn.prod.website-files.com/651459062a0cabb77e339955/65d7ad7b4cc1366b1990b834_Card-Atomic.webp');"></div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body">
+          <div class="work-card-client">Atomic Jolt — Marketing Programs</div>
+          <div class="work-card-title">Scaling a marketing operation to support ambitious growth.</div>
+          <div class="work-card-desc">Reach target personae through fresh campaign ideation and third-party execution.</div>
+        </div>
+        <div class="work-card-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+      <a href="/work/anthology-marketing-programs" class="work-card sm">
+        <div class="work-card-bg" style="background-image:url('https://cdn.prod.website-files.com/651459062a0cabb77e339955/66a8e83b5820b082b720b31f_antologia2.webp');"></div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body">
+          <div class="work-card-client">Anthology — Marketing Programs</div>
+          <div class="work-card-title">A Web Documentary Unveiling Latin America's Unsung Educational Heroes</div>
+        </div>
+        <div class="work-card-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+      <a href="/work/busuu" class="work-card sm">
+        <div class="work-card-bg" style="background-image:url('https://cdn.prod.website-files.com/651459062a0cabb77e339955/65dccbe5b65ccfe68ce9c961_Header-Busuu.webp');"></div>
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body">
+          <div class="work-card-client">Busuu — Customer Spotlights</div>
+          <div class="work-card-title">Getting your best customers to share their stories.</div>
+          <div class="work-card-desc">Film and produce case studies with world-renowned brands across Europe.</div>
+        </div>
+        <div class="work-card-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section class="testi-section">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Client voices</div>
-      <h2>What EdTech leaders <em class="acc">say about working with us.</em></h2>
-      <p>Don't take our word for it. Here's what the founders and CEOs who trust 27zero with their marketing have to say.</p>
-    </div>
-    <div class="testi-v2-grid">
-
-      <div class="testi-card">
-        <span class="testi-quote-mark" aria-hidden="true">"</span>
-        <p class="testi-text">"27Zero helped Doctums refine its brand message and develop a comprehensive marketing framework. Now, we see results: a stronger pipeline and broader market recognition."</p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">WM</div>
-          <div>
-            <div class="testi-name">Wesley Matthews</div>
-            <div class="testi-role">Founder &amp; CEO</div>
-            <span class="testi-company-tag">Doctums</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="testi-card">
-        <span class="testi-quote-mark" aria-hidden="true">"</span>
-        <p class="testi-text">"I prefer a boutique firm like 27ZERO. Larger agencies can be impersonal — you get stuck with inexperienced people. 27ZERO offers a close relationship and real expertise for my budget."</p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">DM</div>
-          <div>
-            <div class="testi-name">David Meek</div>
-            <div class="testi-role">Founder &amp; CEO</div>
-            <span class="testi-company-tag">Student First</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="testi-card">
-        <span class="testi-quote-mark" aria-hidden="true">"</span>
-        <p class="testi-text">"27ZERO's industry knowledge and agility allowed us to accelerate our brand and marketing strategy for the year. They truly understand what moves EdTech buyers."</p>
-        <div class="testi-author">
-          <div class="testi-avatar" aria-hidden="true">JF</div>
-          <div>
-            <div class="testi-name">Jonathan Fry</div>
-            <div class="testi-role">CEO</div>
-            <span class="testi-company-tag">Scholarship Magic</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="section-mist">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Thought leadership</div>
-      <h2>Inside the EdTech industry — <em class="acc">The EdTech Mentor.</em></h2>
-      <p>27zero's interview series with the founders, investors, and operators shaping education technology. Because the best marketing advice comes from the people building the industry.</p>
+      <h2>What our clients <em class="acc">say about us.</em></h2>
     </div>
 
-    <div class="mentor-authority-banner">
-      <div>
-        <h3>Long-form interviews. Real industry insight.</h3>
-        <p>We talk with EdTech leaders about what actually works — in marketing, in product, in scaling a company within the unique constraints of the education market. No sponsored content. No fluff.</p>
-        <div class="mentor-series-tags">
-          <span class="mentor-series-tag founders">Founders Series</span>
-          <span class="mentor-series-tag essentials">Essentials Series</span>
-          <span class="mentor-series-tag investors">Investor Series</span>
-        </div>
-      </div>
-      <a href="/edtech-mentor-interviews" class="btn-primary" style="white-space:nowrap;flex-shrink:0">
-        Browse all episodes
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
+    <div class="testi-slider-wrap" id="testi-wrap">
+      <div class="testi-track" id="testi-track">
 
-    <div class="mentor-cards">
-      <a href="/edtech-mentor-interviews/frederico-bello" class="mentor-card">
-        <span class="mentor-card-series founders">Founders</span>
-        <div class="mentor-card-avatar" aria-hidden="true">FB</div>
-        <div>
-          <div class="mentor-card-name">Frederico Bello</div>
-          <div class="mentor-card-role">Founder &amp; CEO · Luca<br>K-12 reimagined for Latin America</div>
+        <div class="testi-slide">
+          <div class="testi-photo">
+            <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/667b08b55ef5a74c7d643f66_667b05cb4d05e9cccd66b089_Captura%20de%20pantalla%202024-06-25%20a%20la(s)%201.00.18%20p.m..webp"
+                 alt="Wesley Matthews" loading="lazy">
+          </div>
+          <div class="testi-content">
+            <span class="testi-quote-mark" aria-hidden="true">"</span>
+            <p class="testi-text">27Zero helped Doctums refine its brand message and develop a comprehensive marketing framework. Now, we see results: a stronger pipeline and broader market recognition.</p>
+            <div class="testi-author">
+              <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/665513a40ddcf767af8c3fdc_Wes%20Matthew%20Headshots-2.jpg"
+                   alt="Wesley Matthews" class="testi-avatar" loading="lazy">
+              <div>
+                <div class="testi-author-name">Wesley Matthews</div>
+                <div class="testi-author-role">Founder and CEO at Doctums</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mentor-card-cta">
-          Read interview
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-      </a>
 
-      <a href="/edtech-mentor-interviews/industry-insiders-call-him-phil-his-full-name-is-phil-hill" class="mentor-card">
-        <span class="mentor-card-series essentials">Essentials</span>
-        <div class="mentor-card-avatar" aria-hidden="true">PH</div>
-        <div>
-          <div class="mentor-card-name">Phil Hill</div>
-          <div class="mentor-card-role">EdTech market analyst &amp; consultant<br>The industry's most trusted data voice</div>
+        <div class="testi-slide">
+          <div class="testi-photo">
+            <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/667c70cef9db977aafae2f07_Captura%20de%20Pantalla%202024-06-26%20a%20la(s)%202.48.56%20p.m..webp"
+                 alt="David Meek" loading="lazy">
+          </div>
+          <div class="testi-content">
+            <span class="testi-quote-mark" aria-hidden="true">"</span>
+            <p class="testi-text">I prefer a boutique firm like 27ZERO. Larger agencies can be impersonal, and you might get stuck with inexperienced people. 27ZERO offers a close relationship and expertise for my marketing budget.</p>
+            <div class="testi-author">
+              <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/665d4d25a184755858f77cb6_David%20Meek.jpg"
+                   alt="David Meek" class="testi-avatar" loading="lazy">
+              <div>
+                <div class="testi-author-name">David Meek</div>
+                <div class="testi-author-role">Founder and CEO at Student First</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mentor-card-cta">
-          Read interview
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-      </a>
 
-      <a href="/edtech-mentor-interviews/kate-valenti" class="mentor-card">
-        <span class="mentor-card-series essentials">Essentials</span>
-        <div class="mentor-card-avatar" aria-hidden="true">KV</div>
-        <div>
-          <div class="mentor-card-name">Kate Valenti</div>
-          <div class="mentor-card-role">CEO · Unicon Inc.<br>From alignment to EdTech vision</div>
+        <div class="testi-slide">
+          <div class="testi-photo">
+            <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/667c729bcf5402a3d4debae9_Captura%20de%20Pantalla%202024-06-26%20a%20la(s)%202.55.52%20p.m..webp"
+                 alt="Jonathan Fry" loading="lazy">
+          </div>
+          <div class="testi-content">
+            <span class="testi-quote-mark" aria-hidden="true">"</span>
+            <p class="testi-text">27ZERO's industry knowledge and agility allowed us to accelerate our brand and marketing strategy for the year.</p>
+            <div class="testi-author">
+              <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/662b0225ea4123556e677e07_Jonathan%20Fry.jpeg"
+                   alt="Jonathan Fry" class="testi-avatar" loading="lazy">
+              <div>
+                <div class="testi-author-name">Jonathan Fry</div>
+                <div class="testi-author-role">CEO at Scholarship Magic</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mentor-card-cta">
-          Read interview
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-      </a>
 
-      <a href="/edtech-mentor-interviews/rob-sparks" class="mentor-card">
-        <span class="mentor-card-series essentials">Essentials</span>
-        <div class="mentor-card-avatar" aria-hidden="true">RS</div>
-        <div>
-          <div class="mentor-card-name">Rob Sparks</div>
-          <div class="mentor-card-role">Chief Strategy Officer · WeVideo<br>Achieving seamless worldwide marketing</div>
-        </div>
-        <div class="mentor-card-cta">
-          Read interview
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-      </a>
-
-      <a href="/edtech-mentor-interviews/jim-brigadier" class="mentor-card">
-        <span class="mentor-card-series founders">Founders</span>
-        <div class="mentor-card-avatar" aria-hidden="true">JB</div>
-        <div>
-          <div class="mentor-card-name">Jim Brigadier</div>
-          <div class="mentor-card-role">CEO · Ready Education<br>Building student engagement at scale</div>
-        </div>
-        <div class="mentor-card-cta">
-          Read interview
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-      </a>
-
-      <a href="/edtech-mentor-interviews/mark-miller" class="mentor-card">
-        <span class="mentor-card-series investors">Investors</span>
-        <div class="mentor-card-avatar" aria-hidden="true">MM</div>
-        <div>
-          <div class="mentor-card-name">Mark Miller</div>
-          <div class="mentor-card-role">Managing Partner · Good Harbor Partners<br>Investing in education's future</div>
-        </div>
-        <div class="mentor-card-cta">
-          Read interview
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </div>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="about-strip">
-      <div class="about-strip-text">
-        <div class="eyebrow" style="margin-bottom:18px">About 27zero</div>
-        <h2>We don't dabble in EdTech. <em class="acc">It's all we do.</em></h2>
-        <p>Founded in 2001, 27zero has been embedded in the education technology market longer than most EdTech companies have existed. That depth of experience means we understand your buyer personas, your product cycles, and your market dynamics in ways that no generalist agency can replicate.</p>
-        <p>We work with EdTech companies across higher education, K-12, corporate learning, and ed-services — from pre-revenue startups to established global platforms.</p>
-        <a href="/about" class="btn-primary btn-secondary" style="margin-top:24px;display:inline-flex">
-          Meet the team
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
       </div>
 
-      <div class="about-strip-pillars">
-        <div class="about-pillar">
-          <div class="about-pillar-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          </div>
-          <div>
-            <h4>20+ years of EdTech expertise</h4>
-            <p>We've seen every market cycle, product trend, and go-to-market shift in education technology since 2001.</p>
-          </div>
-        </div>
-        <div class="about-pillar">
-          <div class="about-pillar-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-6"/></svg>
-          </div>
-          <div>
-            <h4>Lean, revenue-focused go-to-market</h4>
-            <p>No vanity metrics. Every program we build is designed to generate demand and move buyers through your pipeline.</p>
-          </div>
-        </div>
-        <div class="about-pillar">
-          <div class="about-pillar-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-          </div>
-          <div>
-            <h4>Bold, original creative thinking</h4>
-            <p>Disruptive ideas for outsized results — branded content and communications built for reach and lasting impact.</p>
-          </div>
-        </div>
-        <div class="about-pillar">
-          <div class="about-pillar-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div>
-            <h4>A diverse, global team</h4>
-            <p>Bilingual strategists, designers, producers, and marketers across the US and Latin America — bridging two of EdTech's largest markets.</p>
-          </div>
-        </div>
+      <div class="testi-nav" role="tablist" aria-label="Testimonial slides">
+        <button class="testi-dot active" data-idx="0" role="tab" aria-selected="true" aria-label="Testimonial 1"></button>
+        <button class="testi-dot" data-idx="1" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
+        <button class="testi-dot" data-idx="2" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
       </div>
     </div>
   </div>
 </section>
 
-<section class="newsletter-v2 tight">
-  <div class="wrap">
-    <div class="newsletter-v2-inner">
-      <div>
-        <div class="eyebrow" style="margin-bottom:16px">The EdTech Mentor Newsletter</div>
-        <h2>Stay ahead of <em class="acc">the EdTech market.</em></h2>
-        <p>Interview insights, market intelligence, and marketing strategies — delivered weekly to EdTech leaders who want to stay sharp. Join 2,000+ EdTech professionals.</p>
-        <div class="mentor-series-tags" style="margin-top:14px">
-          <span class="mentor-series-tag founders">Founders</span>
-          <span class="mentor-series-tag essentials">Operators</span>
-          <span class="mentor-series-tag investors">Investors</span>
-          <span class="mentor-series-tag" style="border-color:var(--rim-hover)">Market Intel</span>
-        </div>
-      </div>
-      <div>
-        <form class="newsletter-v2-form"
-              onsubmit="this.innerHTML='<p style=\'color:var(--accent);font-weight:700;padding:16px 0\'>✓ You\'re in! Check your inbox shortly.</p>';return false;">
-          <input type="email" name="email" placeholder="you@institution.edu"
-                 required aria-label="Email address" autocomplete="email">
-          <button type="submit" class="btn-primary">
-            Get the newsletter
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-          <p class="newsletter-v2-note">No spam. Unsubscribe anytime. Free.</p>
-        </form>
-      </div>
-    </div>
+<section class="newsletter tight">
+  <div class="wrap narrow">
+    <div class="eyebrow center">Stay close to the industry</div>
+    <h2>Join the EdTech Mentor <em class="acc">Newsletter.</em></h2>
+    <form class="newsletter-form" action="#" method="post"
+          onsubmit="this.querySelector('button').textContent='Subscribed ✓';this.querySelector('button').disabled=true;return false;">
+      <input type="email" name="email" placeholder="you@institution.edu"
+             required aria-label="Email address" autocomplete="email">
+      <button type="submit" class="btn-primary">Subscribe
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
   </div>
 </section>
 
-<section class="cta-v2">
+<section class="ctaf lg">
   <div class="wrap">
-    <div class="cta-v2-inner">
-      <div class="eyebrow center" style="justify-content:center;margin-bottom:20px">
-        Ready to grow your EdTech brand?
-      </div>
-      <h2>
-        Talk with an EdTech<br>marketing specialist.
-      </h2>
-      <p class="cta-v2-sub">
-        Book a free 30-minute strategy session with our team. We'll listen to your challenges, share what we're seeing across the EdTech market, and only recommend next steps if we're genuinely the right fit.
-      </p>
-      <div class="cta-v2-btns">
-        <a href="https://meetings.hubspot.com/laureano-diaz" target="_blank" rel="noopener"
-           class="btn-cta-primary">
-          Book a Strategy Session
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="/work" class="btn-primary btn-secondary" style="font-size:15px;padding:15px 30px">
-          See Our Work First
-        </a>
-      </div>
-      <div class="cta-v2-friction">
-        <div class="cta-v2-friction-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          Free · No cost, no commitment
-        </div>
-        <div class="cta-v2-friction-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          30 minutes · Respects your time
-        </div>
-        <div class="cta-v2-friction-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          No sales pitch · Honest conversation
-        </div>
-      </div>
-    </div>
+<div class="eyebrow center" style="justify-content:center;margin-bottom:20px">Begin your journey to growth</div>    <h2>Start your journey <em class="acc">to growth and impact.</em></h2>
+    <a href="/lets-talk" class="btn-primary" style="margin:0 auto;display:inline-flex">
+      Book a strategy session
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
   </div>
 </section>
 
 
-<!-- ── FOOTER ──────────────────────────────────────────────────────────── -->
-<footer class="site">
-  <div class="wrap">
-    <div class="footer-grid">
+</main>
 
-      <div class="footer-brand">
-        <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark" width="100" height="20">
-        <p>The world's only EdTech-exclusive marketing agency. Turning purpose into brand power since 2001.</p>
-      </div>
+<footer class="site" role="contentinfo">
+  <nav aria-label="Footer navigation">
+    <ul class="footer-nav-list">
+      <li class="footer-nav-item"><a href="/" class="footer-nav-link">Home</a></li>
+      <li class="footer-nav-item"><a href="/work" class="footer-nav-link">Work</a></li>
+      <li class="footer-nav-item"><a href="/edtech-marketing-agency" class="footer-nav-link">Services</a></li>
+      <li class="footer-nav-item"><a href="/edtech-mentor-interviews" class="footer-nav-link">The EdTech Mentor</a></li>
+      <li class="footer-nav-item"><a href="/about" class="footer-nav-link">About</a></li>
+      <li class="footer-nav-item"><a href="/lets-talk" class="footer-nav-link">Let's Talk!</a></li>
+      <li class="footer-nav-item"><a href="/about#careers" class="footer-nav-link">Careers</a></li>
+    </ul>
+  </nav>
 
-      <div class="footer-col">
-        <h5>Services</h5>
-        <a href="/edtech-marketing-agency/customer-marketing">Customer Marketing</a>
-        <a href="/edtech-marketing-agency/granular-marketing-programs">Granular Programs</a>
-        <a href="/edtech-marketing-agency/agile-brand-development">Brand Development</a>
-        <a href="/edtech-marketing-agency/video-motion-editorial-content">Video &amp; Motion</a>
-        <a href="/edtech-marketing-agency">All Services →</a>
-      </div>
+  <div class="footer-social-block">
+    <div class="footer-social-label">Social media</div>
+    <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+  </div>
 
-      <div class="footer-col">
-        <h5>Company</h5>
-        <a href="/work">Work</a>
-        <a href="/about">About</a>
-        <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
-        <a href="/resources">Resources</a>
-        <a href="/lets-talk">Contact</a>
-      </div>
-
-      <div class="footer-col">
-        <h5>Get in touch</h5>
-        <a href="https://meetings.hubspot.com/laureano-diaz" target="_blank" rel="noopener">Book a strategy call</a>
-        <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:hello@27zero.agency">hello@27zero.agency</a>
-        <span style="font-size:13px;color:var(--text-lo);margin-top:8px;display:block">Bogotá · Granville, OH</span>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 27zero. All rights reserved.</span>
-      <div class="footer-social">
-        <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://meetings.hubspot.com/laureano-diaz" target="_blank" rel="noopener">Book a call</a>
-      </div>
-    </div>
+  <div class="footer-bottom-bar">
+    <img src="/assets/images/27zero-logo.svg" alt="27zero" style="height:22px;width:auto;display:block;">
+    <span style="font-size:12px;color:var(--graphite);">© 2026 27zero. All rights reserved.</span>
+    <span style="font-size:12px;color:var(--graphite);">Bogotá, Colombia · Granville, OH</span>
   </div>
 </footer>
 
-<!-- ── SCRIPTS ─────────────────────────────────────────────────────────── -->
 <script>
-/* Nav: transparent → frosted on scroll */
-(function () {
-  var nav = document.getElementById('site-nav');
-  if (!nav) return;
-  var tick = function () { nav.classList.toggle('nav-scrolled', window.scrollY > 40); };
-  window.addEventListener('scroll', tick, { passive: true });
+/* Nav: sticky white → purple pill on scroll */
+(function(){
+  var header = document.getElementById('site-header');
+  if(!header) return;
+  function tick(){ header.classList.toggle('nav-scrolled', window.scrollY > 60); }
+  window.addEventListener('scroll', tick, {passive:true});
   tick();
 }());
 
 /* Mobile menu */
-(function () {
-  var open  = document.getElementById('nav-open');
-  var close = document.getElementById('nav-close');
-  var menu  = document.getElementById('mobile-menu');
-  if (!open || !close || !menu) return;
-  function show() {
+(function(){
+  var burger = document.getElementById('nav-burger-btn');
+  var menu   = document.getElementById('mobile-nav-menu');
+  var close  = document.getElementById('mobile-close-btn');
+  if(!burger||!menu||!close) return;
+  function open(){
     menu.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    open.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow='hidden';
+    burger.setAttribute('aria-expanded','true');
+    close.focus();
   }
-  function hide() {
+  function shut(){
     menu.classList.remove('is-open');
-    document.body.style.overflow = '';
-    open.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow='';
+    burger.setAttribute('aria-expanded','false');
+    burger.focus();
   }
-  open.addEventListener('click', show);
-  close.addEventListener('click', hide);
-  menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', hide); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+  burger.addEventListener('click', open);
+  close.addEventListener('click', shut);
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') shut(); });
 }());
 
-/* Scroll-reveal: IntersectionObserver adds .in-view */
-(function () {
-  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sel = '.pcard,.ditem,.look-item,.client-card,.apart-col,.mitem,.subitem,.cycle-step,.sec-head,.stat,.stat-v2,.work-card,.testi-card,.mentor-card,.about-pillar';
+/* Scroll reveal */
+(function(){
+  var rm = window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sel = '.pcard,.ditem,.look-item,.client-card,.apart-col,.mitem,.subitem,.cycle-step,.sec-head,.mentor-card-item,.work-card,.testi-slide';
   var els = document.querySelectorAll(sel);
-  if (rm || !('IntersectionObserver' in window)) {
-    els.forEach(function (el) { el.classList.add('reveal-init', 'in-view'); });
+  if(rm||!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('reveal-init','in-view'); });
     return;
   }
-  els.forEach(function (el) { el.classList.add('reveal-init'); });
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) { entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+  els.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
-  els.forEach(function (el) { io.observe(el); });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ io.observe(el); });
 }());
 </script>
 
+<script>
+/* ── Mentor horizontal slider ────────────────────────────────────── */
+(function(){
+  var track   = document.getElementById('mentor-cards-track');
+  var prevBtn = document.getElementById('mentor-prev');
+  var nextBtn = document.getElementById('mentor-next');
+  var persons = document.querySelectorAll('.mentor-person');
+  if(!track) return;
+  var pos = 0;
+  var cards = track.querySelectorAll('.mentor-card-item');
+  function cardW(){
+    var c = cards[0];
+    return c ? c.offsetWidth + 20 : 340;
+  }
+  function slide(dir){
+    var max = Math.max(0, cards.length - 3);
+    pos = Math.max(0, Math.min(pos + dir, max));
+    track.style.transform = 'translateX(-' + (pos * cardW()) + 'px)';
+    persons.forEach(function(p,i){ p.classList.toggle('active', i === pos); });
+  }
+  if(prevBtn) prevBtn.addEventListener('click', function(){ slide(-1); });
+  if(nextBtn) nextBtn.addEventListener('click', function(){ slide(1); });
+  /* Drag support */
+  var startX = 0, dragging = false;
+  track.addEventListener('mousedown', function(e){ startX = e.clientX; dragging = true; });
+  document.addEventListener('mousemove', function(e){ if(!dragging) return; });
+  document.addEventListener('mouseup', function(e){
+    if(!dragging) return; dragging = false;
+    if(e.clientX - startX < -60) slide(1);
+    if(e.clientX - startX >  60) slide(-1);
+  });
+  /* Person click */
+  persons.forEach(function(p, i){
+    p.addEventListener('click', function(){
+      pos = i;
+      track.style.transform = 'translateX(-' + (pos * cardW()) + 'px)';
+      persons.forEach(function(pp, ii){ pp.classList.toggle('active', ii === i); });
+    });
+  });
+}());
+
+/* ── Testimonials dot-slider ─────────────────────────────────────── */
+(function(){
+  var track = document.getElementById('testi-track');
+  var dots  = document.querySelectorAll('.testi-dot');
+  if(!track||!dots.length) return;
+  var cur = 0;
+  function goTo(idx){
+    cur = idx;
+    var slides = track.querySelectorAll('.testi-slide');
+    var w = slides[0] ? slides[0].offsetWidth + 24 : 924;
+    track.style.transform = 'translateX(-' + (idx * w) + 'px)';
+    dots.forEach(function(d,i){
+      d.classList.toggle('active', i===idx);
+      d.setAttribute('aria-selected', String(i===idx));
+    });
+  }
+  dots.forEach(function(d){
+    d.addEventListener('click', function(){ goTo(parseInt(d.dataset.idx)); });
+  });
+  /* Auto-advance */
+  setInterval(function(){ goTo((cur+1)%dots.length); }, 7000);
+}());
+</script>
 
 </body>
 </html>
