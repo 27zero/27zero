@@ -1,2 +1,4 @@
-jinja2
-requests
+# Core dependencies — pinned for reproducible builds.
+# Update deliberately; test locally before bumping.
+jinja2==3.1.4
+requests==2.32.3

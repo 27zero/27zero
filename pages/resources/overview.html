@@ -1,63 +1,76 @@
 {% extends "base.html" %}
 {% from "macros.html" import hero, cta_footer %}
 
-{% block title %}Resources — 27zero{% endblock %}
+{% block title %}Resources — EdTech Marketing Insights — 27zero{% endblock %}
 
-{% block meta %} <meta name="description" content="Resources built from real campaigns, real strategies, and real results.">
+{% block meta %}
+{# seo context from builder handles canonical + OG automatically.          #}
+{# Override description here if you want a different one than the default.  #}
 {% endblock %}
 
 {% block content %}
 
 {{ hero(
-"Resources",
-None,
-'EdTech <em class="acc">Resources.</em>',
-"Resources built from real campaigns, real strategies, and real results.",
-large=True
+    "Resources",
+    None,
+    'EdTech <em class="acc">Resources.</em>',
+    "Guides, frameworks, and insights built from real EdTech campaigns, real strategies, and real results.",
+    large=True
 ) }}
 
 <section>
   <div class="wrap">
 
-```
-<div class="dgrid feature-first">
+    {% set all_content = (posts or []) + (resources or []) %}
 
-  {% for post in posts %}
+    {% if all_content %}
 
-  <a href="/resources/{{ post.slug.current }}/" class="ditem">
+    <div class="dgrid feature-first">
 
-    {% if post.featuredImage %}
-    <img
-        src="{{ post.featuredImage.asset.url }}"
-        alt="{{ post.title }}"
-        class="resource-image">
-    {% endif %}
+      {% for item in all_content %}
 
-    <div class="eyebrow">
-        Resource
+        {# Normalise: posts use slug.current; resources use slug.current too #}
+        {% set item_slug = item.slug.current if item.slug is mapping else item.slug %}
+        {% set item_title = item.title or item.guestName or "" %}
+        {% set item_excerpt = item.excerpt or item.heroDescription or "" %}
+
+        <a href="/resources/{{ item_slug }}/" class="ditem">
+
+          {% if item.featuredImage and item.featuredImage.url %}
+          <img
+              src="{{ item.featuredImage.url }}"
+              alt="{{ item_title }}"
+              loading="lazy"
+              class="resource-image"
+              style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-sm);margin-bottom:16px;">
+          {% endif %}
+
+          <div class="eyebrow" style="margin-bottom:10px;">Resource</div>
+
+          <h3>{{ item_title }}</h3>
+
+          {% if item_excerpt %}
+          <p>{{ item_excerpt }}</p>
+          {% endif %}
+
+        </a>
+
+      {% endfor %}
+
     </div>
 
-    <h3>
-        {{ post.title }}
-    </h3>
+    {% else %}
 
-    {% if post.excerpt %}
-    <p>{{ post.excerpt }}</p>
+    {# ── Graceful empty state ─────────────────────────────────── #}
+    <p style="color:var(--graphite);font-size:17px;padding:48px 0;">
+      Resources are on their way — check back soon.
+    </p>
+
     {% endif %}
-
-</a>
-
-  {% endfor %}
-
-</div>
-```
 
   </div>
 </section>
 
-{{ cta_footer(
-'Begin your journey <em class="acc">to growth.</em>',
-large=True
-) }}
+{{ cta_footer('Begin your journey <em class="acc">to growth.</em>', large=True) }}
 
 {% endblock %}

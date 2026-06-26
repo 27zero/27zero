@@ -1,0 +1,139 @@
+"""
+builders/pages.py — Static page builder.
+
+Renders every entry in the PAGES manifest to ``dist/``.
+Each static page template receives the full posts list so any page
+can display dynamic content (e.g. the homepage shows recent posts).
+"""
+
+import logging
+import os
+from typing import Any
+
+from jinja2 import Environment
+
+from config import DIST_DIR
+from helpers.seo import build_seo_context
+
+logger = logging.getLogger(__name__)
+
+# ---------------------------------------------------------------------------
+# Page manifest
+# ---------------------------------------------------------------------------
+# (template_path_relative_to_pages, url_path)
+# url_path is the directory relative to dist/ that will contain index.html.
+# An empty string means the root: dist/index.html
+PAGES: list[tuple[str, str]] = [
+    ("home/index.html",                                         ""),
+    ("work/overview.html",                                      "work"),
+    ("work/anthology-marketing-programs.html",                  "work/anthology-marketing-programs"),
+    ("work/ellucian-edtech-sessions-experience.html",           "work/ellucian-edtech-sessions-experience"),
+    ("work/student-first.html",                                 "work/student-first"),
+    ("work/atomic-jolt-marketing-programs.html",                "work/atomic-jolt-marketing-programs"),
+    ("work/scholarship-magic.html",                             "work/scholarship-magic"),
+    ("work/doctums.html",                                       "work/doctums"),
+    ("work/anthology-legacy-conversations.html",                "work/anthology-legacy-conversations"),
+    ("work/busuu.html",                                         "work/busuu"),
+    ("work/uplanner-customer-spotlight.html",                   "work/uplanner-customer-spotlight"),
+    ("work/d2l-connection-cdmx.html",                          "work/d2l-connection-cdmx"),
+    ("work/universidad-de-los-andes---marketing-programs.html", "work/universidad-de-los-andes---marketing-programs"),
+    ("work/d2l-edtech-sessions.html",                          "work/d2l-edtech-sessions"),
+    ("work/uplanner-brand.html",                               "work/uplanner-brand"),
+    ("about/overview.html",                                     "about"),
+    ("lets-talk/overview.html",                                 "lets-talk"),
+    ("resources/overview.html",                                 "resources"),
+    ("resources/edtech-marketing-agency.html",                  "resources/edtech-marketing-agency"),
+    ("resources/choosing-edtech-marketing-agency.html",         "resources/choosing-edtech-marketing-agency"),
+    ("resources/what-is-edtech-marketing.html",                 "resources/what-is-edtech-marketing"),
+    ("resources/edtech-marketing-trends-2026.html",             "resources/edtech-marketing-trends-2026"),
+    ("resources/edtech-marketing-operations-agency.html",       "resources/edtech-marketing-operations-agency"),
+    ("resources/marketing-to-schools-districts.html",           "resources/marketing-to-schools-districts"),
+    ("resources/demonstrating-impact-learning-outcomes.html",   "resources/demonstrating-impact-learning-outcomes"),
+    ("resources/successful-edtech-website-examples.html",       "resources/successful-edtech-website-examples"),
+    ("resources/edtech-websites.html",                          "resources/edtech-websites"),
+    ("resources/reaching-school-decision-makers.html",          "resources/reaching-school-decision-makers"),
+    ("resources/measuring-campaign-success.html",               "resources/measuring-campaign-success"),
+    ("resources/k12-vs-higher-ed-strategy.html",               "resources/k12-vs-higher-ed-strategy"),
+    ("resources/best-ed-tech-marketing-agency.html",            "resources/best-ed-tech-marketing-agency"),
+    ("resources/conference-lead-generation.html",               "resources/conference-lead-generation"),
+    ("resources/overcoming-marketing-challenges.html",          "resources/overcoming-marketing-challenges"),
+    ("resources/marketing-ops-challenges.html",                 "resources/marketing-ops-challenges"),
+    ("edtech-mentor/overview.html",                             "edtech-mentor-interviews"),
+    ("edtech-mentor/frederico-bello.html",                      "edtech-mentor-interviews/frederico-bello"),
+    ("edtech-marketing/overview.html",                          "edtech-marketing-agency"),
+    ("edtech-marketing/customer-marketing.html",                "edtech-marketing-agency/customer-marketing"),
+    ("edtech-marketing/granular-marketing-programs.html",       "edtech-marketing-agency/granular-marketing-programs"),
+    ("edtech-marketing/agile-brand-development.html",           "edtech-marketing-agency/agile-brand-development"),
+    ("edtech-marketing/thought-leadership-executive-content.html", "edtech-marketing-agency/thought-leadership-executive-content"),
+    ("edtech-marketing/video-motion-editorial-content.html",    "edtech-marketing-agency/video-motion-editorial-content"),
+    ("edtech-marketing/gtm-playbooks-launch-campaigns.html",    "edtech-marketing-agency/gtm-playbooks-launch-campaigns"),
+    ("edtech-marketing/marketing-operations-crm.html",          "edtech-marketing-agency/marketing-operations-crm"),
+    ("edtech-marketing/market-research-audience-insights.html", "edtech-marketing-agency/market-research-audience-insights"),
+    ("edtech-marketing/events-experiences.html",                "edtech-marketing-agency/events-experiences"),
+    ("edtech-marketing/performance-marketing-paid-media.html",  "edtech-marketing-agency/performance-marketing-paid-media"),
+    ("edtech-marketing/brand-identity-design.html",             "edtech-marketing-agency/brand-identity-design"),
+    ("edtech-marketing/website-design-ux.html",                 "edtech-marketing-agency/website-design-ux"),
+]
+
+
+# ---------------------------------------------------------------------------
+# Builder
+# ---------------------------------------------------------------------------
+
+def build_pages(
+    env: Environment,
+    posts: list[dict[str, Any]],
+    resources: list[dict[str, Any]] | None = None,
+) -> int:
+    """
+    Render all static page templates and write them to dist/.
+
+    Parameters
+    ----------
+    env:
+        Configured Jinja2 environment.
+    posts:
+        List of post dicts from Sanity (passed through to templates).
+    resources:
+        List of resource dicts from Sanity (passed through to templates).
+
+    Returns
+    -------
+    int
+        Number of pages built.
+    """
+    resources = resources or []
+    count = 0
+
+    for template_path, url_path in PAGES:
+        try:
+            template = env.get_template(template_path)
+        except Exception as exc:
+            logger.error("Could not load template %r: %s", template_path, exc)
+            continue
+
+        # Build SEO context for this page.
+        seo = build_seo_context(url_path=url_path)
+
+        try:
+            html = template.render(
+                posts=posts,
+                resources=resources,
+                seo=seo,
+            )
+        except Exception as exc:
+            logger.error("Error rendering %r: %s", template_path, exc)
+            continue
+
+        out_dir = DIST_DIR if url_path == "" else os.path.join(DIST_DIR, url_path)
+        os.makedirs(out_dir, exist_ok=True)
+
+        out_path = os.path.join(out_dir, "index.html")
+        with open(out_path, "w", encoding="utf-8") as fh:
+            fh.write(html)
+
+        label = f"/{url_path}/" if url_path else "/"
+        logger.info("  built %s", label)
+        count += 1
+
+    return count

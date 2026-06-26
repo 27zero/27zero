@@ -3,18 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{# ── Title ────────────────────────────────────────────────────────────────── #}
 <title>{% block title %}27zero — EdTech Marketing Agency{% endblock %}</title>
+
+{# ── Base meta ────────────────────────────────────────────────────────────── #}
 <meta name="theme-color" content="#ffffff">
+<meta name="robots" content="index, follow">
+
+{# ── SEO: canonical + description ────────────────────────────────────────── #}
+{% if seo %}
+<link rel="canonical" href="{{ seo.canonical }}">
+<meta name="description" content="{{ seo.description }}">
+{% endif %}
+
+{# ── Page-level meta overrides (title, description, OG, etc.) ────────────── #}
+{# Placed AFTER the seo block so per-page tags take precedence when set.     #}
 {% block meta %}{% endblock %}
+
+{# ── Shared OG / Twitter from SEO context (if not overridden per-page) ───── #}
+{% if seo and seo.meta_tags %}
+{{ seo.meta_tags|safe }}
+{% endif %}
+
+{# ── JSON-LD structured data ─────────────────────────────────────────────── #}
+{% if seo and seo.json_ld %}
+{{ seo.json_ld|safe }}
+{% endif %}
+
+{# ── RSS autodiscovery ────────────────────────────────────────────────────── #}
+<link rel="alternate" type="application/rss+xml"
+      title="27zero — EdTech Marketing Insights"
+      href="/rss.xml">
+
+{# ── Fonts ────────────────────────────────────────────────────────────────── #}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+{# ── Stylesheet ───────────────────────────────────────────────────────────── #}
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 <a href="#main-content" class="sr-only" style="position:absolute;left:-9999px">Skip to content</a>
 
-{# ── NAVIGATION ─────────────────────────────────────────────────────────── #}
+{# ── NAVIGATION ──────────────────────────────────────────────────────────── #}
 <header class="site" id="site-header" role="banner">
   <div class="navrow">
     <a href="/" class="logo-mark-link" aria-label="27zero — home">
@@ -68,19 +101,17 @@
 {% block content %}{% endblock %}
 </main>
 
-{# ── FOOTER — matches live 27zero.agency footer exactly ─────────────────── #}
-{# Live site: white bg, large nav rows each with bottom border,
-   hover turns row black; social block; then logo + legal #}
+{# ── FOOTER ──────────────────────────────────────────────────────────────── #}
 <footer class="site" role="contentinfo">
   <nav aria-label="Footer navigation">
     <ul class="footer-nav-list">
-      <li class="footer-nav-item"><a href="/" class="footer-nav-link">Home</a></li>
-      <li class="footer-nav-item"><a href="/work" class="footer-nav-link">Work</a></li>
-      <li class="footer-nav-item"><a href="/edtech-marketing-agency" class="footer-nav-link">Services</a></li>
+      <li class="footer-nav-item"><a href="/"                         class="footer-nav-link">Home</a></li>
+      <li class="footer-nav-item"><a href="/work"                     class="footer-nav-link">Work</a></li>
+      <li class="footer-nav-item"><a href="/edtech-marketing-agency"  class="footer-nav-link">Services</a></li>
       <li class="footer-nav-item"><a href="/edtech-mentor-interviews" class="footer-nav-link">The EdTech Mentor</a></li>
-      <li class="footer-nav-item"><a href="/about" class="footer-nav-link">About</a></li>
-      <li class="footer-nav-item"><a href="/lets-talk" class="footer-nav-link">Let's Talk!</a></li>
-      <li class="footer-nav-item"><a href="/about#careers" class="footer-nav-link">Careers</a></li>
+      <li class="footer-nav-item"><a href="/about"                    class="footer-nav-link">About</a></li>
+      <li class="footer-nav-item"><a href="/lets-talk"               class="footer-nav-link">Let's Talk!</a></li>
+      <li class="footer-nav-item"><a href="/about#careers"           class="footer-nav-link">Careers</a></li>
     </ul>
   </nav>
 

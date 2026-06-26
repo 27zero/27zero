@@ -1,46 +1,89 @@
 {% extends "base.html" %}
 {% from "macros.html" import hero, cta_footer %}
 
-{% block title %}
-{{ post.seoTitle or post.title }} — 27zero
-{% endblock %}
+{# ── Title: prefer seoTitle, fall back to post title ──────────────────── #}
+{% block title %}{{ post.seoTitle or post.title }} — 27zero{% endblock %}
 
-{% block meta %}
-<meta
-    name="description"
-    content="{{ post.seoDescription or post.excerpt or '' }}"
->
-{% endblock %}
+{# ── Per-page meta overrides (description already set via seo context) ── #}
+{# Nothing needed here — base.html renders seo.meta_tags automatically.   #}
+{% block meta %}{% endblock %}
 
 {% block content %}
 
 {{ hero(
     "Resource",
-    None,
+    "/resources/",
     post.title,
-    post.excerpt,
-    large=True
+    post.excerpt or "",
+    large=True,
+    narrow=True
 ) }}
 
-<section>
-    <div class="wrap article">
+<article>
+  <div class="wrap narrow">
 
-        {% if post.publishedAt %}
-        <p class="eyebrow">
-            {{ post.publishedAt[:10] }}
-        </p>
-        {% endif %}
+    {# ── Article meta ─────────────────────────────────────────── #}
+    <div class="article-meta" style="display:flex;align-items:center;gap:16px;margin-bottom:32px;flex-wrap:wrap;">
+      {% if post.publishedAt %}
+      <time datetime="{{ post.publishedAt[:10] }}" style="font-size:13px;color:var(--graphite);">
+        {{ post.publishedAt[:10] }}
+      </time>
+      {% endif %}
 
-        <div class="article-body">
-            {{ body_html|safe }}
-        </div>
+      {% if post.author and post.author.name %}
+      <span style="font-size:13px;color:var(--graphite);">
+        by {{ post.author.name }}
+        {% if post.author.role %} · {{ post.author.role }}{% endif %}
+      </span>
+      {% endif %}
 
+      {% if post.categories %}
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        {% for cat in post.categories %}
+        <span style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--violet);background:var(--mist);padding:3px 10px;border-radius:999px;">
+          {{ cat.title }}
+        </span>
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
-</section>
 
-{{ cta_footer(
-    'Begin your journey <em class="acc">to growth.</em>',
-    large=True
-) }}
+    {# ── Featured image ────────────────────────────────────────── #}
+    {% if post.featuredImage and post.featuredImage.url %}
+    <figure style="margin-bottom:40px;">
+      <img src="{{ post.featuredImage.url }}"
+           alt="{{ post.featuredImage.alt or post.title }}"
+           loading="lazy"
+           style="width:100%;border-radius:var(--radius-md);">
+    </figure>
+    {% endif %}
+
+    {# ── Body content ──────────────────────────────────────────── #}
+    <div class="article-body">
+      {{ body_html|safe }}
+    </div>
+
+    {# ── Author bio (if available) ─────────────────────────────── #}
+    {% if post.author and post.author.name %}
+    <div style="margin-top:56px;padding-top:32px;border-top:1px solid var(--line);display:flex;gap:20px;align-items:flex-start;">
+      {% if post.author.photo %}
+      <img src="{{ post.author.photo }}"
+           alt="{{ post.author.name }}"
+           loading="lazy"
+           style="width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;">
+      {% endif %}
+      <div>
+        <div style="font-weight:600;margin-bottom:4px;">{{ post.author.name }}</div>
+        {% if post.author.role %}
+        <div style="font-size:14px;color:var(--graphite);">{{ post.author.role }}</div>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</article>
+
+{{ cta_footer('Begin your journey <em class="acc">to growth.</em>', large=True) }}
 
 {% endblock %}
