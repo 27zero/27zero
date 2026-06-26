@@ -1,5 +1,0 @@
-{
-  "buildCommand": "pip install jinja2 && python build.py",
-  "outputDirectory": "dist",
-  "installCommand": "pip install jinja2"
-}

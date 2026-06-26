@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% from "macros.html" import hero, cta_footer %}
+
+{% block title %}
+{{ post.seoTitle or post.title }} — 27zero
+{% endblock %}
+
+{% block meta %}
+<meta
+    name="description"
+    content="{{ post.seoDescription or post.excerpt or '' }}"
+>
+{% endblock %}
+
+{% block content %}
+
+{{ hero(
+    "Resource",
+    None,
+    post.title,
+    post.excerpt,
+    large=True
+) }}
+
+<section>
+    <div class="wrap article">
+
+        {% if post.publishedAt %}
+        <p class="eyebrow">
+            {{ post.publishedAt[:10] }}
+        </p>
+        {% endif %}
+
+        <div class="article-body">
+            {{ body_html|safe }}
+        </div>
+
+    </div>
+</section>
+
+{{ cta_footer(
+    'Begin your journey <em class="acc">to growth.</em>',
+    large=True
+) }}
+
+{% endblock %}
