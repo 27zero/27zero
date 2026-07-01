@@ -1,16 +1,25 @@
 """
 builders/sitemap.py — XML sitemap generator.
 
-Generates a standards-compliant sitemap.xml that includes every page
-built by the static builder plus every dynamically generated post,
-resource, and interview page.
+Generates a standards-compliant sitemap.xml covering every URL the
+build pipeline produces.
 
-The sitemap is written to dist/sitemap.xml and referenced in robots.txt.
+Extension model
+---------------
+The sitemap does not hardcode knowledge of individual sections.  Instead,
+any SectionBuilder subclass that is registered in ``build.py`` contributes
+its own entries via ``SectionBuilder.sitemap_entries()``.  Adding a new
+section (Events, Podcasts, …) automatically adds its URLs to the sitemap
+with no changes here.
+
+Static pages (builders/pages.py PAGES manifest) are always included.
+Legacy dynamic content that still uses builders/posts.py (posts,
+resources, interviews) is handled in the ``legacy_entries`` parameter
+until it is migrated to the SectionBuilder pattern.
 
 References
 ----------
 - https://www.sitemaps.org/protocol.html
-- https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
 """
 
 import logging
@@ -21,16 +30,20 @@ from xml.sax.saxutils import escape as xml_escape
 
 from config import DIST_DIR, SITE_URL
 from builders.pages import PAGES
+from builders.base import SectionBuilder
 from helpers.slug import get_slug
 
 logger = logging.getLogger(__name__)
 
+
 # ---------------------------------------------------------------------------
-# Priority and change-frequency heuristics
+# Helpers
 # ---------------------------------------------------------------------------
 
-# Pages that deserve higher crawl priority.
-_HIGH_PRIORITY_PATHS = {"", "work", "about", "lets-talk", "edtech-mentor-interviews", "resources"}
+_HIGH_PRIORITY_PATHS = {
+    "", "work", "about", "lets-talk",
+    "edtech-mentor-interviews", "resources",
+}
 
 
 def _priority(url_path: str) -> str:
@@ -49,15 +62,19 @@ def _changefreq(url_path: str) -> str:
     return "yearly"
 
 
-def _url_entry(loc: str, lastmod: str | None = None,
-               changefreq: str = "monthly", priority: str = "0.7") -> str:
-    lines = [f"  <url>", f"    <loc>{xml_escape(loc)}</loc>"]
+def _url_entry(
+    loc: str,
+    lastmod: str | None = None,
+    changefreq: str = "monthly",
+    priority: str = "0.7",
+) -> str:
+    lines = ["  <url>", f"    <loc>{xml_escape(loc)}</loc>"]
     if lastmod:
         lines.append(f"    <lastmod>{lastmod}</lastmod>")
     lines += [
         f"    <changefreq>{changefreq}</changefreq>",
         f"    <priority>{priority}</priority>",
-        f"  </url>",
+        "  </url>",
     ]
     return "\n".join(lines)
 
@@ -67,27 +84,34 @@ def _url_entry(loc: str, lastmod: str | None = None,
 # ---------------------------------------------------------------------------
 
 def build_sitemap(
-    posts: list[dict[str, Any]] | None = None,
-    resources: list[dict[str, Any]] | None = None,
-    interviews: list[dict[str, Any]] | None = None,
+    section_builders: list[tuple[SectionBuilder, list[dict[str, Any]]]] | None = None,
+    legacy_entries:   dict[str, list[dict[str, Any]]] | None = None,
 ) -> None:
     """
     Write dist/sitemap.xml.
 
-    Includes:
-    - All static pages from builders/pages.py PAGES manifest
-    - One entry per published post
-    - One entry per published resource
-    - One entry per published interview
+    Parameters
+    ----------
+    section_builders:
+        List of (builder_instance, items) tuples.  Each builder contributes
+        its own URLs via ``SectionBuilder.sitemap_entries()``.
+
+    legacy_entries:
+        Dict of content-type → item-list for legacy builders that have
+        not yet been migrated to SectionBuilder.  Supported keys:
+
+            "posts"      → /resources/{slug}/    (monthly, 0.8)
+            "resources"  → /resources/{slug}/    (yearly,  0.7)
+            "interviews" → /edtech-mentor-interviews/{slug}/  (yearly, 0.7)
     """
-    posts      = posts or []
-    resources  = resources or []
-    interviews = interviews or []
+    section_builders = section_builders or []
+    legacy_entries   = legacy_entries   or {}
 
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     entries: list[str] = []
+    total = 0
 
-    # ── Static pages ────────────────────────────────────────────────────
+    # ── Static pages from PAGES manifest ────────────────────────────────
     for _template, url_path in PAGES:
         loc = f"{SITE_URL}/{url_path}/" if url_path else f"{SITE_URL}/"
         entries.append(_url_entry(
@@ -96,9 +120,17 @@ def build_sitemap(
             changefreq=_changefreq(url_path),
             priority=_priority(url_path),
         ))
+        total += 1
 
-    # ── Posts ────────────────────────────────────────────────────────────
-    for post in posts:
+    # ── SectionBuilder sections ──────────────────────────────────────────
+    for builder, items in section_builders:
+        for loc, lastmod, changefreq, priority in builder.sitemap_entries(items, today):
+            entries.append(_url_entry(loc=loc, lastmod=lastmod,
+                                      changefreq=changefreq, priority=priority))
+            total += 1
+
+    # ── Legacy: posts → /resources/{slug}/ ──────────────────────────────
+    for post in legacy_entries.get("posts", []):
         slug = get_slug(post.get("slug"))
         if not slug:
             continue
@@ -109,9 +141,10 @@ def build_sitemap(
             changefreq="monthly",
             priority="0.8",
         ))
+        total += 1
 
-    # ── Resources ────────────────────────────────────────────────────────
-    for resource in resources:
+    # ── Legacy: resources → /resources/{slug}/ ──────────────────────────
+    for resource in legacy_entries.get("resources", []):
         slug = get_slug(resource.get("slug"))
         if not slug:
             continue
@@ -121,9 +154,10 @@ def build_sitemap(
             changefreq="yearly",
             priority="0.7",
         ))
+        total += 1
 
-    # ── Interviews ───────────────────────────────────────────────────────
-    for interview in interviews:
+    # ── Legacy: interviews → /edtech-mentor-interviews/{slug}/ ──────────
+    for interview in legacy_entries.get("interviews", []):
         slug = get_slug(interview.get("slug"))
         if not slug:
             continue
@@ -133,8 +167,9 @@ def build_sitemap(
             changefreq="yearly",
             priority="0.7",
         ))
+        total += 1
 
-    # ── Assemble XML ─────────────────────────────────────────────────────
+    # ── Assemble ─────────────────────────────────────────────────────────
     xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -146,5 +181,4 @@ def build_sitemap(
     with open(out_path, "w", encoding="utf-8") as fh:
         fh.write(xml)
 
-    total = len(PAGES) + len(posts) + len(resources) + len(interviews)
     logger.info("  built /sitemap.xml (%d URLs)", total)

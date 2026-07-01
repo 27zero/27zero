@@ -63,3 +63,8 @@ def post_url(slug: str) -> str:
 def interview_url(slug: str) -> str:
     """Return the site-relative URL for an interview page."""
     return f"/edtech-mentor-interviews/{slug}/"
+
+
+def work_url(slug: str) -> str:
+    """Return the site-relative URL for a work detail page."""
+    return f"/work/{slug}/"
