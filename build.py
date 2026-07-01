@@ -1,15 +1,38 @@
 #!/usr/bin/env python3
 """
-build.py — 27zero static site orchestrator.
+build.py — 27zero static site build orchestrator.
 
-This file is intentionally thin.  Its only job is to call builders
-in the correct order.  All logic lives in builders/ and helpers/.
+This file is intentionally thin.  Its only responsibility is to call
+helpers and builders in the correct order.  All content logic lives in
+helpers/.  All page-generation logic lives in builders/.
+
+Safety contract
+---------------
+dist/ is never cleared until every Sanity fetch has succeeded.
+If any fetch raises (network error, API outage, bad credentials),
+the build aborts before touching the existing dist/.  The last
+successful build stays live.
+
+Adding a new CMS section
+------------------------
+1. Add a get_{section}() function to helpers/sanity.py.
+2. Create builders/{section}.py — subclass SectionBuilder, set class
+   attributes, override body_html() if the section has portable-text
+   fields.  See builders/work.py as the reference implementation.
+3. Add pages/{section}/index.html and pages/{section}/detail.html.
+4. In build() below:
+     a. Import and call get_{section}().
+     b. Instantiate the builder and call .build(env, items).
+     c. Append (builder_instance, items) to section_builders.
+
+Nothing else changes.  Sitemap entries, SEO, and file layout are
+handled automatically by SectionBuilder.
 
 Usage
 -----
-    python build.py           # build only
-    python build.py serve     # build then serve on :8000
-    python build.py serve 3000  # build then serve on :3000
+    python build.py            # build only
+    python build.py serve      # build then serve at http://localhost:8000
+    python build.py serve 3000 # build then serve on a custom port
 """
 
 import logging
@@ -21,15 +44,21 @@ from jinja2 import Environment, FileSystemLoader
 
 from config import PAGES_DIR, TEMPLATES_DIR, ASSETS_DIR, DIST_DIR, VERBOSE
 
-from helpers.sanity import get_posts, get_resources, get_interviews
+from helpers.sanity import (
+    get_posts,
+    get_resources,
+    get_interviews,
+    get_work_projects,
+)
 
 from builders.pages   import build_pages
 from builders.posts   import build_posts, build_resources, build_interviews
+from builders.work    import WorkBuilder
 from builders.sitemap import build_sitemap
 from builders.rss     import build_rss
 
 # ---------------------------------------------------------------------------
-# Logging setup
+# Logging
 # ---------------------------------------------------------------------------
 logging.basicConfig(
     level=logging.DEBUG if VERBOSE else logging.INFO,
@@ -43,27 +72,19 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 
 def build() -> None:
-    """
-    Full build pipeline.
-
-    Safety contract
-    ---------------
-    dist/ is NEVER cleared until every Sanity fetch has succeeded.
-    A network failure or API error will abort the build before any
-    existing output is destroyed.
-    """
+    """Run the complete build pipeline."""
 
     # ── Step 1: Fetch all content from Sanity ───────────────────────────
-    # If any fetch fails (network error, bad credentials, etc.) this
-    # raises immediately and dist/ is untouched.
+    # All fetches happen before dist/ is modified.
     logger.info("Fetching content from Sanity...")
     posts      = get_posts()
     resources  = get_resources()
     interviews = get_interviews()
+    work       = get_work_projects()
 
     logger.info(
-        "Loaded: %d posts, %d resources, %d interviews",
-        len(posts), len(resources), len(interviews),
+        "Loaded: %d posts, %d resources, %d interviews, %d work projects",
+        len(posts), len(resources), len(interviews), len(work),
     )
 
     # ── Step 2: Clear and recreate dist/ ────────────────────────────────
@@ -76,35 +97,59 @@ def build() -> None:
         loader=FileSystemLoader([PAGES_DIR, TEMPLATES_DIR]),
         trim_blocks=True,
         lstrip_blocks=True,
-        autoescape=False,  # We escape manually; templates use |safe for HTML.
+        autoescape=False,  # Content is escaped manually; templates use |safe.
     )
 
-    # ── Step 4: Build static pages ───────────────────────────────────────
+    # ── Step 4: Static pages ─────────────────────────────────────────────
     logger.info("\nBuilding static pages...")
-    n_pages = build_pages(env, posts=posts, resources=resources)
+    n_pages = build_pages(env, posts=posts, resources=resources, work=work)
 
-    # ── Step 5: Build dynamic CMS pages ──────────────────────────────────
+    # ── Step 5: Legacy CMS builders ──────────────────────────────────────
+    # Posts, resources, and interviews use builders/posts.py, which predates
+    # SectionBuilder.  They continue to work unchanged.  They will migrate
+    # to SectionBuilder when their templates are redesigned.
     logger.info("\nBuilding CMS content pages...")
     n_posts      = build_posts(env, posts)
     n_resources  = build_resources(env, resources)
     n_interviews = build_interviews(env, interviews)
 
-    # ── Step 6: Generate sitemap.xml ─────────────────────────────────────
-    logger.info("\nGenerating sitemap...")
-    build_sitemap(posts=posts, resources=resources, interviews=interviews)
+    # ── Step 6: SectionBuilder sections ──────────────────────────────────
+    logger.info("\nBuilding Work section...")
+    work_builder = WorkBuilder()
+    n_work = work_builder.build(env, work)
 
-    # ── Step 7: Generate rss.xml ─────────────────────────────────────────
+    # section_builders is the list of (builder_instance, items) pairs that
+    # the sitemap uses to collect URLs.  Add new sections here as they are
+    # built — that is the only change required to the sitemap.
+    section_builders = [
+        (work_builder, work),
+    ]
+
+    # ── Step 7: Sitemap ───────────────────────────────────────────────────
+    logger.info("\nGenerating sitemap...")
+    build_sitemap(
+        section_builders=section_builders,
+        legacy_entries={
+            "posts":      posts,
+            "resources":  resources,
+            "interviews": interviews,
+        },
+    )
+
+    # ── Step 8: RSS feed ──────────────────────────────────────────────────
     logger.info("\nGenerating RSS feed...")
     build_rss(posts=posts, resources=resources)
 
-    # ── Step 8: Copy static assets ───────────────────────────────────────
+    # ── Step 9: Copy static assets ───────────────────────────────────────
     shutil.copytree(ASSETS_DIR, os.path.join(DIST_DIR, "assets"), dirs_exist_ok=True)
 
-    # ── Summary ──────────────────────────────────────────────────────────
-    total_dynamic = n_posts + n_resources + n_interviews
+    # ── Summary ───────────────────────────────────────────────────────────
+    total_dynamic = n_posts + n_resources + n_interviews + n_work
     logger.info(
-        "\nDone — %d static + %d CMS pages (%d posts, %d resources, %d interviews)",
-        n_pages, total_dynamic, n_posts, n_resources, n_interviews,
+        "\nDone — %d static + %d CMS pages "
+        "(%d posts, %d resources, %d interviews, %d work)",
+        n_pages, total_dynamic,
+        n_posts, n_resources, n_interviews, n_work,
     )
 
 

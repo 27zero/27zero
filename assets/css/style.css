@@ -1232,3 +1232,181 @@ body::after {
 .ditem h3{
     margin-top:12px;
 }
+/* ── WORK SECTION ────────────────────────────────────────────────────────
+   Styles for /work/ index and /work/{slug}/ detail pages.
+   All class names are scoped under .work-* to avoid collisions.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* ── Filter bar (Work index) ─────────────────────────────────────────── */
+.work-filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 4px 0 20px;
+}
+.work-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: var(--mist);
+  color: var(--graphite);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+  white-space: nowrap;
+}
+.work-filter-btn:hover {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--line);
+}
+.work-filter-btn--active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.work-filter-btn--active:hover {
+  background: var(--violet);
+  border-color: var(--violet);
+}
+.work-filter-count {
+  font-size: 11px;
+  font-weight: 700;
+  opacity: .65;
+}
+.work-filter-btn--active .work-filter-count {
+  opacity: .8;
+  color: var(--paper);
+}
+
+/* ── Work cards (index) ──────────────────────────────────────────────── */
+.work-card-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  background: var(--mist);
+}
+.work-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+.ditem.work-card:hover .work-card-thumb img {
+  transform: scale(1.03);
+}
+.work-card-eyebrow {
+  margin-bottom: 8px;
+}
+.work-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.work-card-client {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.work-card-year {
+  font-size: 12px;
+  color: var(--graphite);
+  margin-left: auto;
+}
+
+/* Empty state */
+.work-empty-state {
+  padding: 48px 0;
+  color: var(--graphite);
+  font-size: 16px;
+}
+
+/* ── Work detail page ────────────────────────────────────────────────── */
+/* Hero with background image */
+.hero.hero-work-detail {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.hero-work-detail-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 11, 12, .6) 0%,
+    rgba(11, 11, 12, .3) 55%,
+    rgba(11, 11, 12, .72) 100%
+  );
+}
+.hero.hero-work-detail .wrap { position: relative; z-index: 2; }
+.hero.hero-work-detail h1  { color: var(--paper); }
+.hero.hero-work-detail p.sub { color: rgba(255,255,255,.82); }
+.hero.hero-work-detail .eyebrow      { color: rgba(255,255,255,.7); }
+.hero.hero-work-detail .eyebrow::before { background: rgba(255,255,255,.7); }
+.hero.hero-work-detail .hero-rule    { background: #fff; }
+
+/* Meta bar */
+.work-meta-bar { background: var(--mist); }
+.work-meta-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+  padding: 8px 0;
+}
+.work-meta-item { display: flex; flex-direction: column; gap: 4px; }
+.work-meta-item--services { flex-basis: 100%; }
+.work-meta-item dt {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--graphite);
+}
+.work-meta-item dd {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Gallery */
+.work-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 760px) { .work-gallery { grid-template-columns: 1fr; } }
+.work-gallery-item {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--mist);
+}
+.work-gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+.work-gallery-item:hover img { transform: scale(1.02); }
+.work-gallery-item figcaption {
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--graphite);
+  font-style: italic;
+}

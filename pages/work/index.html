@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% from "macros.html" import cta_footer %}
+
+{% block title %}Work: Behind the fastest-growing EdTech brands — 27zero{% endblock %}
+
+{% block content %}
+
+{# ══ HERO ════════════════════════════════════════════════════════════════ #}
+<section class="hero hero-lg" aria-label="Work hero">
+  <div class="wrap">
+    <div class="hero-rule" aria-hidden="true"></div>
+    <div class="eyebrow"><a href="/">27zero</a></div>
+    <h1>Behind the fastest growing <em class="acc">EdTech brands.</em></h1>
+    <p class="sub">First-hand expertise, innovative conceptual thinking &amp; design, client-first approach.</p>
+  </div>
+</section>
+
+{# ══ FILTER TABS — generated from CMS categories ═════════════════════════ #}
+{% if categories %}
+<section class="tight" id="work-filters" aria-label="Filter by service category">
+  <div class="wrap">
+    <div class="work-filter-bar" role="tablist" aria-label="Project categories">
+      {# "All" tab is always first #}
+      <button
+        class="work-filter-btn work-filter-btn--active"
+        role="tab"
+        aria-selected="true"
+        data-filter="all"
+        aria-controls="work-grid">
+        All
+        <span class="work-filter-count">{{ projects|length }}</span>
+      </button>
+      {% for cat in categories %}
+      <button
+        class="work-filter-btn"
+        role="tab"
+        aria-selected="false"
+        data-filter="{{ cat.value }}"
+        aria-controls="work-grid">
+        {{ cat.label }}
+        <span class="work-filter-count">{{ cat.count }}</span>
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# ══ PROJECTS GRID ════════════════════════════════════════════════════════ #}
+<section id="work-grid">
+  <div class="wrap">
+    {% if projects %}
+
+    <div class="dgrid feature-first" id="work-cards-grid">
+
+      {% for project in projects %}
+      {# Each card carries data-category so JS can filter client-side.     #}
+      {# The first project gets the feature-first span via CSS, not JS.    #}
+      <a
+        href="/work/{{ project.slug }}/"
+        class="ditem work-card{% if project.featured %} work-card--featured{% endif %}"
+        data-category="{{ project.category }}"
+        aria-label="{{ project.title }}">
+
+        {# Thumbnail — shown when image is available #}
+        {% if project.thumbnailUrl %}
+        <div class="work-card-thumb">
+          <img
+            src="{{ project.thumbnailUrl }}"
+            alt="{{ (project.thumbnail or {}).get('alt') or project.title }}"
+            loading="lazy"
+            decoding="async">
+        </div>
+        {% endif %}
+
+        {# Category eyebrow #}
+        <div class="eyebrow work-card-eyebrow" aria-hidden="true">
+          {{ project.categoryLabel }}
+          {% if project.featured %} · Featured{% endif %}
+        </div>
+
+        {# Headline #}
+        <h3>{{ project.title }}</h3>
+
+        {# Excerpt #}
+        {% if project.excerpt %}
+        <p>{{ project.excerpt }}</p>
+        {% endif %}
+
+        {# Client + year metadata #}
+        <div class="work-card-meta">
+          <span class="work-card-client">{{ project.client }}</span>
+          {% if project.year %}
+          <span class="work-card-year">{{ project.year }}</span>
+          {% endif %}
+        </div>
+
+      </a>
+      {% endfor %}
+
+    </div>
+
+    {# Empty-state (no projects match active filter — shown via JS) #}
+    <p class="work-empty-state" id="work-empty-state" aria-live="polite" hidden>
+      No projects in this category yet.
+    </p>
+
+    {% else %}
+
+    {# No CMS projects — graceful empty state #}
+    <p style="color:var(--graphite);font-size:17px;padding:48px 0;">
+      Work projects are on their way — check back soon.
+    </p>
+
+    {% endif %}
+  </div>
+</section>
+
+{{ cta_footer('Begin your journey <em class="acc">to growth.</em>', large=True) }}
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script>
+/**
+ * Work index — client-side category filtering.
+ *
+ * All content is rendered server-side by Python/Jinja.
+ * This script only handles show/hide interactions.
+ * No arrays. No data. Pure DOM manipulation.
+ */
+(function () {
+  'use strict';
+
+  var filterBtns = document.querySelectorAll('[data-filter]');
+  var cards      = document.querySelectorAll('[data-category]');
+  var emptyState = document.getElementById('work-empty-state');
+
+  if (!filterBtns.length || !cards.length) return;
+
+  function setFilter(value) {
+    // Update button states.
+    filterBtns.forEach(function (btn) {
+      var active = btn.dataset.filter === value;
+      btn.classList.toggle('work-filter-btn--active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    // Show / hide cards.
+    var visible = 0;
+    cards.forEach(function (card) {
+      var match = value === 'all' || card.dataset.category === value;
+      card.hidden = !match;
+      if (match) visible += 1;
+    });
+
+    // Show empty-state if nothing visible.
+    if (emptyState) {
+      emptyState.hidden = visible > 0;
+    }
+
+    // Restore feature-first layout when showing all.
+    // The CSS .dgrid.feature-first rule targets :first-child,
+    // but when cards are hidden the DOM order doesn't change —
+    // we just need to ensure the first *visible* card gets the class.
+    var grid = document.getElementById('work-cards-grid');
+    if (grid) {
+      var visibleCards = Array.from(cards).filter(function (c) { return !c.hidden; });
+      Array.from(cards).forEach(function (c) { c.classList.remove('work-card--first'); });
+      if (visibleCards.length > 0 && value === 'all') {
+        visibleCards[0].classList.add('work-card--first');
+      }
+    }
+  }
+
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setFilter(btn.dataset.filter);
+    });
+  });
+
+  // Keyboard support for the tab role.
+  filterBtns.forEach(function (btn, idx) {
+    btn.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') {
+        filterBtns[(idx + 1) % filterBtns.length].focus();
+      } else if (e.key === 'ArrowLeft') {
+        filterBtns[(idx - 1 + filterBtns.length) % filterBtns.length].focus();
+      }
+    });
+  });
+
+  // Mark initial first visible card for CSS.
+  setFilter('all');
+}());
+</script>
+{% endblock %}

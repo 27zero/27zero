@@ -18,12 +18,14 @@ import resource    from './resource'      // retained for backwards compat
 import interview   from './interview'     // retained for backwards compat
 import blockContent from './blockContent'
 import settings    from './settings'
+import work        from './work'
 
 export const schemaTypes = [
   // Content
   post,
   resource,
   interview,
+  work,
 
   // Supporting
   author,

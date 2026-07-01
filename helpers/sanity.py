@@ -235,3 +235,109 @@ def get_settings() -> dict[str, Any]:
     except Exception:
         pass
     return {}
+
+
+# ---------------------------------------------------------------------------
+# Work project queries
+# ---------------------------------------------------------------------------
+
+# Projection for the work index page — light, no body fields.
+_WORK_INDEX_PROJECTION = """
+    _id,
+    title,
+    "slug": slug.current,
+    client,
+    "clientLogo": {
+        "url": clientLogo.asset->url,
+        "alt": clientLogo.alt
+    },
+    category,
+    services,
+    industry,
+    year,
+    excerpt,
+    featured,
+    "order": coalesce(order, 100),
+    "thumbnail": {
+        "url": thumbnail.asset->url,
+        "alt": thumbnail.alt
+    }
+"""
+
+# Projection for detail pages — full content.
+_WORK_DETAIL_PROJECTION = """
+    _id,
+    title,
+    "slug": slug.current,
+    client,
+    "clientLogo": {
+        "url": clientLogo.asset->url,
+        "alt": clientLogo.alt
+    },
+    category,
+    services,
+    industry,
+    year,
+    excerpt,
+    featured,
+    brief,
+    challenge,
+    "solution": {
+        "headline": solution.headline,
+        "body":     solution.body
+    },
+    impact,
+    "heroImage": {
+        "url": heroImage.asset->url,
+        "alt": heroImage.alt
+    },
+    heroVideo,
+    "gallery": gallery[]{
+        "url": asset->url,
+        "alt": alt,
+        "caption": caption
+    },
+    seoTitle,
+    seoDescription,
+    "ogImage": {
+        "url": ogImage.asset->url
+    }
+"""
+
+
+def get_work_projects() -> list[dict]:
+    """
+    Fetch all work projects, ordered: featured first, then by order asc, then title.
+
+    Returns the full projection needed for both index and detail pages.
+    The caller (builders/work.py) handles splitting this list into
+    index-display data and per-project detail pages.
+    """
+    groq = f"""
+    *[_type == "workProject" && defined(slug.current)]
+    | order(featured desc, coalesce(order, 100) asc, title asc)
+    {{
+        {_WORK_DETAIL_PROJECTION}
+    }}
+    """
+    return _query(groq)
+
+
+def get_work_categories() -> list[str]:
+    """
+    Return the sorted list of distinct category values present in the
+    work dataset.  Used to build the filter tabs on the index page.
+
+    Returns plain strings (the category ``value`` field), not objects,
+    so the template can iterate them directly.
+    """
+    groq = """
+    array::unique(
+        *[_type == "workProject" && defined(category)].category
+    )
+    """
+    result = _query(groq)
+    # GROQ array::unique returns a list; sort it for stable rendering.
+    if isinstance(result, list):
+        return sorted(str(c) for c in result if c)
+    return []
