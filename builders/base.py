@@ -218,14 +218,33 @@ class SectionBuilder:
         Never mutate the original ``item`` dict.  Sanity data is
         treated as immutable throughout the build pipeline.
         """
+        # return {
+        #     **item,
+        #     "thumbnailUrl":  self._thumb(item),
+        #     "heroUrl":       self._hero(item),
+        #     "categoryLabel": self._label(item.get(self.category_key, "")),
+        # }
+
+    def enrich_item(self, item: dict[str, Any]) -> dict[str, Any]:
+        """
+        Return an enriched copy of ``item``.
+        """
+
+        client_logo = item.get("clientLogo") or {}
+
+        client_logo_url = image_url(
+            client_logo.get("url"),
+            width=300,
+            auto="format",
+        )
+
         return {
             **item,
-            "thumbnailUrl":  self._thumb(item),
-            "heroUrl":       self._hero(item),
+            "thumbnailUrl": self._thumb(item),
+            "heroUrl": self._hero(item),
+            "clientLogoUrl": client_logo_url,
             "categoryLabel": self._label(item.get(self.category_key, "")),
         }
-
-    def body_html(self, item: dict[str, Any]) -> dict[str, str]:
         """
         Render portable-text fields and return a dict of HTML strings.
 
