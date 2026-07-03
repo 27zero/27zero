@@ -1,423 +1,274 @@
+{% extends "base.html" %}
+{% from "macros.html" import cta_footer %}
 
+{% block title %}
+Work — 27zero
+{% endblock %}
 
-<!-- _________________________ -->
- <!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block content %}
 
-<title>Work: Behind the fastest-growing EdTech brands — 27zero</title>
+<link rel="stylesheet" href="/assets/css/work.css">
 
-<meta name="theme-color" content="#ffffff">
-<meta name="robots" content="index, follow">
+<!-- =======================================================
+ HERO
+======================================================= -->
 
-<link rel="canonical" href="https://www.27zero.agency/work/">
-<meta name="description" content="First-hand expertise, innovative conceptual thinking & design, client-first approach. Explore our EdTech case studies.">
+<section class="section section--hero">
+  <div class="container hero-container">
 
+    <span class="text-eyebrow">
+      Work: Behind the fastest-growing EdTech brands
+    </span>
 
-<meta property="og:site_name" content="27zero">
-<meta property="og:title" content="Work — Behind the fastest-growing EdTech brands — 27zero">
-<meta property="og:description" content="First-hand expertise, innovative conceptual thinking &amp; design, client-first approach. Explore our EdTech case studies.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.27zero.agency/work/">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Work — Behind the fastest-growing EdTech brands — 27zero">
-<meta name="twitter:description" content="First-hand expertise, innovative conceptual thinking &amp; design, client-first approach. Explore our EdTech case studies.">
+    <h1>
+      Behind the fastest growing EdTech brands.
+    </h1>
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.27zero.agency/#organization","name":"27zero","url":"https://www.27zero.agency","sameAs":["https://www.linkedin.com/company/27zero/"]},{"@type":"WebSite","@id":"https://www.27zero.agency/#website","url":"https://www.27zero.agency","name":"27zero","description":"The world's only EdTech-exclusive marketing agency. Turning purpose into brand power since 2001.","publisher":{"@id":"https://www.27zero.agency/#organization"}},{"@type":"WebPage","@id":"https://www.27zero.agency/work/","url":"https://www.27zero.agency/work/","name":"Work — Behind the fastest-growing EdTech brands — 27zero","description":"First-hand expertise, innovative conceptual thinking & design, client-first approach. Explore our EdTech case studies.","isPartOf":{"@id":"https://www.27zero.agency/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.27zero.agency/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://www.27zero.agency/work/"}]}]}</script>
-
-<link rel="alternate" type="application/rss+xml"
-      title="27zero — EdTech Marketing Insights"
-      href="/rss.xml">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-<a href="#main-content" class="sr-only" style="position:absolute;left:-9999px">Skip to content</a>
-
-<header class="site" id="site-header" role="banner">
-  <div class="navrow">
-    <a href="/" class="logo-mark-link" aria-label="27zero — home">
-      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark" width="115" height="23">
-    </a>
-
-    <nav class="links" aria-label="Primary navigation">
-      <a href="/work">Work</a>
-      <a href="/edtech-marketing-agency">Edtech Marketing</a>
-      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
-      <a href="/resources">Resources</a>
-      <a href="/about">About</a>
-    </nav>
-
-    <div style="display:flex;align-items:center;gap:12px;">
-      <a href="/lets-talk" class="navcta">Let's Talk!</a>
-      <button class="nav-burger" id="nav-burger-btn"
-              aria-label="Open navigation menu"
-              aria-expanded="false"
-              aria-controls="mobile-nav-menu">
-        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <line x1="2" y1="5" x2="20" y2="5"/>
-          <line x1="2" y1="11" x2="20" y2="11"/>
-          <line x1="2" y1="17" x2="20" y2="17"/>
-        </svg>
-      </button>
-    </div>
-  </div>
-</header>
-
-<div class="mobile-menu" id="mobile-nav-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
-  <button class="mobile-menu-close" id="mobile-close-btn" aria-label="Close navigation menu">
-    <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-      <line x1="3" y1="3" x2="19" y2="19"/>
-      <line x1="19" y1="3" x2="3" y2="19"/>
-    </svg>
-  </button>
-  <nav aria-label="Mobile navigation">
-    <a href="/work">Work</a>
-    <a href="/edtech-marketing-agency">Edtech Marketing</a>
-    <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
-    <a href="/resources">Resources</a>
-    <a href="/about">About</a>
-    <a href="/lets-talk" class="cta-link">Let's Talk!</a>
-  </nav>
-</div>
-
-<main id="main-content">
-
-<section class="hero hero-lg" aria-label="Work hero">
-  <div class="wrap">
-    <div class="hero-rule" aria-hidden="true"></div>
-    <div class="eyebrow"><a href="/">27zero</a></div>
-    <h1>Behind the fastest growing <em class="acc">EdTech brands.</em></h1>
-    <p class="sub">First-hand expertise, innovative conceptual thinking &amp; design, client-first approach.</p>
-  </div>
-</section>
-
-<section class="tight" id="work-filters" aria-label="Filter by service category">
-  <div class="wrap">
-    <div class="work-filter-bar" role="tablist" aria-label="Project categories">
-      <button
-        class="work-filter-btn work-filter-btn--active"
-        role="tab"
-        aria-selected="true"
-        data-filter="all"
-        aria-controls="work-grid">
-        All
-        <span class="work-filter-count">5</span>
-      </button>
-      <button
-        class="work-filter-btn"
-        role="tab"
-        aria-selected="false"
-        data-filter="marketing-programs"
-        aria-controls="work-grid">
-        Marketing Programs
-        <span class="work-filter-count">3</span>
-      </button>
-      <button
-        class="work-filter-btn"
-        role="tab"
-        aria-selected="false"
-        data-filter="brand-essentials"
-        aria-controls="work-grid">
-        Brand Essentials
-        <span class="work-filter-count">2</span>
-      </button>
-    </div>
-  </div>
-</section>
-
-<section id="work-grid">
-  <div class="wrap">
-
-    <div class="dgrid feature-first" id="work-cards-grid">
-
-      <a
-        href="/work/anthology-marketing-programs/"
-        class="ditem work-card"
-        data-category="marketing-programs"
-        aria-label="A Web Documentary Unveiling Latin America's Unsung Educational Heroes Anthology - Marketing Programs">
-
-
-        <div class="eyebrow work-card-eyebrow" aria-hidden="true">
-          Marketing Programs
-        </div>
-
-        <h3>A Web Documentary Unveiling Latin America's Unsung Educational Heroes Anthology - Marketing Programs</h3>
-
-        <p>The Antología project brief was to create an inspiring marketing initiative to strengthen Latam partnerships and meet key business goals for the coming year.</p>
-
-        <div class="work-card-meta">
-          <span class="work-card-client">Doctums</span>
-          <span class="work-card-year">2026</span>
-        </div>
-
-      </a>
-      <a
-        href="/work/anthology-marketing-program/"
-        class="ditem work-card"
-        data-category="marketing-programs"
-        aria-label="A Web Documentary Unveiling Latin America's Unsung Educational Heroes Anthology - Marketing Programs">
-
-
-        <div class="eyebrow work-card-eyebrow" aria-hidden="true">
-          Marketing Programs
-        </div>
-
-        <h3>A Web Documentary Unveiling Latin America's Unsung Educational Heroes Anthology - Marketing Programs</h3>
-
-        <p>
-The Antología project brief was to create an inspiring marketing initiative to strengthen Latam partnerships and meet key business goals for the coming year.</p>
-
-        <div class="work-card-meta">
-          <span class="work-card-client">Doctums</span>
-          <span class="work-card-year">2026</span>
-        </div>
-
-      </a>
-      <a
-        href="/work/Edtech Marketing/"
-        class="ditem work-card"
-        data-category="brand-essentials"
-        aria-label="Edtech Marketing">
-
-
-        <div class="eyebrow work-card-eyebrow" aria-hidden="true">
-          Brand Essentials
-        </div>
-
-        <h3>Edtech Marketing</h3>
-
-        <p>Testing CMS</p>
-
-        <div class="work-card-meta">
-          <span class="work-card-client">Doctums</span>
-          <span class="work-card-year">2026</span>
-        </div>
-
-      </a>
-      <a
-        href="/work/ellucian-edtech-sessions-experience/"
-        class="ditem work-card"
-        data-category="brand-essentials"
-        aria-label="LACUC 2024 Ellucian-edTech Sessions Experience">
-
-
-        <div class="eyebrow work-card-eyebrow" aria-hidden="true">
-          Brand Essentials
-        </div>
-
-        <h3>LACUC 2024 Ellucian-edTech Sessions Experience</h3>
-
-        <p>Organizing a bold, immersive event blending Cartagena’s magic with Ellucian’s innovative vision for higher education. 2024 LAC User Conference.</p>
-
-        <div class="work-card-meta">
-          <span class="work-card-client">Doctums</span>
-          <span class="work-card-year">2026</span>
-        </div>
-
-      </a>
-      <a
-        href="/work/student-first/"
-        class="ditem work-card"
-        data-category="marketing-programs"
-        aria-label="Launch a revolutionary product in an established market. Student First - Brand Essentials">
-
-
-        <div class="eyebrow work-card-eyebrow" aria-hidden="true">
-          Marketing Programs
-        </div>
-
-        <h3>Launch a revolutionary product in an established market. Student First - Brand Essentials</h3>
-
-        <p>
-A brand lift, modern website, and strategic messaging empowers Student First to confidently navigate the challenges of the SIS market.</p>
-
-        <div class="work-card-meta">
-          <span class="work-card-client">Student First</span>
-          <span class="work-card-year">2025</span>
-        </div>
-
-      </a>
-
-    </div>
-
-    <p class="work-empty-state" id="work-empty-state" aria-live="polite" hidden>
-      No projects in this category yet.
+    <p class="text-body">
+      First-hand expertise, innovative conceptual thinking &
+      design, client-first approach.
     </p>
 
   </div>
 </section>
 
-<section class="ctaf lg">
-  <div class="wrap">
-<div class="eyebrow center" style="justify-content:center;margin-bottom:20px">Begin your journey to growth</div>    <h2>Begin your journey <em class="acc">to growth.</em></h2>
-    <a href="/lets-talk" class="btn-primary" style="margin:0 auto;display:inline-flex">
-      Book a strategy session
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
-  </div>
+<!-- =======================================================
+ FILTER PILLS
+======================================================= -->
+
+<section class="section section--pills">
+
+    <div class="container pills-container">
+
+        <div class="pills-wrap" id="pillsWrap">
+
+            <button
+                class="pill pill--active"
+                data-filter="all">
+                All
+            </button>
+
+            {% for category in categories %}
+
+            <button
+                class="pill"
+                data-filter="{{ category.value }}">
+
+                {{ category.label }}
+
+            </button>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
 </section>
 
+<!-- =======================================================
+ SLIDERS
+======================================================= -->
 
-</main>
+<section class="section section--sliders">
 
-<footer class="site" role="contentinfo">
-  <nav aria-label="Footer navigation">
-    <ul class="footer-nav-list">
-      <li class="footer-nav-item"><a href="/"                         class="footer-nav-link">Home</a></li>
-      <li class="footer-nav-item"><a href="/work"                     class="footer-nav-link">Work</a></li>
-      <li class="footer-nav-item"><a href="/edtech-marketing-agency"  class="footer-nav-link">Services</a></li>
-      <li class="footer-nav-item"><a href="/edtech-mentor-interviews" class="footer-nav-link">The EdTech Mentor</a></li>
-      <li class="footer-nav-item"><a href="/about"                    class="footer-nav-link">About</a></li>
-      <li class="footer-nav-item"><a href="/lets-talk"               class="footer-nav-link">Let's Talk!</a></li>
-      <li class="footer-nav-item"><a href="/about#careers"           class="footer-nav-link">Careers</a></li>
-    </ul>
-  </nav>
+<div
+class="sliders-container"
+id="slidersContainer">
 
-  <div class="footer-social-block">
-    <div class="footer-social-label">Social media</div>
-    <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
-  </div>
+{% for category in categories %}
 
-  <div class="footer-bottom-bar">
-    <img src="/assets/images/27zero-logo.svg" alt="27zero" style="height:22px;width:auto;display:block;">
-    <span style="font-size:12px;color:var(--graphite);">© 2026 27zero. All rights reserved.</span>
-    <span style="font-size:12px;color:var(--graphite);">Bogotá, Colombia · Granville, OH</span>
-  </div>
-</footer>
+<div
+class="slider-block"
+data-category="{{ category.value }}">
 
-<script>
-/* Nav: sticky white → purple pill on scroll */
-(function(){
-  var header = document.getElementById('site-header');
-  if(!header) return;
-  function tick(){ header.classList.toggle('nav-scrolled', window.scrollY > 60); }
-  window.addEventListener('scroll', tick, {passive:true});
-  tick();
-}());
+    <!-- HEADER -->
 
-/* Mobile menu */
-(function(){
-  var burger = document.getElementById('nav-burger-btn');
-  var menu   = document.getElementById('mobile-nav-menu');
-  var close  = document.getElementById('mobile-close-btn');
-  if(!burger||!menu||!close) return;
-  function open(){
-    menu.classList.add('is-open');
-    document.body.style.overflow='hidden';
-    burger.setAttribute('aria-expanded','true');
-    close.focus();
-  }
-  function shut(){
-    menu.classList.remove('is-open');
-    document.body.style.overflow='';
-    burger.setAttribute('aria-expanded','false');
-    burger.focus();
-  }
-  burger.addEventListener('click', open);
-  close.addEventListener('click', shut);
-  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') shut(); });
-}());
+    <div class="slider-header">
 
-/* Scroll reveal */
-(function(){
-  var rm = window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sel = '.pcard,.ditem,.look-item,.client-card,.apart-col,.mitem,.subitem,.cycle-step,.sec-head,.mentor-card-item,.work-card,.testi-slide';
-  var els = document.querySelectorAll(sel);
-  if(rm||!('IntersectionObserver' in window)){
-    els.forEach(function(el){ el.classList.add('reveal-init','in-view'); });
-    return;
-  }
-  els.forEach(function(el){ el.classList.add('reveal-init'); });
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
-    });
-  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-  els.forEach(function(el){ io.observe(el); });
-}());
-</script>
+        <h2 class="slider-title">
 
-<script>
-/**
- * Work index — client-side category filtering.
- *
- * All content is rendered server-side by Python/Jinja.
- * This script only handles show/hide interactions.
- * No arrays. No data. Pure DOM manipulation.
- */
-(function () {
-  'use strict';
+            {{ category.label }}
 
-  var filterBtns = document.querySelectorAll('[data-filter]');
-  var cards      = document.querySelectorAll('[data-category]');
-  var emptyState = document.getElementById('work-empty-state');
+        </h2>
 
-  if (!filterBtns.length || !cards.length) return;
+    </div>
 
-  function setFilter(value) {
-    // Update button states.
-    filterBtns.forEach(function (btn) {
-      var active = btn.dataset.filter === value;
-      btn.classList.toggle('work-filter-btn--active', active);
-      btn.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
+    <!-- TRACK -->
 
-    // Show / hide cards.
-    var visible = 0;
-    cards.forEach(function (card) {
-      var match = value === 'all' || card.dataset.category === value;
-      card.hidden = !match;
-      if (match) visible += 1;
-    });
+    <div class="slider-track-wrap">
 
-    // Show empty-state if nothing visible.
-    if (emptyState) {
-      emptyState.hidden = visible > 0;
-    }
+        <div class="slider-track">
 
-    // Restore feature-first layout when showing all.
-    // The CSS .dgrid.feature-first rule targets :first-child,
-    // but when cards are hidden the DOM order doesn't change —
-    // we just need to ensure the first *visible* card gets the class.
-    var grid = document.getElementById('work-cards-grid');
-    if (grid) {
-      var visibleCards = Array.from(cards).filter(function (c) { return !c.hidden; });
-      Array.from(cards).forEach(function (c) { c.classList.remove('work-card--first'); });
-      if (visibleCards.length > 0 && value === 'all') {
-        visibleCards[0].classList.add('work-card--first');
-      }
-    }
-  }
+{% for project in projects_by_category.get(category.value, []) %}
 
-  filterBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      setFilter(btn.dataset.filter);
-    });
-  });
+<a
+    href="/work/{{ project.slug }}/"
+    class="card card--work {% if project.featured %}card--featured{% else %}card--standard{% endif %}">
 
-  // Keyboard support for the tab role.
-  filterBtns.forEach(function (btn, idx) {
-    btn.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') {
-        filterBtns[(idx + 1) % filterBtns.length].focus();
-      } else if (e.key === 'ArrowLeft') {
-        filterBtns[(idx - 1 + filterBtns.length) % filterBtns.length].focus();
-      }
-    });
-  });
+    <!-- Thumbnail -->
 
-  // Mark initial first visible card for CSS.
-  setFilter('all');
-}());
-</script>
+    <div class="card-work-bg">
 
-</body>
-</html> -->
+        {% if project.thumbnailUrl %}
+
+        <img
+            src="{{ project.thumbnailUrl }}"
+            alt="{{ project.title }}"
+            loading="lazy">
+
+        {% else %}
+
+        <span>No image</span>
+
+        {% endif %}
+
+    </div>
+
+    <!-- Body -->
+
+    <div class="card-work-body">
+
+        <div class="card-work-content">
+
+            <span class="card-work-eyebrow">
+
+                {{ project.categoryLabel }}
+
+            </span>
+
+            <h3 class="card-work-title">
+
+                {{ project.title }}
+
+            </h3>
+
+            <div class="card-work-client">
+
+                {% if project.clientLogoUrl %}
+
+                <div class="card-work-client-logo">
+
+                    <img
+                        src="{{ project.clientLogoUrl }}"
+                        alt="{{ project.client }}">
+
+                </div>
+
+                {% endif %}
+
+                <span class="card-work-client-name">
+
+                    {{ project.client }}
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="card-work-footer">
+
+            <div class="card-work-arrow">
+
+                <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <line
+                        x1="7"
+                        y1="17"
+                        x2="17"
+                        y2="7"></line>
+
+                    <polyline
+                        points="7 7 17 7 17 17"></polyline>
+
+                </svg>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</a>
+
+{% endfor %}
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <div class="slider-footer">
+
+        <div class="slider-nav">
+
+            <button
+                class="slider-arrow"
+                data-dir="prev"
+                aria-label="Previous">
+
+                <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+
+                    <polyline points="12 19 5 12 12 5"></polyline>
+
+                </svg>
+
+            </button>
+
+            <button
+                class="slider-arrow"
+                data-dir="next"
+                aria-label="Next">
+
+                <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+
+                    <polyline points="12 5 19 12 12 19"></polyline>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+{{ cta_footer(
+    'Begin your journey <em>to growth.</em>',
+    large=True
+) }}
+
+<script src="/assets/js/work.js"></script>
+
+{% endblock %}
