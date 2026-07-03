@@ -2,108 +2,6 @@
 // 27zero — Work page
 // ============================
 
-const CATEGORIES = [
-  { id: 'los-mejores',               label: 'Los mejores',                cardType: 'featured'  },
-  { id: 'ux-ui-web-design',          label: 'Ux/Ui & Web Design',         cardType: 'standard'  },
-  { id: 'brand-messaging-strategy',  label: 'Brand & Messaging Strategy',  cardType: 'standard'  },
-  { id: 'events',                    label: 'Events',                      cardType: 'standard'  },
-  { id: 'content-marketing',         label: 'Content Marketing',           cardType: 'standard'  },
-  { id: 'marketing-programs',        label: 'Marketing Programs',          cardType: 'standard'  },
-  { id: 'thought-leadership-programs', label: 'Thought Leadership Programs', cardType: 'standard' },
-  { id: 'strategic-services',        label: 'Strategic Services',          cardType: 'standard'  },
-];
-
-const CARDS_PER_CATEGORY = 6;
-
-// ===== Card markup =====
-
-function createCardElement(category) {
-  const a = document.createElement('a');
-  a.href = '#';
-  a.className = `card card--work card--${category.cardType}`;
-
-  a.innerHTML = `
-    <div class="card-work-bg">
-      <span>[PROJECT THUMBNAIL]</span>
-    </div>
-    <div class="card-work-body">
-      <div class="card-work-content">
-        <span class="card-work-eyebrow">[${category.label.toUpperCase()}]</span>
-        <h3 class="card-work-title">[Project headline]</h3>
-        <div class="card-work-client">
-          <div class="card-work-client-logo"><span>CL</span></div>
-          <span class="card-work-client-name">[CLIENT NAME]</span>
-        </div>
-      </div>
-      <div class="card-work-footer">
-        <div class="card-work-arrow">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </div>
-      </div>
-    </div>
-  `;
-
-  return a;
-}
-
-// ===== Slider block markup =====
-
-function createSliderBlock(category) {
-  const block = document.createElement('div');
-  block.className = 'slider-block';
-  block.dataset.category = category.id;
-
-  // Header: solo título
-  const header = document.createElement('div');
-  header.className = 'slider-header';
-  header.innerHTML = `<h2 class="slider-title">${category.label}</h2>`;
-
-  // Track
-  const trackWrap = document.createElement('div');
-  trackWrap.className = 'slider-track-wrap';
-
-  const track = document.createElement('div');
-  track.className = 'slider-track';
-
-  for (let i = 0; i < CARDS_PER_CATEGORY; i++) {
-    track.appendChild(createCardElement(category));
-  }
-
-  trackWrap.appendChild(track);
-
-  // Footer: flechas abajo a la derecha
-  const footer = document.createElement('div');
-  footer.className = 'slider-footer';
-  footer.innerHTML = `
-    <div class="slider-nav">
-      <button class="slider-arrow" data-dir="prev" aria-label="Previous" disabled>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="19" y1="12" x2="5" y2="12"></line>
-          <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
-      </button>
-      <button class="slider-arrow" data-dir="next" aria-label="Next">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
-      </button>
-    </div>
-  `;
-
-  block.appendChild(header);
-  block.appendChild(trackWrap);
-  block.appendChild(footer);
-
-  enableSliderDrag(track);
-  enableSliderArrows(footer, track);
-
-  return block;
-}
-
 // ===== Drag (pointer events) =====
 
 function enableSliderDrag(track) {
@@ -173,16 +71,16 @@ function enableSliderArrows(footer, track) {
   window.addEventListener('resize', updateArrows);
 }
 
-// ===== Render sliders =====
+// ===== Wire interactions to Jinja-rendered DOM =====
 
 const slidersContainer = document.getElementById('slidersContainer');
 
-function renderAllSliders() {
-  slidersContainer.innerHTML = '';
-  CATEGORIES.forEach(cat => slidersContainer.appendChild(createSliderBlock(cat)));
-}
-
-renderAllSliders();
+document.querySelectorAll('.slider-block').forEach(block => {
+  const track  = block.querySelector('.slider-track');
+  const footer = block.querySelector('.slider-footer');
+  if (track)           enableSliderDrag(track);
+  if (track && footer) enableSliderArrows(footer, track);
+});
 
 // ===== Pills filtering =====
 
