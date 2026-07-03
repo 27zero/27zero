@@ -315,6 +315,12 @@ p, .text-body, a, .text-link {
   text-transform: uppercase;
 }
 
+.card-work-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .card-work-body {
   position: relative;
   z-index: 1;
@@ -357,6 +363,11 @@ p, .text-body, a, .text-link {
   letter-spacing: 0;
   color: var(--color-black);
   margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
 /* Client row ahora dentro de .card-work-content */
@@ -376,6 +387,12 @@ p, .text-body, a, .text-link {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.card-work-client-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .card-work-client-logo span {
