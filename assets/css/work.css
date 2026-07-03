@@ -125,7 +125,7 @@ p, .text-body, a, .text-link {
 
 .hero-container {
   gap: var(--space-xs);
-  padding-left: 13em;
+  /* padding-left: 13em; */
 }
 
 /* ===== Pills ===== */

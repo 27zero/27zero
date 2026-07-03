@@ -361,9 +361,21 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.27zero.agency/resources/anthology-marketing-programs/</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.27zero.agency/resources/how-edtech-companies-generate-qualified-pipeline/</loc>
     <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.27zero.agency/resources/anthology-marketing-programs/</loc>
+    <lastmod>2026-07-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
