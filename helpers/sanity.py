@@ -287,6 +287,10 @@ _WORK_DETAIL_PROJECTION = """
         "body":     solution.body
     },
     impact,
+    "thumbnail": {
+        "url": thumbnail.asset->url,
+        "alt": thumbnail.alt
+    },
     "heroImage": {
         "url": heroImage.asset->url,
         "alt": heroImage.alt
