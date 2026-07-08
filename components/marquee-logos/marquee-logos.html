@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marquee Logos — 27zero</title>
+<style>
+  :root {
+    --color-indigo: #440E92;
+    --color-purple: #B382F9;
+    --color-black:  #101010;
+    --color-gray:   #F5F5F5;
+    --color-white:  #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    background-color: var(--color-white);
+    padding: 6em 0;
+  }
+  @media (max-width: 767px) { body { font-size: 9px; } }
+</style>
+<link rel="stylesheet" href="/components/marquee-logos/marquee-logos.css">
+</head>
+<body>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <img class="marquee-logo" src="/assets/logos/doctums.svg" alt="Doctums">
+    <img class="marquee-logo" src="/assets/logos/scholarship-magic.svg" alt="Scholarship Magic">
+    <img class="marquee-logo" src="/assets/logos/skillwell.svg" alt="Skillwell">
+    <img class="marquee-logo" src="/assets/logos/student-first.svg" alt="Student First">
+    <img class="marquee-logo" src="/assets/logos/world-learning.svg" alt="World Learning">
+  </div>
+</div>
+
+<script src="/components/marquee-logos/marquee-logos.js"></script>
+</body>
+</html>
