@@ -1,0 +1,115 @@
+/* ============================
+   Cards Slider — 27zero
+   Extraído de /work (style.css). Agnóstico del tipo de slide: solo requiere que
+   cada hijo de .slider-track tenga la clase .card (work-card, edtech-mentor-card, etc).
+   ============================ */
+
+.slider-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* El header queda contenido al max-width con su padding */
+.slider-header {
+  padding-left: 6.5em;
+  padding-right: 6.5em;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.slider-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5em;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+/* Footer: flechas alineadas abajo a la derecha */
+.slider-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 6.5em;
+  padding-right: 6.5em;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.slider-nav {
+  display: flex;
+  gap: 0.75em;
+}
+
+.slider-arrow {
+  width: 2.85em;
+  height: 2.85em;
+  border-radius: 50%;
+  border: 0.07em solid var(--color-black);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-black);
+  transition: all 0.2s ease;
+}
+
+.slider-arrow:hover:not(:disabled) {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.slider-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ===== Track ===== */
+.slider-track-wrap {
+  width: 100%;
+}
+
+.slider-track {
+  display: flex;
+  gap: 1.5em;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  /* padding-left here (not on the wrap) so the scroll container spans the full
+     viewport width — cards clip at the screen edge on both left and right */
+  padding-left: max(6.5em, calc((99.5vw - 1440px) / 2 + 6.5em));
+  padding-right: 6.5em;
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-track.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+@media (max-width: 768px) {
+  .slider-header {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  .slider-title {
+    font-size: 20px;
+  }
+
+  .slider-footer {
+    display: none;
+  }
+
+  .slider-track {
+    padding-left: max(2em, calc((100vw - 1440px) / 2 + 2em));
+  }
+}
