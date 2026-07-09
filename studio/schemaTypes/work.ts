@@ -250,7 +250,102 @@ export default defineType({
 
     // ── SEO ───────────────────────────────────────────────────────────
 
+    // ── CMS detail page fields ───────────────────────────────────────
+    // Used by pages/work/work-cms/index.html
+
     defineField({
+      name: 'clientTagline',
+      title: 'Client Tagline',
+      type: 'string',
+      group: 'overview',
+      description: 'Short tagline shown under the client name on the detail page.',
+    }),
+
+    defineField({
+      name: 'contributions',
+      title: 'Contributions',
+      type: 'array',
+      group: 'case',
+      of: [{type: 'string'}],
+      options: {layout: 'tags'},
+      description: 'List of contributions/services delivered, shown as bullet list.',
+    }),
+
+    defineField({
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+      group: 'case',
+      description: 'e.g. "New York, USA"',
+    }),
+
+    defineField({
+      name: 'description',
+      title: 'Project Description',
+      type: 'blockContent',
+      group: 'case',
+      description: 'Full project description shown in the client info section.',
+    }),
+
+    defineField({
+      name: 'results',
+      title: 'Results',
+      type: 'array',
+      group: 'case',
+      of: [{
+        type: 'object',
+        fields: [
+          defineField({name: 'number',      title: 'Stat / Number', type: 'string',
+            description: 'e.g. "20%", "1K", "95%"'}),
+          defineField({name: 'description', title: 'Description',   type: 'text', rows: 2}),
+        ],
+        preview: {select: {title: 'number', subtitle: 'description'}},
+      }],
+      description: 'Up to 4 result stats shown in the Results section.',
+    }),
+
+    defineField({
+      name: 'testimonial',
+      title: 'Testimonial',
+      type: 'object',
+      group: 'case',
+      fields: [
+        defineField({name: 'quote',       title: 'Quote',              type: 'text', rows: 3}),
+        defineField({name: 'authorName',  title: 'Author Name',        type: 'string'}),
+        defineField({name: 'authorRole',  title: 'Author Role & Company', type: 'string'}),
+        defineField({
+          name: 'authorPhoto', title: 'Author Photo', type: 'image',
+          options: {hotspot: true},
+          fields: [defineField({name: 'alt', title: 'Alt text', type: 'string'})],
+        }),
+      ],
+    }),
+
+    defineField({
+      name: 'contentSections',
+      title: 'Content Sections',
+      type: 'array',
+      group: 'case',
+      of: [{
+        type: 'object',
+        fields: [
+          defineField({name: 'title',  title: 'Section Title', type: 'string'}),
+          defineField({name: 'body',   title: 'Body Text',     type: 'text', rows: 4}),
+          defineField({
+            name: 'images', title: 'Images', type: 'array',
+            of: [{
+              type: 'image',
+              options: {hotspot: true},
+              fields: [defineField({name: 'alt', title: 'Alt text', type: 'string'})],
+            }],
+          }),
+        ],
+        preview: {select: {title: 'title'}},
+      }],
+      description: 'Flexible content sections (sections 5–8 of the CMS detail page).',
+    }),
+
+        defineField({
       name: 'seoTitle',
       title: 'SEO Title',
       type: 'string',

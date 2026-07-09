@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Work CMS — 27zero</title>
+<title>{% if project.seoTitle %}{{ project.seoTitle }}{% else %}{{ project.title }} — Work — 27zero{% endif %}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600&display=swap" rel="stylesheet">
@@ -50,9 +50,13 @@
   <!-- 1. HERO -->
   <section class="section section--hero">
     <div class="container">
-      <h1>[Project Title]</h1>
+      <h1>{{ project.title }}</h1>
       <div class="placeholder placeholder--hero">
+        {% if project.heroUrl %}
+        <img src="{{ project.heroUrl }}" alt="{{ project.title }}" loading="lazy">
+        {% else %}
         <span>[Thumbnail]</span>
+        {% endif %}
       </div>
     </div>
   </section>
@@ -64,10 +68,16 @@
 
         <div class="client-meta">
           <div class="client-logo-wrap">
-            <div class="placeholder placeholder--logo"><span>[Logo]</span></div>
+            <div class="placeholder placeholder--logo">
+              {% if project.clientLogoUrl %}
+              <img src="{{ project.clientLogoUrl }}" alt="{{ project.client }}" loading="lazy">
+              {% else %}
+              <span>[Logo]</span>
+              {% endif %}
+            </div>
             <div class="client-name-wrap">
-              <span class="client-name">[Client Name]</span>
-              <span class="client-tagline">[Client Tagline]</span>
+              <span class="client-name">{{ project.client }}</span>
+              <span class="client-tagline">{{ project.clientTagline or "" }}</span>
             </div>
           </div>
 
@@ -75,23 +85,33 @@
             <div class="client-detail-group">
               <span class="detail-label">Contribution</span>
               <ul class="detail-list">
+                {% if project.contributions %}
+                {% for contribution in project.contributions %}
+                <li>{{ contribution }}</li>
+                {% endfor %}
+                {% else %}
                 <li>[Contribution 1]</li>
                 <li>[Contribution 2]</li>
                 <li>[Contribution 3]</li>
+                {% endif %}
               </ul>
             </div>
             <div class="client-detail-group">
               <span class="detail-label">Location</span>
-              <p>[City, Country]</p>
+              <p>{{ project.location or "[City, Country]" }}</p>
               <span class="detail-label">Year</span>
-              <p>[Year]</p>
+              <p>{{ project.year or "[Year]" }}</p>
             </div>
           </div>
         </div>
 
         <div class="client-content">
+          {% if body_html.description %}
+          {{ body_html.description|safe }}
+          {% else %}
           <p class="text-body">[Project description goes here. Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley.]</p>
           <p class="text-body">[It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software including versions of Lorem Ipsum.]</p>
+          {% endif %}
         </div>
 
       </div>
@@ -106,6 +126,14 @@
       <span class="text-eyebrow">Results</span>
 
       <div class="stats-grid">
+        {% if project.results %}
+        {% for stat in project.results %}
+        <div class="stat">
+          <span class="stat-number">{{ stat.number }}</span>
+          <p class="text-body">{{ stat.description }}</p>
+        </div>
+        {% endfor %}
+        {% else %}
         <div class="stat">
           <span class="stat-number">20%</span>
           <p class="text-body">[Lorem Ipsum is simply dummy text of the printing and typesetting industry.]</p>
@@ -122,11 +150,24 @@
           <span class="stat-number">25</span>
           <p class="text-body">[Lorem Ipsum is simply dummy text of the printing and typesetting industry.]</p>
         </div>
+        {% endif %}
       </div>
 
       <div class="grid-2col">
+        {% if gallery and gallery|length >= 1 %}
+        <div class="placeholder placeholder--lg">
+          <img src="{{ gallery[0].src }}" alt="{{ gallery[0].alt or project.title }}" loading="lazy">
+        </div>
+        {% else %}
         <div class="placeholder placeholder--lg"><span>[Thumbnail]</span></div>
+        {% endif %}
+        {% if gallery and gallery|length >= 2 %}
+        <div class="placeholder placeholder--lg">
+          <img src="{{ gallery[1].src }}" alt="{{ gallery[1].alt or project.title }}" loading="lazy">
+        </div>
+        {% else %}
         <div class="placeholder placeholder--lg"><span>[Thumbnail]</span></div>
+        {% endif %}
       </div>
     </div>
   </section>
@@ -150,13 +191,20 @@
 
         <!-- Col 3: quote + author -->
         <div class="testimonial-content">
-          <p class="testimonial-quote">[The quality of the design was impressive. We're looking forward to continue our collaboration with Excited.]</p>
+          {% set t = project.testimonial or {} %}
+          <p class="testimonial-quote">{{ t.get('quote') or "[The quality of the design was impressive. We're looking forward to continue our collaboration with Excited.]" }}</p>
           <hr class="divider divider--light">
           <div class="testimonial-author">
-            <div class="placeholder placeholder--avatar"><span>[Img]</span></div>
+            <div class="placeholder placeholder--avatar">
+              {% if project.authorPhotoUrl %}
+              <img src="{{ project.authorPhotoUrl }}" alt="{{ t.get('authorName') or '' }}" loading="lazy">
+              {% else %}
+              <span>[Img]</span>
+              {% endif %}
+            </div>
             <div>
-              <span class="author-name">[Author Name]</span>
-              <span class="author-role">[Author Role & Company]</span>
+              <span class="author-name">{{ t.get('authorName') or "[Author Name]" }}</span>
+              <span class="author-role">{{ t.get('authorRole') or "[Author Role & Company]" }}</span>
             </div>
           </div>
         </div>
@@ -166,39 +214,67 @@
   </section>
 
   <!-- 5. SECTION PURPLE -->
+  {% set s5 = project.contentSections[0] if project.contentSections and project.contentSections|length > 0 else {} %}
   <section class="section section--purple">
     <div class="container">
       <div class="section-content">
         <div class="split-intro">
-          <h2>[Section Title]</h2>
-          <p class="text-body">[Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London.]</p>
+          <h2>{{ s5.get('title') or "[Section Title]" }}</h2>
+          <p class="text-body">{{ s5.get('body') or "[Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London.]" }}</p>
         </div>
         <div class="grid-2col">
+          {% set imgs5 = s5.get('images') or [] %}
+          {% if imgs5 and imgs5|length >= 1 %}
+          <div class="placeholder placeholder--lg placeholder--white">
+            <img src="{{ imgs5[0].src }}" alt="{{ imgs5[0].alt or s5.get('title') or '' }}" loading="lazy">
+          </div>
+          {% else %}
           <div class="placeholder placeholder--lg placeholder--white"><span>[Thumbnail]</span></div>
+          {% endif %}
+          {% if imgs5 and imgs5|length >= 2 %}
+          <div class="placeholder placeholder--lg placeholder--white">
+            <img src="{{ imgs5[1].src }}" alt="{{ imgs5[1].alt or s5.get('title') or '' }}" loading="lazy">
+          </div>
+          {% else %}
           <div class="placeholder placeholder--lg placeholder--white"><span>[Thumbnail]</span></div>
+          {% endif %}
         </div>
       </div>
     </div>
   </section>
 
   <!-- 6. SECTION WHITE -->
+  {% set s6 = project.contentSections[1] if project.contentSections and project.contentSections|length > 1 else {} %}
   <section class="section">
     <div class="container">
       <div class="section-content">
         <div class="split-intro">
-          <h2>[Section Title]</h2>
-          <p class="text-body">[Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London.]</p>
+          <h2>{{ s6.get('title') or "[Section Title]" }}</h2>
+          <p class="text-body">{{ s6.get('body') or "[Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London.]" }}</p>
         </div>
         <div class="image-stack">
           <div class="grid-4col">
+            {% set imgs6 = s6.get('images') or [] %}
+            {% for idx in [0, 1, 2, 3] %}
+            {% if imgs6 and imgs6|length > idx %}
+            <div class="placeholder placeholder--sm">
+              <img src="{{ imgs6[idx].src }}" alt="{{ imgs6[idx].alt or '' }}" loading="lazy">
+            </div>
+            {% else %}
             <div class="placeholder placeholder--sm"><span>[Thumbnail]</span></div>
-            <div class="placeholder placeholder--sm"><span>[Thumbnail]</span></div>
-            <div class="placeholder placeholder--sm"><span>[Thumbnail]</span></div>
-            <div class="placeholder placeholder--sm"><span>[Thumbnail]</span></div>
+            {% endif %}
+            {% endfor %}
           </div>
           <div class="grid-2col">
+            {% for idx in [4, 5] %}
+            {% if imgs6 and imgs6|length > idx %}
+            <div class="placeholder placeholder--lg">
+              <img src="{{ imgs6[idx].src }}" alt="{{ imgs6[idx].alt or '' }}" loading="lazy">
+            </div>
+            {% else %}
             <div class="placeholder placeholder--lg"><span>[Thumbnail]</span></div>
-            <div class="placeholder placeholder--lg"><span>[Thumbnail]</span></div>
+            {% endif %}
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -206,41 +282,71 @@
   </section>
 
   <!-- 7. SECTION DARK -->
+  {% set s7 = project.contentSections[2] if project.contentSections and project.contentSections|length > 2 else {} %}
   <section class="section section--dark">
     <div class="container">
       <div class="section-content">
         <div class="split-intro">
-          <h2 class="text--light">[Section Title]</h2>
-          <p class="text-body text--light">[Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London.]</p>
+          <h2 class="text--light">{{ s7.get('title') or "[Section Title]" }}</h2>
+          <p class="text-body text--light">{{ s7.get('body') or "[Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London.]" }}</p>
         </div>
         <div class="image-stack">
           <div class="grid-2col">
+            {% set imgs7 = s7.get('images') or [] %}
+            {% for idx in [0, 1] %}
+            {% if imgs7 and imgs7|length > idx %}
+            <div class="placeholder placeholder--lg placeholder--white">
+              <img src="{{ imgs7[idx].src }}" alt="{{ imgs7[idx].alt or '' }}" loading="lazy">
+            </div>
+            {% else %}
             <div class="placeholder placeholder--lg placeholder--white"><span>[Thumbnail]</span></div>
-            <div class="placeholder placeholder--lg placeholder--white"><span>[Thumbnail]</span></div>
+            {% endif %}
+            {% endfor %}
           </div>
+          {% if imgs7 and imgs7|length > 2 %}
+          <div class="placeholder placeholder--xl placeholder--white">
+            <img src="{{ imgs7[2].src }}" alt="{{ imgs7[2].alt or '' }}" loading="lazy">
+          </div>
+          {% else %}
           <div class="placeholder placeholder--xl placeholder--white"><span>[Thumbnail]</span></div>
+          {% endif %}
         </div>
       </div>
     </div>
   </section>
 
   <!-- 8. SECTION INDIGO -->
+  {% set s8 = project.contentSections[3] if project.contentSections and project.contentSections|length > 3 else {} %}
   <section class="section section--indigo">
     <div class="container">
       <div class="section-content">
         <div class="split-intro">
-          <h2 class="text--light">[Section Title]</h2>
-          <p class="text-body text--light">[Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London.]</p>
+          <h2 class="text--light">{{ s8.get('title') or "[Section Title]" }}</h2>
+          <p class="text-body text--light">{{ s8.get('body') or "[Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London.]" }}</p>
         </div>
         <div class="image-stack">
           <div class="grid-3col">
+            {% set imgs8 = s8.get('images') or [] %}
+            {% for idx in [0, 1, 2] %}
+            {% if imgs8 and imgs8|length > idx %}
+            <div class="placeholder placeholder--sm placeholder--white">
+              <img src="{{ imgs8[idx].src }}" alt="{{ imgs8[idx].alt or '' }}" loading="lazy">
+            </div>
+            {% else %}
             <div class="placeholder placeholder--sm placeholder--white"><span>[Thumbnail]</span></div>
-            <div class="placeholder placeholder--sm placeholder--white"><span>[Thumbnail]</span></div>
-            <div class="placeholder placeholder--sm placeholder--white"><span>[Thumbnail]</span></div>
+            {% endif %}
+            {% endfor %}
           </div>
           <div class="grid-2col">
+            {% for idx in [3, 4] %}
+            {% if imgs8 and imgs8|length > idx %}
+            <div class="placeholder placeholder--lg placeholder--white">
+              <img src="{{ imgs8[idx].src }}" alt="{{ imgs8[idx].alt or '' }}" loading="lazy">
+            </div>
+            {% else %}
             <div class="placeholder placeholder--lg placeholder--white"><span>[Thumbnail]</span></div>
-            <div class="placeholder placeholder--lg placeholder--white"><span>[Thumbnail]</span></div>
+            {% endif %}
+            {% endfor %}
           </div>
         </div>
       </div>
