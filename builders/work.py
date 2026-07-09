@@ -110,9 +110,10 @@ class WorkBuilder(SectionBuilder):
         }
 
     def body_html(self, item: dict[str, Any]) -> dict[str, str]:
-        """Render the two portable-text fields used on the Work detail page."""
+        """Render portable-text fields used on the Work CMS detail page."""
         solution = item.get("solution") or {}
         return {
+            "description":   render_portable_text(item.get("description") or []),
             "challenge":     render_portable_text(item.get("challenge") or []),
             "solution_body": render_portable_text(solution.get("body") or []),
         }
