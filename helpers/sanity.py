@@ -270,16 +270,20 @@ _WORK_DETAIL_PROJECTION = """
     title,
     "slug": slug.current,
     client,
+    clientTagline,
     "clientLogo": {
         "url": clientLogo.asset->url,
         "alt": clientLogo.alt
     },
     category,
     services,
+    contributions,
+    location,
     industry,
     year,
     excerpt,
     featured,
+    description,
     brief,
     challenge,
     "solution": {
@@ -287,6 +291,27 @@ _WORK_DETAIL_PROJECTION = """
         "body":     solution.body
     },
     impact,
+    "results": results[]{
+        number,
+        description
+    },
+    "testimonial": {
+        "quote":      testimonial.quote,
+        "authorName": testimonial.authorName,
+        "authorRole": testimonial.authorRole,
+        "authorPhoto": {
+            "url": testimonial.authorPhoto.asset->url,
+            "alt": testimonial.authorPhoto.alt
+        }
+    },
+    "contentSections": contentSections[]{
+        title,
+        body,
+        "images": images[]{
+            "url": asset->url,
+            "alt": alt
+        }
+    },
     "thumbnail": {
         "url": thumbnail.asset->url,
         "alt": thumbnail.alt
