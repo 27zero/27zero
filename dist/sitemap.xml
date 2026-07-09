@@ -355,6 +355,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.27zero.agency/edtech-mentor-interviews/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.27zero.agency/edtech-mentor-interviews/edtech-mentor-interviews/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.27zero.agency/resources/anthology-marketing-programs/</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>monthly</changefreq>
@@ -368,6 +380,12 @@
   </url>
   <url>
     <loc>https://www.27zero.agency/resources/anthology-marketing-programs/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.27zero.agency/edtech-mentor-interviews/edtech-mentor-interviews/</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
