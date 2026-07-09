@@ -345,3 +345,56 @@ def get_work_categories() -> list[str]:
     if isinstance(result, list):
         return sorted(str(c) for c in result if c)
     return []
+
+
+# ---------------------------------------------------------------------------
+# Mentor interview queries
+# ---------------------------------------------------------------------------
+
+_MENTOR_PROJECTION = """
+    _id,
+    guestName,
+    guestCompany,
+    guestRole,
+    "slug": slug.current,
+    "guestPhoto": guestPhoto.asset->url,
+    series,
+    featured,
+    title,
+    excerpt,
+    body,
+    seoTitle,
+    seoDescription,
+    "ogImage": {
+        "url": ogImage.asset->url
+    }
+"""
+
+
+def get_mentor_interviews() -> list[dict]:
+    """
+    Fetch all EdTech Mentor interview documents.
+
+    Ordered: featured first, then alphabetically by guestName.
+    Corresponds to documents with _type == "interview".
+
+    Fields used by MentorBuilder:
+        guestName    — guest full name
+        guestCompany — guest company
+        guestRole    — guest role / title
+        slug         — URL slug (string, already resolved)
+        guestPhoto   — CDN URL of guest photo
+        series       — series key: "essencial" | "investor" | "founders"
+        featured     — bool: true for the featured card
+        title        — interview headline / episode title
+        excerpt      — short description shown on cards
+        seoTitle, seoDescription, ogImage — SEO fields
+    """
+    groq = f"""
+    *[_type == "interview" && defined(slug.current)]
+    | order(featured desc, guestName asc)
+    {{
+        {_MENTOR_PROJECTION}
+    }}
+    """
+    return _query(groq)

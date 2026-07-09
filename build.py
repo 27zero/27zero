@@ -49,11 +49,13 @@ from helpers.sanity import (
     get_resources,
     get_interviews,
     get_work_projects,
+    get_mentor_interviews,
 )
 
 from builders.pages   import build_pages
 from builders.posts   import build_posts, build_resources, build_interviews
 from builders.work    import WorkBuilder
+from builders.mentor  import MentorBuilder
 from builders.sitemap import build_sitemap
 from builders.rss     import build_rss
 
@@ -81,10 +83,11 @@ def build() -> None:
     resources  = get_resources()
     interviews = get_interviews()
     work       = get_work_projects()
+    mentors    = get_mentor_interviews()
 
     logger.info(
-        "Loaded: %d posts, %d resources, %d interviews, %d work projects",
-        len(posts), len(resources), len(interviews), len(work),
+        "Loaded: %d posts, %d resources, %d interviews, %d work projects, %d mentor interviews",
+        len(posts), len(resources), len(interviews), len(work), len(mentors),
     )
 
     # ── Step 2: Clear and recreate dist/ ────────────────────────────────
@@ -118,11 +121,16 @@ def build() -> None:
     work_builder = WorkBuilder()
     n_work = work_builder.build(env, work)
 
+    logger.info("\nBuilding EdTech Mentor section...")
+    mentor_builder = MentorBuilder()
+    n_mentor = mentor_builder.build(env, mentors)
+
     # section_builders is the list of (builder_instance, items) pairs that
     # the sitemap uses to collect URLs.  Add new sections here as they are
     # built — that is the only change required to the sitemap.
     section_builders = [
-        (work_builder, work),
+        (work_builder,   work),
+        (mentor_builder, mentors),
     ]
 
     # ── Step 7: Sitemap ───────────────────────────────────────────────────
@@ -144,12 +152,12 @@ def build() -> None:
     shutil.copytree(ASSETS_DIR, os.path.join(DIST_DIR, "assets"), dirs_exist_ok=True)
 
     # ── Summary ───────────────────────────────────────────────────────────
-    total_dynamic = n_posts + n_resources + n_interviews + n_work
+    total_dynamic = n_posts + n_resources + n_interviews + n_work + n_mentor
     logger.info(
         "\nDone — %d static + %d CMS pages "
-        "(%d posts, %d resources, %d interviews, %d work)",
+        "(%d posts, %d resources, %d interviews, %d work, %d mentor)",
         n_pages, total_dynamic,
-        n_posts, n_resources, n_interviews, n_work,
+        n_posts, n_resources, n_interviews, n_work, n_mentor,
     )
 
 
