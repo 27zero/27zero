@@ -14,7 +14,7 @@ function enableSliderDrag(track) {
     track.classList.add('dragging');
     startX  = e.pageX;
     startSL = track.scrollLeft;
-    track.setPointerCapture(e.pointerId);
+    // track.setPointerCapture(e.pointerId);
   });
 
   track.addEventListener('pointermove', (e) => {
