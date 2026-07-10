@@ -1,0 +1,632 @@
+/* ============================
+   27zero — EdTech Mentor CMS page (blog article template)
+   ============================ */
+
+:root {
+  --color-indigo:   #440E92;
+  --color-purple:   #B382F9;
+  --color-black:    #000000;
+  --color-black-ui: #101010;
+  --color-gray:     #F5F5F5;
+  --color-gray-mid: #D9D9D9;
+  --color-white:    #FFFFFF;
+
+  --space-xs:  0.5em;
+  --space-sm:  1.5em;
+  --space-md:  3.5em;
+  --space-lg:  6em;
+  --space-xl:  9em;
+  --space-2xl: 14em;
+
+  /* Page-specific tokens */
+  --spacing-section: 6.5em;
+  --spacing-block:   3em;
+  --article-width:   50em;    /* ~700px — ancho de lectura cómodo para el body del artículo */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-white);
+  color: var(--color-black-ui);
+}
+
+/* ===== Botones — base .btn requerida por .btn-nav del navbar ===== */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.85em 1.7em;
+  border-radius: 5.2em;
+  border: 0.05em solid transparent;
+  font-family: 'Lora', serif;
+  font-size: 1.15em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* ===== Layout base ===== */
+.section {
+  padding-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 6.5em;
+  padding-right: 6.5em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-block);
+}
+
+/* El body del artículo ocupa todo el ancho del container, con su propio padding lateral */
+.container--article {
+  padding-left: 40px;
+  padding-right: 40px;
+  gap: 90px;
+}
+
+/* ===== Hero — bg-image (placeholder gris = imagen de fondo vía CMS) =====
+   Valores de padding/margin/tamaños tomados literalmente del spec en px
+   (no em), tal como fueron entregados. */
+.section--hero-cms {
+  background-color: var(--color-gray-mid);
+  background-size: cover;
+  background-position: center;
+  margin-top: 220px;
+  padding-top: 40px;
+  padding-bottom: 100px;
+}
+
+.hero-cms-container {
+  gap: 40px;
+}
+
+/* ===== Article — bloques de texto sobre fondo gris ===== */
+.section--article-cms {
+  background-color: #D9D9D9;
+  padding-top: 70px;
+  padding-bottom: 45px;
+}
+
+.text-block {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.text-block--full {
+  max-width: 90%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.text-block > h2 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 36px;
+  line-height: 125%;
+  letter-spacing: -0.36px; /* -1% de 36px */
+  color: var(--color-black-ui);
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.text-block > h2:first-child {
+  margin-top: 0;
+}
+
+.text-block > p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  letter-spacing: 0px;
+  color: var(--color-black-ui);
+  margin-bottom: 24px;
+}
+
+.text-block > p:last-child {
+  margin: 0;
+}
+
+/* ===== Pearl of wisdom — highlight box dentro del bloque de texto ===== */
+.pearl-box {
+  width: 100%;
+  background-color: var(--color-purple);
+  border-radius: 10px;
+  padding: 60px 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.pearl-title {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 36px;
+  line-height: 125%;
+  letter-spacing: -0.36px;
+  color: var(--color-black-ui);
+}
+
+.pearl-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  letter-spacing: 0px;
+  color: var(--color-black-ui);
+}
+
+/* ===== Cierre del artículo — divider + texto con links ===== */
+.article-divider {
+  border: none;
+  border-top: 1px solid #000;
+  width: 100%;
+}
+
+.article-closing {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  letter-spacing: 0px;
+  color: var(--color-black-ui);
+}
+
+.article-closing-link {
+  color: var(--color-purple);
+  text-decoration: underline;
+}
+
+.hero-cms-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.hero-cms-avatar {
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: var(--color-gray-mid);
+  border: 1px solid rgba(16, 16, 16, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-cms-avatar span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.79em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-black-ui);
+  opacity: 0.35;
+}
+
+/* ===== Breadcrumb ===== */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: 'Inter', sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-black-ui);
+  opacity: 0.55;
+}
+
+.breadcrumb-link {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 160%;
+  letter-spacing: 0px;
+  color: #000;
+  opacity: 1;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 0%;
+  text-underline-offset: 0%;
+}
+
+.breadcrumb-link:hover {
+  color: var(--color-indigo);
+}
+
+.breadcrumb-current {
+  font-size: 17px;
+  opacity: 1;
+}
+
+.breadcrumb-separator {
+  display: inline-block;
+}
+
+/* ===== Author name ===== */
+.hero-cms-author-name {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 36px;
+  line-height: 140%;
+  letter-spacing: 0px;
+  color: var(--color-black-ui);
+}
+
+/* ===== H1 / Headline — scoped a .section--hero-cms ===== */
+.section--hero-cms h1 {
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 125%;
+  letter-spacing: -0.48px; /* -1% de 48px */
+  color: var(--color-black-ui);
+}
+
+/* ===== Buttons part ===== */
+.hero-cms-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.hero-cms-btn {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.hero-cms-btn:hover {
+  background-color: transparent;
+  color: var(--color-black-ui);
+  border-color: var(--color-black-ui);
+}
+
+/* ===== Text body — clase reutilizable para párrafos de la página ===== */
+.text-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--color-black-ui);
+}
+
+/* ===== Featured — imagen + resumen + highlight ===== */
+.section--featured-cms {
+  background-color: var(--color-white);
+  padding-top: 90px;
+  padding-bottom: 110px;
+}
+
+.container--featured {
+  gap: 115px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 45px;
+  align-items: start;
+}
+
+.featured-highlight {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 36px;
+  line-height: 150%;
+  letter-spacing: 0px;
+  text-align: center;
+  color: var(--color-purple);
+}
+
+/* ===== Rapid fire questions — intro + chat de preguntas/respuestas ===== */
+.section--rapid-fire-cms {
+  background-color: var(--color-white);
+  padding-top: 4.29em;
+  padding-bottom: 4.29em;
+}
+
+.rapid-fire-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5em;
+  align-items: stretch;
+}
+
+.rapid-fire-intro {
+  display: flex;
+  flex-direction: column;
+}
+
+.rapid-fire-title {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 2.57em;
+  line-height: 125%;
+  letter-spacing: -0.36px;
+  color: var(--color-black-ui);
+  margin-bottom: 2.29em;
+}
+
+.rapid-fire-intro .text-body {
+  margin-bottom: 4.29em;
+}
+
+.placeholder--rapid-fire {
+  flex: 1;
+}
+
+.rapid-fire-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 2.29em;
+}
+
+.chat-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 1.21em;
+}
+
+.chat-row {
+  display: flex;
+}
+
+.chat-row--question {
+  justify-content: flex-start;
+}
+
+.chat-row--answer {
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.86em;
+}
+
+.chat-bubble {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 1.4;
+  padding: 1em 2.29em;
+  border-radius: 50em;
+}
+
+.chat-bubble--question {
+  background-color: var(--color-purple);
+  color: var(--color-black-ui);
+}
+
+.chat-bubble--answer {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.chat-bubble--answer-long {
+  border-radius: 5em;
+  text-align: center;
+  max-width: 80%;
+}
+
+.chat-avatar {
+  width: 3.43em;
+  height: 3.43em;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: var(--color-gray-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-avatar span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-black-ui);
+  opacity: 0.35;
+}
+
+/* ===== Botón blanco — outline negro, hover fondo negro (base sitewide) ===== */
+.btn-white {
+  background-color: var(--color-white);
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+
+.btn-white:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+/* ===== Text body sm — clase reutilizable para subtítulos ===== */
+.text-body--sm {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.07em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+/* ===== Read more! — igual a .section--essential-mentor de /edtech-mentor,
+   slider embebido sin título con las cards de edtech-mentor-card ===== */
+.section--read-more-cms {
+  background-color: var(--color-indigo);
+  color: var(--color-white);
+  padding-top: 6.86em;
+  padding-bottom: 6.86em;
+}
+
+.read-more-container {
+  gap: var(--space-sm);
+}
+
+.section--read-more-cms h2 {
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.57em;
+  line-height: 1.25;
+  letter-spacing: -0.36px;
+}
+
+.read-more-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.section--read-more-cms .btn-white {
+  background-color: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-indigo);
+}
+
+.section--read-more-cms .btn-white:hover {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.section--read-more-cms .sliders-container {
+  padding-top: 7.14em;
+}
+
+.section--read-more-cms .slider-arrow {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.section--read-more-cms .slider-arrow:hover:not(:disabled) {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+/* ===== Placeholder de imagen (mismo patrón que work-cms) ===== */
+.placeholder {
+  background-color: var(--color-gray-mid);
+  border-radius: 0.57em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.placeholder span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.93em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-black-ui);
+  opacity: 0.35;
+}
+
+.placeholder--featured { height: 100%; min-height: 28em; }
+.placeholder--inline   { height: 22em; }
+
+/* ============================
+   Mobile — max-width: 768px
+   Esta página solo importa navbar y footer (sin componentes de card
+   con h2/h3 internos), pero igual se mantiene el heading del hero
+   scoped a `.section--hero-cms h1` (nunca tag global) para evitar
+   cualquier conflicto si a futuro se integran componentes como
+   edtech-mentor-card.
+   ============================ */
+
+@media (max-width: 768px) {
+  body { font-size: 9px; }
+
+  .container {
+    padding-left: 2em;
+    padding-right: 2em;
+    gap: var(--space-md);
+  }
+
+  .text-block,
+  .text-block--full {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .section--hero-cms {
+    margin-top: 96px;
+    padding-top: 96px;
+    padding-bottom: 130px;
+  }
+
+  .hero-cms-avatar { width: 84px; height: 84px; }
+
+  .hero-cms-author-name { font-size: 24px; }
+
+  .section--hero-cms h1 { font-size: 32px; }
+
+  .hero-cms-buttons {
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  .placeholder--featured { height: 16em; }
+  .placeholder--inline   { height: 12em; }
+  .placeholder span { font-size: 11px; }
+
+  .featured-grid { grid-template-columns: 1fr; }
+  .text-body { font-size: 13px; }
+  .featured-highlight { font-size: 24px; }
+
+  .text-block > h2 { font-size: 24px; }
+  .text-block > p { font-size: 14px; }
+
+  .pearl-title { font-size: 24px; }
+  .pearl-text { font-size: 14px; }
+  .pearl-box { padding: 62px 2em; }
+
+  .article-closing { font-size: 14px; }
+
+  .rapid-fire-container { grid-template-columns: 1fr; }
+  .rapid-fire-title { font-size: 24px; }
+  .placeholder--rapid-fire { height: 16em; flex: none; }
+
+  .chat-bubble { font-size: 14px; }
+  .chat-avatar { width: 50px; height: 50px; }
+
+  .section--read-more-cms h2 { font-size: 24px; }
+  .section--read-more-cms { padding-bottom: 4.5em; }
+  .read-more-actions { flex-direction: column; align-items: baseline; }
+  .text-body--sm { font-size: 13px; }
+
+  .breadcrumb { font-size: 12px; }
+  .breadcrumb-link,
+  .breadcrumb-current { font-size: 10px; }
+
+  .btn { font-size: 13px; }
+}
