@@ -5,7 +5,7 @@ import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'Create new project',
+  title: '27zero-cms',
 
   projectId: 'qjn4zzjc',
   dataset: 'production',
