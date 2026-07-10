@@ -1,0 +1,246 @@
+/* ============================
+   Navbar — 27zero
+   Requiere las variables globales de :root (colores, spacing)
+   definidas en /design-system.md
+   ============================ */
+
+/* Wrapper fijo — sin fondo */
+.nav {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0;
+  padding-left: 3.25em;
+  padding-right: 3.25em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+/* Contenedor visual con fondo y border-radius */
+.nav-container {
+  border-radius: 1.25em;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.15em 3.25em;
+  gap: 2em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-logo img {
+  height: 1.71em;
+  display: block;
+  transition: filter 0.2s ease;
+}
+
+/* Links centrados entre logo y botón */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+.nav-links a {
+  font-size: 1.15em;
+  font-weight: 500;
+  line-height: 1.25em;
+  padding: 0;
+  text-decoration: none;
+  transition: font-weight 0.2s ease;
+}
+
+/* Hover: links se ponen bold */
+.nav-links a:hover {
+  font-weight: 700;
+}
+
+/* ─── Variante TOP WHITE — fondo blanco, texto/logo negro ─── */
+.nav--white .nav-container {
+  background-color: transparent;
+  color: var(--color-black);
+}
+.nav--white .nav-links a {
+  color: var(--color-black);
+}
+.nav--white .nav-links a:hover {
+  color: var(--color-black);
+  font-weight: 700;
+}
+
+/* ─── Variante TOP BLACK — fondo negro, texto/logo blanco ─── */
+.nav--black .nav-container {
+  background-color: transparent;
+  color: var(--color-white);
+}
+.nav--black .nav-links a {
+  color: var(--color-white);
+}
+.nav--black .nav-links a:hover {
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+/* ─── Variante SCROLLED (indigo) — fondo indigo, todo blanco ─── */
+/* Se aplica vía JS al pasar 50px de scroll, sin importar si el estado inicial era white o black */
+.nav--scrolled .nav-container {
+  background-color: var(--color-indigo);
+  color: var(--color-white);
+}
+.nav--scrolled .nav-links a {
+  color: var(--color-white);
+}
+.nav--scrolled .nav-links a:hover {
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+/* Logo invertido solo en estado scrolled */
+.nav--scrolled .nav-logo {
+  filter: invert(1);
+}
+
+/* ─── Botón exclusivo del navbar (usa .btn como base) ─── */
+/* nav--white: outline negro, texto negro, hover filled negro */
+.btn-nav {
+  background-color: transparent;
+  border: 0.05em solid var(--color-black);
+  color: var(--color-black);
+}
+.btn-nav:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+/* nav--black: outline blanco, texto blanco, hover filled blanco texto negro */
+.nav--black .btn-nav {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+.nav--black .btn-nav:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+
+/* nav--scrolled: outline blanco, texto blanco, hover filled blanco texto indigo */
+.nav--scrolled .btn-nav {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+.nav--scrolled .btn-nav:hover {
+  background-color: var(--color-white);
+  color: var(--color-indigo);
+  border-color: var(--color-white);
+}
+
+/* ============================
+   Mobile (<=767px)
+   Esconde .nav-links y .btn-nav, muestra el hamburger + mobile menu
+   ============================ */
+
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 2.5em;
+  height: 2.5em;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav-hamburger-icon {
+  width: 2.5em;
+  height: 2.5em;
+}
+
+/* El SVG del lottie viene en negro fijo — se invierte en variantes oscuras, igual que el logo */
+.nav--black .nav-hamburger-icon svg,
+.nav--scrolled .nav-hamburger-icon svg {
+  filter: invert(1);
+}
+
+/* Dropdown — estilo fijo, no cambia con la variante del nav (white/black/scrolled) */
+.nav-mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-width: 90%;
+  margin: 0.5em auto 0;
+  border-radius: 1.25em;
+  padding: 2em 3.25em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 0.05em solid rgba(16, 16, 16, 0.25);
+  box-shadow: 0 0.3em 1em rgba(16, 16, 16, 0.08);
+  opacity: 0;
+  transform: translateY(-0.5em);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav-mobile-menu.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.nav-mobile-links a {
+  color: var(--color-black);
+  font-size: 2em;
+  font-weight: 400;
+  text-decoration: none;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-mobile-links a:hover {
+  font-weight: 700;
+}
+
+/* El botón dentro del dropdown mobile siempre usa el estilo outline negro (default),
+   sin importar la variante activa del .nav — coherente con el fondo blanco fijo del menú */
+.nav-mobile-menu .btn-nav {
+  align-self: flex-start;
+  background-color: transparent;
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+.nav-mobile-menu .btn-nav:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+@media (max-width: 767px) {
+  .nav {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+  .nav-links,
+  .nav-container > .btn-nav {
+    display: none;
+  }
+  .nav-hamburger {
+    display: flex;
+  }
+}

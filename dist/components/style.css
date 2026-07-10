@@ -1,0 +1,166 @@
+/* ============================
+   27zero — Components (Kitchen Sink)
+   Preview visual de todos los componentes. Cada componente vive
+   en su propia carpeta (/components/[componente]/) y se importa aquí.
+   ============================ */
+
+:root {
+  --color-indigo: #440E92;
+  --color-purple: #B382F9;
+  --color-black:  #101010;
+  --color-gray:   #F5F5F5;
+  --color-white:  #FFFFFF;
+
+  --space-xs:  0.5em;
+  --space-sm:  1.5em;
+  --space-md:  3em;
+  --space-lg:  6em;
+  --space-xl:  9em;
+  --space-2xl: 14em;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+@media (max-width: 767px) {
+  body { font-size: 9px; }
+}
+
+/* ===== Typography ===== */
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 3.45em;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h5 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86em;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+p, .text-body, a, .text-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.lora {
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 3.56em;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.09px;
+  }
+  h5 {
+    font-size: 1.56em;
+    line-height: 1.5;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  p, .text-body, a, .text-link {
+    font-size: 1.89em;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+}
+
+/* ===== Layout primitives ===== */
+.section {
+  padding-top: 6.5em;
+  padding-bottom: 6.5em;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 6.5em;
+  padding-right: 6.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.85em 1.7em;
+  border-radius: 5.2em;
+  border: 0.05em solid transparent;
+  font-family: 'Lora', serif;
+  font-size: 1.15em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* ===== Menú de navegación (página components) ===== */
+.section--components-menu {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.components-menu-container {
+  gap: var(--space-md);
+}
+
+.components-menu-logo img {
+  height: 2.5em;
+  display: block;
+}
+
+.components-menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.components-menu-item {
+  padding: 0.75em 0;
+  font-size: 1.75em;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+  color: var(--color-black);
+  text-decoration: none;
+  border-top: 1px solid var(--color-black);
+  transition: all 0.2s ease;
+}
+
+.components-menu-item:last-child {
+  border-bottom: 1px solid var(--color-black);
+}
+
+.components-menu-item:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding-left: 0.5em;
+}

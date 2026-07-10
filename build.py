@@ -149,7 +149,31 @@ def build() -> None:
     build_rss(posts=posts, resources=resources)
 
     # ── Step 9: Copy static assets ───────────────────────────────────────
+    # Category 1: global assets (CSS, JS, images, videos, fonts)
     shutil.copytree(ASSETS_DIR, os.path.join(DIST_DIR, "assets"), dirs_exist_ok=True)
+
+    # Category 2: shared component assets
+    # Serves /components/navbar/navbar.css, navbar.js, hamburger-menu-animation.json
+    # (the JSON is fetched at runtime by navbar.js), footer/footer.css,
+    # work-card/work-card.css, edtech-mentor-card/edtech-mentor-card.css,
+    # featured-card/featured-card.css, cards-slider/cards-slider.css, cards-slider.js
+    _components_src = os.path.join(os.path.dirname(os.path.abspath(__file__)), "components")
+    shutil.copytree(_components_src, os.path.join(DIST_DIR, "components"), dirs_exist_ok=True)
+
+    # Category 3: page-level static files consumed directly by the browser.
+    # These live under pages/ alongside their Jinja templates but are NOT
+    # rendered by Jinja — they must be copied verbatim to dist/.
+    _page_assets = [
+        # /resources/script.js
+        (os.path.join(PAGES_DIR, "resources", "script.js"),
+         os.path.join(DIST_DIR, "resources", "script.js")),
+        # /edtech-mentor-cms/script.js
+        (os.path.join(PAGES_DIR, "edtech-mentor", "edtech-mentor-cms", "script.js"),
+         os.path.join(DIST_DIR, "edtech-mentor-cms", "script.js")),
+    ]
+    for _src, _dst in _page_assets:
+        os.makedirs(os.path.dirname(_dst), exist_ok=True)
+        shutil.copy2(_src, _dst)
 
     # ── Summary ───────────────────────────────────────────────────────────
     total_dynamic = n_posts + n_resources + n_interviews + n_work + n_mentor
