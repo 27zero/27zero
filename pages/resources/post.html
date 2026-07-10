@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if post.seoTitle %}{{ post.seoTitle }}{% else %}{{ post.title }} — Resources — 27zero{% endif %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/resources.css">
+<link rel="stylesheet" href="/components/navbar/navbar.css">
+<link rel="stylesheet" href="/components/footer/footer.css">
+</head>
+<body>
+
+<header class="nav nav--white">
+  <div class="nav-container">
+    <a href="/" class="nav-logo">
+      <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg" alt="27zero">
+    </a>
+    <nav class="nav-links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing">Edtech Marketing</a>
+      <a href="/the-edtech-mentor">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/contact" class="btn btn-nav">Let's Talk!</a>
+    <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <div class="nav-hamburger-icon"></div>
+    </button>
+  </div>
+  <div class="nav-mobile-menu" id="navMobileMenu">
+    <nav class="nav-mobile-links">
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing">Edtech Marketing</a>
+      <a href="/the-edtech-mentor">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </nav>
+    <a href="/contact" class="btn btn-nav">Let's Talk!</a>
+  </div>
+</header>
+
+<!-- ARTICLE HERO -->
+<section class="section section--resources-hero">
+  <div class="container">
+    <div class="hero-resources-header">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/" class="breadcrumb-link">Home</a>
+        <span class="breadcrumb-separator">&gt;</span>
+        <a href="/resources/" class="breadcrumb-link">Resources</a>
+        <span class="breadcrumb-separator">&gt;</span>
+        <span class="breadcrumb-current">{{ post.title }}</span>
+      </nav>
+      <h1>{{ post.title }}</h1>
+      {% if post.excerpt %}
+      <p class="text-body">{{ post.excerpt }}</p>
+      {% endif %}
+    </div>
+
+    <div class="card--resource-featured">
+      <div class="card-resource-featured-image">
+        {% if post.featuredImage and post.featuredImage.url %}
+        <img src="{{ post.featuredImage.url }}"
+             alt="{{ post.featuredImage.alt or post.title }}"
+             loading="lazy">
+        {% endif %}
+      </div>
+      <div class="card-resource-featured-content">
+        {% if post.publishedAt %}
+        <span class="card-resource-date">{{ post.publishedAt[:10] }}</span>
+        {% endif %}
+        {% if post.author and post.author.name %}
+        <span class="card-resource-date">{{ post.author.name }}{% if post.author.role %} · {{ post.author.role }}{% endif %}</span>
+        {% endif %}
+        {% if post.categories %}
+        <div class="card-resource-categories">
+          {% for cat in post.categories %}
+          <span class="card-resource-category">{{ cat.title }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<section class="section section--resources-grid">
+  <div class="container">
+    <div class="article-body">
+      {{ body_html|safe }}
+    </div>
+
+    {% if post.author and post.author.name %}
+    <div class="card-resource-item" style="margin-top:3em;padding-top:2em;border-top:1px solid rgba(16,16,16,0.12);">
+      <div class="card-resource-body">
+        {% if post.author.photo %}
+        <img src="{{ post.author.photo }}"
+             alt="{{ post.author.name }}"
+             loading="lazy"
+             style="width:52px;height:52px;border-radius:50%;object-fit:cover;">
+        {% endif %}
+        <h4 class="card-resource-title">{{ post.author.name }}</h4>
+        {% if post.author.role %}
+        <p class="card-resource-desc">{{ post.author.role }}</p>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-top">
+      <a href="/" class="footer-logo">
+        <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg" alt="27zero">
+      </a>
+
+      <nav class="footer-links">
+        <div class="footer-links-col">
+          <a href="/">Home</a>
+          <a href="/work">Work</a>
+          <a href="/services">Services</a>
+          <a href="/about">About</a>
+        </div>
+        <div class="footer-links-col">
+          <a href="/the-edtech-mentor">The EdTech Mentor</a>
+          <a href="/careers">Careers</a>
+          <a href="/contact">Let's Talk!</a>
+        </div>
+        <div class="footer-links-col">
+          <a href="https://linkedin.com" target="_blank" rel="noopener">Linkedin</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">2025 27zero. All rights reserved.</span>
+      <a href="/privacy" class="footer-legal">Privacy Security Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+<script src="/components/navbar/navbar.js"></script>
+<script src="/resources/script.js" defer></script>
+</body>
+</html>
