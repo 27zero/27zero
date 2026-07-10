@@ -42,6 +42,12 @@
   </div>
 </header>
 
+{% set all_resources = (posts or []) + (resources or []) %}
+{% if all_resources %}
+{% set featured = all_resources[0] %}
+{% set featured_slug = featured.slug.current if featured.slug is mapping else featured.slug %}
+{% endif %}
+
 <!-- INTRO + FEATURED CARD -->
 <section class="section section--resources-hero">
   <div class="container">
@@ -50,98 +56,66 @@
       <p class="text-body">Resources built from real campaigns, real strategies, and real results.</p>
     </div>
 
+    {% if all_resources %}
     <div class="card--resource-featured">
-      <div class="card-resource-featured-image"></div>
+      <div class="card-resource-featured-image">
+        {% if featured.featuredImage and featured.featuredImage.url %}
+        <img src="{{ featured.featuredImage.url }}"
+             alt="{{ featured.featuredImage.alt or featured.title or '' }}"
+             loading="lazy">
+        {% endif %}
+      </div>
       <div class="card-resource-featured-content">
-        <span class="card-resource-date">June 19, 2026</span>
-        <h3 class="card-resource-featured-title">EdTech Marketing Agency</h3>
-        <p class="card-resource-featured-desc">Education technology is transforming how learners, educators, and institutions engage with knowledge.</p>
-        <a href="#" class="btn btn-purple">Read article</a>
+        {% if featured.publishedAt %}
+        <span class="card-resource-date">{{ featured.publishedAt[:10] }}</span>
+        {% endif %}
+        <h3 class="card-resource-featured-title">{{ featured.title or '' }}</h3>
+        {% if featured.heroDescription or featured.excerpt %}
+        <p class="card-resource-featured-desc">{{ featured.heroDescription or featured.excerpt }}</p>
+        {% endif %}
+        <a href="/resources/{{ featured_slug }}/" class="btn btn-purple">Read article</a>
       </div>
     </div>
+    {% endif %}
+
   </div>
 </section>
 
 <!-- GRID DE RESOURCE CARDS -->
+{% if all_resources|length > 1 %}
 <section class="section section--resources-grid">
   <div class="container">
     <div class="resources-grid">
 
+      {% for resource in all_resources[1:] %}
+      {% set resource_slug = resource.slug.current if resource.slug is mapping else resource.slug %}
       <div class="card-resource-item">
         <div class="card--resource">
-          <div class="card-resource-image"></div>
+          <div class="card-resource-image">
+            {% if resource.featuredImage and resource.featuredImage.url %}
+            <img src="{{ resource.featuredImage.url }}"
+                 alt="{{ resource.featuredImage.alt or resource.title or '' }}"
+                 loading="lazy">
+            {% endif %}
+          </div>
         </div>
         <div class="card-resource-body">
-          <span class="card-resource-date">June 19, 2026</span>
-          <h4 class="card-resource-title">What should I look for when choosing an EdTech marketing</h4>
-          <p class="card-resource-desc">A specialized EdTech marketing agency is more than a creative partner.</p>
-          <a href="#" class="btn btn-purple">View Article</a>
+          {% if resource.publishedAt %}
+          <span class="card-resource-date">{{ resource.publishedAt[:10] }}</span>
+          {% endif %}
+          <h4 class="card-resource-title">{{ resource.title or '' }}</h4>
+          {% if resource.heroDescription or resource.excerpt %}
+          <p class="card-resource-desc">{{ resource.heroDescription or resource.excerpt }}</p>
+          {% endif %}
+          <a href="/resources/{{ resource_slug }}/" class="btn btn-purple">View Article</a>
         </div>
       </div>
-
-      <div class="card-resource-item">
-        <div class="card--resource">
-          <div class="card-resource-image"></div>
-        </div>
-        <div class="card-resource-body">
-          <span class="card-resource-date">June 19, 2026</span>
-          <h4 class="card-resource-title">What should I look for when choosing an EdTech marketing</h4>
-          <p class="card-resource-desc">A specialized EdTech marketing agency is more than a creative partner.</p>
-          <a href="#" class="btn btn-purple">View Article</a>
-        </div>
-      </div>
-
-      <div class="card-resource-item">
-        <div class="card--resource">
-          <div class="card-resource-image"></div>
-        </div>
-        <div class="card-resource-body">
-          <span class="card-resource-date">June 19, 2026</span>
-          <h4 class="card-resource-title">What should I look for when choosing an EdTech marketing</h4>
-          <p class="card-resource-desc">A specialized EdTech marketing agency is more than a creative partner.</p>
-          <a href="#" class="btn btn-purple">View Article</a>
-        </div>
-      </div>
-
-      <div class="card-resource-item">
-        <div class="card--resource">
-          <div class="card-resource-image"></div>
-        </div>
-        <div class="card-resource-body">
-          <span class="card-resource-date">June 19, 2026</span>
-          <h4 class="card-resource-title">What should I look for when choosing an EdTech marketing</h4>
-          <p class="card-resource-desc">A specialized EdTech marketing agency is more than a creative partner.</p>
-          <a href="#" class="btn btn-purple">View Article</a>
-        </div>
-      </div>
-
-      <div class="card-resource-item">
-        <div class="card--resource">
-          <div class="card-resource-image"></div>
-        </div>
-        <div class="card-resource-body">
-          <span class="card-resource-date">June 19, 2026</span>
-          <h4 class="card-resource-title">What should I look for when choosing an EdTech marketing</h4>
-          <p class="card-resource-desc">A specialized EdTech marketing agency is more than a creative partner.</p>
-          <a href="#" class="btn btn-purple">View Article</a>
-        </div>
-      </div>
-
-      <div class="card-resource-item">
-        <div class="card--resource">
-          <div class="card-resource-image"></div>
-        </div>
-        <div class="card-resource-body">
-          <span class="card-resource-date">June 19, 2026</span>
-          <h4 class="card-resource-title">What should I look for when choosing an EdTech marketing</h4>
-          <p class="card-resource-desc">A specialized EdTech marketing agency is more than a creative partner.</p>
-          <a href="#" class="btn btn-purple">View Article</a>
-        </div>
-      </div>
+      {% endfor %}
 
     </div>
   </div>
 </section>
+{% endif %}
 
 <footer class="footer">
   <div class="footer-container">
