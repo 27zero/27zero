@@ -1,0 +1,308 @@
+/* ============================
+   27zero — Resources page
+   ============================ */
+
+:root {
+  --color-indigo: #440E92;
+  --color-purple: #B382F9;
+  --color-black:  #101010;
+  --color-gray:   #F5F5F5;
+  --color-white:  #FFFFFF;
+  --color-placeholder: #E3E3E3;
+
+  --space-xs:  0.5em;
+  --space-sm:  1.5em;
+  --space-md:  3em;
+  --space-lg:  6em;
+  --space-xl:  9em;
+  --space-2xl: 14em;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+/* ===== Estructura base de sección ===== */
+.section {
+  padding-top: 6.5em;
+  padding-bottom: 6.5em;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 6.5em;
+  padding-right: 6.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.section--sm { padding-top: 3em; padding-bottom: 3em; }
+
+/* ===== Tipografía de texto ===== */
+.text-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.text-body--sm {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.07em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: rgba(16, 16, 16, 0.65);
+}
+
+/* ===== Base .btn — requerido por .btn-nav del navbar y botones de la página ===== */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.85em 1.7em;
+  border-radius: 5.2em;
+  border: 0.05em solid transparent;
+  font-family: 'Lora', serif;
+  font-size: 1.15em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-purple {
+  background-color: var(--color-purple);
+  border-color: var(--color-purple);
+  color: var(--color-black);
+}
+.btn-purple:hover {
+  background-color: transparent;
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+/* ==============================
+   HERO / INTRO
+   ============================== */
+.section--resources-hero {
+  padding-top: 13.2143em; /* 185px */
+  padding-bottom: 6.6429em; /* 93px */
+}
+
+.section--resources-hero .container {
+  gap: 3.5714em; /* 50px — entre el header y la featured card */
+}
+
+.hero-resources-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+  max-width: 40em;
+}
+
+.hero-resources-header h1 {
+  font-family: 'Lora', serif;
+  font-size: 3.4286em; /* 48px */
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.48px;
+}
+
+.hero-resources-header h1 span {
+  display: block;
+}
+
+/* ==============================
+   FEATURED CARD (horizontal)
+   Div block, grid de 2 columnas (imagen 1.3fr / contenido 1fr)
+   ============================== */
+.card--resource-featured {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: stretch;
+  gap: 2.5em;
+  width: 100%;
+}
+
+.card-resource-featured-image {
+  background-color: var(--color-placeholder);
+  border-radius: 0.5em;
+  min-height: 22em;
+}
+
+.card-resource-featured-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: end;
+  gap: 1em;
+}
+
+.card-resource-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.card-resource-featured-title {
+  font-family: 'Lora', serif;
+  font-size: 2.5714em; /* 36px */
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.36px;
+  color: var(--color-black);
+}
+
+.card-resource-featured-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.15em;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(16, 16, 16, 0.65);
+  max-width: 32em;
+}
+
+.card-resource-featured-content .btn {
+  align-self: flex-start;
+  margin-top: 0.5em;
+}
+
+/* ==============================
+   GRID — resource cards
+   ============================== */
+.section--resources-grid {
+  padding-top: 0;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 0.9286em; /* 13px */
+  row-gap: 6.4286em; /* 90px */
+}
+
+.card-resource-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5714em; /* 22px */
+}
+
+.card--resource {
+  width: 100%;
+}
+
+.card-resource-image {
+  width: 100%;
+  height: 300px;
+  background-color: var(--color-placeholder);
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.card-resource-body {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.1429em; /* 16px */
+}
+
+.card-resource-title {
+  font-family: 'Lora', serif;
+  font-size: 1.7143em; /* 24px */
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+  color: var(--color-black);
+}
+
+.card-resource-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.0714em; /* 15px */
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.card-resource-body .btn {
+  align-self: flex-start;
+  margin-top: 0.3em;
+}
+
+/* ==============================
+   MOBILE
+   ============================== */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  .section--resources-hero {
+    padding-top: 8em;
+  }
+
+  .hero-resources-header h1 {
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 500;
+    letter-spacing: -0.32px;
+  }
+
+  .hero-resources-header .text-body {
+    font-size: 13px;
+  }
+
+  .card--resource-featured {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+  }
+
+  .card-resource-featured-image {
+    width: 100%;
+    min-height: 200px;
+  }
+
+  .card-resource-date,
+  .card-resource-desc,
+  .card-resource-featured-desc,
+  .text-body--sm,
+  .btn {
+    font-size: 13px;
+  }
+
+  .card-resource-featured-title {
+    font-size: 21px;
+  }
+
+  .card-resource-title {
+    font-size: 21px;
+  }
+
+  .resources-grid {
+    grid-template-columns: 1fr;
+    gap: 2em;
+  }
+}
