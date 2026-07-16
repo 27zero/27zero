@@ -1,0 +1,35 @@
+{
+  "locale": "es-419",
+  "lang": "es",
+  "dir": "ltr",
+  "url_prefix": "es",
+  "hreflang": "es-419",
+  "nav": {
+    "work": "Proyectos",
+    "marketing": "Marketing EdTech",
+    "mentor": "The EdTech Mentor",
+    "resources": "Recursos",
+    "about": "Nosotros",
+    "cta": "¡Hablemos!"
+  },
+  "lang_switcher": {
+    "label": "Español",
+    "regions": [
+      {
+        "region": "North America",
+        "label": "English",
+        "prefix": ""
+      },
+      {
+        "region": "Europe",
+        "label": "English",
+        "prefix": "eu"
+      },
+      {
+        "region": "Latin America",
+        "label": "Español",
+        "prefix": "es"
+      }
+    ]
+  }
+}
