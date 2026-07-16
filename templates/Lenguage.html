@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="{{ i18n.lang | default('en') }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{# ── Title ────────────────────────────────────────────────────────────────── #}
+<title>{% block title %}27zero — EdTech Marketing Agency{% endblock %}</title>
+
+{# ── Base meta ────────────────────────────────────────────────────────────── #}
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="index, follow">
+
+{# ── SEO: canonical + description ────────────────────────────────────────── #}
+{% if seo %}
+<link rel="canonical" href="{{ seo.canonical }}">
+<meta name="description" content="{{ seo.description }}">
+{% endif %}
+
+{# ── Page-level meta overrides (title, description, OG, etc.) ────────────── #}
+{# Placed AFTER the seo block so per-page tags take precedence when set.     #}
+{% block meta %}{% endblock %}
+
+{# ── Shared OG / Twitter from SEO context (if not overridden per-page) ───── #}
+{% if seo and seo.meta_tags %}
+{{ seo.meta_tags|safe }}
+{% endif %}
+
+{# ── JSON-LD structured data ─────────────────────────────────────────────── #}
+{% if seo and seo.json_ld %}
+{{ seo.json_ld|safe }}
+{% endif %}
+
+{# ── RSS autodiscovery ────────────────────────────────────────────────────── #}
+<link rel="alternate" type="application/rss+xml"
+      title="27zero — EdTech Marketing Insights"
+      href="/rss.xml">
+
+{# ── Hreflang — multilingual alternate URLs ──────────────────────────────── #}
+{% if hreflang_links %}
+{{ hreflang_links|safe }}
+{% endif %}
+
+{# ── Fonts ────────────────────────────────────────────────────────────────── #}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+{# ── Stylesheet ───────────────────────────────────────────────────────────── #}
+<link rel="stylesheet" href="/assets/css/Lenguage.css">
+</head>
+<body>
+<a href="#main-content" class="sr-only" style="position:absolute;left:-9999px">Skip to content</a>
+
+{# ── NAVIGATION ──────────────────────────────────────────────────────────── #}
+<header class="site" id="site-header" role="banner">
+  <div class="navrow">
+    <a href="/" class="logo-mark-link" aria-label="27zero — home">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero" class="logo-mark" width="115" height="23">
+    </a>
+
+    <nav class="links" aria-label="Primary navigation">
+      <a href="{{ nav_prefix }}/work">{{ i18n.nav.work }}</a>
+      <a href="{{ nav_prefix }}/edtech-marketing-agency"{% if nav_current == 'marketing' %} class="current" aria-current="page"{% endif %}>{{ i18n.nav.marketing }}</a>
+      <a href="{{ nav_prefix }}/edtech-mentor-interviews">{{ i18n.nav.mentor }}</a>
+      <a href="{{ nav_prefix }}/resources">{{ i18n.nav.resources }}</a>
+      <a href="{{ nav_prefix }}/about">{{ i18n.nav.about }}</a>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:12px;">
+
+      {# ── Language switcher — desktop ─────────────────────────────── #}
+      <div class="lang-switcher" role="navigation" aria-label="Select language">
+        <button class="lang-switcher-btn"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="lang-dropdown">
+          <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span class="lang-label">{{ i18n.lang_switcher.label }}</span>
+          <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <ul class="lang-dropdown" id="lang-dropdown" role="menu" aria-label="Available languages">
+          {% for r in i18n.lang_switcher.regions %}
+          {% if r.prefix == "" %}
+          {% set dest = current_path %}
+          {% else %}
+          {% set dest = "/" + r.prefix + "/" + current_path.lstrip("/") %}
+          {% endif %}
+          <li role="none">
+            <a href="{{ dest }}" role="menuitem"
+               {% if r.prefix == i18n.url_prefix %}aria-current="true"{% endif %}>
+              <span class="lang-region">{{ r.region }}</span>
+              <span class="lang-option">{{ r.label }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <a href="{{ nav_prefix }}/lets-talk" class="navcta">{{ i18n.nav.cta }}</a>
+      <button class="nav-burger" id="nav-burger-btn"
+              aria-label="Open navigation menu"
+              aria-expanded="false"
+              aria-controls="mobile-nav-menu">
+        <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="2" y1="5" x2="20" y2="5"/>
+          <line x1="2" y1="11" x2="20" y2="11"/>
+          <line x1="2" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+{# ── MOBILE MENU ─────────────────────────────────────────────────────────── #}
+<div class="mobile-menu" id="mobile-nav-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="mobile-menu-close" id="mobile-close-btn" aria-label="Close navigation menu">
+    <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <line x1="3" y1="3" x2="19" y2="19"/>
+      <line x1="19" y1="3" x2="3" y2="19"/>
+    </svg>
+  </button>
+  <nav aria-label="Mobile navigation">
+    <a href="{{ nav_prefix }}/work">{{ i18n.nav.work }}</a>
+    <a href="{{ nav_prefix }}/edtech-marketing-agency">{{ i18n.nav.marketing }}</a>
+    <a href="{{ nav_prefix }}/edtech-mentor-interviews">{{ i18n.nav.mentor }}</a>
+    <a href="{{ nav_prefix }}/resources">{{ i18n.nav.resources }}</a>
+    <a href="{{ nav_prefix }}/about">{{ i18n.nav.about }}</a>
+    <a href="{{ nav_prefix }}/lets-talk" class="cta-link">{{ i18n.nav.cta }}</a>
+
+    {# ── Language switcher — mobile ─────────────────────────── #}
+    <div class="lang-mobile-section" aria-label="Select language">
+      <span class="lang-mobile-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>Language
+      </span>
+      {% for r in i18n.lang_switcher.regions %}
+      {% if r.prefix == "" %}
+      {% set dest = current_path %}
+      {% else %}
+      {% set dest = "/" + r.prefix + "/" + current_path.lstrip("/") %}
+      {% endif %}
+      <a href="{{ dest }}"
+         class="lang-mobile-option{% if r.prefix == i18n.url_prefix %} lang-mobile-option--active{% endif %}">
+        {{ r.region }} — {{ r.label }}
+      </a>
+      {% endfor %}
+    </div>
+  </nav>
+</div>
+
+{# ── LANGUAGE SUGGESTION BANNER ─────────────────────────────────────────── #}
+{# Hidden by default. JS shows it only when browser language differs from    #}
+{# the current locale. User can accept (navigate) or dismiss (never again).  #}
+<div class="lang-suggest" id="lang-suggest" role="alert" aria-live="polite" hidden>
+  <span class="lang-suggest-msg" id="lang-suggest-msg"></span>
+  <div class="lang-suggest-actions">
+    <a class="lang-suggest-yes" id="lang-suggest-yes" href="#"></a>
+    <button class="lang-suggest-no" id="lang-suggest-no" aria-label="Dismiss language suggestion">✕</button>
+  </div>
+</div>
+
+{# ── MAIN CONTENT ────────────────────────────────────────────────────────── #}
+<main id="main-content">
+{% block content %}{% endblock %}
+</main>
+
+{# ── FOOTER ──────────────────────────────────────────────────────────────── #}
+<footer class="site" role="contentinfo">
+  <nav aria-label="Footer navigation">
+    <ul class="footer-nav-list">
+      <li class="footer-nav-item"><a href="/"                         class="footer-nav-link">Home</a></li>
+      <li class="footer-nav-item"><a href="/work"                     class="footer-nav-link">Work</a></li>
+      <li class="footer-nav-item"><a href="/edtech-marketing-agency"  class="footer-nav-link">Services</a></li>
+      <li class="footer-nav-item"><a href="/edtech-mentor-interviews" class="footer-nav-link">The EdTech Mentor</a></li>
+      <li class="footer-nav-item"><a href="/about"                    class="footer-nav-link">About</a></li>
+      <li class="footer-nav-item"><a href="/lets-talk"               class="footer-nav-link">Let's Talk!</a></li>
+      <li class="footer-nav-item"><a href="/about#careers"           class="footer-nav-link">Careers</a></li>
+    </ul>
+  </nav>
+
+  <div class="footer-social-block">
+    <div class="footer-social-label">Social media</div>
+    <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+  </div>
+
+  <div class="footer-bottom-bar">
+    <img src="/assets/images/27zero-logo.svg" alt="27zero" style="height:22px;width:auto;display:block;">
+    <span style="font-size:12px;color:var(--graphite);">© 2026 27zero. All rights reserved.</span>
+    <span style="font-size:12px;color:var(--graphite);">Bogotá, Colombia · Granville, OH</span>
+  </div>
+</footer>
+
+{# ── SCRIPTS ─────────────────────────────────────────────────────────────── #}
+<script>
+/* Nav: sticky white → purple pill on scroll */
+(function(){
+  var header = document.getElementById('site-header');
+  if(!header) return;
+  function tick(){ header.classList.toggle('nav-scrolled', window.scrollY > 60); }
+  window.addEventListener('scroll', tick, {passive:true});
+  tick();
+}());
+
+/* Mobile menu */
+(function(){
+  var burger = document.getElementById('nav-burger-btn');
+  var menu   = document.getElementById('mobile-nav-menu');
+  var close  = document.getElementById('mobile-close-btn');
+  if(!burger||!menu||!close) return;
+  function open(){
+    menu.classList.add('is-open');
+    document.body.style.overflow='hidden';
+    burger.setAttribute('aria-expanded','true');
+    close.focus();
+  }
+  function shut(){
+    menu.classList.remove('is-open');
+    document.body.style.overflow='';
+    burger.setAttribute('aria-expanded','false');
+    burger.focus();
+  }
+  burger.addEventListener('click', open);
+  close.addEventListener('click', shut);
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') shut(); });
+}());
+
+/* Scroll reveal */
+(function(){
+  var rm = window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sel = '.pcard,.ditem,.look-item,.client-card,.apart-col,.mitem,.subitem,.cycle-step,.sec-head,.mentor-card-item,.work-card,.testi-slide';
+  var els = document.querySelectorAll(sel);
+  if(rm||!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('reveal-init','in-view'); });
+    return;
+  }
+  els.forEach(function(el){ el.classList.add('reveal-init'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ io.observe(el); });
+}());
+</script>
+
+<script>
+/* ── Language switcher dropdown ─────────────────────── */
+(function(){
+  var btn  = document.querySelector('.lang-switcher-btn');
+  var menu = document.getElementById('lang-dropdown');
+  if(!btn||!menu) return;
+
+  function open(){
+    menu.classList.add('is-open');
+    btn.setAttribute('aria-expanded','true');
+    var first = menu.querySelector('a');
+    if(first) first.focus();
+  }
+  function close(){
+    menu.classList.remove('is-open');
+    btn.setAttribute('aria-expanded','false');
+    btn.focus();
+  }
+  function toggle(){ menu.classList.contains('is-open') ? close() : open(); }
+
+  btn.addEventListener('click', function(e){ e.stopPropagation(); toggle(); });
+  document.addEventListener('click', function(e){
+    if(!btn.contains(e.target)&&!menu.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape'&&menu.classList.contains('is-open')) close();
+  });
+  menu.addEventListener('keydown', function(e){
+    var items = Array.from(menu.querySelectorAll('a'));
+    var idx   = items.indexOf(document.activeElement);
+    if(e.key==='ArrowDown'){ e.preventDefault(); items[(idx+1)%items.length].focus(); }
+    if(e.key==='ArrowUp'){   e.preventDefault(); items[(idx-1+items.length)%items.length].focus(); }
+  });
+}());
+
+/* ── Non-intrusive language suggestion ────────────────── */
+/* No automatic redirects. All three locale URLs are always accessible.   */
+/* Shows a dismissible banner once per session when the browser language  */
+/* differs from the current page locale. User accepts or ignores it.     */
+(function(){
+  var KEY = '27z_lang_dismissed';
+  if(sessionStorage.getItem(KEY)) return;
+
+  var lang    = (navigator.language || 'en').toLowerCase();
+  var current = '{{ i18n.url_prefix | default("") }}';
+
+  var suggested;
+  if(lang.startsWith('es'))                                     { suggested = 'es'; }
+  else if(!lang.startsWith('en-') || lang.startsWith('en-us')
+       || lang.startsWith('en-ca') || lang.startsWith('en-au')) { suggested = '';   }
+  else                                                          { suggested = 'eu'; }
+
+  if(suggested === current) return;
+
+  var path    = window.location.pathname;
+  var stripped = path.replace(/^\/(eu|es)(\/|$)/, '/');
+  var dest     = suggested ? ('/' + suggested + (stripped === '/' ? '/' : stripped)) : stripped;
+  dest = dest.replace(/\/\//g, '/');
+
+  var labels  = {'': 'English (North America)', 'eu': 'English (Europe)', 'es': 'Espa\u00f1ol'};
+
+  var banner = document.getElementById('lang-suggest');
+  var msg    = document.getElementById('lang-suggest-msg');
+  var yes    = document.getElementById('lang-suggest-yes');
+  var no     = document.getElementById('lang-suggest-no');
+  if(!banner||!msg||!yes||!no) return;
+
+  msg.textContent = 'Switch to ' + (labels[suggested] || 'English') + '?';
+  yes.textContent = 'Switch';
+  yes.href        = dest;
+  banner.hidden   = false;
+
+  no.addEventListener('click', function(){
+    banner.hidden = true;
+    sessionStorage.setItem(KEY, '1');
+  });
+  yes.addEventListener('click', function(){
+    sessionStorage.setItem(KEY, '1');
+  });
+}());
+</script>
+
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

@@ -1,6 +1,27 @@
 {
   "buildCommand": "python build.py",
   "outputDirectory": "dist",
-  "installCommand": "python -m pip install --break-system-packages -r requirements.txt"
-}
+  "installCommand": "python -m pip install --break-system-packages -r requirements.txt",
 
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Vary", "value": "Accept-Language" }
+      ]
+    }
+  ],
+
+  "redirects": [
+    {
+      "source": "/eu",
+      "destination": "/eu/",
+      "permanent": false
+    },
+    {
+      "source": "/es",
+      "destination": "/es/",
+      "permanent": false
+    }
+  ]
+}
