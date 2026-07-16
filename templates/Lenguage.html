@@ -47,7 +47,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
 {# ── Stylesheet ───────────────────────────────────────────────────────────── #}
-<link rel="stylesheet" href="/assets/css/Lenguage.css">
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 <a href="#main-content" class="sr-only" style="position:absolute;left:-9999px">Skip to content</a>
@@ -93,6 +93,7 @@
           {% endif %}
           <li role="none">
             <a href="{{ dest }}" role="menuitem"
+               data-locale-prefix="{{ r.prefix }}"
                {% if r.prefix == i18n.url_prefix %}aria-current="true"{% endif %}>
               <span class="lang-region">{{ r.region }}</span>
               <span class="lang-option">{{ r.label }}</span>
@@ -288,30 +289,44 @@
 }());
 
 /* ── Non-intrusive language suggestion ────────────────── */
-/* No automatic redirects. All three locale URLs are always accessible.   */
-/* Shows a dismissible banner once per session when the browser language  */
-/* differs from the current page locale. User accepts or ignores it.     */
+/* Rules:                                                                  */
+/* 1. Only shown on locale landing pages: /, /eu/, /es/                    */
+/* 2. Only when browser language differs from current locale               */
+/* 3. Hidden permanently once accepted or dismissed (localStorage)         */
+/* 4. Resets if user manually picks a different locale via the switcher    */
+/* 5. No automatic redirects. User's choice persists across sessions.     */
 (function(){
-  var KEY = '27z_lang_dismissed';
-  if(sessionStorage.getItem(KEY)) return;
+  var PREF_KEY = '27z_lang_pref';   /* stores the locale the user chose  */
+  var DIS_KEY  = '27z_lang_dis';    /* stores the locale that was dismissed */
 
-  var lang    = (navigator.language || 'en').toLowerCase();
+  /* Guard 1: only on locale landing pages exactly */
+  var path = window.location.pathname;
+  var isRoot = (path === '/' || path === '/eu/' || path === '/es/');
+  if(!isRoot) return;
+
   var current = '{{ i18n.url_prefix | default("") }}';
 
-  var suggested;
-  if(lang.startsWith('es'))                                     { suggested = 'es'; }
-  else if(!lang.startsWith('en-') || lang.startsWith('en-us')
-       || lang.startsWith('en-ca') || lang.startsWith('en-au')) { suggested = '';   }
-  else                                                          { suggested = 'eu'; }
+  /* Guard 2: user already explicitly chose this locale via the switcher */
+  if(localStorage.getItem(PREF_KEY) === current) return;
 
+  /* Guard 3: user already dismissed the suggestion for this locale */
+  if(localStorage.getItem(DIS_KEY) === current) return;
+
+  /* Determine suggested locale from browser language */
+  var lang = (navigator.language || 'en').toLowerCase();
+  var suggested;
+  if(lang.startsWith('es'))                                              { suggested = 'es'; }
+  else if(!lang.startsWith('en-') || lang.startsWith('en-us')
+       || lang.startsWith('en-ca') || lang.startsWith('en-au'))         { suggested = '';   }
+  else                                                                   { suggested = 'eu'; }
+
+  /* No suggestion needed if browser matches current locale */
   if(suggested === current) return;
 
-  var path    = window.location.pathname;
-  var stripped = path.replace(/^\/(eu|es)(\/|$)/, '/');
-  var dest     = suggested ? ('/' + suggested + (stripped === '/' ? '/' : stripped)) : stripped;
-  dest = dest.replace(/\/\//g, '/');
+  /* Build destination (the suggested locale's home) */
+  var dest = suggested ? ('/' + suggested + '/') : '/';
 
-  var labels  = {'': 'English (North America)', 'eu': 'English (Europe)', 'es': 'Espa\u00f1ol'};
+  var labels = {'': 'English (North America)', 'eu': 'English (Europe)', 'es': 'Español'};
 
   var banner = document.getElementById('lang-suggest');
   var msg    = document.getElementById('lang-suggest-msg');
@@ -324,12 +339,30 @@
   yes.href        = dest;
   banner.hidden   = false;
 
+  /* Accept: remember the chosen locale so banner never re-appears */
+  yes.addEventListener('click', function(){
+    localStorage.setItem(PREF_KEY, suggested);
+  });
+
+  /* Dismiss: remember dismissal for this locale; banner won't show again */
+  /* unless the user manually switches locale via the selector            */
   no.addEventListener('click', function(){
     banner.hidden = true;
-    sessionStorage.setItem(KEY, '1');
+    localStorage.setItem(DIS_KEY, current);
   });
-  yes.addEventListener('click', function(){
-    sessionStorage.setItem(KEY, '1');
+
+  /* When the user picks a locale manually via the switcher, clear the   */
+  /* dismissal record for the destination so they may see a suggestion   */
+  /* again if they later visit a mismatched locale.                       */
+  document.querySelectorAll('#lang-dropdown a[data-locale-prefix]').forEach(function(link){
+    link.addEventListener('click', function(){
+      var chosen = link.getAttribute('data-locale-prefix');
+      localStorage.setItem(PREF_KEY, chosen);
+      /* Clear dismissal for the destination locale */
+      if(localStorage.getItem(DIS_KEY) === chosen){
+        localStorage.removeItem(DIS_KEY);
+      }
+    });
   });
 }());
 </script>
