@@ -24,6 +24,7 @@ from jinja2 import Environment
 
 from config import DIST_DIR
 from helpers.seo import build_seo_context
+from helpers.i18n import LOCALES, load_locale, prefix_url
 
 logger = logging.getLogger(__name__)
 
@@ -79,6 +80,16 @@ def build_pages(
     """
     Render all static page templates and write them to dist/.
 
+    For each locale in helpers.i18n.LOCALES the entire PAGES list is
+    rendered again with:
+      - i18n context (nav labels, locale metadata)
+      - nav_prefix ("/eu", "/es", or "")
+      - current_path (for the language switcher to build alternate URLs)
+      - hreflang_links in the SEO context
+
+    The canonical (en-us) locale writes to dist/ directly.
+    Additional locales write to dist/{prefix}/.
+
     Parameters
     ----------
     env:
@@ -88,49 +99,74 @@ def build_pages(
     resources:
         List of resource dicts from Sanity (passed through to templates).
     work:
-        List of work project dicts from Sanity (passed through to templates,
-        e.g. for the homepage to show featured projects).
+        List of work project dicts from Sanity (passed through to templates).
 
     Returns
     -------
     int
-        Number of pages built.
+        Number of pages built (across all locales).
     """
     posts     = posts     or []
     resources = resources or []
     work      = work      or []
     count = 0
 
-    for template_path, url_path in PAGES:
-        try:
-            template = env.get_template(template_path)
-        except Exception as exc:
-            logger.error("Could not load template %r: %s", template_path, exc)
-            continue
+    for loc in LOCALES:
+        locale_prefix = loc["prefix"]       # "" | "eu" | "es"
+        nav_prefix    = f"/{locale_prefix}" if locale_prefix else ""
+        i18n          = load_locale(loc["key"])
 
-        # Build SEO context for this page.
-        seo = build_seo_context(url_path=url_path)
+        for template_path, url_path in PAGES:
+            try:
+                template = env.get_template(template_path)
+            except Exception as exc:
+                logger.error("Could not load template %r: %s", template_path, exc)
+                continue
 
-        try:
-            html = template.render(
-                posts=posts,
-                resources=resources,
-                work=work,
-                seo=seo,
+            # Locale-prefixed url_path for dist/ directory
+            localized_url = prefix_url(url_path, locale_prefix)
+
+            # SEO context — pass neutral path so hreflang covers all locales
+            _og_locale_map = {"en-us": "en_US", "en-eu": "en_GB", "es-419": "es_419"}
+            seo = build_seo_context(
+                url_path=localized_url,
+                url_path_neutral=url_path,
+                locale=i18n.get("lang", "en"),
+                og_locale=_og_locale_map.get(loc["key"], "en_US"),
             )
-        except Exception as exc:
-            logger.error("Error rendering %r: %s", template_path, exc)
-            continue
 
-        out_dir = DIST_DIR if url_path == "" else os.path.join(DIST_DIR, url_path)
-        os.makedirs(out_dir, exist_ok=True)
+            # current_path: the absolute URL path for THIS locale's page,
+            # used by the language switcher to build alternate hrefs.
+            current_path = f"/{localized_url}/" if localized_url else "/"
 
-        out_path = os.path.join(out_dir, "index.html")
-        with open(out_path, "w", encoding="utf-8") as fh:
-            fh.write(html)
+            try:
+                html = template.render(
+                    posts=posts,
+                    resources=resources,
+                    work=work,
+                    seo=seo,
+                    i18n=i18n,
+                    nav_prefix=nav_prefix,
+                    current_path=current_path,
+                    neutral_path=url_path,
+                    hreflang_links=seo["hreflang_links"],
+                )
+            except Exception as exc:
+                logger.error("Error rendering %r (%s): %s", template_path, loc["key"], exc)
+                continue
 
-        label = f"/{url_path}/" if url_path else "/"
-        logger.info("  built %s", label)
-        count += 1
+            if localized_url:
+                out_dir = os.path.join(DIST_DIR, localized_url)
+            else:
+                out_dir = DIST_DIR
+            os.makedirs(out_dir, exist_ok=True)
+
+            out_path = os.path.join(out_dir, "index.html")
+            with open(out_path, "w", encoding="utf-8") as fh:
+                fh.write(html)
+
+            label = f"/{localized_url}/" if localized_url else "/"
+            logger.info("  built %s [%s]", label, loc["key"])
+            count += 1
 
     return count
