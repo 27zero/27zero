@@ -43,6 +43,7 @@ import sys
 from jinja2 import Environment, FileSystemLoader
 
 from config import PAGES_DIR, TEMPLATES_DIR, ASSETS_DIR, DIST_DIR, VERBOSE
+from helpers.i18n import LOCALES, load_locale
 
 from helpers.sanity import (
     get_posts,
@@ -102,6 +103,15 @@ def build() -> None:
         lstrip_blocks=True,
         autoescape=False,  # Content is escaped manually; templates use |safe.
     )
+
+    # Provide default i18n globals so templates always have these variables
+    # even when rendered outside the locale loop (e.g. CMS detail pages).
+    _default_i18n = load_locale(LOCALES[0]["key"])   # en-us
+    env.globals["i18n"]           = _default_i18n
+    env.globals["nav_prefix"]     = ""
+    env.globals["current_path"]   = "/"
+    env.globals["neutral_path"]   = ""
+    env.globals["hreflang_links"] = ""
 
     # ── Step 4: Static pages ─────────────────────────────────────────────
     logger.info("\nBuilding static pages...")

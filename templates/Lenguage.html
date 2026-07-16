@@ -87,9 +87,9 @@
         <ul class="lang-dropdown" id="lang-dropdown" role="menu" aria-label="Available languages">
           {% for r in i18n.lang_switcher.regions %}
           {% if r.prefix == "" %}
-          {% set dest = current_path %}
+            {% set dest = "/" + neutral_path + "/" if neutral_path else "/" %}
           {% else %}
-          {% set dest = "/" + r.prefix + "/" + current_path.lstrip("/") %}
+            {% set dest = "/" + r.prefix + "/" + neutral_path + "/" if neutral_path else "/" + r.prefix + "/" %}
           {% endif %}
           <li role="none">
             <a href="{{ dest }}" role="menuitem"
@@ -144,9 +144,9 @@
       </span>
       {% for r in i18n.lang_switcher.regions %}
       {% if r.prefix == "" %}
-      {% set dest = current_path %}
+        {% set dest = "/" + neutral_path + "/" if neutral_path else "/" %}
       {% else %}
-      {% set dest = "/" + r.prefix + "/" + current_path.lstrip("/") %}
+        {% set dest = "/" + r.prefix + "/" + neutral_path + "/" if neutral_path else "/" + r.prefix + "/" %}
       {% endif %}
       <a href="{{ dest }}"
          class="lang-mobile-option{% if r.prefix == i18n.url_prefix %} lang-mobile-option--active{% endif %}">
@@ -254,7 +254,34 @@
 </script>
 
 <script>
-/* ── Language switcher dropdown ─────────────────────── */
+/* ── Cookie helper ─────────────────────────────────────────────────────────────────── */
+/* Cookies are used (not only localStorage) so that Vercel edge rules can  */
+/* read the preference server-side and enforce it before a page is served. */
+var _27z = (function(){
+  var COOKIE = 'preferred_locale';
+  var LS_KEY = '27z_lang_pref';
+  var MAX_AGE = 60 * 60 * 24 * 365; /* 1 year */
+
+  function getCookie(name){
+    var m = document.cookie.match('(?:^|;)\\s*' + name + '=([^;]*)');
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+  function setCookie(name, value){
+    document.cookie = name + '=' + encodeURIComponent(value)
+      + ';max-age=' + MAX_AGE + ';path=/;SameSite=Lax';
+  }
+  function getPref(){
+    /* Cookie is source of truth (Vercel reads it); localStorage is fallback */
+    return getCookie(COOKIE) || localStorage.getItem(LS_KEY);
+  }
+  function setPref(value){
+    setCookie(COOKIE, value);
+    try { localStorage.setItem(LS_KEY, value); } catch(e){}
+  }
+  return { getPref: getPref, setPref: setPref, getCookie: getCookie };
+}());
+
+/* ── Language switcher dropdown ───────────────────────────────────────────────── */
 (function(){
   var btn  = document.querySelector('.lang-switcher-btn');
   var menu = document.getElementById('lang-dropdown');
@@ -286,84 +313,70 @@
     if(e.key==='ArrowDown'){ e.preventDefault(); items[(idx+1)%items.length].focus(); }
     if(e.key==='ArrowUp'){   e.preventDefault(); items[(idx-1+items.length)%items.length].focus(); }
   });
-}());
 
-/* ── Non-intrusive language suggestion ────────────────── */
-/* Rules:                                                                  */
-/* 1. Only shown on locale landing pages: /, /eu/, /es/                    */
-/* 2. Only when browser language differs from current locale               */
-/* 3. Hidden permanently once accepted or dismissed (localStorage)         */
-/* 4. Resets if user manually picks a different locale via the switcher    */
-/* 5. No automatic redirects. User's choice persists across sessions.     */
-(function(){
-  var PREF_KEY = '27z_lang_pref';   /* stores the locale the user chose  */
-  var DIS_KEY  = '27z_lang_dis';    /* stores the locale that was dismissed */
-
-  /* Guard 1: only on locale landing pages exactly */
-  var path = window.location.pathname;
-  var isRoot = (path === '/' || path === '/eu/' || path === '/es/');
-  if(!isRoot) return;
-
-  var current = '{{ i18n.url_prefix | default("") }}';
-
-  /* Guard 2: user already explicitly chose this locale via the switcher */
-  if(localStorage.getItem(PREF_KEY) === current) return;
-
-  /* Guard 3: user already dismissed the suggestion for this locale */
-  if(localStorage.getItem(DIS_KEY) === current) return;
-
-  /* Determine suggested locale from browser language */
-  var lang = (navigator.language || 'en').toLowerCase();
-  var suggested;
-  if(lang.startsWith('es'))                                              { suggested = 'es'; }
-  else if(!lang.startsWith('en-') || lang.startsWith('en-us')
-       || lang.startsWith('en-ca') || lang.startsWith('en-au'))         { suggested = '';   }
-  else                                                                   { suggested = 'eu'; }
-
-  /* No suggestion needed if browser matches current locale */
-  if(suggested === current) return;
-
-  /* Build destination (the suggested locale's home) */
-  var dest = suggested ? ('/' + suggested + '/') : '/';
-
-  var labels = {'': 'English (North America)', 'eu': 'English (Europe)', 'es': 'Español'};
-
-  var banner = document.getElementById('lang-suggest');
-  var msg    = document.getElementById('lang-suggest-msg');
-  var yes    = document.getElementById('lang-suggest-yes');
-  var no     = document.getElementById('lang-suggest-no');
-  if(!banner||!msg||!yes||!no) return;
-
-  msg.textContent = 'Switch to ' + (labels[suggested] || 'English') + '?';
-  yes.textContent = 'Switch';
-  yes.href        = dest;
-  banner.hidden   = false;
-
-  /* Accept: remember the chosen locale so banner never re-appears */
-  yes.addEventListener('click', function(){
-    localStorage.setItem(PREF_KEY, suggested);
-  });
-
-  /* Dismiss: remember dismissal for this locale; banner won't show again */
-  /* unless the user manually switches locale via the selector            */
-  no.addEventListener('click', function(){
-    banner.hidden = true;
-    localStorage.setItem(DIS_KEY, current);
-  });
-
-  /* When the user picks a locale manually via the switcher, clear the   */
-  /* dismissal record for the destination so they may see a suggestion   */
-  /* again if they later visit a mismatched locale.                       */
-  document.querySelectorAll('#lang-dropdown a[data-locale-prefix]').forEach(function(link){
+  /* When the user explicitly picks a locale, persist it as a cookie so  */
+  /* Vercel edge rules enforce it on the next request before any JS runs. */
+  menu.querySelectorAll('a[data-locale-prefix]').forEach(function(link){
     link.addEventListener('click', function(){
-      var chosen = link.getAttribute('data-locale-prefix');
-      localStorage.setItem(PREF_KEY, chosen);
-      /* Clear dismissal for the destination locale */
-      if(localStorage.getItem(DIS_KEY) === chosen){
-        localStorage.removeItem(DIS_KEY);
-      }
+      _27z.setPref(link.getAttribute('data-locale-prefix') === ''
+        ? 'en-us'
+        : (link.getAttribute('data-locale-prefix') === 'eu' ? 'en-eu' : 'es-419'));
     });
   });
+}());
+
+/* ── First-visit automatic redirect (root only) ─────────────────────────── */
+/*                                                                            */
+/* GUARD: this entire block only runs when the URL is exactly "/".            */
+/*   - /eu/work/google  → never touched. Page shown as-is.                   */
+/*   - /es/resources/   → never touched. Page shown as-is.                   */
+/*   - /about/, /work/  → never touched.                                     */
+/* Only the ambiguous root "/" needs locale detection.                        */
+/*                                                                            */
+/* Priority at "/":                                                           */
+/*   1. preferred_locale cookie → redirect to the stored locale home.        */
+/*   2. navigator.language (first visit, no cookie) → detect + redirect.     */
+/*   3. Stay on / (en-US or unknown browser).                                */
+(function(){
+  /* Only act on the bare root. Any explicit locale path is respected as-is. */
+  if(window.location.pathname !== '/') return;
+
+  var LOCALE_MAP = [
+    /* [url-prefix, cookie-value, browser-pattern] */
+    ['es', 'es-419', /^es/i],
+    ['eu', 'en-eu',  /^en-(?!us|ca|au|nz)/i],
+    ['',   'en-us',  /^en/i]
+  ];
+  var pref = _27z.getPref(); /* cookie first, then localStorage */
+
+  /* Case A: user has an explicit preference ────────────────────────────── */
+  if(pref){
+    for(var i=0;i<LOCALE_MAP.length;i++){
+      if(LOCALE_MAP[i][1] === pref){
+        var target = LOCALE_MAP[i][0];
+        if(target){ window.location.replace('/' + target + '/'); }
+        /* target === '' → en-us, already on /, stay */
+        return;
+      }
+    }
+    /* Unrecognised value — fall through to browser detection */
+  }
+
+  /* Case B: first visit — detect from browser language ─────────────────── */
+  var lang = (navigator.language || 'en').toLowerCase();
+  var suggested = '', storedKey = 'en-us';
+  for(var j=0;j<LOCALE_MAP.length;j++){
+    if(LOCALE_MAP[j][2].test(lang)){
+      suggested = LOCALE_MAP[j][0];
+      storedKey = LOCALE_MAP[j][1];
+      break;
+    }
+  }
+
+  /* Store preference so future visits use Case A — never re-detect. */
+  _27z.setPref(storedKey);
+  if(suggested){ window.location.replace('/' + suggested + '/'); }
+  /* suggested === '' → stay on / */
 }());
 </script>
 
