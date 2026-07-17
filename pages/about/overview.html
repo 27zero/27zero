@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% from "macros.html" import hero, cta_footer %}
 {% block title %}About: Your extended team of EdTech marketing experts — 27zero{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="/assets/css/about.css">
+{% endblock %}
 {% block meta %}
 <meta name="description" content="27zero is your extended team of EdTech marketing experts and creatives. We've been part of the transformation in education since 2001.">
 {% endblock %}
 {% block content %}
-
+ 
 {{ hero("About", None, 'Your extended team of EdTech marketing <em class="acc">experts and creatives.</em>', "Our mission is to help drive global education transformation. With extensive hands-on experience, we understand the industry's evolving needs and enable EdTech companies to thrive.", large=True) }}
-
+ 
 <section class="apart">
   <div class="wrap">
     <div class="apart-head">
@@ -30,7 +33,7 @@
     </div>
   </div>
 </section>
-
+ 
 <section>
   <div class="wrap">
     <div class="sec-head">
@@ -81,7 +84,7 @@
     </div>
   </div>
 </section>
-
+ 
 <section class="section-mist">
   <div class="wrap">
     <div class="sec-head">
@@ -96,7 +99,7 @@
     </div>
   </div>
 </section>
-
+ 
 {{ cta_footer('Work with a world-class, diverse marketing team committed to <em class="acc">enabling EdTech businesses to succeed.</em>', large=True) }}
-
+ 
 {% endblock %}

@@ -142,9 +142,90 @@
   border-color: var(--color-white);
 }
 
+/* ─── Dropdown "Work" (desktop) ───────────────────────────────────────────── */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 1.15em;
+  font-weight: 500;
+  line-height: 1.25em;
+  color: inherit;
+  cursor: pointer;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-dropdown-toggle:hover {
+  font-weight: 700;
+}
+
+.nav-dropdown-chevron {
+  width: 0.75em;
+  height: 0.75em;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.nav-dropdown.is-open .nav-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.85em;
+  min-width: 10em;
+  padding: 1em;
+  gap: 0.5em;
+  border-radius: 0.6em;
+  border: 0.07em solid rgba(0, 0, 0, 0.1);
+  background-color: var(--color-white);
+  box-shadow: 0 0.5em 1.5em rgba(16, 16, 16, 0.08);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(-0.35em);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.nav-dropdown.is-open .nav-dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-dropdown-link {
+  padding: 0.35em 0.35em;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--color-black) !important;
+  text-decoration: none;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-dropdown-link:hover {
+  font-weight: 700;
+}
+
+.nav-dropdown-divider {
+  height: 0.07em;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 /* ============================
-   Mobile (<=767px)
-   Esconde .nav-links y .btn-nav, muestra el hamburger + mobile menu
+   Mobile (<=991px) — fullscreen modal
    ============================ */
 
 .nav-hamburger {
@@ -160,78 +241,162 @@
 }
 
 .nav-hamburger-icon {
-  width: 2.5em;
-  height: 2.5em;
+  width: 1.5em;
+  height: 1.5em;
+  color: currentColor;
 }
 
-/* El SVG del lottie viene en negro fijo — se invierte en variantes oscuras, igual que el logo */
-.nav--black .nav-hamburger-icon svg,
-.nav--scrolled .nav-hamburger-icon svg {
-  filter: invert(1);
-}
-
-/* Dropdown — estilo fijo, no cambia con la variante del nav (white/black/scrolled) */
+/* Fullscreen modal — always white, z-index above everything including scrolled .nav */
 .nav-mobile-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  max-width: 90%;
-  margin: 0.5em auto 0;
-  border-radius: 1.25em;
-  padding: 2em 3.25em;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  justify-content: space-between;
+  padding: 1.15em 5.25em 3.25em;
   background-color: var(--color-white);
   color: var(--color-black);
-  border: 0.05em solid rgba(16, 16, 16, 0.25);
-  box-shadow: 0 0.3em 1em rgba(16, 16, 16, 0.08);
+  overflow-y: auto;
   opacity: 0;
-  transform: translateY(-0.5em);
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition: opacity 0.25s ease;
 }
 
 .nav-mobile-menu.is-open {
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
+}
+
+.nav-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.nav-mobile-logo img {
+  height: 1.71em;
+  display: block;
+}
+
+.nav-mobile-close {
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-black);
 }
 
 .nav-mobile-links {
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
 }
 
-.nav-mobile-links a {
+.nav-mobile-links > * {
+  border-top: 0.07em solid rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+}
+
+.nav-mobile-links > *:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.nav-mobile-link {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.6;
   color: var(--color-black);
-  font-size: 2em;
+  text-decoration: none;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-mobile-link:hover {
+  font-weight: 700;
+}
+
+/* Work accordion on mobile */
+.nav-mobile-group-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-black);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.6;
+  cursor: pointer;
+  text-align: left;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-mobile-group-chevron {
+  width: 0.55em;
+  height: 0.55em;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.nav-mobile-group.is-open .nav-mobile-group-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-mobile-group-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.nav-mobile-group-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-top: 1.25em;
+}
+
+.nav-mobile-sublink {
+  display: block;
+  padding-left: 0.5em;
+  color: var(--color-black);
+  font-size: 14px;
   font-weight: 400;
   text-decoration: none;
   transition: font-weight 0.2s ease;
 }
 
-.nav-mobile-links a:hover {
+.nav-mobile-sublink:hover {
   font-weight: 700;
 }
 
-/* El botón dentro del dropdown mobile siempre usa el estilo outline negro (default),
-   sin importar la variante activa del .nav — coherente con el fondo blanco fijo del menú */
 .nav-mobile-menu .btn-nav {
   align-self: flex-start;
+  flex-shrink: 0;
+  font-size: 14px;
   background-color: transparent;
   border-color: var(--color-black);
   color: var(--color-black);
 }
+
 .nav-mobile-menu .btn-nav:hover {
   background-color: var(--color-black);
   color: var(--color-white);
   border-color: var(--color-black);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .nav {
     padding-left: 2em;
     padding-right: 2em;

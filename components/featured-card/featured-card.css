@@ -121,7 +121,7 @@
 @media (max-width: 768px) {
   .card--featured {
     width: 100%;
-    height: auto;
+    height: 100%;
     gap: 6.5em !important;
   }
 

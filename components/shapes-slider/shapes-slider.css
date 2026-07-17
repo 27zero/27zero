@@ -1,0 +1,205 @@
+/* ============================
+   Shapes Slider — 27zero
+   Ya NO es un slider: es un bloque fijo de 3 shapes que nunca se mueven.
+   Las flechas solo cambian el scale (1 la activa, 0.9 las otras 2).
+   Duplicado originalmente de .section--apart-home de /home (sin el .marquee).
+
+   TODO scoped bajo .shapes-slider (clase raíz única del componente) para
+   que no colisione con /home/style.css ni con ningún otro uso de nombres
+   como .apart-slider, .apart-shape, etc. en otras páginas. Las únicas
+   excepciones son las clases base compartidas del design system global
+   (.section, .container, h2, h3, .text-body--sm, .btn, .btn-dark), que
+   son intencionalmente globales — esas no se scopean.
+   ============================ */
+
+.shapes-slider {
+  background-color: var(--color-white);
+  text-align: center;
+  padding-top: 5em;
+  padding-bottom: 6.43em; /* 90px */
+}
+
+.shapes-slider .apart-home-container {
+  align-items: center;
+  gap: 1.79em;
+}
+
+.shapes-slider h2 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.shapes-slider .btn {
+  margin-top: var(--space-xs);
+}
+
+/* ===== Shapes block (ya no es un slider — nada se mueve, solo cambia el scale) ===== */
+.shapes-slider .apart-slider {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 5.71em 6.5em 0;
+}
+
+.shapes-slider .apart-slider-arrow {
+  flex-shrink: 0;
+  width: 2.85em;
+  height: 2.85em;
+  border-radius: 50%;
+  border: 0.07em solid var(--color-black);
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-black);
+  transition: all 0.2s ease;
+}
+
+.shapes-slider .apart-slider-arrow:hover:not(:disabled) {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.shapes-slider .apart-slider-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.shapes-slider .apart-shapes-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.shapes-slider .apart-shapes {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+/* Zonas invisibles de navegación — solo existen visualmente en mobile */
+.shapes-slider .apart-shapes-nav-zone {
+  display: none;
+}
+
+/* Spacers del track — solo existen (y ocupan espacio) en mobile */
+.shapes-slider .apart-shapes-spacer {
+  display: none;
+}
+
+.shapes-slider .apart-shape {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.shapes-slider .apart-shape img {
+  width: 100%;
+  max-width: 22em;
+  height: auto;
+  display: block;
+}
+
+/* ===== Execution that Scales ===== */
+.shapes-slider .apart-home-scales {
+  align-items: center;
+  gap: 1.79em;
+  padding-top: 3.93em;
+  padding-bottom: 0;
+}
+
+.shapes-slider h3 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.71em;
+  line-height: 1.25;
+  letter-spacing: -0.24px;
+  text-align: center;
+}
+
+.shapes-slider .apart-home-scales p {
+  max-width: 45em;
+}
+
+@media (max-width: 768px) {
+  .shapes-slider {
+    padding-top: 4.29em;
+    padding-bottom: 4.29em;
+  }
+  .shapes-slider .apart-slider {
+    padding: 6.07em 0 0;
+    gap: 0;
+  }
+
+  /* Sin flechas en mobile — se navega por swipe o tap en los extremos */
+  .shapes-slider .apart-slider-arrow {
+    display: none;
+  }
+
+  /* Scroll-snap horizontal: la shape activa queda centrada y se ven
+     "peeks" de las de los lados, como un slider normal */
+  .shapes-slider .apart-shapes {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 1em;
+    justify-content: flex-start;
+  }
+  .shapes-slider .apart-shapes::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Spacers reales (no padding) — dejan que la primera/última shape
+     alcancen a scrollear hasta el centro real de la pantalla. Al ser
+     elementos del track (no padding del contenedor), el 70% de las
+     shapes se calcula contra el ancho completo, sin auto-reducción. */
+  .shapes-slider .apart-shapes-spacer {
+    display: block;
+    flex: 0 0 15%;
+  }
+
+  .shapes-slider .apart-shape {
+    flex: 0 0 70%;
+    scroll-snap-align: center;
+  }
+  .shapes-slider .apart-shape img {
+    max-width: 100%;
+  }
+
+  /* Zonas invisibles a los extremos — ocupan todo el alto del bloque de shapes */
+  .shapes-slider .apart-shapes-nav-zone {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20%;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .shapes-slider .apart-shapes-nav-zone--prev { left: 0; }
+  .shapes-slider .apart-shapes-nav-zone--next { right: 0; }
+
+  .shapes-slider .apart-home-scales {
+    padding-top: 4.29em;
+  }
+
+  .shapes-slider h2 { font-size: 24px; }
+  .shapes-slider h3 { font-size: 21px; }
+}
