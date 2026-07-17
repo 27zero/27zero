@@ -1,0 +1,88 @@
+/* ============================
+   Service Card — 27zero
+   Todo scoped bajo .service-card (clase raíz única del componente).
+   Requiere las variables globales de :root — ver /design-system.md
+   ============================ */
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.79em; /* 25px */
+  border: 0.07em solid var(--color-white); /* 1px */
+  border-radius: 0.71em; /* 10px */
+  width: 19em;
+  height: 19em;
+  background-color: transparent;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover de toda la card: bg + border a purple, todo el contenido (texto,
+   ícono, arrow) pasa a #000 vía currentColor, sin reglas repetidas */
+.service-card:hover {
+  background-color: var(--color-purple);
+  border-color: var(--color-purple);
+  color: #000;
+}
+
+.service-card .service-card-title {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.5em; /* 21px */
+  line-height: 1.23; /* 123% */
+  letter-spacing: 0;
+  color: currentColor;
+}
+
+.service-card .service-card-footer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+/* El ícono es intercambiable: solo se cambia el <svg> interno (fill/stroke
+   currentColor), el wrapper controla el tamaño fijo 86x86px */
+.service-card .service-card-icon svg {
+  width: 5em;
+  height: 5em;
+  display: block;
+  color: currentColor;
+}
+
+/* Arrow — outline por default (currentColor, hereda del estado de la card).
+   Hover DIRECTO sobre el arrow (prioridad sobre el hover de la card):
+   se rellena solid black con ícono blanco. */
+.service-card .service-card-arrow {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  border: 0.1em solid currentColor;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.service-card .service-card-arrow:hover {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .service-card .service-card-title {
+    font-size: 22px;
+  }
+
+  .service-card .service-card-icon svg {
+    width: 7em;
+    height: 7em;
+  }
+}
