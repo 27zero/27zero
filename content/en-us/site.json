@@ -1,0 +1,35 @@
+{
+  "locale": "en-us",
+  "lang": "en",
+  "dir": "ltr",
+  "url_prefix": "",
+  "hreflang": "en-US",
+  "nav": {
+    "work": "Work",
+    "marketing": "Edtech Marketing",
+    "mentor": "The EdTech Mentor",
+    "resources": "Resources",
+    "about": "About",
+    "cta": "Let’s Talk!"
+  },
+  "lang_switcher": {
+    "label": "English",
+    "regions": [
+      {
+        "region": "North America",
+        "label": "English",
+        "prefix": ""
+      },
+      {
+        "region": "Europe",
+        "label": "English",
+        "prefix": "eu"
+      },
+      {
+        "region": "Latin America",
+        "label": "Español",
+        "prefix": "es"
+      }
+    ]
+  }
+}

@@ -36,6 +36,7 @@ from html import escape
 from typing import Any
 
 from config import SITE_URL, SITE_NAME, SITE_DESCRIPTION
+from helpers.i18n import hreflang_links as _hreflang_links
 
 
 # ---------------------------------------------------------------------------
@@ -74,6 +75,9 @@ def build_seo_context(
     modified_at: str | None = None,
     author_name: str | None = None,
     breadcrumbs: list[dict[str, str]] | None = None,
+    url_path_neutral: str | None = None,
+    locale: str = "en",
+    og_locale: str = "en_US",
 ) -> dict[str, Any]:
     """
     Build a complete SEO context dict for a single page.
@@ -127,6 +131,16 @@ def build_seo_context(
         f'<meta name="twitter:description" content="{escape(resolved_desc)}">',
     ]
 
+    # og:locale for the current page; og:locale:alternate for the other locales
+    tags.append(f'<meta property="og:locale" content="{escape(og_locale)}">')
+    # Import here to avoid circular import at module level
+    from helpers.i18n import LOCALES as _LOCALES
+    _og_locale_map = {"en-us": "en_US", "en-eu": "en_GB", "es-419": "es_419"}
+    for _loc in _LOCALES:
+        _alt_og = _og_locale_map.get(_loc["key"], "en_US")
+        if _alt_og != og_locale:
+            tags.append(f'<meta property="og:locale:alternate" content="{escape(_alt_og)}">')
+
     if resolved_image:
         tags += [
             f'<meta property="og:image" content="{escape(resolved_image)}">',
@@ -175,6 +189,7 @@ def build_seo_context(
         "url": canonical,
         "name": resolved_title,
         "description": resolved_desc,
+        "inLanguage": locale,
         "isPartOf": {"@id": f"{SITE_URL}/#website"},
     }
     if resolved_image:
@@ -223,11 +238,18 @@ def build_seo_context(
     )
     json_ld = f'<script type="application/ld+json">{ld_json}</script>'
 
+    # ── Hreflang alternate links ────────────────────────────────────────
+    # url_path_neutral is the path without any locale prefix.
+    # If not supplied, fall back to url_path.
+    neutral = url_path_neutral if url_path_neutral is not None else url_path
+    hreflang = _hreflang_links(neutral, SITE_URL)
+
     return {
-        "canonical":   canonical,
-        "title":       resolved_title,
-        "description": resolved_desc,
-        "image":       resolved_image,
-        "meta_tags":   meta_tags,
-        "json_ld":     json_ld,
+        "canonical":     canonical,
+        "title":         resolved_title,
+        "description":   resolved_desc,
+        "image":         resolved_image,
+        "meta_tags":     meta_tags,
+        "json_ld":       json_ld,
+        "hreflang_links": hreflang,
     }
