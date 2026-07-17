@@ -1,0 +1,498 @@
+/* ============================================================
+   About page — section-specific styles
+   Design tokens live in assets/css/style.css — not duplicated here.
+   ============================================================ */
+ 
+/* ============================
+   27zero — About page
+   ============================ */
+ 
+/* ===== Typography ===== */
+.text-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+ 
+.text-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+ 
+.text-body--sm {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.07em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+ 
+.text-caption {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.07em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+ 
+.lora {
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-weight: 500;
+}
+ 
+/* ===== Base layout ===== */
+.section {
+  padding-top: 6.5em;
+  padding-bottom: 6.5em;
+}
+ 
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 6.5em;
+  padding-right: 6.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+ 
+/* ===== Botones ===== */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.85em 1.7em;
+  border-radius: 5.2em;
+  border: 0.05em solid transparent;
+  font-family: 'Lora', serif;
+  font-size: 1.15em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+ 
+.btn-purple {
+  background-color: var(--color-purple);
+  border-color: var(--color-purple);
+  color: var(--color-black);
+}
+.btn-purple:hover {
+  background-color: transparent;
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
+ 
+.btn-dark {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-purple);
+}
+.btn-dark:hover {
+  background-color: transparent;
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
+ 
+.btn-white {
+  background-color: var(--color-white);
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+.btn-white:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+ 
+/* ===== Secciones específicas de About ===== */
+/* Se agregan aquí paso a paso, documentadas en design-system-about.md */
+ 
+/* ===== Hero ===== */
+/* Duplicado exacto de .section--hero-marketing de /edtech-marketing, sin .hero-home-cta */
+.section--hero-marketing {
+  position: relative;
+  margin-top: 10em;
+  padding-top: 6.43em;    /* 90px @ 14px base */
+  padding-bottom: 6.43em; /* 90px @ 14px base */
+  overflow: hidden;
+}
+ 
+.hero-marketing-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.hero-marketing-bg span {
+  font-family: 'Inter', sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-black);
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+ 
+.hero-marketing-container {
+  position: relative;
+  z-index: 1;
+  gap: 3.21em; /* 45px @ 14px base */
+}
+ 
+.hero-marketing-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25em;
+  max-width: 50%;
+}
+ 
+.section--hero-marketing h1 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 3.43em;
+  line-height: 1.25;
+  letter-spacing: -0.48px;
+}
+ 
+.hero-marketing-text .text-body {
+  max-width: 90%;
+}
+ 
+/* ===== Creativity is our DNA ===== */
+.section--dna {
+  background-color: var(--color-purple);
+  padding-top: 5.71em;    /* 80px @ 14px base */
+  padding-bottom: 5.71em; /* 80px @ 14px base */
+}
+ 
+.dna-container {
+  align-items: center;
+  gap: 2.25em;
+}
+ 
+.dna-container h2 {
+  text-align: center;
+}
+ 
+.dna-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1.5em;
+  line-height: 1.6;
+  letter-spacing: 0;
+  text-align: center;
+  max-width: 70%;
+}
+ 
+/* ===== Team ===== */
+.section--team {
+  background-color: var(--color-indigo);
+  padding-top: 8.21em;    /* 115px @ 14px base */
+  padding-bottom: 8.21em; /* 115px @ 14px base */
+}
+ 
+.team-container {
+  gap: 4em;
+}
+ 
+.team-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5em;
+}
+ 
+.team-intro h2 {
+  color: var(--color-white);
+}
+ 
+.team-intro .text-body {
+  color: var(--color-white);
+  max-width: 70%;
+  margin: 0 auto;
+}
+ 
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  gap: 0;
+}
+ 
+.team-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  background-image: url('/assets/team.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+ 
+.team-card-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.36em; /* 5px @ 14px base */
+  padding: 4.43em 1.5em 1.5em; /* 62px @ 14px base / 1.5em / 1.5em */
+  max-width: 15em;
+  text-align: right;
+}
+ 
+.team-card-name {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 2.25em;
+  line-height: 1.05;
+  letter-spacing: 0;
+  text-align: right;
+  color: var(--color-white);
+}
+ 
+.team-card-position {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1em; /* 14px @ 14px base */
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-align: right;
+  color: var(--color-white);
+}
+ 
+/* ===== Proof Point ===== */
+/* Duplicado de .section--proof-point de /edtech-marketing-service.
+   Cambios: bg white (en vez de indigo), texto black (en vez de white),
+   padding-top 65px, padding-bottom 130px (en vez de 96px/115px). */
+.section--proof-point {
+  background-color: var(--color-white);
+  padding-top: 4.64em;    /* 65px @ 14px base */
+  padding-bottom: 9.29em; /* 130px @ 14px base */
+}
+ 
+.proof-point-container {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  gap: 3.21em; /* 45px @ 14px base */
+}
+ 
+.proof-point-media {
+  aspect-ratio: 5 / 3;
+  border-radius: 0.5em;
+  background-color: var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.proof-point-media span {
+  font-family: 'Inter', sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-black);
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+ 
+.proof-point-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.71em; /* 24px @ 14px base */
+  height: 100%;
+  justify-content: end;
+}
+ 
+.proof-point-title {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 2.57em; /* 36px @ 14px base */
+  line-height: 1.25;
+  letter-spacing: -0.36px; /* -1% of 36px */
+  color: var(--color-black);
+}
+ 
+.proof-point-text .text-body {
+  color: var(--color-black);
+}
+ 
+/* ===== Work Slider ===== */
+/* Usa el componente cards-slider + work-card. Título: "Work". */
+.section--work-slider {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+ 
+.section--work-slider .card--work {
+  height: 30em;
+  min-height: 30em;
+}
+ 
+/* ===== The EdTech Mentor ===== */
+/* Duplicado exacto de .section--mentor-home de /home (bg indigo, featured-card + cards-slider de edtech-mentor-card). */
+.section--mentor-home {
+  background-color: var(--color-indigo);
+  color: var(--color-white);
+  padding-top: 10.36em;
+  padding-bottom: 5.71em;
+}
+ 
+.section--mentor-home .slider-arrow {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+ 
+.section--mentor-home .slider-arrow:hover:not(:disabled) {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+ 
+.mentor-home-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5em;
+}
+ 
+.mentor-home-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5em;
+  flex: 0 0 34%;
+}
+ 
+.section--mentor-home h2 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 2.57em;
+  line-height: 1.25;
+  letter-spacing: -0.36px;
+}
+ 
+.section--mentor-home h2 .inter-accent {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1em;
+  line-height: 1.25;
+  letter-spacing: -0.36px;
+}
+ 
+.section--mentor-home .btn-white {
+  border-color: var(--color-white);
+}
+ 
+.mentor-home-featured-wrap {
+  flex: 1;
+  height: 30em;
+}
+ 
+/* ===== Sliders container (wrapper de spacing para sliders embebidos en una sección) ===== */
+.sliders-container {
+  padding-top: 4.29em;
+  padding-bottom: 0;
+}
+ 
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  body { font-size: 9px; }
+ 
+  .container {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+ 
+  /* Hero */
+  .section--hero-marketing {
+    margin-top: 10.67em;   /* 96px @ 9px base */
+    padding-top: 13.89em;  /* 125px @ 9px base */
+    padding-bottom: 19.44em; /* 175px @ 9px base */
+  }
+  .hero-marketing-text { max-width: 100%; }
+  .section--hero-marketing h1 { font-size: 32px; }
+  .text-body { font-size: 13px; font-weight: 400; }
+  .text-link, .text-body--sm { font-size: 13px; font-weight: 500; }
+  .text-caption { font-size: 13px; }
+  .btn { font-size: 13px; }
+ 
+  /* Creativity is our DNA */
+  .dna-subtitle {
+    max-width: 100%;
+    font-size: 18px;
+  }
+ 
+  /* Team */
+  .team-intro .text-body { max-width: 100%; }
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-card-info { max-width: 75%; }
+  .team-card-name { font-size: 28px; }
+  .team-card-position { font-size: 14px; }
+ 
+  /* Proof Point */
+  .section--proof-point {
+    padding-top: 6.67em;    /* 60px @ 9px base */
+    padding-bottom: 6.67em; /* 60px @ 9px base */
+  }
+  .proof-point-container {
+    grid-template-columns: 1fr;
+    gap: 5em; /* 45px @ 9px base */
+  }
+  .proof-point-media { aspect-ratio: 16 / 9; }
+  .proof-point-title { font-size: 24px; }
+ 
+  /* The EdTech Mentor */
+  .sliders-container {
+    padding-top: 3.93em;
+    padding-left: 0;
+  }
+  .section--mentor-home {
+    padding-top: 6.07em;
+    padding-bottom: 4.5em;
+  }
+  .mentor-home-row {
+    flex-direction: column;
+    gap: 4.64em;
+  }
+  .mentor-home-text {
+    flex: 1 1 auto;
+  }
+  .mentor-home-featured-wrap {
+    height: auto;
+  }
+  .card--featured {
+    width: 100%;
+    height: auto;
+  }
+  .card-featured-content {
+    gap: 6.5em;
+  }
+  .section--mentor-home h2 { font-size: 24px; }
+}
