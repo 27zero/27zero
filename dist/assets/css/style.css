@@ -35,6 +35,27 @@
   /* Shadows */
   --shadow-sm: 0 0 0 1px rgba(11,11,12,.07), 0 2px 5px -2px rgba(11,11,12,.07);
   --shadow-md: 0 0 0 1px rgba(11,11,12,.07), 0 18px 34px -18px rgba(11,11,12,.28);
+
+  /* ── Component design system tokens ─────────────────────────────────────
+     Consumed by the component stylesheets (components/navbar/navbar.css,
+     components/footer/footer.css, …) and the per-page stylesheets
+     (assets/css/work.css, edtech-mentor.css, About.css, resources.css, …).
+     These components expect the design-system :root tokens to be available
+     globally (see components/*/*.css headers "Requiere las variables
+     globales de :root").  They live here because the site loads a single
+     global stylesheet (see ARCHITECTURE.md). */
+  --color-indigo: #440E92;
+  --color-purple: #B382F9;
+  --color-black:  #101010;
+  --color-gray:   #F5F5F5;
+  --color-white:  #FFFFFF;
+
+  --space-xs:  0.5em;
+  --space-sm:  1.5em;
+  --space-md:  3em;
+  --space-lg:  6em;
+  --space-xl:  9em;
+  --space-2xl: 14em;
 }
 
 /* ── RESET ──────────────────────────────────────────────────────────────── */

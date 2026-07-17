@@ -1,0 +1,118 @@
+/* ============================
+   Practices Card — 27zero
+   Todo scoped bajo .practices-card (clase raíz única del componente).
+   Requiere las variables globales de :root — ver /design-system.md
+   ============================ */
+
+.practices-card {
+  position: relative;
+  background-color: var(--color-gray);
+  border-radius: 0.5em;
+  padding: 2.86em 1.86em; /* 40px 26px */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10em; /* 140px */
+  width: 100%;
+  text-decoration: none;
+  color: var(--color-black);
+  overflow: hidden;
+}
+
+/* Placeholder de imagen de fondo — mismo patrón que .card-work-bg */
+.practices-card .practices-card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.practices-card .practices-card-bg span {
+  font-family: 'Inter', sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-black);
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+
+/* ===== Bloque 1: ícono + texto ===== */
+.practices-card .practices-card-block--intro {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4.29em; /* 60px */
+}
+
+/* El ícono es intercambiable: solo se cambia el <svg> interno,
+   el wrapper controla el tamaño/posición. */
+.practices-card .practices-card-icon svg {
+  width: 4.21em; /* 59px */
+  height: 2.79em; /* 39px */
+  display: block;
+}
+
+.practices-card .practices-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.71em; /* 10px */
+}
+
+.practices-card .practices-card-title {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.71em; /* 24px */
+  line-height: 1.4; /* 140% */
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.practices-card .practices-card-body {
+  color: var(--color-black);
+}
+
+/* ===== Bloque 2: CTA + arrow ===== */
+.practices-card .practices-card-block--cta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.practices-card .practices-card-cta-text {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.21em; /* 17px */
+  line-height: 1.4; /* 140% */
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+/* Arrow — outline por default, se rellena en hover de TODA la card (no solo el botón) */
+.practices-card .practices-card-arrow {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  border: 0.1em solid var(--color-black);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-black);
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.practices-card:hover .practices-card-arrow {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}

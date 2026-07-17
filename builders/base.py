@@ -52,10 +52,20 @@ from jinja2 import Environment
 
 from config import DIST_DIR, SITE_URL
 from helpers.images import image_url
+from helpers.i18n import LOCALES, load_locale, prefix_url
 from helpers.seo import build_seo_context
 from helpers.slug import get_slug
 
 logger = logging.getLogger(__name__)
+
+# Maps a locale key to its Open Graph locale code.  Mirrors the map that
+# builders/pages.py uses so section pages emit identical og:locale metadata.
+OG_LOCALE_MAP = {"en-us": "en_US", "en-eu": "en_GB", "es-419": "es_419"}
+
+
+def _locale_lang(i18n: dict[str, Any]) -> str:
+    """Return the JSON-LD language code for a loaded locale ('en' | 'es')."""
+    return i18n.get("lang", "en")
 
 
 class SectionBuilder:
@@ -168,10 +178,17 @@ class SectionBuilder:
         items:
             List of document dicts returned by helpers/sanity.py.
 
+        The section is rendered once per locale (see helpers/i18n.LOCALES),
+        exactly like builders/pages.py: the canonical (en-us) locale writes
+        to dist/{section}/, each other locale to dist/{prefix}/{section}/.
+        Every page receives the same shared context build_pages() passes
+        (i18n, nav_prefix, neutral_path, current_path, hreflang_links, seo)
+        so templates that extend base.html render identically.
+
         Returns
         -------
         int
-            Number of HTML files written (1 index + N details).
+            Number of HTML files written (index + details, across locales).
         """
         if not items:
             logger.info(
@@ -183,12 +200,13 @@ class SectionBuilder:
 
         count = 0
 
-        if self._build_index(env, items):
-            count += 1
-
-        for item in items:
-            if self._build_detail(env, item, items):
+        for loc in LOCALES:
+            if self._build_index(env, items, loc):
                 count += 1
+
+            for item in items:
+                if self._build_detail(env, item, items, loc):
+                    count += 1
 
         return count
 
@@ -329,9 +347,14 @@ class SectionBuilder:
         self,
         item: dict[str, Any],
         slug: str,
+        loc: dict[str, str],
     ) -> dict[str, Any]:
         """
         Build and return the SEO context dict for a detail page.
+
+        ``loc`` is the current locale entry from helpers/i18n.LOCALES; it is
+        used to build the locale-prefixed canonical URL and the hreflang set,
+        exactly as builders/pages.py does for static pages.
 
         Override to customise title format, og_type, or breadcrumbs.
         Delegates to helpers/seo.py — this hook only assembles the
@@ -344,12 +367,17 @@ class SectionBuilder:
             or item.get("excerpt")
             or title
         )
+        neutral   = f"{self.section}/{slug}"
+        localized = prefix_url(neutral, loc["prefix"])
         return build_seo_context(
-            url_path=f"{self.section}/{slug}",
+            url_path=localized,
+            url_path_neutral=neutral,
             title=f"{title} — 27zero",
             description=description,
             image_url=self._og(item),
             og_type="article",
+            locale="es" if loc["key"].startswith("es") else "en",
+            og_locale=OG_LOCALE_MAP.get(loc["key"], "en_US"),
             breadcrumbs=[
                 {"name": "Home",        "url": "/"},
                 {"name": section_title, "url": f"/{self.section}/"},
@@ -526,10 +554,35 @@ class SectionBuilder:
         with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as fh:
             fh.write(html)
 
+    def _shared_context(
+        self,
+        loc: dict[str, str],
+        i18n: dict[str, Any],
+        neutral_path: str,
+        localized_url: str,
+        seo: dict[str, Any],
+    ) -> dict[str, Any]:
+        """
+        Return the locale-aware variables every base.html page needs.
+
+        Mirrors the shared context builders/pages.py passes to static pages,
+        so section templates that extend base.html render identically:
+        i18n, nav_prefix, neutral_path, current_path, hreflang_links.
+        """
+        locale_prefix = loc["prefix"]
+        return {
+            "i18n":           i18n,
+            "nav_prefix":     f"/{locale_prefix}" if locale_prefix else "",
+            "neutral_path":   neutral_path,
+            "current_path":   f"/{localized_url}/" if localized_url else "/",
+            "hreflang_links": seo["hreflang_links"],
+        }
+
     def _build_index(
         self,
         env: Environment,
         items: list[dict[str, Any]],
+        loc: dict[str, str],
     ) -> bool:
         """Render and write the section index page.  Returns success flag."""
         try:
@@ -541,6 +594,9 @@ class SectionBuilder:
             )
             return False
 
+        i18n          = load_locale(loc["key"])
+        localized_url = prefix_url(self.section, loc["prefix"])
+
         enriched   = [self.enrich_item(item) for item in items]
         groups     = self._group_by(enriched)
         categories = [
@@ -550,10 +606,13 @@ class SectionBuilder:
         featured = [item for item in enriched if item.get("featured")]
 
         seo = build_seo_context(
-            url_path=self.section,
+            url_path=localized_url,
+            url_path_neutral=self.section,
             title=self.index_title or f"{self.section.title()} — 27zero",
             description=self.index_desc,
             og_type=self.index_og_type,
+            locale=_locale_lang(i18n),
+            og_locale=OG_LOCALE_MAP.get(loc["key"], "en_US"),
             breadcrumbs=[
                 {"name": "Home", "url": "/"},
                 {"name": self.section.replace("-", " ").title(), "url": f"/{self.section}/"},
@@ -567,17 +626,18 @@ class SectionBuilder:
             featured=featured,
             seo=seo,
         )
+        ctx.update(self._shared_context(loc, i18n, self.section, localized_url, seo))
 
         try:
             html = template.render(**ctx)
         except Exception as exc:
-            logger.error("[%s] Error rendering index: %s", self.section, exc)
+            logger.error("[%s] Error rendering index (%s): %s", self.section, loc["key"], exc)
             return False
 
-        self._write(html, self.section)
+        self._write(html, localized_url)
         logger.info(
-            "  built /%s/  (%d items, %d categories)",
-            self.section, len(enriched), len(categories),
+            "  built /%s/  [%s]  (%d items, %d categories)",
+            localized_url, loc["key"], len(enriched), len(categories),
         )
         return True
 
@@ -586,6 +646,7 @@ class SectionBuilder:
         env: Environment,
         item: dict[str, Any],
         all_items: list[dict[str, Any]],
+        loc: dict[str, str],
     ) -> bool:
         """Render and write one detail page.  Returns success flag."""
         slug = item.get("slug") or get_slug(item.get("slug", {}))
@@ -605,26 +666,32 @@ class SectionBuilder:
             )
             return False
 
+        i18n          = load_locale(loc["key"])
+        neutral_path  = f"{self.section}/{slug}"
+        localized_url = prefix_url(neutral_path, loc["prefix"])
+
         enriched = self.enrich_item(item)
         related  = [self.enrich_item(rel) for rel in self._related(item, all_items)]
 
+        seo = self.detail_seo(item, slug, loc)
         ctx = self.detail_context(
             item=enriched,
             body_html=self.body_html(item),
             related=related,
             gallery=self._enrich_gallery(item),
-            seo=self.detail_seo(item, slug),
+            seo=seo,
         )
+        ctx.update(self._shared_context(loc, i18n, neutral_path, localized_url, seo))
 
         try:
             html = template.render(**ctx)
         except Exception as exc:
             logger.error(
-                "[%s] Error rendering detail %r: %s",
-                self.section, slug, exc,
+                "[%s] Error rendering detail %r (%s): %s",
+                self.section, slug, loc["key"], exc,
             )
             return False
 
-        self._write(html, self.section, slug)
-        logger.info("  built /%s/%s/", self.section, slug)
+        self._write(html, localized_url)
+        logger.info("  built /%s/  [%s]", localized_url, loc["key"])
         return True

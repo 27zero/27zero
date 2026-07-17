@@ -205,14 +205,19 @@ class MentorBuilder(SectionBuilder):
             "interview":   item,
         }
 
-    def detail_seo(self, item: dict[str, Any], slug: str) -> dict[str, Any]:
+    def detail_seo(self, item: dict[str, Any], slug: str, loc: dict[str, str]) -> dict[str, Any]:
         """
         Build SEO context for a detail page.
 
         Uses guestName as the title when seoTitle is absent, since
         interview documents may not have a generic ``title`` field.
+
+        ``loc`` is the current locale entry; it drives the locale-prefixed
+        canonical URL and hreflang set, matching the base-class behaviour.
         """
         from helpers.seo import build_seo_context
+        from helpers.i18n import prefix_url
+        from builders.base import OG_LOCALE_MAP
 
         guest   = item.get("guestName") or slug
         episode = item.get("title") or guest
@@ -225,12 +230,18 @@ class MentorBuilder(SectionBuilder):
 
         og = (item.get("ogImage") or {}).get("url") or item.get("guestPhoto") or ""
 
+        neutral   = f"{self.section}/{slug}"
+        localized = prefix_url(neutral, loc["prefix"])
+
         return build_seo_context(
-            url_path=f"{self.section}/{slug}",
+            url_path=localized,
+            url_path_neutral=neutral,
             title=title,
             description=desc,
             image_url=image_url(og, width=self.OG_WIDTH, auto="format") if og else "",
             og_type="article",
+            locale="es" if loc["key"].startswith("es") else "en",
+            og_locale=OG_LOCALE_MAP.get(loc["key"], "en_US"),
             breadcrumbs=[
                 {"name": "Home",             "url": "/"},
                 {"name": "The EdTech Mentor","url": f"/{self.section}/"},
