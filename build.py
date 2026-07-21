@@ -42,7 +42,7 @@ import sys
 
 from jinja2 import Environment, FileSystemLoader
 
-from config import PAGES_DIR, TEMPLATES_DIR, ASSETS_DIR, DIST_DIR, VERBOSE
+from config import PAGES_DIR, TEMPLATES_DIR, ASSETS_DIR, COMPONENTS_DIR, DIST_DIR, VERBOSE
 
 from helpers.sanity import (
     get_posts,
@@ -148,8 +148,12 @@ def build() -> None:
     logger.info("\nGenerating RSS feed...")
     build_rss(posts=posts, resources=resources)
 
-    # ── Step 9: Copy static assets ───────────────────────────────────────
+    # ── Step 9: Copy browser-served static trees ─────────────────────────
+    # Everything the templates link to with an absolute path must exist in
+    # dist/ verbatim.  Templates reference both /assets/... and /components/...
+    # so both source trees are copied whole (no per-file hardcoding).
     shutil.copytree(ASSETS_DIR, os.path.join(DIST_DIR, "assets"), dirs_exist_ok=True)
+    shutil.copytree(COMPONENTS_DIR, os.path.join(DIST_DIR, "components"), dirs_exist_ok=True)
 
     # ── Summary ───────────────────────────────────────────────────────────
     total_dynamic = n_posts + n_resources + n_interviews + n_work + n_mentor

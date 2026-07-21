@@ -1,0 +1,208 @@
+/* ============================
+   EdTech Mentor Card — 27zero
+   Reusa .card (base) de /components/work-card/work-card.css
+   Requiere las variables globales de :root — ver /design-system.md
+   ============================ */
+
+/* Wrapper: header (transparente) + body (la card real), en columna */
+.card--edtech-mentor {
+  width: 25em;
+  gap: 2em; /* 28px */
+  background-color: transparent;
+}
+
+/* ===== Header — transparente, sin padding, no es parte de la card ===== */
+.card-edtech-mentor-header {
+  background-color: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.86em;
+}
+
+.card-edtech-mentor-avatar {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background-color: var(--color-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.card-edtech-mentor-avatar span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.93em; /* proporcional al avatar (era 1.29em @ 4.14em) */
+  font-weight: 700;
+  color: var(--color-indigo);
+}
+
+.card-edtech-mentor-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+
+.card-edtech-mentor-role {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.85em;
+  line-height: 1.4; /* 140% */
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+.card-edtech-mentor-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1.15em;
+  line-height: 1.4; /* 140% */
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+/* ===== Body — la card real: gray por default, gradiente oscuro en hover, bordes redondeados ===== */
+.card-edtech-mentor-body {
+  position: relative;
+  width: 25em;
+  height: 25em;
+  padding: 1.5em;
+  border-radius: 0.5em;
+  background-color: var(--color-gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Overlay de gradiente — oculto por default, aparece en hover */
+.card-edtech-mentor-body::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--color-gray) 0%, var(--color-black) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.card--edtech-mentor:hover .card-edtech-mentor-body::after {
+  opacity: 1;
+}
+
+.card-edtech-mentor-tag {
+  position: relative;
+  z-index: 1;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.85em;
+  line-height: 1.5; /* 150% */
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.card-edtech-mentor-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+/* Título — oculto por default, aparece con el gradiente en hover */
+.card-edtech-mentor-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1em;
+  line-height: 1.4; /* 140% */
+  letter-spacing: 0;
+  color: var(--color-white);
+  opacity: 0;
+  transform: translateY(0.5em);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card--edtech-mentor:hover .card-edtech-mentor-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Arrow — bg transparent por default, hover propio (independiente del hover de la card) */
+.card-edtech-mentor-arrow {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  border: 0.14em solid #000; /* 2px */
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.card--edtech-mentor:hover .card-edtech-mentor-arrow {
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Hover directo sobre el arrow tiene prioridad sobre el hover de la card */
+.card-edtech-mentor-arrow:hover {
+  background-color: #fff;
+  border-color: #fff;
+  color: #000 !important;
+}
+
+/* ============================
+   Mobile (<=768px) — tamaños de texto en px fijos, no em
+   ============================ */
+@media (max-width: 768px) {
+  .card--edtech-mentor {
+    width: 250px;
+  }
+
+  /* En mobile no hay hover — el arrow siempre se ve como el estado de hover-de-card en desktop */
+  .card-edtech-mentor-arrow {
+    border-color: #fff;
+    color: #fff;
+  }
+
+  .card-edtech-mentor-body {
+    width: 250px;
+    height: 250px;
+  }
+
+  .card-edtech-mentor-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .card-edtech-mentor-role {
+    font-size: 10px;
+  }
+
+  .card-edtech-mentor-name {
+    font-size: 18px;
+  }
+
+  .card-edtech-mentor-tag {
+    font-size: 13px;
+  }
+
+  /* En mobile no hay hover — el título se ve siempre, no solo al pasar el mouse.
+     También forzamos visible el overlay de gradiente (::after), si no el título
+     blanco quedaría sobre el fondo gray claro, sin contraste. */
+  .card-edtech-mentor-body::after {
+    opacity: 1;
+  }
+
+  .card-edtech-mentor-title {
+    font-size: 13px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

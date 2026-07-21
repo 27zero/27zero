@@ -16,10 +16,11 @@ import os
 # ---------------------------------------------------------------------------
 # ROOT is the directory that contains build.py and this config.py.
 ROOT         = os.path.dirname(os.path.abspath(__file__))
-TEMPLATES_DIR = os.path.join(ROOT, "templates")
-PAGES_DIR    = os.path.join(ROOT, "pages")
-ASSETS_DIR   = os.path.join(ROOT, "assets")
-DIST_DIR     = os.path.join(ROOT, "dist")
+TEMPLATES_DIR  = os.path.join(ROOT, "templates")
+PAGES_DIR      = os.path.join(ROOT, "pages")
+ASSETS_DIR     = os.path.join(ROOT, "assets")
+COMPONENTS_DIR = os.path.join(ROOT, "components")
+DIST_DIR       = os.path.join(ROOT, "dist")
 
 # ---------------------------------------------------------------------------
 # Site identity

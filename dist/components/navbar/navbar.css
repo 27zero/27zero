@@ -1,0 +1,411 @@
+/* ============================
+   Navbar — 27zero
+   Requiere las variables globales de :root (colores, spacing)
+   definidas en /design-system.md
+   ============================ */
+
+/* Wrapper fijo — sin fondo */
+.nav {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0;
+  padding-left: 3.25em;
+  padding-right: 3.25em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: top 0.3s ease;
+}
+
+/* Contenedor visual con fondo y border-radius */
+.nav-container {
+  border-radius: 1.25em;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.15em 3.25em;
+  gap: 2em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-logo img {
+  height: 1.71em;
+  display: block;
+  transition: filter 0.2s ease;
+}
+
+/* Links centrados entre logo y botón */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+.nav-links a {
+  font-size: 1.15em;
+  font-weight: 500;
+  line-height: 1.25em;
+  padding: 0;
+  text-decoration: none;
+  transition: font-weight 0.2s ease;
+}
+
+/* Hover: links se ponen bold */
+.nav-links a:hover {
+  font-weight: 700;
+}
+
+/* ─── Variante TOP WHITE — fondo blanco, texto/logo negro ─── */
+.nav--white .nav-container {
+  background-color: transparent;
+  color: var(--color-black);
+}
+.nav--white .nav-links a {
+  color: var(--color-black);
+}
+.nav--white .nav-links a:hover {
+  color: var(--color-black);
+  font-weight: 700;
+}
+
+/* ─── Variante TOP BLACK — fondo negro, texto/logo blanco ─── */
+.nav--black .nav-container {
+  background-color: transparent;
+  color: var(--color-white);
+}
+.nav--black .nav-links a {
+  color: var(--color-white);
+}
+.nav--black .nav-links a:hover {
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+/* ─── Variante SCROLLED (indigo) — fondo indigo, todo blanco ─── */
+/* Se aplica vía JS al pasar 50px de scroll, sin importar si el estado inicial era white o black */
+.nav--scrolled .nav-container {
+  background-color: var(--color-indigo);
+  color: var(--color-white);
+}
+.nav--scrolled .nav-links a {
+  color: var(--color-white);
+}
+.nav--scrolled .nav-links a:hover {
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+/* Logo invertido solo en estado scrolled */
+.nav--scrolled .nav-logo {
+  filter: invert(1);
+}
+
+/* ─── Botón exclusivo del navbar (usa .btn como base) ─── */
+/* nav--white: outline negro, texto negro, hover filled negro */
+.btn-nav {
+  background-color: transparent;
+  border: 0.05em solid var(--color-black);
+  color: var(--color-black);
+}
+.btn-nav:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+/* nav--black: outline blanco, texto blanco, hover filled blanco texto negro */
+.nav--black .btn-nav {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+.nav--black .btn-nav:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+
+/* nav--scrolled: outline blanco, texto blanco, hover filled blanco texto indigo */
+.nav--scrolled .btn-nav {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+.nav--scrolled .btn-nav:hover {
+  background-color: var(--color-white);
+  color: var(--color-indigo);
+  border-color: var(--color-white);
+}
+
+/* ─── Dropdown "Work" (desktop) ───────────────────────────────────────────── */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 1.15em;
+  font-weight: 500;
+  line-height: 1.25em;
+  color: inherit;
+  cursor: pointer;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-dropdown-toggle:hover {
+  font-weight: 700;
+}
+
+.nav-dropdown-chevron {
+  width: 0.75em;
+  height: 0.75em;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.nav-dropdown.is-open .nav-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.85em;
+  min-width: 10em;
+  padding: 1em;
+  gap: 0.5em;
+  border-radius: 0.6em;
+  border: 0.07em solid rgba(0, 0, 0, 0.1);
+  background-color: var(--color-white);
+  box-shadow: 0 0.5em 1.5em rgba(16, 16, 16, 0.08);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(-0.35em);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.nav-dropdown.is-open .nav-dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-dropdown-link {
+  padding: 0.35em 0.35em;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--color-black) !important;
+  text-decoration: none;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-dropdown-link:hover {
+  font-weight: 700;
+}
+
+.nav-dropdown-divider {
+  height: 0.07em;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ============================
+   Mobile (<=991px) — fullscreen modal
+   ============================ */
+
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 2.5em;
+  height: 2.5em;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav-hamburger-icon {
+  width: 1.5em;
+  height: 1.5em;
+  color: currentColor;
+}
+
+/* Fullscreen modal — always white, z-index above everything including scrolled .nav */
+.nav-mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.15em 5.25em 3.25em;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.nav-mobile-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.nav-mobile-logo img {
+  height: 1.71em;
+  display: block;
+}
+
+.nav-mobile-close {
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-black);
+}
+
+.nav-mobile-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-mobile-links > * {
+  border-top: 0.07em solid rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+}
+
+.nav-mobile-links > *:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.nav-mobile-link {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.6;
+  color: var(--color-black);
+  text-decoration: none;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-mobile-link:hover {
+  font-weight: 700;
+}
+
+/* Work accordion on mobile */
+.nav-mobile-group-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-black);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.6;
+  cursor: pointer;
+  text-align: left;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-mobile-group-chevron {
+  width: 0.55em;
+  height: 0.55em;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.nav-mobile-group.is-open .nav-mobile-group-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-mobile-group-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.nav-mobile-group-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-top: 1.25em;
+}
+
+.nav-mobile-sublink {
+  display: block;
+  padding-left: 0.5em;
+  color: var(--color-black);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-mobile-sublink:hover {
+  font-weight: 700;
+}
+
+.nav-mobile-menu .btn-nav {
+  align-self: flex-start;
+  flex-shrink: 0;
+  font-size: 14px;
+  background-color: transparent;
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+
+.nav-mobile-menu .btn-nav:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+@media (max-width: 991px) {
+  .nav {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+  .nav-links,
+  .nav-container > .btn-nav {
+    display: none;
+  }
+  .nav-hamburger {
+    display: flex;
+  }
+}

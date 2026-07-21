@@ -1,0 +1,83 @@
+/* ============================
+   Dropdown (FAQ) — 27zero
+   Todo scoped bajo .dropdown (clase raíz única del componente).
+   Sin color de fondo propio — siempre vive sobre bg #101010 de la página.
+   width: 100% — el ancho real lo define el wrapper de cada página.
+   Requiere las variables globales de :root — ver /design-system.md
+   ============================ */
+
+.dropdown {
+  width: 100%;
+}
+
+/* ===== Toggle ===== */
+.dropdown .dropdown-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5em;
+  padding: 2.14em 0; /* 30px top/bottom */
+  border: none;
+  border-top: 0.07em solid #FFFFFF1A; /* 1px */
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown .dropdown-title {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.71em; /* 24px */
+  line-height: 1.25; /* 125% */
+  letter-spacing: -0.24px; /* -1% de 24px */
+  color: var(--color-purple);
+}
+
+.dropdown .dropdown-arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-purple);
+  transition: transform 0.3s ease;
+}
+
+.dropdown.is-open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* ===== Content ===== */
+/* height: 0 -> Xpx (medido con JS via scrollHeight) -> auto una vez abierto.
+   El grid-template-rows 0fr/1fr no colapsaba limpio con contenido real
+   (dejaba un "sliver" visible); esta técnica clásica es más confiable. */
+.dropdown .dropdown-content {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.dropdown .dropdown-content-inner {
+  width: 90%;
+  padding-bottom: 1.79em;
+  display: flex;
+  flex-direction: column;
+}
+
+/* P del contenido — único elemento con estilo fijo garantizado;
+   cualquier otra cosa (botones, listas, etc.) el usuario la estiliza aparte */
+.dropdown .dropdown-content-inner p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1.15em;
+  line-height: 1.6; /* 160% */
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+@media (max-width: 768px) {
+  .dropdown .dropdown-content-inner p {
+    font-size: 13px;
+  }
+}
