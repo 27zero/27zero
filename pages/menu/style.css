@@ -145,3 +145,106 @@ h5 {
     padding: 0.6em 0;
   }
 }
+
+
+/* ============================================================
+   Menu page additional styles
+   Appended from Santiago: menu/style.css
+   ============================================================ */
+
+.site-menu-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-gray);
+  margin-bottom: var(--space-xs);
+}
+
+.site-menu-overview {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--color-black);
+  max-width: 42em;
+}
+
+.site-menu-overview code {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9em;
+  font-weight: 600;
+  background-color: var(--color-gray);
+  padding: 0.15em 0.4em;
+  border-radius: 0.3em;
+}
+
+.site-menu-warning {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  background-color: var(--color-gray);
+  border-left: 0.2em solid var(--color-indigo);
+  border-radius: 0.4em;
+  padding: 1.3em 1.7em;
+  max-width: 42em;
+}
+
+.site-menu-warning-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86em;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--color-indigo);
+}
+
+.site-menu-warning p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.07em;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-black);
+}
+
+.btn-menu-repo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  gap: 0.5em;
+  padding: 0.85em 1.7em;
+  border-radius: 5.2em;
+  border: 0.05em solid var(--color-indigo);
+  background-color: var(--color-indigo);
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-size: 1.15em;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-menu-repo:hover {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+  .site-menu-overview {
+    font-size: 13px;
+  }
+
+  .site-menu-warning-label {
+    font-size: 12px;
+  }
+
+  .site-menu-warning p {
+    font-size: 13px;
+  }
+
+  .btn-menu-repo {
+    font-size: 14px;
+  }

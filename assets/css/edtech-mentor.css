@@ -482,3 +482,55 @@ body {
     align-items: baseline;
   }
 }
+
+
+/* ============================================================
+   EdTech Mentor CTA section styles
+   Appended from Santiago: edtech-mentor/style.css
+   ============================================================ */
+
+.section--cta-mentor {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  padding-top: 5.71em; /* 80px @ 14px base */
+  padding-bottom: 5.71em; /* 80px @ 14px base */
+}
+
+.cta-mentor-container {
+  gap: 2.5em; /* 35px @ 14px base — separación entre title-block y actions */
+}
+
+.cta-mentor-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.71em; /* 10px @ 14px base — separación entre título y subtítulo */
+}
+
+.cta-mentor-title-block .text-body {
+  max-width: 42.86em; /* 600px @ 14px base */
+}
+
+.cta-mentor-title {
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 3.43em; /* 48px @ 14px base */
+  line-height: 1.25;
+  letter-spacing: -0.36px;
+  max-width: 10em;
+}
+
+.cta-mentor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+}
+
+  .cta-mentor-title {
+    font-size: 24px;
+  }
+
+  .cta-mentor-actions {
+    flex-direction: column;
+    align-items: baseline;
+  }
