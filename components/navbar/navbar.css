@@ -409,3 +409,8 @@
     display: flex;
   }
 }
+
+/* Appended from Santiago: components/navbar/navbar.css */
+.nav-mobile-group-toggle:hover {
+  font-weight: 500;
+}
