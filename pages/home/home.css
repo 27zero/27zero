@@ -752,3 +752,9 @@ h4 {
   .text-body, a, .text-link, .text-body--sm { font-size: 13px !important; }
   .btn { font-size: 13px !important; }
 }
+
+/* Appended from Santiago: home/style.css */
+.section--logos-home {
+  padding-top: 0;
+  padding-bottom: 8.93em;
+}
