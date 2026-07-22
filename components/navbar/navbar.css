@@ -1,247 +1,86 @@
-/* ==========================================================================
-   NAVBAR 27ZERO
-   Base reconstruida desde el CSS original de Santiago
-=========================================================================== */
+/* ============================
+   Navbar — 27zero
+   Requiere las variables globales de :root (colores, spacing)
+   definidas en /design-system.md
+   ============================ */
 
-/* ==========================================================================
-   WRAPPER
-=========================================================================== */
-
+/* Wrapper fijo — sin fondo */
 .nav {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0;
+  padding-left: 3.25em;
+  padding-right: 3.25em;
   position: fixed;
-
   top: 0;
   left: 0;
   right: 0;
-
-  width: 100%;
-  max-width: 1440px;
-
-  margin-left: auto;
-  margin-right: auto;
-
-  padding: 0 3.25em;
-
-  z-index: 1000;
-
-  transition:
-    top 0.3s ease,
-    color 0.2s ease;
+  z-index: 100;
+  transition: top 0.3s ease;
 }
 
-/* ==========================================================================
-   CONTAINER
-=========================================================================== */
-
+/* Contenedor visual con fondo y border-radius */
 .nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  width: 100%;
-
-  padding: 1.15em 3.25em;
-
   border-radius: 1.25em;
-
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
-}
-
-/* ==========================================================================
-   LOGO
-=========================================================================== */
-
-.nav-logo {
   display: flex;
+  flex-flow: row;
+  justify-content: space-between;
   align-items: center;
-
-  flex-shrink: 0;
+  padding: 1.15em 3.25em;
+  gap: 2em;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .nav-logo img {
-  display: block;
-
   height: 1.71em;
-
+  display: block;
   transition: filter 0.2s ease;
 }
 
-/* ==========================================================================
-   LINKS
-=========================================================================== */
-
+/* Links centrados entre logo y botón */
 .nav-links {
   display: flex;
   align-items: center;
-
   gap: 2em;
-
-  margin-left: 4em;
 }
 
-.nav-links > a {
-  color: inherit;
-
-  text-decoration: none;
-
+.nav-links a {
   font-size: 1.15em;
-
   font-weight: 500;
-
   line-height: 1.25em;
-
+  padding: 0;
+  text-decoration: none;
   transition: font-weight 0.2s ease;
 }
 
-.nav-links > a:hover {
+/* Hover: links se ponen bold */
+.nav-links a:hover {
   font-weight: 700;
 }
 
-/* ==========================================================================
-   RIGHT SIDE
-=========================================================================== */
-
-.lang-switcher {
-  margin-left: auto;
-}
-
-/* ==========================================================================
-   BUTTON
-=========================================================================== */
-
-.btn-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin-left: 2.2em;
-
-  min-height: 3.35em;
-
-  padding: 0.85em 1.7em;
-
-  border: 0.05em solid currentColor;
-
-  border-radius: 999px;
-
-  background: transparent;
-
-  color: inherit;
-
-  text-decoration: none;
-
-  white-space: nowrap;
-
-  font-family: "Lora", serif;
-
-  font-size: 1.15em;
-
-  font-weight: 400;
-
-  line-height: 1;
-
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
-}
-
-/* ==========================================================================
-   NAV STATES
-=========================================================================== */
-
-.nav--white {
-  color: var(--color-black);
-}
-
-.nav--black {
-  color: var(--color-white);
-}
-
-/* cuando hace scroll */
-
-.nav--scrolled {
-  top: 2.2em;
-}
-
-.nav--scrolled .nav-container {
-  background: var(--color-indigo);
-
-  color: var(--color-white);
-}
-
-/* Logo blanco únicamente cuando el navbar es morado */
-
-.nav--scrolled .nav-logo img {
-  filter: invert(1);
-}
-
-/* ==========================================================================
-   BUTTON HOVERS
-=========================================================================== */
-
-.nav--white .btn-nav:hover {
-  background: var(--color-black);
-
-  color: var(--color-white);
-
-  border-color: var(--color-black);
-}
-
-.nav--black .btn-nav:hover {
-  background: var(--color-white);
-
-  color: var(--color-black);
-
-  border-color: var(--color-white);
-}
-
-.nav--scrolled .btn-nav:hover {
-  background: var(--color-white);
-
-  color: var(--color-indigo);
-
-  border-color: var(--color-white);
-}
-
-/* ==========================================================================
-   WORK DROPDOWN
-=========================================================================== */
-
+/* ─── Dropdown "Work" (desktop) ───
+   Default (nav--white / nav--black): panel bg blanco, texto negro,
+   igual que en la referencia visual — ver overrides por variante abajo. */
 .nav-dropdown {
   position: relative;
-
-  display: flex;
-  align-items: center;
 }
 
 .nav-dropdown-toggle {
   display: flex;
   align-items: center;
-
   gap: 0.35em;
-
-  padding: 0;
-
-  margin: 0;
-
-  border: none;
   background: none;
-
-  color: inherit;
-
-  cursor: pointer;
-
+  border: none;
+  padding: 0;
+  margin: 0;
   font-family: inherit;
-
   font-size: 1.15em;
-
   font-weight: 500;
-
   line-height: 1.25em;
-
+  color: inherit;
+  cursor: pointer;
   transition: font-weight 0.2s ease;
 }
 
@@ -252,9 +91,7 @@
 .nav-dropdown-chevron {
   width: 0.75em;
   height: 0.75em;
-
   flex-shrink: 0;
-
   transition: transform 0.2s ease;
 }
 
@@ -262,74 +99,39 @@
   transform: rotate(180deg);
 }
 
-/* ===============================
-   Dropdown Panel
-=============================== */
-
 .nav-dropdown-content {
   position: absolute;
-
-  top: calc(100% + 0.85em);
+  top: 100%;
   left: 0;
-
-  min-width: 12em;
-
+  margin-top: 0.85em;
+  min-width: 10em;
+  padding: 1em;
+  gap: 0.5em;
+  border-radius: 0.6em;
+  border: 0.07em solid rgba(0, 0, 0, 0.1); /* #0000001A */
+  background-color: var(--color-white);
+  box-shadow: 0 0.5em 1.5em rgba(16, 16, 16, 0.08);
   display: flex;
   flex-direction: column;
-
-  gap: 0.35em;
-
-  padding: 1em;
-
-  background: var(--color-white);
-
-  border: 0.07em solid rgba(0, 0, 0, 0.08);
-
-  border-radius: 0.75em;
-
-  box-shadow: 0 0.5em 1.5em rgba(16, 16, 16, 0.08);
-
   opacity: 0;
-  visibility: hidden;
-
-  pointer-events: none;
-
   transform: translateY(-0.35em);
-
-  transition:
-    opacity 0.2s ease,
-    visibility 0.2s ease,
-    transform 0.2s ease;
-
-  z-index: 200;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
 }
 
 .nav-dropdown.is-open .nav-dropdown-content {
   opacity: 1;
-  visibility: visible;
-
-  pointer-events: auto;
-
   transform: translateY(0);
+  pointer-events: auto;
 }
 
-/* ===============================
-   Links
-=============================== */
-
 .nav-dropdown-link {
-  display: block;
-
-  padding: 0.45em 0.35em;
-
-  color: var(--color-black) !important;
-
-  text-decoration: none;
-
+  padding: 0.35em 0.35em;
   font-size: 1.05em;
-
   font-weight: 500;
-
+  color: var(--color-black) !important;
+  text-decoration: none;
   transition: font-weight 0.2s ease;
 }
 
@@ -337,338 +139,191 @@
   font-weight: 700;
 }
 
-/* ===============================
-   Divider
-=============================== */
-
+/* Divisor real — participa del mismo gap del content, no border-bottom del link */
 .nav-dropdown-divider {
-  width: 100%;
-
   height: 0.07em;
-
-  background: rgba(0, 0, 0, 0.08);
-
-  margin: 0.35em 0;
-}
-/* ==========================================================================
-   LANGUAGE SWITCHER
-=========================================================================== */
-
-.lang-switcher {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-
-  margin-left: auto;
+  background-color: rgba(0, 0, 0, 0.1); /* #0000001A */
 }
 
-/* ===============================
-   Botón
-=============================== */
-
-.lang-switcher-btn {
-  display: flex;
-  align-items: center;
-
-  gap: 0.65em;
-
-  padding: 0;
-  margin: 0;
-
-  background: none;
-  border: none;
-
-  color: inherit;
-
-  cursor: pointer;
-
-  font-family: inherit;
-
-  font-size: 1.15em;
-
-  font-weight: 500;
-
-  line-height: 1.25em;
-
-  transition: font-weight 0.2s ease;
-}
-
-.lang-switcher-btn:hover {
-  font-weight: 700;
-}
-
-.lang-globe {
-  width: 1.15em;
-  height: 1.15em;
-
-  flex-shrink: 0;
-}
-
-.lang-label {
-  white-space: nowrap;
-}
-
-.lang-chevron {
-  width: 0.75em;
-  height: 0.75em;
-
-  flex-shrink: 0;
-
-  transition: transform 0.2s ease;
-}
-
-.lang-switcher.is-open .lang-chevron {
-  transform: rotate(180deg);
-}
-
-/* ===============================
-   Dropdown
-=============================== */
-
-.lang-dropdown {
-  position: absolute;
-
-  top: calc(100% + 0.85em);
-  right: 0;
-
-  width: 17em;
-
-  display: flex;
-  flex-direction: column;
-
-  list-style: none;
-
-  padding: 0.75em 0;
-
-  background: var(--color-white);
-
-  border: 0.07em solid rgba(0, 0, 0, 0.08);
-
-  border-radius: 0.75em;
-
-  box-shadow: 0 0.5em 1.5em rgba(16, 16, 16, 0.08);
-
-  opacity: 0;
-  visibility: hidden;
-
-  pointer-events: none;
-
-  transform: translateY(-0.35em);
-
-  transition:
-    opacity 0.2s ease,
-    visibility 0.2s ease,
-    transform 0.2s ease;
-
-  z-index: 300;
-}
-
-.lang-switcher.is-open .lang-dropdown {
-  opacity: 1;
-  visibility: visible;
-
-  pointer-events: auto;
-
-  transform: translateY(0);
-}
-
-/* ===============================
-   Opciones
-=============================== */
-
-.lang-dropdown li {
-  list-style: none;
-}
-
-.lang-dropdown a {
-  display: flex;
-
-  justify-content: space-between;
-  align-items: center;
-
-  width: 100%;
-
-  padding: 0.8em 1.25em;
-
+/* ─── Variante TOP WHITE — fondo blanco, texto/logo negro ─── */
+.nav--white .nav-container {
+  background-color: transparent;
   color: var(--color-black);
-
-  text-decoration: none;
-
-  transition:
-    background-color 0.2s ease,
-    font-weight 0.2s ease;
 }
-
-.lang-dropdown a:hover {
-  background: #f7f7f7;
-
-  font-weight: 600;
+.nav--white .nav-links a {
+  color: var(--color-black);
 }
-
-.lang-option {
-  font-weight: 500;
-}
-
-.lang-region {
-  color: #707070;
-
-  font-size: 0.95em;
-}
-
-.lang-dropdown a[aria-current="true"] {
-  background: #f7f7f7;
-}
-
-.lang-dropdown a[aria-current="true"] .lang-option {
+.nav--white .nav-links a:hover {
+  color: var(--color-black);
   font-weight: 700;
 }
-/* ==========================================================================
-   MOBILE MENU
-=========================================================================== */
 
-/* Botón hamburguesa */
+/* ─── Variante TOP BLACK — fondo negro, texto/logo blanco ─── */
+.nav--black .nav-container {
+  background-color: transparent;
+  color: var(--color-white);
+}
+.nav--black .nav-links a {
+  color: var(--color-white);
+}
+.nav--black .nav-links a:hover {
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+/* ─── Variante SCROLLED (indigo) — fondo indigo, todo blanco ─── */
+/* Se aplica vía JS al pasar 50px de scroll, sin importar si el estado inicial era white o black */
+.nav--scrolled .nav-container {
+  background-color: var(--color-indigo);
+  color: var(--color-white);
+}
+.nav--scrolled .nav-links a {
+  color: var(--color-white);
+}
+.nav--scrolled .nav-links a:hover {
+  color: var(--color-white);
+  font-weight: 700;
+}
+
+/* Logo invertido solo en estado scrolled */
+.nav--scrolled .nav-logo {
+  filter: invert(1);
+}
+
+/* ─── Botón exclusivo del navbar (usa .btn como base) ─── */
+/* nav--white: outline negro, texto negro, hover filled negro */
+.btn-nav {
+  background-color: transparent;
+  border: 0.05em solid var(--color-black);
+  color: var(--color-black);
+}
+.btn-nav:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+/* nav--black: outline blanco, texto blanco, hover filled blanco texto negro */
+.nav--black .btn-nav {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+.nav--black .btn-nav:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+
+/* nav--scrolled: outline blanco, texto blanco, hover filled blanco texto indigo */
+.nav--scrolled .btn-nav {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+.nav--scrolled .btn-nav:hover {
+  background-color: var(--color-white);
+  color: var(--color-indigo);
+  border-color: var(--color-white);
+}
+
+/* ============================
+   Mobile (<=991px)
+   Esconde .nav-links y .btn-nav, muestra el hamburger + mobile menu
+   ============================ */
 
 .nav-hamburger {
   display: none;
-
+  background: none;
+  border: none;
+  padding: 0;
   width: 2.5em;
   height: 2.5em;
-
-  padding: 0;
-
-  border: none;
-  background: none;
-
-  color: inherit;
-
-  cursor: pointer;
-
-  justify-content: center;
   align-items: center;
-
-  flex-shrink: 0;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .nav-hamburger-icon {
   width: 1.5em;
   height: 1.5em;
-
   color: currentColor;
 }
 
-/* ==========================================================================
-   Overlay
-=========================================================================== */
-
+/* Modal mobile fullscreen — siempre blanco, propio z-index por encima de
+   todo, totalmente independiente de la posición/estado del .nav (evita
+   el conflicto de abrir el menú justo cuando el nav está scrolled) */
 .nav-mobile-menu {
   position: fixed;
-
   inset: 0;
-
-  z-index: 9999;
-
+  z-index: 500;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   padding: 1.15em 5.25em 3.25em;
-
-  background: var(--color-white);
-
+  background-color: var(--color-white);
   color: var(--color-black);
-
   overflow-y: auto;
-
   opacity: 0;
-  visibility: hidden;
-
   pointer-events: none;
-
-  transition:
-    opacity 0.25s ease,
-    visibility 0.25s ease;
+  transition: opacity 0.25s ease;
 }
 
 .nav-mobile-menu.is-open {
   opacity: 1;
-
-  visibility: visible;
-
   pointer-events: auto;
 }
 
-/* ==========================================================================
-   Header
-=========================================================================== */
-
 .nav-mobile-header {
   display: flex;
-
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
 }
 
 .nav-mobile-logo img {
+  height: 1.71em;
   display: block;
-
-  height: 1.7em;
 }
 
 .nav-mobile-close {
   width: 2.5em;
   height: 2.5em;
-
   display: flex;
-
-  justify-content: center;
   align-items: center;
-
-  border: none;
+  justify-content: center;
   background: none;
-
-  color: var(--color-black);
-
+  border: none;
+  padding: 0;
   cursor: pointer;
+  color: var(--color-black);
 }
 
-/* ==========================================================================
-   Links
-=========================================================================== */
-
+/* ===== Lista de links — border-top como divisor, mismo patrón que .dropdown-toggle ===== */
 .nav-mobile-links {
   display: flex;
-
   flex-direction: column;
 }
 
 .nav-mobile-links > * {
+  border-top: 0.07em solid rgba(0, 0, 0, 0.1); /* #0000001A */
   padding: 20px 0;
-
-  border-top: 0.07em solid rgba(0, 0, 0, 0.1);
 }
 
 .nav-mobile-links > *:first-child {
-  padding-top: 0;
-
   border-top: none;
+  padding-top: 0;
 }
 
 .nav-mobile-link {
   display: block;
-
-  color: var(--color-black);
-
-  text-decoration: none;
-
-  font-family: "Inter", sans-serif;
-
-  font-size: 24px;
-
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
-
-  line-height: 1.6;
-
+  font-size: 24px;
+  line-height: 1.6; /* 160% */
+  letter-spacing: 0;
+  color: var(--color-black);
+  text-decoration: none;
   transition: font-weight 0.2s ease;
 }
 
@@ -676,162 +331,96 @@
   font-weight: 700;
 }
 
-/* ==========================================================================
-   Work Accordion
-=========================================================================== */
-
+/* ===== "Work" como acordeón inline ===== */
 .nav-mobile-group-toggle {
   width: 100%;
-
   display: flex;
-
   align-items: center;
-
   gap: 0.5em;
-
-  padding: 0;
-
-  border: none;
   background: none;
-
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
   color: var(--color-black);
-
-  cursor: pointer;
-
-  font-family: "Inter", sans-serif;
-
   font-size: 24px;
-
   font-weight: 500;
-
-  line-height: 1.6;
-
+  line-height: 1.6; /* 160% */
+  letter-spacing: 0;
+  cursor: pointer;
   text-align: left;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-mobile-group-toggle:hover {
+  font-weight: 500;
 }
 
 .nav-mobile-group-chevron {
   width: 0.55em;
   height: 0.55em;
-
-  transition: transform 0.25s ease;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
 
 .nav-mobile-group.is-open .nav-mobile-group-chevron {
   transform: rotate(180deg);
 }
 
+/* height 0 -> Xpx (medido con JS) -> auto — mismo approach que el componente dropdown */
 .nav-mobile-group-content {
   height: 0;
-
   overflow: hidden;
-
   transition: height 0.3s ease;
 }
 
 .nav-mobile-group-inner {
   display: flex;
-
   flex-direction: column;
-
   gap: 1em;
-
   padding-top: 1.25em;
 }
 
 .nav-mobile-sublink {
   display: block;
-
   padding-left: 0.5em;
-
   color: var(--color-black);
-
-  text-decoration: none;
-
   font-size: 14px;
-
   font-weight: 400;
+  text-decoration: none;
+  transition: font-weight 0.2s ease;
 }
 
 .nav-mobile-sublink:hover {
   font-weight: 700;
 }
 
-/* ==========================================================================
-   Botón
-=========================================================================== */
-
+/* El botón dentro del modal siempre usa el estilo outline negro (default),
+   sin importar la variante activa del .nav — coherente con el fondo blanco fijo del menú */
 .nav-mobile-menu .btn-nav {
   align-self: flex-start;
-
-  margin: 0;
-
+  flex-shrink: 0;
+  font-size: 14px;
+  background-color: transparent;
+  border-color: var(--color-black);
   color: var(--color-black);
-
+}
+.nav-mobile-menu .btn-nav:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
   border-color: var(--color-black);
 }
 
-.nav-mobile-menu .btn-nav:hover {
-  background: var(--color-black);
-
-  color: var(--color-white);
-}
-
-/* ==========================================================================
-   RESPONSIVE
-=========================================================================== */
-
-@media (max-width:991px){
-
-    .nav{
-
-        padding-left:2em;
-        padding-right:2em;
-
-    }
-
-    .nav-container{
-
-        padding:1.15em 2em;
-
-    }
-
-    .nav-links,
-    .lang-switcher,
-    .btn-nav{
-
-        display:none;
-
-    }
-
-    .nav-hamburger{
-
-        display:flex;
-
-        margin-left:auto;
-
-    }
-
-}
-
-@media (max-width:767px){
-
-    .nav{
-
-        padding-left:1em;
-        padding-right:1em;
-
-    }
-
-    .nav-container{
-
-        padding:1em 1.4em;
-
-    }
-
-    .nav-logo img{
-
-        height:1.45em;
-
-    }
-
+@media (max-width: 991px) {
+  .nav {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+  .nav-links,
+  .nav-container > .btn-nav {
+    display: none;
+  }
+  .nav-hamburger {
+    display: flex;
+  }
 }

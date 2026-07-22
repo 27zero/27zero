@@ -1,168 +1,110 @@
-/* ==========================================
-   NAVBAR 27ZERO
-========================================== */
+// ============================
+// Navbar — 27zero
+// Cambia a nav--scrolled al pasar 50px de scroll.
+// Guarda la variante inicial (nav--white o nav--black) para restaurarla al volver arriba.
+// ============================
 
-const nav = document.querySelector(".nav");
+const nav = document.querySelector('.nav');
+const initialVariant = nav.classList.contains('nav--black') ? 'nav--black' : 'nav--white';
 
-if (nav) {
-  const initialTheme = nav.classList.contains("nav--black")
-    ? "nav--black"
-    : "nav--white";
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    nav.classList.add('nav--scrolled');
+    nav.classList.remove('nav--white', 'nav--black');
+    nav.style.top = '2.2em';
+  } else {
+    nav.classList.remove('nav--scrolled');
+    nav.classList.add(initialVariant);
+    nav.style.top = '0';
+  }
+});
 
-  const updateNavbar = () => {
-    if (window.scrollY > 50) {
-      nav.classList.remove("nav--white", "nav--black");
-      nav.classList.add("nav--scrolled");
-    } else {
-      nav.classList.remove("nav--scrolled");
-      nav.classList.add(initialTheme);
-    }
-  };
+// ============================
+// Mobile menu — modal fullscreen
+// Click en el hamburger: abre el modal (ícono estático, sin animación).
+// El cierre es explícito (botón × dentro del modal, o tocar el hamburger
+// de nuevo) — al ser fullscreen ya no existe un "afuera" del menú.
+// ============================
 
-  window.addEventListener("scroll", updateNavbar);
+const hamburgerBtn = document.querySelector('.nav-hamburger');
+const mobileMenu = document.querySelector('.nav-mobile-menu');
+const mobileCloseBtn = document.querySelector('.nav-mobile-close');
 
-  updateNavbar();
-}
+if (hamburgerBtn && mobileMenu) {
+  let isMenuOpen = false;
 
-/* ==========================================
-   WORK DROPDOWN
-========================================== */
-
-const workDropdown = document.querySelector(".nav-dropdown");
-
-if (workDropdown) {
-  const toggle = workDropdown.querySelector(".nav-dropdown-toggle");
-
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    const open = workDropdown.classList.toggle("is-open");
-
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-
-  document.addEventListener("click", (e) => {
-    if (
-      workDropdown.classList.contains("is-open") &&
-      !workDropdown.contains(e.target)
-    ) {
-      workDropdown.classList.remove("is-open");
-
-      toggle.setAttribute("aria-expanded", "false");
-    }
-  });
-}
-
-/* ==========================================
-   LANGUAGE SWITCHER
-========================================== */
-
-const languageSwitcher = document.querySelector(".lang-switcher");
-
-if (languageSwitcher) {
-  const button = languageSwitcher.querySelector(".lang-switcher-btn");
-
-  button.addEventListener("click", (e) => {
-    e.stopPropagation();
-
-    const open = languageSwitcher.classList.toggle("is-open");
-
-    button.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-
-  document.addEventListener("click", (e) => {
-    if (
-      languageSwitcher.classList.contains("is-open") &&
-      !languageSwitcher.contains(e.target)
-    ) {
-      languageSwitcher.classList.remove("is-open");
-
-      button.setAttribute("aria-expanded", "false");
-    }
-  });
-}
-/* ==========================================
-   MOBILE MENU
-========================================== */
-
-const hamburger = document.querySelector(".nav-hamburger");
-const mobileMenu = document.querySelector(".nav-mobile-menu");
-const mobileClose = document.querySelector(".nav-mobile-close");
-
-if (hamburger && mobileMenu) {
-  const openMenu = () => {
-    mobileMenu.classList.add("is-open");
-
-    hamburger.setAttribute("aria-expanded", "true");
-
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeMenu = () => {
-    mobileMenu.classList.remove("is-open");
-
-    hamburger.setAttribute("aria-expanded", "false");
-
-    document.body.style.overflow = "";
-  };
-
-  hamburger.addEventListener("click", () => {
-    if (mobileMenu.classList.contains("is-open")) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  if (mobileClose) {
-    mobileClose.addEventListener("click", closeMenu);
+  function openMobileMenu() {
+    isMenuOpen = true;
+    mobileMenu.classList.add('is-open');
   }
 
-  mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-}
-/* ==========================================
-   MOBILE WORK ACCORDION
-========================================== */
+  function closeMobileMenu() {
+    isMenuOpen = false;
+    mobileMenu.classList.remove('is-open');
+  }
 
-const mobileGroup = document.querySelector(".nav-mobile-group");
+  hamburgerBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    isMenuOpen ? closeMobileMenu() : openMobileMenu();
+  });
+
+  if (mobileCloseBtn) {
+    mobileCloseBtn.addEventListener('click', closeMobileMenu);
+  }
+}
+
+// ===== "Work" como acordeón inline dentro del modal mobile =====
+// Mismo approach que /components/dropdown: height 0 -> scrollHeight -> auto.
+const mobileGroup = document.querySelector('.nav-mobile-group');
 
 if (mobileGroup) {
-  const toggle = mobileGroup.querySelector(".nav-mobile-group-toggle");
-  const content = mobileGroup.querySelector(".nav-mobile-group-content");
+  const mobileGroupToggle = mobileGroup.querySelector('.nav-mobile-group-toggle');
+  const mobileGroupContent = mobileGroup.querySelector('.nav-mobile-group-content');
 
-  toggle.addEventListener("click", () => {
-    const open = mobileGroup.classList.contains("is-open");
+  mobileGroupToggle.addEventListener('click', () => {
+    const isOpen = mobileGroup.classList.contains('is-open');
 
-    if (open) {
-      content.style.height = content.scrollHeight + "px";
+    if (!isOpen) {
+      mobileGroup.classList.add('is-open');
+      mobileGroupToggle.setAttribute('aria-expanded', 'true');
+      mobileGroupContent.style.height = mobileGroupContent.scrollHeight + 'px';
 
-      requestAnimationFrame(() => {
-        mobileGroup.classList.remove("is-open");
-
-        toggle.setAttribute("aria-expanded", "false");
-
-        content.style.height = "0px";
+      mobileGroupContent.addEventListener('transitionend', function onOpen(e) {
+        if (e.propertyName !== 'height') return;
+        if (mobileGroup.classList.contains('is-open')) {
+          mobileGroupContent.style.height = 'auto';
+        }
+        mobileGroupContent.removeEventListener('transitionend', onOpen);
       });
-
-      return;
+    } else {
+      mobileGroupContent.style.height = mobileGroupContent.scrollHeight + 'px';
+      mobileGroupContent.offsetHeight; // fuerza reflow
+      mobileGroup.classList.remove('is-open');
+      mobileGroupToggle.setAttribute('aria-expanded', 'false');
+      mobileGroupContent.style.height = '0px';
     }
+  });
+}
 
-    mobileGroup.classList.add("is-open");
+// ============================
+// Dropdown "Work" (desktop) — click para abrir/cerrar, click afuera cierra.
+// ============================
 
-    toggle.setAttribute("aria-expanded", "true");
+const navDropdown = document.querySelector('.nav-dropdown');
 
-    content.style.height = content.scrollHeight + "px";
+if (navDropdown) {
+  const dropdownToggle = navDropdown.querySelector('.nav-dropdown-toggle');
 
-    content.addEventListener("transitionend", function handler(e) {
-      if (e.propertyName !== "height") return;
+  dropdownToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navDropdown.classList.toggle('is-open');
+    dropdownToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
 
-      if (mobileGroup.classList.contains("is-open")) {
-        content.style.height = "auto";
-      }
-
-      content.removeEventListener("transitionend", handler);
-    });
+  document.addEventListener('click', (e) => {
+    if (navDropdown.classList.contains('is-open') && !navDropdown.contains(e.target)) {
+      navDropdown.classList.remove('is-open');
+      dropdownToggle.setAttribute('aria-expanded', 'false');
+    }
   });
 }

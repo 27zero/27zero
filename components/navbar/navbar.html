@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -51,11 +51,11 @@
     text-decoration: none;
     transition: all 0.2s ease;
     cursor: pointer;
-  } -->
+  }
 
-<!-- /* Spacer solo para poder probar el estado nav--scrolled en esta vista aislada */
-  .scroll-spacer { height: 200vh; } -->
-<!-- </style>
+  /* Spacer solo para poder probar el estado nav--scrolled en esta vista aislada */
+  .scroll-spacer { height: 200vh; }
+</style>
 <link rel="stylesheet" href="/components/navbar/navbar.css">
 </head>
 <body>
@@ -66,28 +66,71 @@
       <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg" alt="27zero">
     </a>
     <nav class="nav-links">
-      <a href="/work">Work</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle" aria-expanded="false">
+          Work
+          <svg class="nav-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="nav-dropdown-content">
+          <a href="/work?view=projects" class="nav-dropdown-link">by projects</a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="/work?view=clients" class="nav-dropdown-link">by clients</a>
+        </div>
+      </div>
       <a href="/edtech-marketing">Edtech Marketing</a>
       <a href="/the-edtech-mentor">The EdTech Mentor</a>
       <a href="/resources">Resources</a>
       <a href="/about">About</a>
     </nav>
-    <a href="/contact" class="btn btn-nav">Let's Talk!</a> -->
+    <a href="/contact" class="btn btn-nav">Let's Talk!</a>
 
-<!-- Hamburger — solo visible en mobile (<=767px) -->
-<!-- <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
-      <div class="nav-hamburger-icon"></div>
+    <!-- Hamburger — solo visible en mobile (<=991px). Ícono estático, sin animación -->
+    <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <svg class="nav-hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="7" x2="21" y2="7"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="17" x2="21" y2="17"></line>
+      </svg>
     </button>
-  </div> -->
+  </div>
 
-<!-- Dropdown mobile — hereda el color de la variante activa del nav -->
-<!-- <div class="nav-mobile-menu" id="navMobileMenu">
+  <!-- Modal mobile fullscreen — siempre blanco, con su propio header (logo + close),
+       independiente del estado/posición del .nav (evita conflictos con nav--scrolled) -->
+  <div class="nav-mobile-menu" id="navMobileMenu">
+    <div class="nav-mobile-header">
+      <a href="/" class="nav-mobile-logo">
+        <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg" alt="27zero">
+      </a>
+      <button class="nav-mobile-close" aria-label="Cerrar menú">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2"></line>
+          <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" transform="rotate(45 10 10)"></line>
+          <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" transform="rotate(135 10 10)"></line>
+        </svg>
+      </button>
+    </div>
+
     <nav class="nav-mobile-links">
-      <a href="/work">Work</a>
-      <a href="/edtech-marketing">Edtech Marketing</a>
-      <a href="/the-edtech-mentor">The EdTech Mentor</a>
-      <a href="/resources">Resources</a>
-      <a href="/about">About</a>
+      <div class="nav-mobile-group">
+        <button class="nav-mobile-group-toggle" aria-expanded="false">
+          Work
+          <svg class="nav-mobile-group-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="nav-mobile-group-content">
+          <div class="nav-mobile-group-inner">
+            <a href="/work?view=projects" class="nav-mobile-sublink">by projects</a>
+            <a href="/work?view=clients" class="nav-mobile-sublink">by Clients</a>
+          </div>
+        </div>
+      </div>
+      <a href="/edtech-marketing" class="nav-mobile-link">Edtech Marketing</a>
+      <a href="/the-edtech-mentor" class="nav-mobile-link">The EdTech Mentor</a>
+      <a href="/resources" class="nav-mobile-link">Resources</a>
+      <a href="/about" class="nav-mobile-link">About</a>
     </nav>
     <a href="/contact" class="btn btn-nav">Let's Talk!</a>
   </div>
@@ -95,307 +138,6 @@
 
 <div class="scroll-spacer"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
 <script src="/components/navbar/navbar.js"></script>
 </body>
-</html> -->
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navbar — 27zero</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
-      rel="stylesheet"
-    />
-
-    <style>
-      :root {
-        --color-indigo: #440e92;
-        --color-purple: #b382f9;
-        --color-black: #101010;
-        --color-gray: #f5f5f5;
-        --color-white: #ffffff;
-
-        --space-xs: 0.5em;
-        --space-sm: 1.5em;
-        --space-md: 3em;
-        --space-lg: 6em;
-        --space-xl: 9em;
-        --space-2xl: 14em;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: "Inter", sans-serif;
-        font-size: 14px;
-        background: var(--color-white);
-        color: var(--color-black);
-        -webkit-font-smoothing: antialiased;
-      }
-
-      @media (max-width: 767px) {
-        body {
-          font-size: 9px;
-        }
-      }
-
-      .btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        gap: 0.5em;
-
-        padding: 0.85em 1.7em;
-
-        border-radius: 999px;
-
-        border: 0.05em solid transparent;
-
-        text-decoration: none;
-
-        font-family: "Lora", serif;
-        font-size: 1.15em;
-
-        transition: 0.2s;
-      }
-
-      .scroll-spacer {
-        height: 200vh;
-      }
-    </style>
-
-    <link rel="stylesheet" href="/components/navbar/navbar.css" />
-  </head>
-
-  <body>
-    <header class="nav nav--white">
-      <div class="nav-container">
-        <!-- Logo -->
-
-        <a href="/" class="nav-logo">
-          <img
-            src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg"
-            alt="27zero"
-          />
-        </a>
-
-        <!-- Desktop Navigation -->
-
-        <nav class="nav-links">
-          <!-- Work -->
-
-          <div class="nav-dropdown">
-            <button
-              class="nav-dropdown-toggle"
-              type="button"
-              aria-expanded="false"
-            >
-              <span>Work</span>
-
-              <svg class="nav-dropdown-chevron" viewBox="0 0 20 20" fill="none">
-                <path
-                  d="M5 8L10 13L15 8"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-
-            <div class="nav-dropdown-content">
-              <a href="/work" class="nav-dropdown-link"> All work </a>
-
-              <div class="nav-dropdown-divider"></div>
-
-              <a href="/case-studies" class="nav-dropdown-link">
-                Case studies
-              </a>
-            </div>
-          </div>
-
-          <a href="/edtech-marketing"> EdTech Marketing </a>
-
-          <a href="/the-edtech-mentor"> The EdTech Mentor </a>
-
-          <a href="/resources"> Resources </a>
-
-          <a href="/about"> About </a>
-        </nav>
-
-        <!-- ==========================================
-             LANGUAGE SWITCHER
-        =========================================== -->
-
-        <div class="lang-switcher">
-          <button class="lang-switcher-btn" type="button" aria-expanded="false">
-            <svg class="lang-globe" viewBox="0 0 24 24" fill="none">
-              <circle
-                cx="12"
-                cy="12"
-                r="9"
-                stroke="currentColor"
-                stroke-width="1.8"
-              />
-
-              <path d="M3 12H21" stroke="currentColor" stroke-width="1.8" />
-
-              <path
-                d="M12 3C14.8 6 16 9 16 12C16 15 14.8 18 12 21"
-                stroke="currentColor"
-                stroke-width="1.8"
-              />
-
-              <path
-                d="M12 3C9.2 6 8 9 8 12C8 15 9.2 18 12 21"
-                stroke="currentColor"
-                stroke-width="1.8"
-              />
-            </svg>
-
-            <span class="lang-label"> Spanish </span>
-
-            <svg class="lang-chevron" viewBox="0 0 20 20" fill="none">
-              <path
-                d="M5 8L10 13L15 8"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-
-          <ul class="lang-dropdown">
-            <li>
-              <a href="#" aria-current="true">
-                <span class="lang-option"> Spanish </span>
-
-                <span class="lang-region"> ES </span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#">
-                <span class="lang-option"> English </span>
-
-                <span class="lang-region"> US </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- CTA -->
-
-        <a href="/contact" class="btn btn-nav"> Let's Talk! </a>
-
-        <!-- Mobile Hamburger -->
-
-        <button
-          class="nav-hamburger"
-          type="button"
-          aria-label="Open menu"
-          aria-expanded="false"
-        >
-          <div class="nav-hamburger-icon"></div>
-        </button>
-      </div>
-
-      <!-- ==========================================
-     MOBILE MENU
-========================================== -->
-
-      <div class="nav-mobile-menu">
-        <div class="nav-mobile-header">
-          <a href="/" class="nav-mobile-logo">
-            <img
-              src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg"
-              alt="27zero"
-            />
-          </a>
-
-          <button
-            class="nav-mobile-close"
-            type="button"
-            aria-label="Close menu"
-          >
-            ✕
-          </button>
-        </div>
-
-        <nav class="nav-mobile-links">
-          <!-- Work -->
-
-          <div class="nav-mobile-group">
-            <button
-              class="nav-mobile-group-toggle"
-              type="button"
-              aria-expanded="false"
-            >
-              <span>Work</span>
-
-              <svg
-                class="nav-mobile-group-chevron"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M5 8L10 13L15 8"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-
-            <div class="nav-mobile-group-content">
-              <div class="nav-mobile-group-inner">
-                <a href="/work" class="nav-mobile-sublink"> All work </a>
-
-                <a href="/case-studies" class="nav-mobile-sublink">
-                  Case studies
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <a href="/edtech-marketing" class="nav-mobile-link">
-            EdTech Marketing
-          </a>
-
-          <a href="/the-edtech-mentor" class="nav-mobile-link">
-            The EdTech Mentor
-          </a>
-
-          <a href="/resources" class="nav-mobile-link"> Resources </a>
-
-          <a href="/about" class="nav-mobile-link"> About </a>
-        </nav>
-
-        <a href="/contact" class="btn btn-nav"> Let's Talk! </a>
-      </div>
-    </header>
-
-    <div class="scroll-spacer"></div>
-
-    <script src="/components/navbar/navbar.js"></script>
-  </body>
 </html>
