@@ -108,3 +108,47 @@ if (navDropdown) {
     }
   });
 }
+
+// ============================
+// Language switcher — 27zero i18n
+// Opens/closes #lang-dropdown on button click.
+// Keyboard: ArrowDown/ArrowUp to navigate, Escape to close.
+// ============================
+
+(function () {
+  var btn  = document.querySelector('.lang-switcher-btn');
+  var menu = document.getElementById('lang-dropdown');
+  if (!btn || !menu) return;
+
+  function openLang() {
+    menu.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    var first = menu.querySelector('a');
+    if (first) first.focus();
+  }
+  function closeLang() {
+    menu.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.focus();
+  }
+  function toggleLang() {
+    menu.classList.contains('is-open') ? closeLang() : openLang();
+  }
+
+  btn.addEventListener('click', function (e) { e.stopPropagation(); toggleLang(); });
+
+  document.addEventListener('click', function (e) {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) closeLang();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) closeLang();
+  });
+
+  menu.addEventListener('keydown', function (e) {
+    var items = Array.from(menu.querySelectorAll('a'));
+    var idx   = items.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown') { e.preventDefault(); items[(idx + 1) % items.length].focus(); }
+    if (e.key === 'ArrowUp')   { e.preventDefault(); items[(idx - 1 + items.length) % items.length].focus(); }
+  });
+}());
