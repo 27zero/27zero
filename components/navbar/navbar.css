@@ -5,7 +5,13 @@
    ============================ */
 
 /* Wrapper fijo — sin fondo */
+/* font-size:14px sets the em base matching Santiago's body (14px).
+   font-family:Inter matches Santiago so inherited values render identically.
+   (.nav-dropdown-toggle { font-family: inherit } picks this up.)
+   Does NOT modify the global body — navbar is fully self-contained. */
 .nav {
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
   width: 100%;
   max-width: 1440px;
   margin-left: auto;
@@ -145,7 +151,7 @@
   background-color: rgba(0, 0, 0, 0.1); /* #0000001A */
 }
 
-/* ─── Variante TOP WHITE — fondo blanco, texto/logo negro ─── */
+/* ─── Variante TOP WHITE — transparente, texto/logo negro (páginas claras) ─── */
 .nav--white .nav-container {
   background-color: transparent;
   color: var(--color-black);
@@ -424,3 +430,170 @@
     display: flex;
   }
 }
+
+/* Matches Santiago: body { font-size: 9px } at <=767px.
+   Scoped to .nav — does not touch the global body. */
+@media (max-width: 767px) {
+  .nav {
+    font-size: 9px;
+  }
+}
+
+/* ============================
+   Language switcher — 27zero i18n
+   Dropdown hidden by default (display:none); shown via JS class .is-open.
+   Mobile section lives inside .nav-mobile-menu.
+   ============================ */
+
+/* Desktop trigger button */
+.lang-switcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.lang-switcher-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink, #101010);
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.lang-switcher-btn:hover,
+.lang-switcher-btn:focus-visible {
+  background: rgba(0,0,0,0.06);
+  outline: none;
+}
+
+.lang-switcher-btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--purple, #440e92);
+}
+
+.lang-globe {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.lang-chevron {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.lang-switcher-btn[aria-expanded="true"] .lang-chevron {
+  transform: rotate(180deg);
+}
+
+/* Desktop dropdown */
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 190px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  display: none;
+  z-index: 1000;
+}
+
+.lang-dropdown.is-open {
+  display: block;
+}
+
+.lang-dropdown a {
+  display: flex;
+  flex-direction: column;
+  padding: 9px 12px;
+  border-radius: 7px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.12s;
+}
+
+.lang-dropdown a:hover,
+.lang-dropdown a:focus-visible {
+  background: rgba(68, 14, 146, 0.06);
+  outline: none;
+}
+
+.lang-dropdown a[aria-current="true"] {
+  background: rgba(68, 14, 146, 0.1);
+}
+
+.lang-region {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite, #666);
+  margin-bottom: 2px;
+}
+
+.lang-option {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink, #101010);
+}
+
+/* Mobile */
+.lang-mobile-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lang-mobile-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite, #666);
+  margin-bottom: 6px;
+}
+
+.lang-mobile-option {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink, #101010);
+  text-decoration: none;
+  padding: 7px 10px;
+  border-radius: 7px;
+  transition: background 0.12s;
+}
+
+.lang-mobile-option:hover,
+.lang-mobile-option:focus-visible {
+  background: rgba(68, 14, 146, 0.06);
+}
+.lang-mobile-option--active {
+  background: rgba(68, 14, 146, 0.1);
+  font-weight: 600;
+}
+/* In scrolled state (indigo bg) the lang button text must be white */
+.nav--scrolled .lang-switcher-btn {
+  color: var(--color-white);
+}
+.nav--scrolled .lang-switcher-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+/* SVG strokes/icons inside lang-switcher inherit color — no extra rule needed */
