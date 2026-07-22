@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -51,11 +51,11 @@
     text-decoration: none;
     transition: all 0.2s ease;
     cursor: pointer;
-  }
+  } -->
 
-  /* Spacer solo para poder probar el estado nav--scrolled en esta vista aislada */
-  .scroll-spacer { height: 200vh; }
-</style>
+<!-- /* Spacer solo para poder probar el estado nav--scrolled en esta vista aislada */
+  .scroll-spacer { height: 200vh; } -->
+<!-- </style>
 <link rel="stylesheet" href="/components/navbar/navbar.css">
 </head>
 <body>
@@ -72,16 +72,16 @@
       <a href="/resources">Resources</a>
       <a href="/about">About</a>
     </nav>
-    <a href="/contact" class="btn btn-nav">Let's Talk!</a>
+    <a href="/contact" class="btn btn-nav">Let's Talk!</a> -->
 
-    <!-- Hamburger — solo visible en mobile (<=767px) -->
-    <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+<!-- Hamburger — solo visible en mobile (<=767px) -->
+<!-- <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
       <div class="nav-hamburger-icon"></div>
     </button>
-  </div>
+  </div> -->
 
-  <!-- Dropdown mobile — hereda el color de la variante activa del nav -->
-  <div class="nav-mobile-menu" id="navMobileMenu">
+<!-- Dropdown mobile — hereda el color de la variante activa del nav -->
+<!-- <div class="nav-mobile-menu" id="navMobileMenu">
     <nav class="nav-mobile-links">
       <a href="/work">Work</a>
       <a href="/edtech-marketing">Edtech Marketing</a>
@@ -98,4 +98,225 @@
 <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
 <script src="/components/navbar/navbar.js"></script>
 </body>
+</html> -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar — 27zero</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --color-indigo: #440e92;
+        --color-purple: #b382f9;
+        --color-black: #101010;
+        --color-gray: #f5f5f5;
+        --color-white: #ffffff;
+
+        --space-xs: 0.5em;
+        --space-sm: 1.5em;
+        --space-md: 3em;
+        --space-lg: 6em;
+        --space-xl: 9em;
+        --space-2xl: 14em;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        background: var(--color-white);
+        color: var(--color-black);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      @media (max-width: 767px) {
+        body {
+          font-size: 9px;
+        }
+      }
+
+      .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 0.5em;
+
+        padding: 0.85em 1.7em;
+
+        border-radius: 999px;
+
+        border: 0.05em solid transparent;
+
+        text-decoration: none;
+
+        font-family: "Lora", serif;
+        font-size: 1.15em;
+
+        transition: 0.2s;
+      }
+
+      .scroll-spacer {
+        height: 200vh;
+      }
+    </style>
+
+    <link rel="stylesheet" href="/components/navbar/navbar.css" />
+  </head>
+
+  <body>
+    <header class="nav nav--white">
+      <div class="nav-container">
+        <a href="/" class="nav-logo">
+          <img
+            src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg"
+            alt="27zero"
+          />
+        </a>
+
+        <nav class="nav-links">
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-expanded="false">
+              <span>Work</span>
+
+              <svg class="nav-dropdown-chevron" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M5 8L10 13L15 8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <div class="nav-dropdown-content">
+              <a class="nav-dropdown-link" href="/work"> All work </a>
+
+              <div class="nav-dropdown-divider"></div>
+
+              <a class="nav-dropdown-link" href="/case-studies">
+                Case studies
+              </a>
+            </div>
+          </div>
+
+          <a href="/edtech-marketing"> EdTech Marketing </a>
+
+          <a href="/the-edtech-mentor"> The EdTech Mentor </a>
+
+          <a href="/resources"> Resources </a>
+
+          <a href="/about"> About </a>
+        </nav>
+
+        <!-- Language Switcher -->
+
+        <div class="lang-switcher">
+          <button class="lang-switcher-btn" type="button" aria-expanded="false">
+            <svg class="lang-globe" viewBox="0 0 24 24" fill="none">
+              <circle
+                cx="12"
+                cy="12"
+                r="9"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+              <path d="M3 12H21" stroke="currentColor" stroke-width="1.8" />
+              <path
+                d="M12 3C14.8 6 16 9 16 12C16 15 14.8 18 12 21"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+              <path
+                d="M12 3C9.2 6 8 9 8 12C8 15 9.2 18 12 21"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+            </svg>
+
+            <span class="lang-label"> Spanish </span>
+
+            <svg class="lang-chevron" viewBox="0 0 20 20" fill="none">
+              <path
+                d="M5 8L10 13L15 8"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+
+          <ul class="lang-dropdown">
+            <li>
+              <a href="#" aria-current="true">
+                <span class="lang-option"> Spanish </span>
+
+                <span class="lang-region"> ES </span>
+              </a>
+            </li>
+
+            <li>
+              <a href="#">
+                <span class="lang-option"> English </span>
+
+                <span class="lang-region"> US </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <a href="/contact" class="btn btn-nav"> Let's Talk! </a>
+
+        <button
+          class="nav-hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <div class="nav-hamburger-icon"></div>
+        </button>
+      </div>
+
+      <div class="nav-mobile-menu">
+        <nav class="nav-mobile-links">
+          <a href="/work"> Work </a>
+
+          <a href="/edtech-marketing"> EdTech Marketing </a>
+
+          <a href="/the-edtech-mentor"> The EdTech Mentor </a>
+
+          <a href="/resources"> Resources </a>
+
+          <a href="/about"> About </a>
+        </nav>
+
+        <a href="/contact" class="btn btn-nav"> Let's Talk! </a>
+      </div>
+    </header>
+
+    <div class="scroll-spacer"></div>
+
+    <script src="/components/navbar/navbar.js"></script>
+  </body>
 </html>

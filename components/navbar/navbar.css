@@ -1,177 +1,162 @@
-/* ============================
-   Navbar — 27zero
-   Requiere las variables globales de :root (colores, spacing)
-   definidas en /design-system.md
-   ============================ */
+/* ==========================================
+   NAVBAR 27ZERO
+========================================== */
 
-/* Wrapper fijo — sin fondo */
 .nav {
-  width: 100%;
-  max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 0;
-  padding-left: 3.25em;
-  padding-right: 3.25em;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  transition: top 0.3s ease;
+
+  width: 100%;
+  max-width: 1440px;
+
+  margin: auto;
+
+  padding: 0 3.25em;
+
+  z-index: 1000;
+
+  transition:
+    top 0.3s ease,
+    color 0.2s ease;
 }
 
-/* Contenedor visual con fondo y border-radius */
+/* ---------- Contenedor ---------- */
+
 .nav-container {
-  border-radius: 1.25em;
   display: flex;
-  flex-flow: row;
-  justify-content: space-between;
   align-items: center;
+
+  width: 100%;
+
   padding: 1.15em 3.25em;
-  gap: 2em;
-  transition: background-color 0.2s ease, color 0.2s ease;
+
+  border-radius: 1.25em;
+
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+
+/* ---------- Logo ---------- */
+
+.nav-logo {
+  flex-shrink: 0;
 }
 
 .nav-logo img {
-  height: 1.71em;
   display: block;
-  transition: filter 0.2s ease;
+
+  height: 1.7em;
+
+  transition: filter 0.25s ease;
 }
 
-/* Links centrados entre logo y botón */
+/* ---------- Links ---------- */
+
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2em;
+
+  gap: 2.8em;
+
+  margin-left: 4em;
 }
 
-.nav-links a {
+.nav-links > a {
+  color: inherit;
+
+  text-decoration: none;
+
   font-size: 1.15em;
   font-weight: 500;
-  line-height: 1.25em;
-  padding: 0;
-  text-decoration: none;
+
   transition: font-weight 0.2s ease;
 }
 
-/* Hover: links se ponen bold */
-.nav-links a:hover {
+.nav-links > a:hover {
   font-weight: 700;
 }
 
-/* ─── Variante TOP WHITE — fondo blanco, texto/logo negro ─── */
-.nav--white .nav-container {
-  background-color: transparent;
+/* ---------- Variantes ---------- */
+
+.nav--white {
   color: var(--color-black);
-}
-.nav--white .nav-links a {
-  color: var(--color-black);
-}
-.nav--white .nav-links a:hover {
-  color: var(--color-black);
-  font-weight: 700;
 }
 
-/* ─── Variante TOP BLACK — fondo negro, texto/logo blanco ─── */
-.nav--black .nav-container {
-  background-color: transparent;
+.nav--black {
   color: var(--color-white);
-}
-.nav--black .nav-links a {
-  color: var(--color-white);
-}
-.nav--black .nav-links a:hover {
-  color: var(--color-white);
-  font-weight: 700;
 }
 
-/* ─── Variante SCROLLED (indigo) — fondo indigo, todo blanco ─── */
-/* Se aplica vía JS al pasar 50px de scroll, sin importar si el estado inicial era white o black */
+.nav--scrolled {
+  top: 2.2em;
+}
+
 .nav--scrolled .nav-container {
-  background-color: var(--color-indigo);
+  background: var(--color-indigo);
+
   color: var(--color-white);
-}
-.nav--scrolled .nav-links a {
-  color: var(--color-white);
-}
-.nav--scrolled .nav-links a:hover {
-  color: var(--color-white);
-  font-weight: 700;
 }
 
-/* Logo invertido solo en estado scrolled */
-.nav--scrolled .nav-logo {
+.nav--scrolled .nav-logo img {
   filter: invert(1);
 }
 
-/* ─── Botón exclusivo del navbar (usa .btn como base) ─── */
-/* nav--white: outline negro, texto negro, hover filled negro */
-/* .btn-nav {
-  background-color: transparent;
-  border: 0.05em solid var(--color-black);
-  color: var(--color-black);
-} */
-.btn-nav{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+/* ---------- Botón ---------- */
 
-    padding:.85em 1.7em;
+.btn-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    min-height:3.4em;
+  margin-left: 2.4em;
 
-    border:.05em solid currentColor;
-    border-radius:999px;
+  min-width: 9.2em;
+  height: 3.3em;
 
-    background:transparent;
+  padding: 0 1.7em;
 
-    font-family:"Lora", serif;
-    font-size:1.15em;
-    font-weight:400;
-    line-height:1;
+  border: 0.06em solid currentColor;
+  border-radius: 999px;
 
-    text-decoration:none;
+  background: transparent;
 
-    white-space:nowrap;
+  color: inherit;
 
-    transition:
-        background-color .2s ease,
-        color .2s ease,
-        border-color .2s ease;
+  text-decoration: none;
+
+  font-family: "Lora", serif;
+  font-size: 1.15em;
+  font-weight: 400;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
 }
 
-.btn-nav:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-black);
+.nav--white .btn-nav:hover {
+  background: var(--color-black);
+  color: #fff;
 }
 
-/* nav--black: outline blanco, texto blanco, hover filled blanco texto negro */
-.nav--black .btn-nav {
-  background-color: transparent;
-  border-color: var(--color-white);
-  color: var(--color-white);
-}
 .nav--black .btn-nav:hover {
-  background-color: var(--color-white);
+  background: #fff;
   color: var(--color-black);
-  border-color: var(--color-white);
 }
 
-/* nav--scrolled: outline blanco, texto blanco, hover filled blanco texto indigo */
-.nav--scrolled .btn-nav {
-  background-color: transparent;
-  border-color: var(--color-white);
-  color: var(--color-white);
-}
 .nav--scrolled .btn-nav:hover {
-  background-color: var(--color-white);
+  background: #fff;
   color: var(--color-indigo);
-  border-color: var(--color-white);
 }
 
-/* ─── Dropdown "Work" (desktop) ───────────────────────────────────────────── */
+/* ==========================================
+   WORK DROPDOWN
+========================================== */
+
 .nav-dropdown {
   position: relative;
 }
@@ -180,17 +165,18 @@
   display: flex;
   align-items: center;
   gap: 0.35em;
+
   background: none;
   border: none;
-  padding: 0;
-  margin: 0;
-  font-family: inherit;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  font: inherit;
+
   font-size: 1.15em;
   font-weight: 500;
-  line-height: 1.25em;
-  color: inherit;
-  cursor: pointer;
-  transition: font-weight 0.2s ease;
 }
 
 .nav-dropdown-toggle:hover {
@@ -199,9 +185,7 @@
 
 .nav-dropdown-chevron {
   width: 0.75em;
-  height: 0.75em;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s;
 }
 
 .nav-dropdown.is-open .nav-dropdown-chevron {
@@ -210,38 +194,49 @@
 
 .nav-dropdown-content {
   position: absolute;
-  top: 100%;
+
+  top: calc(100% + 0.85em);
   left: 0;
-  margin-top: 0.85em;
-  min-width: 10em;
+
+  min-width: 12em;
+
   padding: 1em;
-  gap: 0.5em;
-  border-radius: 0.6em;
-  border: 0.07em solid rgba(0, 0, 0, 0.1);
-  background-color: var(--color-white);
-  box-shadow: 0 0.5em 1.5em rgba(16, 16, 16, 0.08);
+
   display: flex;
   flex-direction: column;
+
+  border-radius: 0.75em;
+
+  background: #fff;
+
+  box-shadow: 0 0.6em 2em rgba(0, 0, 0, 0.08);
+
   opacity: 0;
-  transform: translateY(-0.35em);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  z-index: 10;
+  visibility: hidden;
+
+  transform: translateY(-10px);
+
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    visibility 0.2s;
 }
 
 .nav-dropdown.is-open .nav-dropdown-content {
   opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+  visibility: visible;
+
+  transform: none;
 }
 
 .nav-dropdown-link {
-  padding: 0.35em 0.35em;
-  font-size: 1.05em;
-  font-weight: 500;
-  color: var(--color-black) !important;
+  color: #111 !important;
+
   text-decoration: none;
-  transition: font-weight 0.2s ease;
+
+  padding: 0.45em 0;
+
+  font-weight: 500;
 }
 
 .nav-dropdown-link:hover {
@@ -249,344 +244,293 @@
 }
 
 .nav-dropdown-divider {
-  height: 0.07em;
-  background-color: rgba(0, 0, 0, 0.1);
+  height: 1px;
+
+  background: #ececec;
+
+  margin: 0.5em 0;
 }
 
-/* ============================
-   Mobile (<=991px) — fullscreen modal
-   ============================ */
+/* ==========================================
+   LANGUAGE SWITCHER
+========================================== */
+
+.lang-switcher {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  margin-left: auto;
+}
+
+.lang-switcher-btn {
+  display: flex;
+  align-items: center;
+
+  gap: 0.6em;
+
+  background: none;
+  border: none;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  font: inherit;
+
+  font-size: 1.15em;
+  font-weight: 500;
+}
+
+.lang-switcher-btn:hover {
+  font-weight: 700;
+}
+
+.lang-globe {
+  width: 1.15em;
+}
+
+.lang-chevron {
+  width: 0.75em;
+
+  transition: transform 0.25s;
+}
+
+.lang-switcher.is-open .lang-chevron {
+  transform: rotate(180deg);
+}
+
+.lang-dropdown {
+  position: absolute;
+
+  right: 0;
+  top: calc(100% + 0.9em);
+
+  width: 17em;
+
+  background: #fff;
+
+  border-radius: 0.8em;
+
+  box-shadow: 0 0.6em 2em rgba(0, 0, 0, 0.08);
+
+  padding: 0.75em 0;
+
+  list-style: none;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(-8px);
+
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    visibility 0.2s;
+}
+
+.lang-switcher.is-open .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
+
+  transform: none;
+}
+
+.lang-dropdown a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.85em 1.25em;
+
+  text-decoration: none;
+
+  color: #111;
+}
+
+.lang-dropdown a:hover {
+  background: #f7f7f7;
+}
+
+.lang-option {
+  font-weight: 500;
+}
+
+.lang-region {
+  color: #777;
+}
+
+.lang-dropdown a[aria-current="true"] .lang-option {
+  font-weight: 700;
+}
+
+/* ==========================================================
+   MOBILE MENU
+   ========================================================== */
 
 .nav-hamburger {
   display: none;
-  background: none;
-  border: none;
-  padding: 0;
+
   width: 2.5em;
   height: 2.5em;
-  align-items: center;
-  justify-content: center;
+
+  padding: 0;
+
+  background: none;
+  border: none;
+
+  color: inherit;
+
   cursor: pointer;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-shrink: 0;
 }
 
 .nav-hamburger-icon {
   width: 1.5em;
   height: 1.5em;
+
   color: currentColor;
 }
 
-/* Fullscreen modal — always white, z-index above everything including scrolled .nav */
+/* ==========================================
+   MOBILE MENU
+========================================== */
+
 .nav-mobile-menu {
   position: fixed;
+
   inset: 0;
-  z-index: 500;
+
+  z-index: 9999;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1.15em 5.25em 3.25em;
-  background-color: var(--color-white);
+
+  padding: 2em;
+
+  background: var(--color-white);
+
   color: var(--color-black);
-  overflow-y: auto;
+
   opacity: 0;
+  visibility: hidden;
+
   pointer-events: none;
-  transition: opacity 0.25s ease;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
 }
 
 .nav-mobile-menu.is-open {
   opacity: 1;
+  visibility: visible;
+
   pointer-events: auto;
-}
-
-.nav-mobile-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-}
-
-.nav-mobile-logo img {
-  height: 1.71em;
-  display: block;
-}
-
-.nav-mobile-close {
-  width: 2.5em;
-  height: 2.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: var(--color-black);
 }
 
 .nav-mobile-links {
   display: flex;
   flex-direction: column;
+
+  margin-top: 5em;
 }
 
-.nav-mobile-links > * {
-  border-top: 0.07em solid rgba(0, 0, 0, 0.1);
-  padding: 20px 0;
+.nav-mobile-links a {
+  display: block;
+
+  padding: 1.15em 0;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+  color: var(--color-black);
+
+  text-decoration: none;
+
+  font-size: 2em;
+  font-weight: 500;
+
+  transition: font-weight 0.2s ease;
 }
 
-.nav-mobile-links > *:first-child {
+.nav-mobile-links a:first-child {
   border-top: none;
-  padding-top: 0;
 }
 
-.nav-mobile-link {
-  display: block;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 1.6;
-  color: var(--color-black);
-  text-decoration: none;
-  transition: font-weight 0.2s ease;
-}
-
-.nav-mobile-link:hover {
-  font-weight: 700;
-}
-
-/* Work accordion on mobile */
-.nav-mobile-group-toggle {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: var(--color-black);
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 1.6;
-  cursor: pointer;
-  text-align: left;
-  transition: font-weight 0.2s ease;
-}
-
-.nav-mobile-group-chevron {
-  width: 0.55em;
-  height: 0.55em;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-
-.nav-mobile-group.is-open .nav-mobile-group-chevron {
-  transform: rotate(180deg);
-}
-
-.nav-mobile-group-content {
-  height: 0;
-  overflow: hidden;
-  transition: height 0.3s ease;
-}
-
-.nav-mobile-group-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  padding-top: 1.25em;
-}
-
-.nav-mobile-sublink {
-  display: block;
-  padding-left: 0.5em;
-  color: var(--color-black);
-  font-size: 14px;
-  font-weight: 400;
-  text-decoration: none;
-  transition: font-weight 0.2s ease;
-}
-
-.nav-mobile-sublink:hover {
+.nav-mobile-links a:hover {
   font-weight: 700;
 }
 
 .nav-mobile-menu .btn-nav {
+  margin: 0;
+
   align-self: flex-start;
-  flex-shrink: 0;
-  font-size: 14px;
-  background-color: transparent;
-  border-color: var(--color-black);
+
   color: var(--color-black);
+
+  border-color: var(--color-black);
 }
 
 .nav-mobile-menu .btn-nav:hover {
-  background-color: var(--color-black);
+  background: var(--color-black);
+
   color: var(--color-white);
-  border-color: var(--color-black);
 }
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
 
 @media (max-width: 991px) {
   .nav {
     padding-left: 2em;
     padding-right: 2em;
   }
-  .nav-links,
-  .nav-container > .btn-nav {
+
+  .nav-container {
+    padding: 1.15em 2em;
+  }
+
+  .nav-links {
     display: none;
   }
+
+  .lang-switcher {
+    display: none;
+  }
+
+  .btn-nav {
+    display: none;
+  }
+
   .nav-hamburger {
     display: flex;
+
+    margin-left: auto;
   }
 }
 
-/* Appended from Santiago: components/navbar/navbar.css */
-.nav-mobile-group-toggle:hover {
-  font-weight: 500;
-}
+/* ==========================================
+   SMALL DEVICES
+========================================== */
 
-/* ==========================================================
-   Language Switcher
-   ========================================================== */
+@media (max-width: 767px) {
+  .nav {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 
-.lang-switcher{
-    position:relative;
-    display:flex;
-    align-items:center;
-    margin-left:auto;
-}
+  .nav-container {
+    padding: 1em 1.4em;
+  }
 
-.lang-switcher-btn{
-    display:flex;
-    align-items:center;
-    gap:.65em;
-
-    padding:0;
-    margin:0;
-
-    background:none;
-    border:none;
-
-    color:inherit;
-    cursor:pointer;
-
-    font-family:inherit;
-    font-size:1.15em;
-    font-weight:500;
-    line-height:1.25em;
-
-    transition:font-weight .2s ease;
-}
-
-.lang-switcher-btn:hover{
-    font-weight:700;
-}
-
-.lang-globe{
-    width:1.15em;
-    height:1.15em;
-    flex-shrink:0;
-}
-
-.lang-label{
-    white-space:nowrap;
-}
-
-.lang-chevron{
-    width:.75em;
-    height:.75em;
-    flex-shrink:0;
-    transition:transform .2s ease;
-}
-
-.lang-switcher.is-open .lang-chevron{
-    transform:rotate(180deg);
-}
-
-/* Dropdown */
-
-.lang-dropdown{
-    position:absolute;
-    top:calc(100% + .85em);
-    right:0;
-
-    width:17em;
-
-    display:flex;
-    flex-direction:column;
-
-    list-style:none;
-
-    padding:.75em 0;
-
-    background:var(--color-white);
-
-    border:.07em solid rgba(0,0,0,.08);
-    border-radius:.75em;
-
-    box-shadow:0 .5em 1.5em rgba(16,16,16,.08);
-
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-
-    transform:translateY(-.35em);
-
-    transition:
-        opacity .2s ease,
-        transform .2s ease,
-        visibility .2s ease;
-
-    z-index:500;
-}
-
-.lang-switcher.is-open .lang-dropdown{
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-    transform:translateY(0);
-}
-
-.lang-dropdown li{
-    list-style:none;
-}
-
-.lang-dropdown a{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    width:100%;
-
-    padding:.8em 1.25em;
-
-    color:var(--color-black);
-
-    text-decoration:none;
-
-    transition:
-        background-color .2s ease,
-        font-weight .2s ease;
-}
-
-.lang-dropdown a:hover{
-    background:#f6f6f6;
-    font-weight:600;
-}
-
-.lang-region{
-    color:#707070;
-    font-size:.95em;
-}
-
-.lang-option{
-    color:var(--color-black);
-    font-weight:500;
-}
-
-.lang-dropdown a[aria-current="true"]{
-    background:#f7f7f7;
-}
-
-.lang-dropdown a[aria-current="true"] .lang-option{
-    font-weight:700;
+  .nav-logo img {
+    height: 1.45em;
+  }
 }
