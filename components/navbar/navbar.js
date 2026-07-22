@@ -1,11 +1,11 @@
 // ============================
 // Navbar — 27zero
-// Cambia a nav--scrolled al pasar 50px de scroll.
-// Guarda la variante inicial (nav--white o nav--black) para restaurarla al volver arriba.
+// Estado inicial: nav--white (transparente, texto blanco).
+// Al pasar 50px: nav--scrolled (pill indigo, texto blanco).
+// Al volver arriba: restaura nav--white.
 // ============================
 
 const nav = document.querySelector('.nav');
-const initialVariant = nav.classList.contains('nav--black') ? 'nav--black' : 'nav--white';
 
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) {
@@ -14,7 +14,8 @@ window.addEventListener('scroll', () => {
     nav.style.top = '2.2em';
   } else {
     nav.classList.remove('nav--scrolled');
-    nav.classList.add(initialVariant);
+    nav.classList.add('nav--white');
+    nav.classList.remove('nav--black');
     nav.style.top = '0';
   }
 });
