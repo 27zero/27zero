@@ -414,3 +414,55 @@
 .nav-mobile-group-toggle:hover {
   font-weight: 500;
 }
+
+/* ===========================
+   Language Switcher
+   =========================== */
+
+.lang-switcher {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.lang-switcher-btn {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    cursor: pointer;
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + .75rem);
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 220px;
+
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.12);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-8px);
+
+    transition:
+        opacity .2s,
+        transform .2s,
+        visibility .2s;
+
+    z-index: 999;
+}
+
+.lang-switcher.is-open .lang-dropdown{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0);
+}
