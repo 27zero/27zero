@@ -1071,40 +1071,11 @@ var _27z = (function(){
   return { getPref: getPref, setPref: setPref };
 }());
 
-/* ── Language switcher dropdown ─────────────────────────────────────────── */
+/* ── Locale preference — persist when user picks a language ─────────────── */
+/* navbar.js handles open/close; this block only persists the cookie/storage */
 (function(){
-  var btn  = document.querySelector('.lang-switcher-btn');
   var menu = document.getElementById('lang-dropdown');
-  if(!btn||!menu) return;
-
-  function open(){
-    menu.classList.add('is-open');
-    btn.setAttribute('aria-expanded','true');
-    var first = menu.querySelector('a');
-    if(first) first.focus();
-  }
-  function close(){
-    menu.classList.remove('is-open');
-    btn.setAttribute('aria-expanded','false');
-    btn.focus();
-  }
-  function toggle(){ menu.classList.contains('is-open') ? close() : open(); }
-
-  btn.addEventListener('click', function(e){ e.stopPropagation(); toggle(); });
-  document.addEventListener('click', function(e){
-    if(!btn.contains(e.target)&&!menu.contains(e.target)) close();
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key==='Escape'&&menu.classList.contains('is-open')) close();
-  });
-  menu.addEventListener('keydown', function(e){
-    var items = Array.from(menu.querySelectorAll('a'));
-    var idx   = items.indexOf(document.activeElement);
-    if(e.key==='ArrowDown'){ e.preventDefault(); items[(idx+1)%items.length].focus(); }
-    if(e.key==='ArrowUp'){   e.preventDefault(); items[(idx-1+items.length)%items.length].focus(); }
-  });
-
-  /* Persist preference when user picks a locale manually */
+  if(!menu) return;
   menu.querySelectorAll('a[data-locale-prefix]').forEach(function(link){
     link.addEventListener('click', function(){
       var p = link.getAttribute('data-locale-prefix');
