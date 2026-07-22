@@ -187,6 +187,8 @@
   <body>
     <header class="nav nav--white">
       <div class="nav-container">
+        <!-- Logo -->
+
         <a href="/" class="nav-logo">
           <img
             src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg"
@@ -194,9 +196,17 @@
           />
         </a>
 
+        <!-- Desktop Navigation -->
+
         <nav class="nav-links">
+          <!-- Work -->
+
           <div class="nav-dropdown">
-            <button class="nav-dropdown-toggle" aria-expanded="false">
+            <button
+              class="nav-dropdown-toggle"
+              type="button"
+              aria-expanded="false"
+            >
               <span>Work</span>
 
               <svg class="nav-dropdown-chevron" viewBox="0 0 20 20" fill="none">
@@ -211,11 +221,11 @@
             </button>
 
             <div class="nav-dropdown-content">
-              <a class="nav-dropdown-link" href="/work"> All work </a>
+              <a href="/work" class="nav-dropdown-link"> All work </a>
 
               <div class="nav-dropdown-divider"></div>
 
-              <a class="nav-dropdown-link" href="/case-studies">
+              <a href="/case-studies" class="nav-dropdown-link">
                 Case studies
               </a>
             </div>
@@ -230,7 +240,9 @@
           <a href="/about"> About </a>
         </nav>
 
-        <!-- Language Switcher -->
+        <!-- ==========================================
+             LANGUAGE SWITCHER
+        =========================================== -->
 
         <div class="lang-switcher">
           <button class="lang-switcher-btn" type="button" aria-expanded="false">
@@ -242,12 +254,15 @@
                 stroke="currentColor"
                 stroke-width="1.8"
               />
+
               <path d="M3 12H21" stroke="currentColor" stroke-width="1.8" />
+
               <path
                 d="M12 3C14.8 6 16 9 16 12C16 15 14.8 18 12 21"
                 stroke="currentColor"
                 stroke-width="1.8"
               />
+
               <path
                 d="M12 3C9.2 6 8 9 8 12C8 15 9.2 18 12 21"
                 stroke="currentColor"
@@ -287,10 +302,15 @@
           </ul>
         </div>
 
+        <!-- CTA -->
+
         <a href="/contact" class="btn btn-nav"> Let's Talk! </a>
+
+        <!-- Mobile Hamburger -->
 
         <button
           class="nav-hamburger"
+          type="button"
           aria-label="Open menu"
           aria-expanded="false"
         >
@@ -298,17 +318,76 @@
         </button>
       </div>
 
+      <!-- ==========================================
+     MOBILE MENU
+========================================== -->
+
       <div class="nav-mobile-menu">
+        <div class="nav-mobile-header">
+          <a href="/" class="nav-mobile-logo">
+            <img
+              src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg"
+              alt="27zero"
+            />
+          </a>
+
+          <button
+            class="nav-mobile-close"
+            type="button"
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
+        </div>
+
         <nav class="nav-mobile-links">
-          <a href="/work"> Work </a>
+          <!-- Work -->
 
-          <a href="/edtech-marketing"> EdTech Marketing </a>
+          <div class="nav-mobile-group">
+            <button
+              class="nav-mobile-group-toggle"
+              type="button"
+              aria-expanded="false"
+            >
+              <span>Work</span>
 
-          <a href="/the-edtech-mentor"> The EdTech Mentor </a>
+              <svg
+                class="nav-mobile-group-chevron"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M5 8L10 13L15 8"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
 
-          <a href="/resources"> Resources </a>
+            <div class="nav-mobile-group-content">
+              <div class="nav-mobile-group-inner">
+                <a href="/work" class="nav-mobile-sublink"> All work </a>
 
-          <a href="/about"> About </a>
+                <a href="/case-studies" class="nav-mobile-sublink">
+                  Case studies
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <a href="/edtech-marketing" class="nav-mobile-link">
+            EdTech Marketing
+          </a>
+
+          <a href="/the-edtech-mentor" class="nav-mobile-link">
+            The EdTech Mentor
+          </a>
+
+          <a href="/resources" class="nav-mobile-link"> Resources </a>
+
+          <a href="/about" class="nav-mobile-link"> About </a>
         </nav>
 
         <a href="/contact" class="btn btn-nav"> Let's Talk! </a>
