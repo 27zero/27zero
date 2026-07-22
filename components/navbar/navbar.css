@@ -107,11 +107,40 @@
 
 /* ─── Botón exclusivo del navbar (usa .btn como base) ─── */
 /* nav--white: outline negro, texto negro, hover filled negro */
-.btn-nav {
+/* .btn-nav {
   background-color: transparent;
   border: 0.05em solid var(--color-black);
   color: var(--color-black);
+} */
+.btn-nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:.85em 1.7em;
+
+    min-height:3.4em;
+
+    border:.05em solid currentColor;
+    border-radius:999px;
+
+    background:transparent;
+
+    font-family:"Lora", serif;
+    font-size:1.15em;
+    font-weight:400;
+    line-height:1;
+
+    text-decoration:none;
+
+    white-space:nowrap;
+
+    transition:
+        background-color .2s ease,
+        color .2s ease,
+        border-color .2s ease;
 }
+
 .btn-nav:hover {
   background-color: var(--color-black);
   color: var(--color-white);
