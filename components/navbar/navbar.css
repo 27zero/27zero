@@ -5,7 +5,13 @@
    ============================ */
 
 /* Wrapper fijo — sin fondo */
+/* font-size:14px sets the em base matching Santiago's body (14px).
+   font-family:Inter matches Santiago so inherited values render identically.
+   (.nav-dropdown-toggle { font-family: inherit } picks this up.)
+   Does NOT modify the global body — navbar is fully self-contained. */
 .nav {
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
   width: 100%;
   max-width: 1440px;
   margin-left: auto;
@@ -422,6 +428,14 @@
   }
   .nav-hamburger {
     display: flex;
+  }
+}
+
+/* Matches Santiago: body { font-size: 9px } at <=767px.
+   Scoped to .nav — does not touch the global body. */
+@media (max-width: 767px) {
+  .nav {
+    font-size: 9px;
   }
 }
 
