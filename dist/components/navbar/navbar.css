@@ -60,6 +60,91 @@
   font-weight: 700;
 }
 
+/* ─── Dropdown "Work" (desktop) ───
+   Default (nav--white / nav--black): panel bg blanco, texto negro,
+   igual que en la referencia visual — ver overrides por variante abajo. */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 1.15em;
+  font-weight: 500;
+  line-height: 1.25em;
+  color: inherit;
+  cursor: pointer;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-dropdown-toggle:hover {
+  font-weight: 700;
+}
+
+.nav-dropdown-chevron {
+  width: 0.75em;
+  height: 0.75em;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.nav-dropdown.is-open .nav-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.85em;
+  min-width: 10em;
+  padding: 1em;
+  gap: 0.5em;
+  border-radius: 0.6em;
+  border: 0.07em solid rgba(0, 0, 0, 0.1); /* #0000001A */
+  background-color: var(--color-white);
+  box-shadow: 0 0.5em 1.5em rgba(16, 16, 16, 0.08);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(-0.35em);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.nav-dropdown.is-open .nav-dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-dropdown-link {
+  padding: 0.35em 0.35em;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--color-black) !important;
+  text-decoration: none;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-dropdown-link:hover {
+  font-weight: 700;
+}
+
+/* Divisor real — participa del mismo gap del content, no border-bottom del link */
+.nav-dropdown-divider {
+  height: 0.07em;
+  background-color: rgba(0, 0, 0, 0.1); /* #0000001A */
+}
+
 /* ─── Variante TOP WHITE — fondo blanco, texto/logo negro ─── */
 .nav--white .nav-container {
   background-color: transparent;
@@ -142,90 +227,9 @@
   border-color: var(--color-white);
 }
 
-/* ─── Dropdown "Work" (desktop) ───────────────────────────────────────────── */
-.nav-dropdown {
-  position: relative;
-}
-
-.nav-dropdown-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.35em;
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font-family: inherit;
-  font-size: 1.15em;
-  font-weight: 500;
-  line-height: 1.25em;
-  color: inherit;
-  cursor: pointer;
-  transition: font-weight 0.2s ease;
-}
-
-.nav-dropdown-toggle:hover {
-  font-weight: 700;
-}
-
-.nav-dropdown-chevron {
-  width: 0.75em;
-  height: 0.75em;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-
-.nav-dropdown.is-open .nav-dropdown-chevron {
-  transform: rotate(180deg);
-}
-
-.nav-dropdown-content {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 0.85em;
-  min-width: 10em;
-  padding: 1em;
-  gap: 0.5em;
-  border-radius: 0.6em;
-  border: 0.07em solid rgba(0, 0, 0, 0.1);
-  background-color: var(--color-white);
-  box-shadow: 0 0.5em 1.5em rgba(16, 16, 16, 0.08);
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transform: translateY(-0.35em);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  z-index: 10;
-}
-
-.nav-dropdown.is-open .nav-dropdown-content {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.nav-dropdown-link {
-  padding: 0.35em 0.35em;
-  font-size: 1.05em;
-  font-weight: 500;
-  color: var(--color-black) !important;
-  text-decoration: none;
-  transition: font-weight 0.2s ease;
-}
-
-.nav-dropdown-link:hover {
-  font-weight: 700;
-}
-
-.nav-dropdown-divider {
-  height: 0.07em;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
 /* ============================
-   Mobile (<=991px) — fullscreen modal
+   Mobile (<=991px)
+   Esconde .nav-links y .btn-nav, muestra el hamburger + mobile menu
    ============================ */
 
 .nav-hamburger {
@@ -246,7 +250,9 @@
   color: currentColor;
 }
 
-/* Fullscreen modal — always white, z-index above everything including scrolled .nav */
+/* Modal mobile fullscreen — siempre blanco, propio z-index por encima de
+   todo, totalmente independiente de la posición/estado del .nav (evita
+   el conflicto de abrir el menú justo cuando el nav está scrolled) */
 .nav-mobile-menu {
   position: fixed;
   inset: 0;
@@ -293,13 +299,14 @@
   color: var(--color-black);
 }
 
+/* ===== Lista de links — border-top como divisor, mismo patrón que .dropdown-toggle ===== */
 .nav-mobile-links {
   display: flex;
   flex-direction: column;
 }
 
 .nav-mobile-links > * {
-  border-top: 0.07em solid rgba(0, 0, 0, 0.1);
+  border-top: 0.07em solid rgba(0, 0, 0, 0.1); /* #0000001A */
   padding: 20px 0;
 }
 
@@ -313,7 +320,8 @@
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 24px;
-  line-height: 1.6;
+  line-height: 1.6; /* 160% */
+  letter-spacing: 0;
   color: var(--color-black);
   text-decoration: none;
   transition: font-weight 0.2s ease;
@@ -323,7 +331,7 @@
   font-weight: 700;
 }
 
-/* Work accordion on mobile */
+/* ===== "Work" como acordeón inline ===== */
 .nav-mobile-group-toggle {
   width: 100%;
   display: flex;
@@ -337,10 +345,15 @@
   color: var(--color-black);
   font-size: 24px;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.6; /* 160% */
+  letter-spacing: 0;
   cursor: pointer;
   text-align: left;
   transition: font-weight 0.2s ease;
+}
+
+.nav-mobile-group-toggle:hover {
+  font-weight: 500;
 }
 
 .nav-mobile-group-chevron {
@@ -354,6 +367,7 @@
   transform: rotate(180deg);
 }
 
+/* height 0 -> Xpx (medido con JS) -> auto — mismo approach que el componente dropdown */
 .nav-mobile-group-content {
   height: 0;
   overflow: hidden;
@@ -381,6 +395,8 @@
   font-weight: 700;
 }
 
+/* El botón dentro del modal siempre usa el estilo outline negro (default),
+   sin importar la variante activa del .nav — coherente con el fondo blanco fijo del menú */
 .nav-mobile-menu .btn-nav {
   align-self: flex-start;
   flex-shrink: 0;
@@ -389,7 +405,6 @@
   border-color: var(--color-black);
   color: var(--color-black);
 }
-
 .nav-mobile-menu .btn-nav:hover {
   background-color: var(--color-black);
   color: var(--color-white);
@@ -408,9 +423,4 @@
   .nav-hamburger {
     display: flex;
   }
-}
-
-/* Appended from Santiago: components/navbar/navbar.css */
-.nav-mobile-group-toggle:hover {
-  font-weight: 500;
 }
