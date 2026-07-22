@@ -73,9 +73,7 @@ h5 {
 
 /* ===== Menú de navegación del sitio ===== */
 .section--site-menu {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  padding-top: 8em;
 }
 
 .site-menu-container {
@@ -92,66 +90,7 @@ h5 {
   flex-direction: column;
 }
 
-.site-menu-item {
-  padding: 0.75em 0;
-  font-size: 1.75em;
-  font-weight: 600;
-  letter-spacing: -0.42px;
-  color: var(--color-black);
-  text-decoration: none;
-  border-top: 1px solid var(--color-black);
-  transition: all 0.2s ease;
-}
-
-.site-menu-item:last-child {
-  border-bottom: 1px solid var(--color-black);
-}
-
-.site-menu-item:hover {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  padding-left: 0.5em;
-}
-
-/* ============================
-   Mobile — max-width: 768px
-   Tipografía mobile siempre en px fijos, nunca em.
-   ============================ */
-
-@media (max-width: 768px) {
-  body { font-size: 9px; }
-
-  .container {
-    padding-left: 2em;
-    padding-right: 2em;
-  }
-
-  h1 {
-    font-size: 32px;
-    line-height: 1.25;
-    font-weight: 700;
-    letter-spacing: -0.09px;
-  }
-
-  h5 {
-    font-size: 14px;
-    line-height: 1.5;
-    font-weight: 700;
-    letter-spacing: 0;
-  }
-
-  .site-menu-item {
-    font-size: 21px;
-    padding: 0.6em 0;
-  }
-}
-
-
-/* ============================================================
-   Menu page additional styles
-   Appended from Santiago: menu/style.css
-   ============================================================ */
-
+/* ===== Intro: overview + aviso + botón repo ===== */
 .site-menu-intro {
   display: flex;
   flex-direction: column;
@@ -233,6 +172,59 @@ h5 {
   border-color: var(--color-black);
 }
 
+.site-menu-item {
+  padding: 0.75em 0;
+  font-size: 1.75em;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+  color: var(--color-black);
+  text-decoration: none;
+  border-top: 1px solid var(--color-black);
+  transition: all 0.2s ease;
+}
+
+.site-menu-item:last-child {
+  border-bottom: 1px solid var(--color-black);
+}
+
+.site-menu-item:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding-left: 0.5em;
+}
+
+/* ============================
+   Mobile — max-width: 768px
+   Tipografía mobile siempre en px fijos, nunca em.
+   ============================ */
+
+@media (max-width: 768px) {
+  body { font-size: 9px; }
+
+  .container {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  h1 {
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.09px;
+  }
+
+  h5 {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .site-menu-item {
+    font-size: 21px;
+    padding: 0.6em 0;
+  }
+
   .site-menu-overview {
     font-size: 13px;
   }
@@ -248,3 +240,4 @@ h5 {
   .btn-menu-repo {
     font-size: 14px;
   }
+}

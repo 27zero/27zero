@@ -1,0 +1,608 @@
+/* ============================
+   27zero — Home page
+   ============================ */
+
+:root {
+  --color-indigo: #440E92;
+  --color-purple: #B382F9;
+  --color-black:  #101010;
+  --color-gray:   #F5F5F5;
+  --color-white:  #FFFFFF;
+
+  --space-xs:  0.5em;
+  --space-sm:  1.5em;
+  --space-md:  3em;
+  --space-lg:  6em;
+  --space-xl:  9em;
+  --space-2xl: 14em;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+/* ===== Typography ===== */
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 3.45em;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.6em;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75em;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5em;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+.text-body, .text-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.text-body--sm {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.07em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.lora {
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* ===== Base layout ===== */
+.section {
+  padding-top: 6.5em;
+  padding-bottom: 6.5em;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 6.5em;
+  padding-right: 6.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.section--sm { padding-top: 3em;  padding-bottom: 3em; }
+.section--lg { padding-top: 9em;  padding-bottom: 9em; }
+.section--xl { padding-top: 14em; padding-bottom: 14em; }
+
+/* ===== Botones ===== */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.85em 1.7em;
+  border-radius: 5.2em;
+  border: 0.05em solid transparent;
+  font-family: 'Lora', serif;
+  font-size: 1.15em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-purple {
+  background-color: var(--color-purple);
+  border-color: var(--color-purple);
+  color: var(--color-black);
+}
+.btn-purple:hover {
+  background-color: transparent;
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+.btn-dark {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-purple);
+}
+.btn-dark:hover {
+  background-color: transparent;
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+.btn-white {
+  background-color: var(--color-white);
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+.btn-white:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+/* ===== Secciones específicas de Home ===== */
+/* Se agregan aquí paso a paso, documentadas en design-system-home.md */
+
+.text-caption {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.07em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+/* ===== Hero ===== */
+.section--hero-home {
+  background-color: var(--color-gray);
+  margin-top: 5.5em;
+  padding-top: 12.14em;
+  padding-bottom: 12.14em;
+}
+
+.hero-home-container {
+  align-items: flex-start;
+  gap: 1em;
+}
+
+.section--hero-home h1 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 3.43em;
+  line-height: 1.25;
+  letter-spacing: -0.48px;
+}
+
+.section--hero-home h1 .inter-accent {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1em;
+  line-height: 1.25;
+  letter-spacing: -0.48px;
+}
+
+.hero-home-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.hero-home-cta .btn-white {
+  border-color: var(--color-white);
+}
+
+/* ===== Intro ===== */
+.section--intro-home {
+  background-color: var(--color-purple);
+  padding-top: 6.07em;
+  padding-bottom: 6.07em;
+}
+
+.intro-home-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5em;
+}
+
+.intro-home-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5em;
+  flex: 0 0 34%;
+}
+
+.intro-home-text h2:not(.slider-title) {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 2.57em;
+  line-height: 1.25;
+  letter-spacing: -0.36px;
+}
+
+.section--intro-home h2 .inter-accent {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1em;
+  line-height: 1.25;
+  letter-spacing: -0.36px;
+}
+
+.intro-home-media {
+  flex: 1;
+  min-height: 34em;
+  border-radius: 0.5em;
+  background-color: var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-home-media span {
+  font-family: 'Inter', sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-black);
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+
+/* ===== The EdTech Mentor (duplicado de Intro, bg indigo) ===== */
+.section--mentor-home {
+  background-color: var(--color-indigo);
+  color: var(--color-white);
+  padding-top: 10.36em;
+  padding-bottom: 5.71em;
+}
+
+.section--mentor-home .slider-arrow {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+
+.section--mentor-home .slider-arrow:hover:not(:disabled) {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.mentor-home-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5em;
+}
+
+.mentor-home-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5em;
+  flex: 0 0 34%;
+}
+
+.section--mentor-home h2 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 2.57em;
+  line-height: 1.25;
+  letter-spacing: -0.36px;
+}
+
+.section--mentor-home h2 .inter-accent {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1em;
+  line-height: 1.25;
+  letter-spacing: -0.36px;
+}
+
+.section--mentor-home .btn-white {
+  border-color: var(--color-white);
+}
+
+.mentor-home-featured-wrap {
+  flex: 1;
+  height: 30em;
+}
+
+/* ===== Sliders container (wrapper de spacing para sliders embebidos en una sección) ===== */
+.sliders-container {
+  padding-top: 4.29em;
+  padding-bottom: 0;
+}
+
+/* ===== Logos ===== */
+.section--logos-home {
+  padding-top: 0;
+  padding-bottom: 8.93em;
+}
+
+/* ===== Testimonials ===== */
+.section--testimonials-home {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding-top: 7.86em;
+  padding-bottom: 4.64em;
+}
+
+.testimonials-slider {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 6.5em;
+}
+
+.testimonials-arrow {
+  flex-shrink: 0;
+  width: 2.85em;
+  height: 2.85em;
+  border-radius: 50%;
+  border: 0.07em solid var(--color-white);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-white);
+  transition: all 0.2s ease;
+}
+
+.testimonials-arrow:hover:not(:disabled) {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.testimonials-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.testimonials-track-wrap {
+  flex: 1;
+  overflow: hidden;
+}
+
+.testimonials-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.testimonial-slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+}
+
+.testimonial-quote-icon {
+  flex-shrink: 0;
+  width: 30em;
+  height: auto;
+}
+
+.testimonial-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.86em;
+  max-width: 30em;
+}
+
+.testimonial-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.5em;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+.testimonial-divider {
+  width: 100%;
+  height: 0.07em;
+  background-color: var(--color-white);
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.85em;
+}
+
+.testimonial-avatar {
+  width: 2.85em;
+  height: 2.85em;
+  border-radius: 50%;
+  background-color: var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.testimonial-avatar span {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.testimonial-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5em;
+  line-height: 1.5;
+  color: var(--color-white);
+}
+
+.testimonial-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.93em;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-white);
+  opacity: 0.7;
+}
+
+/* ===== Dots ===== */
+.testimonials-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6em;
+  margin-top: 3.5em;
+}
+
+.testimonial-dot {
+  width: 0.7em;
+  height: 0.7em;
+  border-radius: 50%;
+  border: 0.07em solid var(--color-white);
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.testimonial-dot--active {
+  background-color: var(--color-purple);
+  border-color: var(--color-purple);
+}
+
+@media (max-width: 768px) {
+  /* Layout base */
+  body { font-size: 9px; }
+
+  .container {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  /* Hero */
+  .section--hero-home {
+    padding-top: 18em;
+    padding-bottom: 18em;
+  }
+  .text-caption {
+    font-size: 10px;
+  }
+
+  /* Intro */
+  .section--intro-home {
+    padding-top: 6em;
+    padding-bottom: 6em;
+  }
+  .intro-home-row {
+    flex-direction: column;
+    gap: 4.64em;
+  }
+  .intro-home-text {
+    flex: 1 1 auto;
+  }
+  .intro-home-media {
+    width: 100%;
+  }
+  .sliders-container {
+    padding-top: 3.93em;
+    padding-left: 0;
+  }
+
+  /* The EdTech Mentor */
+  .section--mentor-home {
+    padding-top: 6.07em;
+    padding-bottom: 4.5em;
+  }
+  .mentor-home-row {
+    flex-direction: column;
+    gap: 4.64em;
+  }
+  .mentor-home-text {
+    flex: 1 1 auto;
+  }
+  .mentor-home-featured-wrap {
+    height: auto;
+  }
+  .card--featured {
+    width: 100%;
+    height: auto;
+  }
+  .card-featured-content {
+    gap: 6.5em;
+  }
+
+  /* Testimonials */
+  .testimonials-slider {
+    padding: 0 2em;
+    gap: 1em;
+  }
+  .testimonial-slide {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5em;
+  }
+  .testimonial-quote-icon {
+    display: none;
+  }
+  .testimonials-arrow {
+    display: none;
+  }
+  .testimonial-content {
+    max-width: 100%;
+  }
+  .testimonials-dots {
+    gap: 1.2em;
+  }
+
+  /* Tipografía mobile — siempre en px fijos, nunca em.
+     !important es necesario: h1-h4 en desktop se overridean con selectores
+     más específicos (ej. .section--hero-home h1, .section--mentor-home h2),
+     que le ganan en especificidad a un simple "h1" aunque este bloque esté al final. */
+  /* Se usan los MISMOS selectores scoped de desktop (no tags globales),
+     para no afectar los h2/h3 internos de los componentes (card-work-title,
+     card-featured-title, card-edtech-mentor-title, slider-title, etc.).
+     Al estar en este bloque (al final del archivo) ganan por orden sobre
+     su propia versión desktop sin necesitar !important. */
+  .section--hero-home h1 { font-size: 32px; }
+  .intro-home-text h2:not(.slider-title) { font-size: 24px; }
+  .section--mentor-home h2 { font-size: 24px; }
+  .text-body, .text-link, .text-body--sm { font-size: 13px !important; }
+  .btn { font-size: 13px !important; }
+}

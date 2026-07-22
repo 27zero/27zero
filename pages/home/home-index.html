@@ -1,240 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>EdTech Marketing Agency — 27zero</title>
-
-<meta name="theme-color" content="#ffffff">
-<meta name="robots" content="index, follow">
-
-<link rel="canonical" href="https://www.27zero.agency/">
-<meta name="description" content="The world's only EdTech-exclusive marketing agency. Turning purpose into brand power since 2001.">
-
+{% extends "base.html" %}
+{% from "macros.html" import cta_footer %}
+{% block title %}EdTech Marketing Agency — 27zero{% endblock %}
+{% block meta %}
 <meta name="description" content="Marketing programs designed to amplify the impact of EdTech companies. 27zero is a leading EdTech marketing agency helping educational brands grow and engage their audience through strategies built specifically for this industry.">
 <meta property="og:title" content="27zero — EdTech Marketing Agency">
 <meta property="og:description" content="Turn EdTech purpose into brand power.">
 <meta property="og:type" content="website">
-
-<meta property="og:site_name" content="27zero">
-<meta property="og:title" content="27zero">
-<meta property="og:description" content="The world&#x27;s only EdTech-exclusive marketing agency. Turning purpose into brand power since 2001.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.27zero.agency/">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="27zero">
-<meta name="twitter:description" content="The world&#x27;s only EdTech-exclusive marketing agency. Turning purpose into brand power since 2001.">
-<meta property="og:locale" content="en_US">
-<meta property="og:locale:alternate" content="en_GB">
-<meta property="og:locale:alternate" content="es_419">
-
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.27zero.agency/#organization","name":"27zero","url":"https://www.27zero.agency","sameAs":["https://www.linkedin.com/company/27zero/"]},{"@type":"WebSite","@id":"https://www.27zero.agency/#website","url":"https://www.27zero.agency","name":"27zero","description":"The world's only EdTech-exclusive marketing agency. Turning purpose into brand power since 2001.","publisher":{"@id":"https://www.27zero.agency/#organization"}},{"@type":"WebPage","@id":"https://www.27zero.agency/","url":"https://www.27zero.agency/","name":"27zero","description":"The world's only EdTech-exclusive marketing agency. Turning purpose into brand power since 2001.","inLanguage":"en","isPartOf":{"@id":"https://www.27zero.agency/#website"}}]}</script>
-
-<link rel="alternate" type="application/rss+xml"
-      title="27zero — EdTech Marketing Insights"
-      href="/rss.xml">
-
-<link rel="alternate" hreflang="en-US" href="https://www.27zero.agency/">
-<link rel="alternate" hreflang="en-GB" href="https://www.27zero.agency/eu/">
-<link rel="alternate" hreflang="es-419" href="https://www.27zero.agency/es/">
-<link rel="alternate" hreflang="x-default" href="https://www.27zero.agency/">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="/assets/css/style.css">
-<link rel="stylesheet" href="/components/navbar/navbar.css">
-<link rel="stylesheet" href="/components/footer/footer.css">
+{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="/assets/css/home.css">
 <link rel="stylesheet" href="/components/shapes-slider/shapes-slider.css">
-</head>
-<body>
-<a href="#main-content" class="sr-only" style="position:absolute;left:-9999px">Skip to content</a>
+{% endblock %}
+{% block content %}
 
-<header class="nav nav--white" id="site-header" role="banner">
-  <div class="nav-container">
-
-    <a href="/" class="nav-logo" aria-label="27zero — home">
-      <img src="/assets/images/27zero-logo.svg" alt="27zero" width="115" height="23">
-    </a>
-
-    <nav class="nav-links" aria-label="Primary navigation">
-
-      <div class="nav-dropdown">
-        <button class="nav-dropdown-toggle" aria-expanded="false">
-          Work
-          <svg class="nav-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <div class="nav-dropdown-content">
-          <a href="/work" class="nav-dropdown-link">All projects</a>
-        </div>
-      </div>
-
-      <a href="/edtech-marketing-agency"
->
-        Edtech Marketing
-      </a>
-      <a href="/edtech-mentor-interviews">
-        The EdTech Mentor
-      </a>
-      <a href="/resources">
-        Resources
-      </a>
-      <a href="/about">
-        About
-      </a>
-
-      <div class="lang-switcher" role="navigation" aria-label="Select language">
-        <button class="lang-switcher-btn" aria-haspopup="true" aria-expanded="false"
-                aria-controls="lang-dropdown">
-          <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="1.8" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          <span class="lang-label">English</span>
-          <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" aria-hidden="true" focusable="false">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <ul class="lang-dropdown" id="lang-dropdown" role="menu" aria-label="Available languages">
-          <li role="none">
-            <a href="/" role="menuitem" data-locale-prefix=""
-aria-current="true">
-              <span class="lang-region">North America</span>
-              <span class="lang-option">English</span>
-            </a>
-          </li>
-          <li role="none">
-            <a href="/eu/" role="menuitem" data-locale-prefix="eu"
->
-              <span class="lang-region">Europe</span>
-              <span class="lang-option">English</span>
-            </a>
-          </li>
-          <li role="none">
-            <a href="/es/" role="menuitem" data-locale-prefix="es"
->
-              <span class="lang-region">Latin America</span>
-              <span class="lang-option">Español</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-    </nav>
-
-    <a href="/lets-talk" class="btn btn-nav">
-      Let’s Talk!
-    </a>
-
-    <button class="nav-hamburger" id="nav-hamburger-btn"
-            aria-label="Open navigation menu" aria-expanded="false">
-      <svg class="nav-hamburger-icon" width="24" height="24" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-           aria-hidden="true">
-        <line x1="3" y1="7" x2="21" y2="7"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="17" x2="21" y2="17"></line>
-      </svg>
-    </button>
-
-  </div>
-</header>
-
-<div class="nav-mobile-menu" id="navMobileMenu"
-     role="dialog" aria-modal="true" aria-label="Navigation menu">
-
-  <div class="nav-mobile-header">
-    <a href="/" class="nav-mobile-logo" aria-label="27zero — home">
-      <img src="/assets/images/27zero-logo.svg" alt="27zero" width="115" height="23">
-    </a>
-    <button class="nav-mobile-close" id="nav-mobile-close-btn"
-            aria-label="Close navigation menu">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2"></line>
-        <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2"
-              transform="rotate(45 10 10)"></line>
-        <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2"
-              transform="rotate(135 10 10)"></line>
-      </svg>
-    </button>
-  </div>
-
-  <nav class="nav-mobile-links" aria-label="Mobile navigation">
-    <div class="nav-mobile-group">
-      <button class="nav-mobile-group-toggle" aria-expanded="false">
-        Work
-        <svg class="nav-mobile-group-chevron" width="16" height="16" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
-      <div class="nav-mobile-group-content">
-        <div class="nav-mobile-group-inner">
-          <a href="/work" class="nav-mobile-sublink">All projects</a>
-        </div>
-      </div>
-    </div>
-
-    <a href="/edtech-marketing-agency" class="nav-mobile-link">
-      Edtech Marketing
-    </a>
-    <a href="/edtech-mentor-interviews" class="nav-mobile-link">
-      The EdTech Mentor
-    </a>
-    <a href="/resources" class="nav-mobile-link">
-      Resources
-    </a>
-    <a href="/about" class="nav-mobile-link">
-      About
-    </a>
-
-    <div class="lang-mobile-section" aria-label="Select language">
-      <span class="lang-mobile-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-             aria-hidden="true" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-        </svg>Language
-      </span>
-      <a href="/" data-locale-prefix=""
-         class="lang-mobile-option lang-mobile-option--active">
-        North America — English
-      </a>
-      <a href="/eu/" data-locale-prefix="eu"
-         class="lang-mobile-option">
-        Europe — English
-      </a>
-      <a href="/es/" data-locale-prefix="es"
-         class="lang-mobile-option">
-        Latin America — Español
-      </a>
-    </div>
-
-  </nav>
-
-  <a href="/lets-talk" class="btn btn-nav">
-    Let’s Talk!
-  </a>
-
-</div>
-
-<div class="lang-suggest" id="lang-suggest" role="alert" aria-live="polite" hidden>
-  <span class="lang-suggest-msg" id="lang-suggest-msg"></span>
-  <div class="lang-suggest-actions">
-    <a class="lang-suggest-yes" id="lang-suggest-yes" href="#"></a>
-    <button class="lang-suggest-no" id="lang-suggest-no" aria-label="Dismiss language suggestion">✕</button>
-  </div>
-</div>
-
-<main id="main-content">
-
+{# ══ 1. HERO — video background, Lora heading, single CTA ════════════════ #}
 <section class="hero hero-lg hero-home-video" aria-label="Homepage hero">
   <video class="hero-video" autoplay muted loop playsinline
          poster="/assets/images/hero-poster.jpg" aria-hidden="true">
@@ -263,8 +42,11 @@ aria-current="true">
 }());
 </script>
 
+{# ══ 2. CLIENT LOGO STRIP — auto-scrolling logos above fold ═════════════ #}
+{# Live site uses actual client logos from their CDN. We use their public URLs. #}
 <div class="logo-strip" aria-label="Clients we've worked with">
   <div class="logo-strip-track" aria-hidden="true">
+    {# Set 1 — real client logo images from live site CDN #}
     <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65d765c177039ff0aa770ee4_Scholarship%20Magic.png"
          alt="Scholarship Magic" class="logo-strip-item" style="height:28px;">
     <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/6514503cf81e333f3bca2fd7_Anthology%20logo.svg"
@@ -283,6 +65,7 @@ aria-current="true">
          alt="Turnitin" class="logo-strip-item" style="height:26px;">
     <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d3064b7806c59a4c6b247_Logo.svg"
          alt="Ellucian" class="logo-strip-item" style="height:20px;">
+    {# Set 2 — duplicate for seamless loop #}
     <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65d765c177039ff0aa770ee4_Scholarship%20Magic.png"
          alt="" aria-hidden="true" class="logo-strip-item" style="height:28px;">
     <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/6514503cf81e333f3bca2fd7_Anthology%20logo.svg"
@@ -304,6 +87,7 @@ aria-current="true">
   </div>
 </div>
 
+{# ══ 3. SERVICES / PRACTICES ═════════════════════════════════════════════ #}
 <section id="practices">
   <div class="wrap">
     <div class="sec-head">
@@ -345,6 +129,9 @@ aria-current="true">
   </div>
 </section>
 
+{# ══ 3.5. WHAT SETS 27ZERO APART — shapes slider (new from Santiago) ═══════ #}
+{# Static content section — no Sanity data needed.                           #}
+{# JS-generated shapes with arrows; copy and link to /edtech-marketing-agency #}
 <section class="shapes-slider section--apart-home" aria-label="What sets 27zero apart">
   <div class="apart-home-header">
     <div class="apart-home-header-inner">
@@ -365,6 +152,7 @@ aria-current="true">
     </button>
     <div class="apart-shapes-wrap">
       <div class="apart-shapes" id="apartShapes">
+        {# Generated by shapes-slider.js #}
       </div>
       <button class="apart-shapes-nav-zone apart-shapes-nav-zone--prev" data-dir="prev" aria-label="Previous"></button>
       <button class="apart-shapes-nav-zone apart-shapes-nav-zone--next" data-dir="next" aria-label="Next"></button>
@@ -383,6 +171,7 @@ aria-current="true">
   </div>
 </section>
 
+{# ══ 4. THE EDTECH MENTOR — purple bg, real photo cards, horizontal slider ═ #}
 <section class="mentor-slider-section" aria-label="The EdTech Mentor interview series">
   <div class="wrap">
     <div class="mentor-slider-header">
@@ -407,6 +196,7 @@ aria-current="true">
       </div>
     </div>
 
+    {# Person row — portraits + names #}
     <div class="mentor-persons" id="mentor-persons">
       <div class="mentor-person active">
         <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/674f05e65989512b949d16b9_1644494890639.webp"
@@ -442,6 +232,7 @@ aria-current="true">
       </div>
     </div>
 
+    {# Scrollable cards track #}
     <div class="mentor-cards-track-wrap" id="mentor-track-wrap">
       <div class="mentor-cards-track" id="mentor-cards-track">
         <a href="/edtech-mentor-interviews/frederico-bello" class="mentor-card-item">
@@ -509,6 +300,7 @@ aria-current="true">
   </div>
 </section>
 
+{# ══ 5. WORK / CASE STUDIES — purple bg, image cards ════════════════════ #}
 <section class="work-grid-section">
   <div class="wrap">
     <div class="work-grid-header">
@@ -526,6 +318,7 @@ aria-current="true">
       <p class="sub" style="color:var(--ink);opacity:.75">Get inspired by our portfolio.</p>
     </div>
 
+    {# Featured work card #}
     <a href="/work/anthology-legacy-conversations" class="work-card" style="min-height:440px;">
       <div class="work-card-bg" style="background-image:url('https://cdn.prod.website-files.com/651459062a0cabb77e339955/65d7e6728c8f6b265c71723f_Card-Legacy.webp');"></div>
       <div class="work-card-overlay"></div>
@@ -592,6 +385,7 @@ aria-current="true">
   </div>
 </section>
 
+{# ══ 6. TESTIMONIALS — slider with photo + lavender card ════════════════ #}
 <section class="testi-section">
   <div class="wrap">
     <div class="sec-head">
@@ -670,6 +464,7 @@ aria-current="true">
   </div>
 </section>
 
+{# ══ 7. NEWSLETTER ═══════════════════════════════════════════════════════ #}
 <section class="newsletter tight">
   <div class="wrap narrow">
     <div class="eyebrow center">Stay close to the industry</div>
@@ -685,214 +480,12 @@ aria-current="true">
   </div>
 </section>
 
-<section class="ctaf lg">
-  <div class="wrap">
-<div class="eyebrow center" style="justify-content:center;margin-bottom:20px">Begin your journey to growth</div>    <h2>Start your journey <em class="acc">to growth and impact.</em></h2>
-    <a href="/lets-talk" class="btn-primary" style="margin:0 auto;display:inline-flex">
-      Book a strategy session
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
-  </div>
-</section>
+{# ══ 8. FINAL CTA ════════════════════════════════════════════════════════ #}
+{{ cta_footer('Start your journey <em class="acc">to growth and impact.</em>', large=True) }}
 
+{% endblock %}
 
-</main>
-
-<footer class="footer" role="contentinfo">
-  <div class="footer-container">
-    <div class="footer-top">
-      <a href="/" class="footer-logo" aria-label="27zero — home">
-        <img src="/assets/images/27zero-logo.svg" alt="27zero">
-      </a>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <div class="footer-links-col">
-          <a href="/">Home</a>
-          <a href="/work">Work</a>
-          <a href="/edtech-marketing-agency">Services</a>
-          <a href="/about">About</a>
-        </div>
-        <div class="footer-links-col">
-          <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
-          <a href="/about#careers">Careers</a>
-          <a href="/lets-talk">Let's Talk!</a>
-        </div>
-        <div class="footer-links-col">
-          <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </nav>
-    </div>
-    <div class="footer-divider"></div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 27zero. All rights reserved.</span>
-      <a href="/privacy" class="footer-legal">Privacy Security Policy</a>
-    </div>
-  </div>
-</footer>
-
-<script src="/components/navbar/navbar.js"></script>
-
-<script>
-/* Scroll reveal — unchanged */
-(function(){
-  var rm = window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var sel = '.pcard,.ditem,.look-item,.client-card,.apart-col,.mitem,.subitem,.cycle-step,.sec-head,.mentor-card-item,.work-card,.testi-slide';
-  var els = document.querySelectorAll(sel);
-  if(rm||!('IntersectionObserver' in window)){
-    els.forEach(function(el){ el.classList.add('reveal-init','in-view'); });
-    return;
-  }
-  els.forEach(function(el){ el.classList.add('reveal-init'); });
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
-    });
-  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-  els.forEach(function(el){ io.observe(el); });
-}());
-</script>
-
-<script>
-/* ── Cookie + localStorage helper ───────────────────────────────────────────
-   Cookies are the source of truth because Vercel edge rules read them
-   server-side before any JS runs. localStorage is kept as fallback.       */
-var _27z = (function(){
-  var COOKIE  = 'preferred_locale';
-  var LS_KEY  = '27z_lang_pref';
-  var MAX_AGE = 60 * 60 * 24 * 365; /* 1 year */
-
-  function getCookie(name){
-    var m = document.cookie.match('(?:^|;)\\s*' + name + '=([^;]*)');
-    return m ? decodeURIComponent(m[1]) : null;
-  }
-  function setCookie(name, value){
-    document.cookie = name + '=' + encodeURIComponent(value)
-      + ';max-age=' + MAX_AGE + ';path=/;SameSite=Lax';
-  }
-  function getPref(){
-    return getCookie(COOKIE) || localStorage.getItem(LS_KEY);
-  }
-  function setPref(value){
-    setCookie(COOKIE, value);
-    try { localStorage.setItem(LS_KEY, value); } catch(e){}
-  }
-  return { getPref: getPref, setPref: setPref };
-}());
-
-/* ── Language switcher dropdown ─────────────────────────────────────────── */
-(function(){
-  var btn  = document.querySelector('.lang-switcher-btn');
-  var menu = document.getElementById('lang-dropdown');
-  if(!btn||!menu) return;
-
-  function open(){
-    menu.classList.add('is-open');
-    btn.setAttribute('aria-expanded','true');
-    var first = menu.querySelector('a');
-    if(first) first.focus();
-  }
-  function close(){
-    menu.classList.remove('is-open');
-    btn.setAttribute('aria-expanded','false');
-    btn.focus();
-  }
-  function toggle(){ menu.classList.contains('is-open') ? close() : open(); }
-
-  btn.addEventListener('click', function(e){ e.stopPropagation(); toggle(); });
-  document.addEventListener('click', function(e){
-    if(!btn.contains(e.target)&&!menu.contains(e.target)) close();
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key==='Escape'&&menu.classList.contains('is-open')) close();
-  });
-  menu.addEventListener('keydown', function(e){
-    var items = Array.from(menu.querySelectorAll('a'));
-    var idx   = items.indexOf(document.activeElement);
-    if(e.key==='ArrowDown'){ e.preventDefault(); items[(idx+1)%items.length].focus(); }
-    if(e.key==='ArrowUp'){   e.preventDefault(); items[(idx-1+items.length)%items.length].focus(); }
-  });
-
-  /* Persist preference when user picks a locale manually */
-  menu.querySelectorAll('a[data-locale-prefix]').forEach(function(link){
-    link.addEventListener('click', function(){
-      var p = link.getAttribute('data-locale-prefix');
-      _27z.setPref(p === '' ? 'en-us' : (p === 'eu' ? 'en-eu' : 'es-419'));
-    });
-  });
-}());
-
-/* ── First-visit automatic redirect — root only ─────────────────────────── */
-/* GUARD: only runs on pathname === '/'. All explicit locale paths are left   */
-/* completely untouched (/eu/work/, /es/resources/, /about/, etc.).           */
-/* Priority: 1. stored preference  2. browser language  3. stay on /         */
-(function(){
-  if(window.location.pathname !== '/') return;
-
-  var MAP = [
-    ['es', 'es-419', /^es/i],
-    ['eu', 'en-eu',  /^en-(?!us|ca|au|nz)/i],
-    ['',   'en-us',  /^en/i]
-  ];
-  var pref = _27z.getPref();
-
-  if(pref){
-    for(var i=0;i<MAP.length;i++){
-      if(MAP[i][1] === pref){
-        var target = MAP[i][0];
-        if(target){ window.location.replace('/' + target + '/'); }
-        return; /* en-us → stay on / */
-      }
-    }
-  }
-
-  /* First visit — detect from browser */
-  var lang = (navigator.language || 'en').toLowerCase();
-  var suggested = '', storedKey = 'en-us';
-  for(var j=0;j<MAP.length;j++){
-    if(MAP[j][2].test(lang)){ suggested = MAP[j][0]; storedKey = MAP[j][1]; break; }
-  }
-  _27z.setPref(storedKey);
-  if(suggested){ window.location.replace('/' + suggested + '/'); }
-}());
-
-/* ── Language suggestion banner — locale home pages only ────────────────── */
-/* Shows once per session when browser language ≠ current locale.           */
-/* Accepted or dismissed → stored in localStorage, never shown again.       */
-(function(){
-  var PREF_KEY = '27z_lang_pref', DIS_KEY = '27z_lang_dis';
-  var path = window.location.pathname;
-  if(path !== '/' && path !== '/eu/' && path !== '/es/') return;
-
-  var current = '';
-  if(localStorage.getItem(PREF_KEY) === current) return;
-  if(localStorage.getItem(DIS_KEY)  === current) return;
-
-  var lang = (navigator.language || 'en').toLowerCase();
-  var MAP2 = [['es',/^es/i],['eu',/^en-(?!us|ca|au|nz)/i],['',/^en/i]];
-  var suggested = '';
-  for(var k=0;k<MAP2.length;k++){ if(MAP2[k][1].test(lang)){ suggested = MAP2[k][0]; break; } }
-  if(suggested === current) return;
-
-  var dest = suggested ? ('/' + suggested + '/') : '/';
-  var labels = {'':'English (North America)','eu':'English (Europe)','es':'Español'};
-  var banner = document.getElementById('lang-suggest');
-  var msg    = document.getElementById('lang-suggest-msg');
-  var yes    = document.getElementById('lang-suggest-yes');
-  var no     = document.getElementById('lang-suggest-no');
-  if(!banner||!msg||!yes||!no) return;
-
-  msg.textContent = 'Switch to ' + (labels[suggested]||'English') + '?';
-  yes.textContent = 'Switch';
-  yes.href = dest;
-  banner.hidden = false;
-
-  yes.addEventListener('click', function(){ localStorage.setItem(PREF_KEY, suggested); });
-  no.addEventListener('click', function(){
-    banner.hidden = true;
-    localStorage.setItem(DIS_KEY, current);
-  });
-}());
-</script>
-
+{% block extra_js %}
 <script src="/components/shapes-slider/shapes-slider.js"></script>
 <script>
 /* ── Mentor horizontal slider ────────────────────────────────────── */
@@ -958,6 +551,4 @@ var _27z = (function(){
   setInterval(function(){ goTo((cur+1)%dots.length); }, 7000);
 }());
 </script>
-
-</body>
-</html>
+{% endblock %}

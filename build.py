@@ -149,11 +149,32 @@ def build() -> None:
     build_rss(posts=posts, resources=resources)
 
     # ── Step 9: Copy browser-served static trees ─────────────────────────
-    # Everything the templates link to with an absolute path must exist in
-    # dist/ verbatim.  Templates reference both /assets/... and /components/...
-    # so both source trees are copied whole (no per-file hardcoding).
+    # CSS lives in assets/css/ and is served via copytree(ASSETS_DIR) below.
+    # JavaScript that lives in pages/ and is fetched at a different URL path
+    # must be listed explicitly in _page_assets.
     shutil.copytree(ASSETS_DIR, os.path.join(DIST_DIR, "assets"), dirs_exist_ok=True)
     shutil.copytree(COMPONENTS_DIR, os.path.join(DIST_DIR, "components"), dirs_exist_ok=True)
+
+    # Page-level JavaScript: source lives in pages/ but is served at a URL
+    # that does not match the source path. Each tuple: (source, dist_dest).
+    _page_assets = [
+        # /resources/script.js — TOC active-link logic for resources pages
+        (os.path.join(PAGES_DIR, "resources", "script.js"),
+         os.path.join(DIST_DIR, "resources", "script.js")),
+        # /work/script.js — pill filter + slider logic (source: pages/clientes/script.js)
+        (os.path.join(PAGES_DIR, "clientes", "script.js"),
+         os.path.join(DIST_DIR, "work", "script.js")),
+        # /edtech-mentor-cms/script.js — CMS detail page interactions
+        (os.path.join(PAGES_DIR, "edtech-mentor", "edtech-mentor-cms", "script.js"),
+         os.path.join(DIST_DIR, "edtech-mentor-cms", "script.js")),
+        # /edtech-mentor/script.js — mentor index page interactions
+        (os.path.join(PAGES_DIR, "edtech-mentor", "script.js"),
+         os.path.join(DIST_DIR, "edtech-mentor", "script.js")),
+    ]
+    for _src, _dst in _page_assets:
+        if os.path.exists(_src):
+            os.makedirs(os.path.dirname(_dst), exist_ok=True)
+            shutil.copy2(_src, _dst)
 
     # ── Summary ───────────────────────────────────────────────────────────
     total_dynamic = n_posts + n_resources + n_interviews + n_work + n_mentor
