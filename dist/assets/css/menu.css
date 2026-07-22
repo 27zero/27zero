@@ -1,0 +1,243 @@
+/* ============================
+   27zero — Site Menu
+   Página de navegación a todas las páginas del repo, incluida
+   la página de menú de componentes (/components).
+   ============================ */
+
+:root {
+  --color-indigo: #440E92;
+  --color-purple: #B382F9;
+  --color-black:  #101010;
+  --color-gray:   #F5F5F5;
+  --color-white:  #FFFFFF;
+
+  --space-xs:  0.5em;
+  --space-sm:  1.5em;
+  --space-md:  3em;
+  --space-lg:  6em;
+  --space-xl:  9em;
+  --space-2xl: 14em;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+/* ===== Typography ===== */
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 3.45em;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h5 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86em;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.lora {
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* ===== Layout primitives ===== */
+.section {
+  padding-top: 6.5em;
+  padding-bottom: 6.5em;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 6.5em;
+  padding-right: 6.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+/* ===== Menú de navegación del sitio ===== */
+.section--site-menu {
+  padding-top: 8em;
+}
+
+.site-menu-container {
+  gap: var(--space-md);
+}
+
+.site-menu-logo img {
+  height: 2.5em;
+  display: block;
+}
+
+.site-menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Intro: overview + aviso + botón repo ===== */
+.site-menu-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-gray);
+  margin-bottom: var(--space-xs);
+}
+
+.site-menu-overview {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--color-black);
+  max-width: 42em;
+}
+
+.site-menu-overview code {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9em;
+  font-weight: 600;
+  background-color: var(--color-gray);
+  padding: 0.15em 0.4em;
+  border-radius: 0.3em;
+}
+
+.site-menu-warning {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  background-color: var(--color-gray);
+  border-left: 0.2em solid var(--color-indigo);
+  border-radius: 0.4em;
+  padding: 1.3em 1.7em;
+  max-width: 42em;
+}
+
+.site-menu-warning-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86em;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--color-indigo);
+}
+
+.site-menu-warning p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.07em;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-black);
+}
+
+.btn-menu-repo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  gap: 0.5em;
+  padding: 0.85em 1.7em;
+  border-radius: 5.2em;
+  border: 0.05em solid var(--color-indigo);
+  background-color: var(--color-indigo);
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-size: 1.15em;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-menu-repo:hover {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+.site-menu-item {
+  padding: 0.75em 0;
+  font-size: 1.75em;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+  color: var(--color-black);
+  text-decoration: none;
+  border-top: 1px solid var(--color-black);
+  transition: all 0.2s ease;
+}
+
+.site-menu-item:last-child {
+  border-bottom: 1px solid var(--color-black);
+}
+
+.site-menu-item:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding-left: 0.5em;
+}
+
+/* ============================
+   Mobile — max-width: 768px
+   Tipografía mobile siempre en px fijos, nunca em.
+   ============================ */
+
+@media (max-width: 768px) {
+  body { font-size: 9px; }
+
+  .container {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  h1 {
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.09px;
+  }
+
+  h5 {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .site-menu-item {
+    font-size: 21px;
+    padding: 0.6em 0;
+  }
+
+  .site-menu-overview {
+    font-size: 13px;
+  }
+
+  .site-menu-warning-label {
+    font-size: 12px;
+  }
+
+  .site-menu-warning p {
+    font-size: 13px;
+  }
+
+  .btn-menu-repo {
+    font-size: 14px;
+  }
+}

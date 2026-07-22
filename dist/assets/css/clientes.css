@@ -1,0 +1,227 @@
+/* ============================
+   27zero — Work page
+   ============================ */
+
+:root {
+  --color-indigo: #440E92;
+  --color-purple: #B382F9;
+  --color-black:  #101010;
+  --color-gray:   #F5F5F5;
+  --color-white:  #FFFFFF;
+
+  --space-xs:  0.5em;
+  --space-sm:  1.5em;
+  --space-md:  3.5em;
+  --space-lg:  6em;
+  --space-xl:  9em;
+  --space-2xl: 14em;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+/* ===== Typography ===== */
+.section--hero h1 {
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-size: 3.43em;
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -0.48px;
+}
+
+.text-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.text-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--color-black);
+  display: block;
+}
+
+/* ===== Layout ===== */
+.section {
+  padding-top: 6.5em;
+  padding-bottom: 6.5em;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 6.5em;
+  padding-right: 6.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+/* ===== Base .btn — requerida por .btn-nav del navbar ===== */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.85em 1.7em;
+  border-radius: 5.2em;
+  border: 0.05em solid transparent;
+  font-family: 'Lora', serif;
+  font-size: 1.15em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* ===== Hero ===== */
+.section--hero {
+  padding-top: 18.21em;
+  padding-bottom: 5em;
+}
+
+.hero-container {
+  gap: var(--space-xs);
+  padding-left: 13em;
+}
+
+/* ===== Pills ===== */
+.section--pills {
+  padding-top: 0;
+  padding-bottom: 7.14em; /* 100px */
+}
+
+.pills-container {
+  padding-left: 13em;
+}
+
+.pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+}
+
+.pill {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.07em;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-black);
+  background-color: transparent;
+  border: 0.07em solid var(--color-black);
+  border-radius: 5.2em;
+  padding: 0.6em 1.4em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.pill:hover {
+  border-color: var(--color-indigo);
+  color: var(--color-indigo);
+}
+
+/* ===== Variante card los-mejores ===== */
+#los-mejores .card--work {
+  width: 25em;
+  height: 32em !important;
+}
+
+#los-mejores .card-work-body {
+  min-height: 32em !important;
+}
+
+@media (max-width: 768px) {
+  #los-mejores .card--work {
+    height: 320px !important;
+  }
+
+  #los-mejores .card-work-body {
+    min-height: 320px !important;
+  }
+}
+
+/* ===== Marquee ===== */
+.section--marquee {
+  padding-top: 0;
+  padding-bottom: 7.14em; /* 100px */
+}
+
+/* ===== Category anchors ===== */
+.section--categories {
+  padding-top: 0;
+  padding-bottom: 10.36em; /* 145px */
+}
+
+.categories-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2.86em; /* 40px / 14 */
+}
+
+.category-anchor {
+  /* Wrapper vacío que sirve como target de anchor scroll.
+     El contenido real de cada categoría se añadirá aquí. */
+  scroll-margin-top: 8em;
+}
+
+/* ============================
+   Mobile — max-width: 768px
+   ============================ */
+
+@media (max-width: 768px) {
+  body { font-size: 9px; }
+
+  .container {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  .hero-container {
+    padding-left: 2em;
+  }
+
+  .pills-container {
+    padding-left: 2em;
+  }
+
+  .section--hero h1 {
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 500;
+    letter-spacing: -0.09px;
+  }
+
+  .text-body {
+    font-size: 13px;
+  }
+
+  .pills-wrap {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .pills-wrap::-webkit-scrollbar {
+    display: none;
+  }
+}
