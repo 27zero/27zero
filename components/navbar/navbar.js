@@ -1,11 +1,14 @@
 // ============================
 // Navbar — 27zero
-// Estado inicial: nav--white (transparente, texto blanco).
-// Al pasar 50px: nav--scrolled (pill indigo, texto blanco).
-// Al volver arriba: restaura nav--white.
+// Guarda la variante inicial (nav--white o nav--black) al cargar.
+// Al pasar 50px: nav--scrolled (pill indigo).
+// Al volver arriba: restaura la variante inicial de la página.
+// Home usa nav--black (transparente blanco).
+// Resto de páginas usan nav--white (transparente claro).
 // ============================
 
 const nav = document.querySelector('.nav');
+const initialVariant = nav.classList.contains('nav--black') ? 'nav--black' : 'nav--white';
 
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) {
@@ -14,8 +17,7 @@ window.addEventListener('scroll', () => {
     nav.style.top = '2.2em';
   } else {
     nav.classList.remove('nav--scrolled');
-    nav.classList.add('nav--white');
-    nav.classList.remove('nav--black');
+    nav.classList.add(initialVariant);
     nav.style.top = '0';
   }
 });

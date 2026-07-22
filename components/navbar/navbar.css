@@ -151,23 +151,17 @@
   background-color: rgba(0, 0, 0, 0.1); /* #0000001A */
 }
 
-/* ─── Variante TOP WHITE — transparente, texto/logo/botón BLANCO ─── */
-/* Estado inicial: navbar sobre imagen/vídeo oscuro — todo blanco, sin fondo. */
+/* ─── Variante TOP WHITE — transparente, texto/logo negro (páginas claras) ─── */
 .nav--white .nav-container {
   background-color: transparent;
-  color: var(--color-white);
+  color: var(--color-black);
 }
 .nav--white .nav-links a {
-  color: var(--color-white);
+  color: var(--color-black);
 }
 .nav--white .nav-links a:hover {
-  color: var(--color-white);
+  color: var(--color-black);
   font-weight: 700;
-}
-
-/* Logo blanco en estado inicial transparente */
-.nav--white .nav-logo {
-  filter: invert(1);
 }
 
 /* ─── Variante TOP BLACK — fondo negro, texto/logo blanco ─── */
@@ -203,16 +197,16 @@
 }
 
 /* ─── Botón exclusivo del navbar (usa .btn como base) ─── */
-/* nav--white (estado inicial transparente): outline blanco, texto blanco */
+/* nav--white: outline negro, texto negro, hover filled negro */
 .btn-nav {
   background-color: transparent;
-  border: 0.05em solid var(--color-white);
-  color: var(--color-white);
+  border: 0.05em solid var(--color-black);
+  color: var(--color-black);
 }
 .btn-nav:hover {
-  background-color: var(--color-white);
-  color: var(--color-black);
-  border-color: var(--color-white);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
 }
 
 /* nav--black: outline blanco, texto blanco, hover filled blanco texto negro */
@@ -600,13 +594,6 @@
   color: var(--color-white);
 }
 .nav--scrolled .lang-switcher-btn:hover {
-  background: rgba(255,255,255,0.15);
-}
-/* In initial transparent state the lang button text must also be white */
-.nav--white .lang-switcher-btn {
-  color: var(--color-white);
-}
-.nav--white .lang-switcher-btn:hover {
   background: rgba(255,255,255,0.15);
 }
 /* SVG strokes/icons inside lang-switcher inherit color — no extra rule needed */

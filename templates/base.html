@@ -58,7 +58,7 @@
 {# ── NAVIGATION ──────────────────────────────────────────────────────────── #}
 {# Santiago design: header.nav.nav--white + div.nav-container + dropdown Work  #}
 {# i18n variables: nav_prefix, i18n.nav.*, lang switcher — all preserved below #}
-<header class="nav nav--white" id="site-header" role="banner">
+<header class="nav {% block nav_variant %}nav--white{% endblock %}" id="site-header" role="banner">
   <div class="nav-container">
 
     <a href="{{ nav_prefix }}/" class="nav-logo" aria-label="27zero — home">
