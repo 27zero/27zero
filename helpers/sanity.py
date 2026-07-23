@@ -217,55 +217,55 @@ def get_settings() -> dict[str, Any]:
         "logoUrl": logo.asset->url,
         defaultSeoTitle,
         defaultSeoDescription,
+        "defaultOgImageUrl": defaultOgImage.asset->url,
         gaId,
         hubspotId,
         linkedinUrl,
         twitterUrl,
-        navbar {
-            navbarCta,
-            navbarWorkDropdown
+
+        navbarCta,
+        navbarWorkDropdown,
+
+        footerCta,
+        footerNavigation,
+        footerCopyright,
+
+        homeHero {
+            headline,
+            subtitle,
+            video,
+            "posterUrl": poster.asset->url
         },
-        footer {
-            footerCta,
-            footerNavigation,
-            footerCopyright
+        homeWork,
+        homeMentor,
+        homeApart,
+        homeNewsletter,
+
+        aboutHero {
+            headline,
+            text,
+            "imageUrl": image.asset->url
         },
-        home {
-            homeHero {
-                headline,
-                subtitle,
-                video,
-                "posterUrl": poster.asset->url
-            },
-            homeWork,
-            homeMentor,
-            homeApart,
-            homeNewsletter
+        aboutDna,
+        aboutProofPoint {
+            title,
+            text,
+            "imageUrl": image.asset->url
         },
-        about {
-            aboutHero {
-                headline,
-                text,
-                "imageUrl": image.asset->url
-            },
-            aboutDna,
-            aboutProofPoint {
-                title,
-                text,
-                "imageUrl": image.asset->url
-            }
-        },
-        work { workHero },
-        mentor { mentorHero, mentorCta },
-        resources { resourcesHero },
-        contact {
-            contactHero,
-            contactEmail,
-            officeUSNew,
-            officeCONew,
-            officeUS,
-            officeCO
-        }
+
+        workHero,
+
+        mentorHero,
+        mentorCta,
+
+        resourcesHero,
+
+        contactHero,
+        contactEmail,
+        officeUSNew,
+        officeUS,
+        officeCONew,
+        officeCO
     }
     """
     try:
