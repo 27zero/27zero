@@ -1,28 +1,36 @@
 // ============================
-// Navbar — 27zero
-// Dos estados basados únicamente en scroll position:
-//   Hero    : scrollY <= innerHeight * 0.30  → transparente, todo blanco
-//   Scrolled: scrollY >  innerHeight * 0.30  → pill indigo
-// No depende de la página actual ni de variantes Jinja.
+// Navbar — 27zero scroll behavior
+//
+// Páginas con hero oscuro → inician con nav--hero (definido en el template).
+//   scroll > 30% viewport → nav--scrolled (pill indigo)
+//   scroll vuelve        → nav--hero
+//
+// Páginas normales → inician con nav--white.
+//   El JS nunca las convierte en hero ni scrolled.
+//   nav--white se mantiene fijo en toda la página.
 // ============================
 
 const nav = document.querySelector('.nav');
+const startsAsHero = nav.classList.contains('nav--hero');
 
-function updateNav() {
-  const threshold = window.innerHeight * 0.30;
-  if (window.scrollY > threshold) {
-    nav.classList.add('nav--scrolled');
-    nav.classList.remove('nav--hero');
-    nav.style.top = '2.2em';
-  } else {
-    nav.classList.remove('nav--scrolled');
-    nav.classList.add('nav--hero');
-    nav.style.top = '0';
+if (startsAsHero) {
+  function updateNav() {
+    const threshold = window.innerHeight * 0.30;
+    if (window.scrollY > threshold) {
+      nav.classList.add('nav--scrolled');
+      nav.classList.remove('nav--hero');
+      nav.style.top = '2.2em';
+    } else {
+      nav.classList.remove('nav--scrolled');
+      nav.classList.add('nav--hero');
+      nav.style.top = '0';
+    }
   }
-}
 
-window.addEventListener('scroll', updateNav, { passive: true });
-window.addEventListener('resize', updateNav, { passive: true });
+  window.addEventListener('scroll', updateNav, { passive: true });
+  window.addEventListener('resize', updateNav, { passive: true });
+  updateNav(); // run once on load
+}
 updateNav(); // run once on load
 
 // ============================
