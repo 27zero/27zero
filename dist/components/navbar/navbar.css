@@ -5,7 +5,13 @@
    ============================ */
 
 /* Wrapper fijo — sin fondo */
+/* font-size:14px sets the em base matching Santiago's body (14px).
+   font-family:Inter matches Santiago so inherited values render identically.
+   (.nav-dropdown-toggle { font-family: inherit } picks this up.)
+   Does NOT modify the global body — navbar is fully self-contained. */
 .nav {
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
   width: 100%;
   max-width: 1440px;
   margin-left: auto;
@@ -60,7 +66,126 @@
   font-weight: 700;
 }
 
-/* ─── Variante TOP WHITE — fondo blanco, texto/logo negro ─── */
+/* ─── Dropdown "Work" (desktop) ───
+   Default (nav--white / nav--black): panel bg blanco, texto negro,
+   igual que en la referencia visual — ver overrides por variante abajo. */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 1.15em;
+  font-weight: 500;
+  line-height: 1.25em;
+  color: inherit;
+  cursor: pointer;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-dropdown-toggle:hover {
+  font-weight: 700;
+}
+
+.nav-dropdown-chevron {
+  width: 0.75em;
+  height: 0.75em;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.nav-dropdown.is-open .nav-dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.85em;
+  min-width: 10em;
+  padding: 1em;
+  gap: 0.5em;
+  border-radius: 0.6em;
+  border: 0.07em solid rgba(0, 0, 0, 0.1); /* #0000001A */
+  background-color: var(--color-white);
+  box-shadow: 0 0.5em 1.5em rgba(16, 16, 16, 0.08);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(-0.35em);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.nav-dropdown.is-open .nav-dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-dropdown-link {
+  padding: 0.35em 0.35em;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--color-black) !important;
+  text-decoration: none;
+  transition: font-weight 0.2s ease;
+}
+
+.nav-dropdown-link:hover {
+  font-weight: 700;
+}
+
+/* Divisor real — participa del mismo gap del content, no border-bottom del link */
+.nav-dropdown-divider {
+  height: 0.07em;
+  background-color: rgba(0, 0, 0, 0.1); /* #0000001A */
+}
+
+/* ─── Variante HERO — transparente, todo blanco (estado inicial scroll-based) ─── */
+/* Activo mientras scrollY <= innerHeight*0.30. Mismo aspecto que nav--black.     */
+/* JS lo gestiona; no depende de la página ni de bloques Jinja.                   */
+.nav--hero .nav-container {
+  background-color: transparent;
+  color: var(--color-white);
+}
+.nav--hero .nav-links a {
+  color: var(--color-white);
+}
+.nav--hero .nav-links a:hover {
+  color: var(--color-white);
+  font-weight: 700;
+}
+.nav--hero .nav-logo {
+  filter: invert(1);
+}
+.nav--hero .btn-nav {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+.nav--hero .btn-nav:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+.nav--hero .lang-switcher-btn {
+  color: var(--color-white);
+}
+.nav--hero .lang-switcher-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ─── Variante TOP WHITE — transparente, texto/logo negro (páginas claras) ─── */
 .nav--white .nav-container {
   background-color: transparent;
   color: var(--color-black);
@@ -142,90 +267,9 @@
   border-color: var(--color-white);
 }
 
-/* ─── Dropdown "Work" (desktop) ───────────────────────────────────────────── */
-.nav-dropdown {
-  position: relative;
-}
-
-.nav-dropdown-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.35em;
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font-family: inherit;
-  font-size: 1.15em;
-  font-weight: 500;
-  line-height: 1.25em;
-  color: inherit;
-  cursor: pointer;
-  transition: font-weight 0.2s ease;
-}
-
-.nav-dropdown-toggle:hover {
-  font-weight: 700;
-}
-
-.nav-dropdown-chevron {
-  width: 0.75em;
-  height: 0.75em;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-
-.nav-dropdown.is-open .nav-dropdown-chevron {
-  transform: rotate(180deg);
-}
-
-.nav-dropdown-content {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 0.85em;
-  min-width: 10em;
-  padding: 1em;
-  gap: 0.5em;
-  border-radius: 0.6em;
-  border: 0.07em solid rgba(0, 0, 0, 0.1);
-  background-color: var(--color-white);
-  box-shadow: 0 0.5em 1.5em rgba(16, 16, 16, 0.08);
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transform: translateY(-0.35em);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  z-index: 10;
-}
-
-.nav-dropdown.is-open .nav-dropdown-content {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.nav-dropdown-link {
-  padding: 0.35em 0.35em;
-  font-size: 1.05em;
-  font-weight: 500;
-  color: var(--color-black) !important;
-  text-decoration: none;
-  transition: font-weight 0.2s ease;
-}
-
-.nav-dropdown-link:hover {
-  font-weight: 700;
-}
-
-.nav-dropdown-divider {
-  height: 0.07em;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
 /* ============================
-   Mobile (<=991px) — fullscreen modal
+   Mobile (<=991px)
+   Esconde .nav-links y .btn-nav, muestra el hamburger + mobile menu
    ============================ */
 
 .nav-hamburger {
@@ -246,7 +290,9 @@
   color: currentColor;
 }
 
-/* Fullscreen modal — always white, z-index above everything including scrolled .nav */
+/* Modal mobile fullscreen — siempre blanco, propio z-index por encima de
+   todo, totalmente independiente de la posición/estado del .nav (evita
+   el conflicto de abrir el menú justo cuando el nav está scrolled) */
 .nav-mobile-menu {
   position: fixed;
   inset: 0;
@@ -293,13 +339,14 @@
   color: var(--color-black);
 }
 
+/* ===== Lista de links — border-top como divisor, mismo patrón que .dropdown-toggle ===== */
 .nav-mobile-links {
   display: flex;
   flex-direction: column;
 }
 
 .nav-mobile-links > * {
-  border-top: 0.07em solid rgba(0, 0, 0, 0.1);
+  border-top: 0.07em solid rgba(0, 0, 0, 0.1); /* #0000001A */
   padding: 20px 0;
 }
 
@@ -313,7 +360,8 @@
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 24px;
-  line-height: 1.6;
+  line-height: 1.6; /* 160% */
+  letter-spacing: 0;
   color: var(--color-black);
   text-decoration: none;
   transition: font-weight 0.2s ease;
@@ -323,7 +371,7 @@
   font-weight: 700;
 }
 
-/* Work accordion on mobile */
+/* ===== "Work" como acordeón inline ===== */
 .nav-mobile-group-toggle {
   width: 100%;
   display: flex;
@@ -337,10 +385,15 @@
   color: var(--color-black);
   font-size: 24px;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.6; /* 160% */
+  letter-spacing: 0;
   cursor: pointer;
   text-align: left;
   transition: font-weight 0.2s ease;
+}
+
+.nav-mobile-group-toggle:hover {
+  font-weight: 500;
 }
 
 .nav-mobile-group-chevron {
@@ -354,6 +407,7 @@
   transform: rotate(180deg);
 }
 
+/* height 0 -> Xpx (medido con JS) -> auto — mismo approach que el componente dropdown */
 .nav-mobile-group-content {
   height: 0;
   overflow: hidden;
@@ -381,6 +435,8 @@
   font-weight: 700;
 }
 
+/* El botón dentro del modal siempre usa el estilo outline negro (default),
+   sin importar la variante activa del .nav — coherente con el fondo blanco fijo del menú */
 .nav-mobile-menu .btn-nav {
   align-self: flex-start;
   flex-shrink: 0;
@@ -389,7 +445,6 @@
   border-color: var(--color-black);
   color: var(--color-black);
 }
-
 .nav-mobile-menu .btn-nav:hover {
   background-color: var(--color-black);
   color: var(--color-white);
@@ -410,7 +465,169 @@
   }
 }
 
-/* Appended from Santiago: components/navbar/navbar.css */
-.nav-mobile-group-toggle:hover {
-  font-weight: 500;
+/* Matches Santiago: body { font-size: 9px } at <=767px.
+   Scoped to .nav — does not touch the global body. */
+@media (max-width: 767px) {
+  .nav {
+    font-size: 9px;
+  }
 }
+
+/* ============================
+   Language switcher — 27zero i18n
+   Dropdown hidden by default (display:none); shown via JS class .is-open.
+   Mobile section lives inside .nav-mobile-menu.
+   ============================ */
+
+/* Desktop trigger button */
+.lang-switcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.lang-switcher-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink, #101010);
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.lang-switcher-btn:hover,
+.lang-switcher-btn:focus-visible {
+  background: rgba(0,0,0,0.06);
+  outline: none;
+}
+
+.lang-switcher-btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--purple, #440e92);
+}
+
+.lang-globe {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.lang-chevron {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.lang-switcher-btn[aria-expanded="true"] .lang-chevron {
+  transform: rotate(180deg);
+}
+
+/* Desktop dropdown */
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 190px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  display: none;
+  z-index: 1000;
+}
+
+.lang-dropdown.is-open {
+  display: block;
+}
+
+.lang-dropdown a {
+  display: flex;
+  flex-direction: column;
+  padding: 9px 12px;
+  border-radius: 7px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.12s;
+}
+
+.lang-dropdown a:hover,
+.lang-dropdown a:focus-visible {
+  background: rgba(68, 14, 146, 0.06);
+  outline: none;
+}
+
+.lang-dropdown a[aria-current="true"] {
+  background: rgba(68, 14, 146, 0.1);
+}
+
+.lang-region {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite, #666);
+  margin-bottom: 2px;
+}
+
+.lang-option {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink, #101010);
+}
+
+/* Mobile */
+.lang-mobile-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lang-mobile-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite, #666);
+  margin-bottom: 6px;
+}
+
+.lang-mobile-option {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink, #101010);
+  text-decoration: none;
+  padding: 7px 10px;
+  border-radius: 7px;
+  transition: background 0.12s;
+}
+
+.lang-mobile-option:hover,
+.lang-mobile-option:focus-visible {
+  background: rgba(68, 14, 146, 0.06);
+}
+.lang-mobile-option--active {
+  background: rgba(68, 14, 146, 0.1);
+  font-weight: 600;
+}
+/* In scrolled state (indigo bg) the lang button text must be white */
+.nav--scrolled .lang-switcher-btn {
+  color: var(--color-white);
+}
+.nav--scrolled .lang-switcher-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+/* SVG strokes/icons inside lang-switcher inherit color — no extra rule needed */

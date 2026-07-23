@@ -1,23 +1,32 @@
 // ============================
-// Navbar — 27zero
-// Cambia a nav--scrolled al pasar 50px de scroll.
-// Guarda la variante inicial (nav--white o nav--black) para restaurarla al volver arriba.
+// Navbar — 27zero scroll behavior
+//
+// Lógica universal para todas las páginas.
+// Lee la clase inicial del navbar al cargar (nav--hero o nav--white).
+// scroll > 30% viewport → nav--scrolled (pill indigo)
+// scroll vuelve al umbral → restaura la clase inicial
 // ============================
 
 const nav = document.querySelector('.nav');
-const initialVariant = nav.classList.contains('nav--black') ? 'nav--black' : 'nav--white';
+const initialVariant = nav.classList.contains('nav--hero') ? 'nav--hero' : 'nav--white';
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
+function updateNav() {
+  const threshold = window.innerHeight * 0.30;
+  if (window.scrollY > threshold) {
     nav.classList.add('nav--scrolled');
-    nav.classList.remove('nav--white', 'nav--black');
+    nav.classList.remove('nav--hero', 'nav--white');
     nav.style.top = '2.2em';
   } else {
     nav.classList.remove('nav--scrolled');
     nav.classList.add(initialVariant);
     nav.style.top = '0';
   }
-});
+}
+
+window.addEventListener('scroll', updateNav, { passive: true });
+window.addEventListener('resize', updateNav, { passive: true });
+updateNav(); // run once on load
+updateNav(); // run once on load
 
 // ============================
 // Mobile menu — modal fullscreen
@@ -108,3 +117,47 @@ if (navDropdown) {
     }
   });
 }
+
+// ============================
+// Language switcher — 27zero i18n
+// Opens/closes #lang-dropdown on button click.
+// Keyboard: ArrowDown/ArrowUp to navigate, Escape to close.
+// ============================
+
+(function () {
+  var btn  = document.querySelector('.lang-switcher-btn');
+  var menu = document.getElementById('lang-dropdown');
+  if (!btn || !menu) return;
+
+  function openLang() {
+    menu.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    var first = menu.querySelector('a');
+    if (first) first.focus();
+  }
+  function closeLang() {
+    menu.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.focus();
+  }
+  function toggleLang() {
+    menu.classList.contains('is-open') ? closeLang() : openLang();
+  }
+
+  btn.addEventListener('click', function (e) { e.stopPropagation(); toggleLang(); });
+
+  document.addEventListener('click', function (e) {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) closeLang();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) closeLang();
+  });
+
+  menu.addEventListener('keydown', function (e) {
+    var items = Array.from(menu.querySelectorAll('a'));
+    var idx   = items.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown') { e.preventDefault(); items[(idx + 1) % items.length].focus(); }
+    if (e.key === 'ArrowUp')   { e.preventDefault(); items[(idx - 1 + items.length) % items.length].focus(); }
+  });
+}());

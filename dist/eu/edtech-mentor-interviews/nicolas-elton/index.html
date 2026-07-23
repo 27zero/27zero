@@ -16,7 +16,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/edtech-mentor/style.css">
 <link rel="stylesheet" href="/components/navbar/navbar.css">
 <link rel="stylesheet" href="/components/edtech-mentor-card/edtech-mentor-card.css">
 <link rel="stylesheet" href="/components/footer/footer.css">
@@ -35,7 +34,7 @@
 <meta property="og:image" content="https://cdn.sanity.io/images/qjn4zzjc/production/49ea6d5cb7baf3e3a5f75e57cc87797dd69c0df6-1080x1920.jpg?w=1200&amp;auto=format">
 <meta name="twitter:image" content="https://cdn.sanity.io/images/qjn4zzjc/production/49ea6d5cb7baf3e3a5f75e57cc87797dd69c0df6-1080x1920.jpg?w=1200&amp;auto=format">
 
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.27zero.agency/#organization","name":"27zero","url":"https://www.27zero.agency","sameAs":["https://www.linkedin.com/company/27zero/"]},{"@type":"WebSite","@id":"https://www.27zero.agency/#website","url":"https://www.27zero.agency","name":"27zero","description":"The world's only EdTech-exclusive marketing agency. Turning purpose into brand power since 2001.","publisher":{"@id":"https://www.27zero.agency/#organization"}},{"@type":"WebPage","@id":"https://www.27zero.agency/eu/edtech-mentor-interviews/nicolas-elton/","url":"https://www.27zero.agency/eu/edtech-mentor-interviews/nicolas-elton/","name":"Nicolás Elton — The EdTech Mentor — 27zero","description":"Nicolás Elton, , 27Zero","inLanguage":"en","isPartOf":{"@id":"https://www.27zero.agency/#website"},"image":"https://cdn.sanity.io/images/qjn4zzjc/production/49ea6d5cb7baf3e3a5f75e57cc87797dd69c0df6-1080x1920.jpg?w=1200&auto=format"},{"@type":"Article","headline":"Nicolás Elton — The EdTech Mentor — 27zero","description":"Nicolás Elton, , 27Zero","url":"https://www.27zero.agency/eu/edtech-mentor-interviews/nicolas-elton/","isPartOf":{"@id":"https://www.27zero.agency/eu/edtech-mentor-interviews/nicolas-elton/"},"publisher":{"@id":"https://www.27zero.agency/#organization"},"datePublished":"2026-07-22","dateModified":"2026-07-22","image":"https://cdn.sanity.io/images/qjn4zzjc/production/49ea6d5cb7baf3e3a5f75e57cc87797dd69c0df6-1080x1920.jpg?w=1200&auto=format"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.27zero.agency/"},{"@type":"ListItem","position":2,"name":"The EdTech Mentor","item":"https://www.27zero.agency/edtech-mentor-interviews/"},{"@type":"ListItem","position":3,"name":"Nicolás Elton","item":"https://www.27zero.agency/edtech-mentor-interviews/nicolas-elton/"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.27zero.agency/#organization","name":"27zero","url":"https://www.27zero.agency","sameAs":["https://www.linkedin.com/company/27zero/"]},{"@type":"WebSite","@id":"https://www.27zero.agency/#website","url":"https://www.27zero.agency","name":"27zero","description":"The world's only EdTech-exclusive marketing agency. Turning purpose into brand power since 2001.","publisher":{"@id":"https://www.27zero.agency/#organization"}},{"@type":"WebPage","@id":"https://www.27zero.agency/eu/edtech-mentor-interviews/nicolas-elton/","url":"https://www.27zero.agency/eu/edtech-mentor-interviews/nicolas-elton/","name":"Nicolás Elton — The EdTech Mentor — 27zero","description":"Nicolás Elton, , 27Zero","inLanguage":"en","isPartOf":{"@id":"https://www.27zero.agency/#website"},"image":"https://cdn.sanity.io/images/qjn4zzjc/production/49ea6d5cb7baf3e3a5f75e57cc87797dd69c0df6-1080x1920.jpg?w=1200&auto=format"},{"@type":"Article","headline":"Nicolás Elton — The EdTech Mentor — 27zero","description":"Nicolás Elton, , 27Zero","url":"https://www.27zero.agency/eu/edtech-mentor-interviews/nicolas-elton/","isPartOf":{"@id":"https://www.27zero.agency/eu/edtech-mentor-interviews/nicolas-elton/"},"publisher":{"@id":"https://www.27zero.agency/#organization"},"datePublished":"2026-07-23","dateModified":"2026-07-23","image":"https://cdn.sanity.io/images/qjn4zzjc/production/49ea6d5cb7baf3e3a5f75e57cc87797dd69c0df6-1080x1920.jpg?w=1200&auto=format"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.27zero.agency/"},{"@type":"ListItem","position":2,"name":"The EdTech Mentor","item":"https://www.27zero.agency/edtech-mentor-interviews/"},{"@type":"ListItem","position":3,"name":"Nicolás Elton","item":"https://www.27zero.agency/edtech-mentor-interviews/nicolas-elton/"}]}]}</script>
 
 <link rel="alternate" type="application/rss+xml"
       title="27zero — EdTech Marketing Insights"
@@ -419,40 +418,11 @@ var _27z = (function(){
   return { getPref: getPref, setPref: setPref };
 }());
 
-/* ── Language switcher dropdown ─────────────────────────────────────────── */
+/* ── Locale preference — persist when user picks a language ─────────────── */
+/* navbar.js handles open/close; this block only persists the cookie/storage */
 (function(){
-  var btn  = document.querySelector('.lang-switcher-btn');
   var menu = document.getElementById('lang-dropdown');
-  if(!btn||!menu) return;
-
-  function open(){
-    menu.classList.add('is-open');
-    btn.setAttribute('aria-expanded','true');
-    var first = menu.querySelector('a');
-    if(first) first.focus();
-  }
-  function close(){
-    menu.classList.remove('is-open');
-    btn.setAttribute('aria-expanded','false');
-    btn.focus();
-  }
-  function toggle(){ menu.classList.contains('is-open') ? close() : open(); }
-
-  btn.addEventListener('click', function(e){ e.stopPropagation(); toggle(); });
-  document.addEventListener('click', function(e){
-    if(!btn.contains(e.target)&&!menu.contains(e.target)) close();
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key==='Escape'&&menu.classList.contains('is-open')) close();
-  });
-  menu.addEventListener('keydown', function(e){
-    var items = Array.from(menu.querySelectorAll('a'));
-    var idx   = items.indexOf(document.activeElement);
-    if(e.key==='ArrowDown'){ e.preventDefault(); items[(idx+1)%items.length].focus(); }
-    if(e.key==='ArrowUp'){   e.preventDefault(); items[(idx-1+items.length)%items.length].focus(); }
-  });
-
-  /* Persist preference when user picks a locale manually */
+  if(!menu) return;
   menu.querySelectorAll('a[data-locale-prefix]').forEach(function(link){
     link.addEventListener('click', function(){
       var p = link.getAttribute('data-locale-prefix');
