@@ -16,7 +16,7 @@
 <header class="nav nav--white">
   <div class="nav-container">
     <a href="/" class="nav-logo">
-      <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg" alt="27zero">
+      <img src="/assets/images/27zero-logo.svg" alt="27zero">
     </a>
     <nav class="nav-links">
       <a href="/work">Work</a>
@@ -121,7 +121,7 @@
   <div class="footer-container">
     <div class="footer-top">
       <a href="/" class="footer-logo">
-        <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg" alt="27zero">
+        <img src="/assets/images/27zero-logo.svg" alt="27zero">
       </a>
 
       <nav class="footer-links">
@@ -137,7 +137,7 @@
           <a href="/contact">Let's Talk!</a>
         </div>
         <div class="footer-links-col">
-          <a href="https://linkedin.com" target="_blank" rel="noopener">Linkedin</a>
+          <a href="{{ settings.linkedinUrl if settings and settings.linkedinUrl else 'https://www.linkedin.com/company/27zero/' }}" target="_blank" rel="noopener">Linkedin</a>
         </div>
       </nav>
     </div>
@@ -145,7 +145,7 @@
     <div class="footer-divider"></div>
 
     <div class="footer-bottom">
-      <span class="footer-copy">2025 27zero. All rights reserved.</span>
+      <span class="footer-copy">{{ settings.footerCopyright.year if settings and settings.footerCopyright and settings.footerCopyright.year else '2026' }} 27zero. All rights reserved.</span>
       <a href="/privacy" class="footer-legal">Privacy Security Policy</a>
     </div>
   </div>

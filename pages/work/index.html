@@ -17,16 +17,15 @@ Work — 27zero
   <div class="container hero-container">
 
     <span class="text-eyebrow">
-      Work: Behind the fastest-growing EdTech brands
+      {{ settings.workHero.eyebrow if settings and settings.workHero and settings.workHero.eyebrow else 'Work: Behind the fastest-growing EdTech brands' }}
     </span>
 
     <h1>
-      Behind the fastest growing EdTech brands.
+      {{ settings.workHero.headline if settings and settings.workHero and settings.workHero.headline else 'Behind the fastest growing EdTech brands.' }}
     </h1>
 
     <p class="text-body">
-      First-hand expertise, innovative conceptual thinking &
-      design, client-first approach.
+      {{ settings.workHero.subtitle if settings and settings.workHero and settings.workHero.subtitle else 'First-hand expertise, innovative conceptual thinking & design, client-first approach.' }}
     </p>
 
   </div>
@@ -280,7 +279,8 @@ data-category="{{ category.value }}">
 
 {{ cta_footer(
     'Begin your journey <em>to growth.</em>',
-    large=True
+    large=True,
+    settings=settings
 ) }}
 
 <script src="/assets/js/work.js"></script>
