@@ -77,7 +77,13 @@
           </svg>
         </button>
         <div class="nav-dropdown-content">
+          {% if settings and settings.navbarWorkDropdown and settings.navbarWorkDropdown['items'] %}
+            {% for item in settings.navbarWorkDropdown['items'] %}
+          <a href="{{ nav_prefix }}{{ item.href }}" class="nav-dropdown-link">{{ item.label }}</a>
+            {% endfor %}
+          {% else %}
           <a href="{{ nav_prefix }}/work" class="nav-dropdown-link">All projects</a>
+          {% endif %}
         </div>
       </div>
 
@@ -184,7 +190,13 @@
       </button>
       <div class="nav-mobile-group-content">
         <div class="nav-mobile-group-inner">
+          {% if settings and settings.navbarWorkDropdown and settings.navbarWorkDropdown['items'] %}
+            {% for item in settings.navbarWorkDropdown['items'] %}
+          <a href="{{ nav_prefix }}{{ item.href }}" class="nav-mobile-sublink">{{ item.label }}</a>
+            {% endfor %}
+          {% else %}
           <a href="{{ nav_prefix }}/work" class="nav-mobile-sublink">All projects</a>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -270,13 +282,13 @@
           <a href="{{ nav_prefix }}/lets-talk">Let's Talk!</a>
         </div>
         <div class="footer-links-col">
-          <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="{{ settings.linkedinUrl if settings and settings.linkedinUrl else 'https://www.linkedin.com/company/27zero/' }}" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </nav>
     </div>
     <div class="footer-divider"></div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 27zero. All rights reserved.</span>
+      <span class="footer-copy">© {{ settings.footerCopyright.year if settings and settings.footerCopyright and settings.footerCopyright.year else '2026' }} 27zero. All rights reserved.</span>
       <a href="/privacy" class="footer-legal">Privacy Security Policy</a>
     </div>
   </div>
