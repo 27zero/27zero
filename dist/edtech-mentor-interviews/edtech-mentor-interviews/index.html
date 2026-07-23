@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/edtech-mentor/style.css">
 <link rel="stylesheet" href="/components/navbar/navbar.css">
 <link rel="stylesheet" href="/components/edtech-mentor-card/edtech-mentor-card.css">
 <link rel="stylesheet" href="/components/footer/footer.css">
@@ -419,11 +420,40 @@ var _27z = (function(){
   return { getPref: getPref, setPref: setPref };
 }());
 
-/* ── Locale preference — persist when user picks a language ─────────────── */
-/* navbar.js handles open/close; this block only persists the cookie/storage */
+/* ── Language switcher dropdown ─────────────────────────────────────────── */
 (function(){
+  var btn  = document.querySelector('.lang-switcher-btn');
   var menu = document.getElementById('lang-dropdown');
-  if(!menu) return;
+  if(!btn||!menu) return;
+
+  function open(){
+    menu.classList.add('is-open');
+    btn.setAttribute('aria-expanded','true');
+    var first = menu.querySelector('a');
+    if(first) first.focus();
+  }
+  function close(){
+    menu.classList.remove('is-open');
+    btn.setAttribute('aria-expanded','false');
+    btn.focus();
+  }
+  function toggle(){ menu.classList.contains('is-open') ? close() : open(); }
+
+  btn.addEventListener('click', function(e){ e.stopPropagation(); toggle(); });
+  document.addEventListener('click', function(e){
+    if(!btn.contains(e.target)&&!menu.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape'&&menu.classList.contains('is-open')) close();
+  });
+  menu.addEventListener('keydown', function(e){
+    var items = Array.from(menu.querySelectorAll('a'));
+    var idx   = items.indexOf(document.activeElement);
+    if(e.key==='ArrowDown'){ e.preventDefault(); items[(idx+1)%items.length].focus(); }
+    if(e.key==='ArrowUp'){   e.preventDefault(); items[(idx-1+items.length)%items.length].focus(); }
+  });
+
+  /* Persist preference when user picks a locale manually */
   menu.querySelectorAll('a[data-locale-prefix]').forEach(function(link){
     link.addEventListener('click', function(){
       var p = link.getAttribute('data-locale-prefix');

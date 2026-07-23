@@ -1,26 +1,32 @@
 // ============================
-// Navbar — 27zero
-// Guarda la variante inicial (nav--white o nav--black) al cargar.
-// Al pasar 50px: nav--scrolled (pill indigo).
-// Al volver arriba: restaura la variante inicial de la página.
-// Home usa nav--black (transparente blanco).
-// Resto de páginas usan nav--white (transparente claro).
+// Navbar — 27zero scroll behavior
+//
+// Lógica universal para todas las páginas.
+// Lee la clase inicial del navbar al cargar (nav--hero o nav--white).
+// scroll > 30% viewport → nav--scrolled (pill indigo)
+// scroll vuelve al umbral → restaura la clase inicial
 // ============================
 
 const nav = document.querySelector('.nav');
-const initialVariant = nav.classList.contains('nav--black') ? 'nav--black' : 'nav--white';
+const initialVariant = nav.classList.contains('nav--hero') ? 'nav--hero' : 'nav--white';
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
+function updateNav() {
+  const threshold = window.innerHeight * 0.30;
+  if (window.scrollY > threshold) {
     nav.classList.add('nav--scrolled');
-    nav.classList.remove('nav--white', 'nav--black');
+    nav.classList.remove('nav--hero', 'nav--white');
     nav.style.top = '2.2em';
   } else {
     nav.classList.remove('nav--scrolled');
     nav.classList.add(initialVariant);
     nav.style.top = '0';
   }
-});
+}
+
+window.addEventListener('scroll', updateNav, { passive: true });
+window.addEventListener('resize', updateNav, { passive: true });
+updateNav(); // run once on load
+updateNav(); // run once on load
 
 // ============================
 // Mobile menu — modal fullscreen
