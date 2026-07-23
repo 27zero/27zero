@@ -1,26 +1,29 @@
 // ============================
 // Navbar — 27zero
-// Guarda la variante inicial (nav--white o nav--black) al cargar.
-// Al pasar 50px: nav--scrolled (pill indigo).
-// Al volver arriba: restaura la variante inicial de la página.
-// Home usa nav--black (transparente blanco).
-// Resto de páginas usan nav--white (transparente claro).
+// Dos estados basados únicamente en scroll position:
+//   Hero    : scrollY <= innerHeight * 0.30  → transparente, todo blanco
+//   Scrolled: scrollY >  innerHeight * 0.30  → pill indigo
+// No depende de la página actual ni de variantes Jinja.
 // ============================
 
 const nav = document.querySelector('.nav');
-const initialVariant = nav.classList.contains('nav--black') ? 'nav--black' : 'nav--white';
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
+function updateNav() {
+  const threshold = window.innerHeight * 0.30;
+  if (window.scrollY > threshold) {
     nav.classList.add('nav--scrolled');
-    nav.classList.remove('nav--white', 'nav--black');
+    nav.classList.remove('nav--hero');
     nav.style.top = '2.2em';
   } else {
     nav.classList.remove('nav--scrolled');
-    nav.classList.add(initialVariant);
+    nav.classList.add('nav--hero');
     nav.style.top = '0';
   }
-});
+}
+
+window.addEventListener('scroll', updateNav, { passive: true });
+window.addEventListener('resize', updateNav, { passive: true });
+updateNav(); // run once on load
 
 // ============================
 // Mobile menu — modal fullscreen

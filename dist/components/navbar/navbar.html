@@ -66,19 +66,7 @@
       <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg" alt="27zero">
     </a>
     <nav class="nav-links">
-      <div class="nav-dropdown">
-        <button class="nav-dropdown-toggle" aria-expanded="false">
-          Work
-          <svg class="nav-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <div class="nav-dropdown-content">
-          <a href="/work?view=projects" class="nav-dropdown-link">by projects</a>
-          <div class="nav-dropdown-divider"></div>
-          <a href="/work?view=clients" class="nav-dropdown-link">by clients</a>
-        </div>
-      </div>
+      <a href="/work">Work</a>
       <a href="/edtech-marketing">Edtech Marketing</a>
       <a href="/the-edtech-mentor">The EdTech Mentor</a>
       <a href="/resources">Resources</a>
@@ -86,51 +74,20 @@
     </nav>
     <a href="/contact" class="btn btn-nav">Let's Talk!</a>
 
-    <!-- Hamburger — solo visible en mobile (<=991px). Ícono estático, sin animación -->
+    <!-- Hamburger — solo visible en mobile (<=767px) -->
     <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
-      <svg class="nav-hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="7" x2="21" y2="7"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="17" x2="21" y2="17"></line>
-      </svg>
+      <div class="nav-hamburger-icon"></div>
     </button>
   </div>
 
-  <!-- Modal mobile fullscreen — siempre blanco, con su propio header (logo + close),
-       independiente del estado/posición del .nav (evita conflictos con nav--scrolled) -->
+  <!-- Dropdown mobile — hereda el color de la variante activa del nav -->
   <div class="nav-mobile-menu" id="navMobileMenu">
-    <div class="nav-mobile-header">
-      <a href="/" class="nav-mobile-logo">
-        <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg" alt="27zero">
-      </a>
-      <button class="nav-mobile-close" aria-label="Cerrar menú">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2"></line>
-          <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" transform="rotate(45 10 10)"></line>
-          <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" transform="rotate(135 10 10)"></line>
-        </svg>
-      </button>
-    </div>
-
     <nav class="nav-mobile-links">
-      <div class="nav-mobile-group">
-        <button class="nav-mobile-group-toggle" aria-expanded="false">
-          Work
-          <svg class="nav-mobile-group-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <div class="nav-mobile-group-content">
-          <div class="nav-mobile-group-inner">
-            <a href="/work?view=projects" class="nav-mobile-sublink">by projects</a>
-            <a href="/work?view=clients" class="nav-mobile-sublink">by Clients</a>
-          </div>
-        </div>
-      </div>
-      <a href="/edtech-marketing" class="nav-mobile-link">Edtech Marketing</a>
-      <a href="/the-edtech-mentor" class="nav-mobile-link">The EdTech Mentor</a>
-      <a href="/resources" class="nav-mobile-link">Resources</a>
-      <a href="/about" class="nav-mobile-link">About</a>
+      <a href="/work">Work</a>
+      <a href="/edtech-marketing">Edtech Marketing</a>
+      <a href="/the-edtech-mentor">The EdTech Mentor</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
     </nav>
     <a href="/contact" class="btn btn-nav">Let's Talk!</a>
   </div>
@@ -138,6 +95,7 @@
 
 <div class="scroll-spacer"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js"></script>
 <script src="/components/navbar/navbar.js"></script>
 </body>
 </html>

@@ -151,6 +151,40 @@
   background-color: rgba(0, 0, 0, 0.1); /* #0000001A */
 }
 
+/* ─── Variante HERO — transparente, todo blanco (estado inicial scroll-based) ─── */
+/* Activo mientras scrollY <= innerHeight*0.30. Mismo aspecto que nav--black.     */
+/* JS lo gestiona; no depende de la página ni de bloques Jinja.                   */
+.nav--hero .nav-container {
+  background-color: transparent;
+  color: var(--color-white);
+}
+.nav--hero .nav-links a {
+  color: var(--color-white);
+}
+.nav--hero .nav-links a:hover {
+  color: var(--color-white);
+  font-weight: 700;
+}
+.nav--hero .nav-logo {
+  filter: invert(1);
+}
+.nav--hero .btn-nav {
+  background-color: transparent;
+  border-color: var(--color-white);
+  color: var(--color-white);
+}
+.nav--hero .btn-nav:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-color: var(--color-white);
+}
+.nav--hero .lang-switcher-btn {
+  color: var(--color-white);
+}
+.nav--hero .lang-switcher-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
 /* ─── Variante TOP WHITE — transparente, texto/logo negro (páginas claras) ─── */
 .nav--white .nav-container {
   background-color: transparent;
