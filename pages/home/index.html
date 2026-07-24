@@ -24,37 +24,24 @@
 {% endblock %}
 {% block content %}
 
-{# ══ 1. HERO ════════════════════════════════════════════════════════════ #}
+<!-- HERO -->
 <section class="section section--hero-home">
-  <video class="hero-video" autoplay muted loop playsinline
-         poster="{{ settings.homeHero.posterUrl if settings and settings.homeHero and settings.homeHero.posterUrl else '/assets/images/hero-poster.jpg' }}" aria-hidden="true">
-    <source src="{{ settings.homeHero.video if settings and settings.homeHero and settings.homeHero.video else '/assets/videos/27zero-hero-loop.mp4' }}" type="video/mp4">
-  </video>
-  <div class="hero-video-overlay" aria-hidden="true"></div>
   <div class="container hero-home-container">
     <h1>Turn EdTech purpose into <span class="inter-accent">Brand power.</span></h1>
     <div class="hero-home-cta">
-      <a href="/lets-talk" class="btn btn-white">Book a strategy session</a>
+      <a href="/contact" class="btn btn-white">Book a strategy session</a>
       <p class="text-caption">Free. 30 min. No sales pitch.</p>
     </div>
   </div>
 </section>
-<script>
-(function(){
-  var v = document.querySelector('.hero-video');
-  if(v && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    v.removeAttribute('autoplay'); v.pause();
-  }
-}());
-</script>
 
-{# ══ 2. INTRO + WORK SLIDER ══════════════════════════════════════════════ #}
+<!-- INTRO -->
 <section class="section section--intro-home">
   <div class="container intro-home-container">
     <div class="intro-home-row">
       <div class="intro-home-text">
         <h2>The marketing team EdTech brands turn to <span class="inter-accent">for growth and impact.</span></h2>
-        <p class="text-body--sm">{{ settings.homeMentor.subtitle if settings and settings.homeMentor and settings.homeMentor.subtitle else 'Long-form interviews with EdTech founders, investors, and operators.' }}</p>
+        <p class="text-body--sm">Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
         <a href="/work" class="btn btn-dark">See all work</a>
       </div>
       <div class="intro-home-media">
@@ -66,8 +53,9 @@
   <div class="sliders-container">
     <div class="slider-block">
       <div class="slider-header">
-        <h2 class="slider-title">{{ settings.homeWork.headline if settings and settings.homeWork and settings.homeWork.headline else 'Los mejores' }}</h2>
+        <h2 class="slider-title">Los mejores</h2>
       </div>
+
       <div class="slider-track-wrap">
         <div class="slider-track">
           {% if work %}
@@ -89,7 +77,7 @@
                   {% if project.clientLogoUrl %}
                   <div class="card-work-client-logo"><img src="{{ project.clientLogoUrl }}" alt="{{ project.client }}"></div>
                   {% else %}
-                  <div class="card-work-client-logo"><span>{{ project.client[:2] | upper if project.client else 'CL' }}</span></div>
+                  <div class="card-work-client-logo"><span>{{ (project.client or 'CL')[:2] | upper }}</span></div>
                   {% endif %}
                   <span class="card-work-client-name">{{ project.client }}</span>
                 </div>
@@ -106,8 +94,6 @@
           </a>
             {% endfor %}
           {% else %}
-          {# Fallback: placeholder cards while Sanity has no work data #}
-          {% for i in range(4) %}
           <a href="#" class="card card--work">
             <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
             <div class="card-work-body">
@@ -129,10 +115,157 @@
               </div>
             </div>
           </a>
-          {% endfor %}
+          <a href="#" class="card card--work">
+            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+            <div class="card-work-body">
+              <div class="card-work-content">
+                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
+                <h3 class="card-work-title">[Project headline]</h3>
+                <div class="card-work-client">
+                  <div class="card-work-client-logo"><span>CL</span></div>
+                  <span class="card-work-client-name">[CLIENT NAME]</span>
+                </div>
+              </div>
+              <div class="card-work-footer">
+                <div class="card-work-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="card card--work">
+            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+            <div class="card-work-body">
+              <div class="card-work-content">
+                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
+                <h3 class="card-work-title">[Project headline]</h3>
+                <div class="card-work-client">
+                  <div class="card-work-client-logo"><span>CL</span></div>
+                  <span class="card-work-client-name">[CLIENT NAME]</span>
+                </div>
+              </div>
+              <div class="card-work-footer">
+                <div class="card-work-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="card card--work">
+            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+            <div class="card-work-body">
+              <div class="card-work-content">
+                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
+                <h3 class="card-work-title">[Project headline]</h3>
+                <div class="card-work-client">
+                  <div class="card-work-client-logo"><span>CL</span></div>
+                  <span class="card-work-client-name">[CLIENT NAME]</span>
+                </div>
+              </div>
+              <div class="card-work-footer">
+                <div class="card-work-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="card card--work">
+            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+            <div class="card-work-body">
+              <div class="card-work-content">
+                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
+                <h3 class="card-work-title">[Project headline]</h3>
+                <div class="card-work-client">
+                  <div class="card-work-client-logo"><span>CL</span></div>
+                  <span class="card-work-client-name">[CLIENT NAME]</span>
+                </div>
+              </div>
+              <div class="card-work-footer">
+                <div class="card-work-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="card card--work">
+            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+            <div class="card-work-body">
+              <div class="card-work-content">
+                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
+                <h3 class="card-work-title">[Project headline]</h3>
+                <div class="card-work-client">
+                  <div class="card-work-client-logo"><span>CL</span></div>
+                  <span class="card-work-client-name">[CLIENT NAME]</span>
+                </div>
+              </div>
+              <div class="card-work-footer">
+                <div class="card-work-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="card card--work">
+            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+            <div class="card-work-body">
+              <div class="card-work-content">
+                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
+                <h3 class="card-work-title">[Project headline]</h3>
+                <div class="card-work-client">
+                  <div class="card-work-client-logo"><span>CL</span></div>
+                  <span class="card-work-client-name">[CLIENT NAME]</span>
+                </div>
+              </div>
+              <div class="card-work-footer">
+                <div class="card-work-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="card card--work">
+            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+            <div class="card-work-body">
+              <div class="card-work-content">
+                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
+                <h3 class="card-work-title">[Project headline]</h3>
+                <div class="card-work-client">
+                  <div class="card-work-client-logo"><span>CL</span></div>
+                  <span class="card-work-client-name">[CLIENT NAME]</span>
+                </div>
+              </div>
+              <div class="card-work-footer">
+                <div class="card-work-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
           {% endif %}
         </div>
       </div>
+
       <div class="slider-footer">
         <div class="slider-nav">
           <button class="slider-arrow" data-dir="prev" aria-label="Previous" disabled>
@@ -153,12 +286,12 @@
   </div>
 </section>
 
-{# ══ 3. SHAPES SLIDER — "What sets 27zero apart" ═════════════════════════ #}
+<!-- SHAPES SLIDER -->
 <section class="shapes-slider section section--apart-home">
   <div class="container apart-home-container">
     <h2>{{ settings.homeApart.headline if settings and settings.homeApart and settings.homeApart.headline else 'What sets 27zero apart.' }}</h2>
     <p class="text-body--sm">{{ settings.homeApart.description if settings and settings.homeApart and settings.homeApart.description else 'Our foundations connect insight, creativity, and efficient execution — helping EdTech brands turn purpose into lasting impact.' }}</p>
-    <a href="/edtech-marketing-agency" class="btn btn-dark">Our services</a>
+    <a href="/services" class="btn btn-dark">Our services</a>
   </div>
 
   <div class="apart-slider">
@@ -170,7 +303,7 @@
     </button>
     <div class="apart-shapes-wrap">
       <div class="apart-shapes" id="apartShapes">
-        {# Generated by shapes-slider.js #}
+        <!-- Generado por JS -->
       </div>
       <button class="apart-shapes-nav-zone apart-shapes-nav-zone--prev" data-dir="prev" aria-label="Previous"></button>
       <button class="apart-shapes-nav-zone apart-shapes-nav-zone--next" data-dir="next" aria-label="Next"></button>
@@ -189,7 +322,7 @@
   </div>
 </section>
 
-{# ══ 4. CLIENT LOGOS marquee ══════════════════════════════════════════════ #}
+<!-- LOGOS -->
 <section class="section section--logos-home">
   <div class="marquee">
     <div class="marquee-track">
@@ -199,7 +332,6 @@
            style="height:{{ c.logoHeight or 24 }}px;">
         {% endfor %}
       {% else %}
-      {# Fallback: local SVG logos while Sanity has no client data #}
       <img class="marquee-logo" src="/assets/logos/doctums.svg" alt="Doctums">
       <img class="marquee-logo" src="/assets/logos/scholarship-magic.svg" alt="Scholarship Magic">
       <img class="marquee-logo" src="/assets/logos/skillwell.svg" alt="Skillwell">
@@ -210,14 +342,14 @@
   </div>
 </section>
 
-{# ══ 5. THE EDTECH MENTOR ═════════════════════════════════════════════════ #}
+<!-- THE EDTECH MENTOR -->
 <section class="section section--mentor-home">
   <div class="container mentor-home-container">
     <div class="mentor-home-row">
       <div class="mentor-home-text">
         <h2>The EdTech Mentor <span class="inter-accent">pearls of wisdom.</span></h2>
-        <p class="text-body--sm">{{ settings.homeMentor.subtitle if settings and settings.homeMentor and settings.homeMentor.subtitle else 'Long-form interviews with EdTech founders, investors, and operators.' }}</p>
-        <a href="/edtech-mentor-interviews" class="btn btn-white">The EdTech Mentor</a>
+        <p class="text-body--sm">{{ settings.homeMentor.subtitle if settings and settings.homeMentor and settings.homeMentor.subtitle else 'Lorem ipsum is simply dummy text of the printing and typesetting industry.' }}</p>
+        <a href="/the-edtech-mentor" class="btn btn-white">The EdTech Mentor</a>
       </div>
       <div class="mentor-home-featured-wrap">
         {% if mentors %}{% set fm = mentors[0] %}{% set fslug = fm.slug.current if fm.slug is mapping else fm.slug %}
@@ -233,7 +365,12 @@
             </div>
             <div class="card-featured-footer">
               <h3 class="card-featured-title">{{ fm.title }}</h3>
-              <div class="card-featured-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+              <div class="card-featured-arrow">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
             </div>
           </div>
         </a>
@@ -250,7 +387,12 @@
             </div>
             <div class="card-featured-footer">
               <h3 class="card-featured-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
-              <div class="card-featured-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+              <div class="card-featured-arrow">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
             </div>
           </div>
         </a>
@@ -278,14 +420,17 @@
               <span class="card-edtech-mentor-tag">{{ interview.category | default('Interview') }}</span>
               <div class="card-edtech-mentor-footer">
                 <h3 class="card-edtech-mentor-title">{{ interview.title }}</h3>
-                <div class="card-edtech-mentor-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+                <div class="card-edtech-mentor-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
           </a>
             {% endfor %}
           {% else %}
-          {# Fallback: placeholder mentor cards #}
-          {% for i in range(4) %}
           <a href="#" class="card card--edtech-mentor">
             <div class="card-edtech-mentor-header">
               <div class="card-edtech-mentor-avatar"><span>JK</span></div>
@@ -298,14 +443,124 @@
               <span class="card-edtech-mentor-tag">Tag</span>
               <div class="card-edtech-mentor-footer">
                 <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
-                <div class="card-edtech-mentor-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+                <div class="card-edtech-mentor-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
           </a>
-          {% endfor %}
+          <a href="#" class="card card--edtech-mentor">
+            <div class="card-edtech-mentor-header">
+              <div class="card-edtech-mentor-avatar"><span>JK</span></div>
+              <div class="card-edtech-mentor-meta">
+                <span class="card-edtech-mentor-role">Founder At Kelleher Consulting Group</span>
+                <span class="card-edtech-mentor-name">Julie Kelleher</span>
+              </div>
+            </div>
+            <div class="card-edtech-mentor-body">
+              <span class="card-edtech-mentor-tag">Tag</span>
+              <div class="card-edtech-mentor-footer">
+                <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
+                <div class="card-edtech-mentor-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="card card--edtech-mentor">
+            <div class="card-edtech-mentor-header">
+              <div class="card-edtech-mentor-avatar"><span>JK</span></div>
+              <div class="card-edtech-mentor-meta">
+                <span class="card-edtech-mentor-role">Founder At Kelleher Consulting Group</span>
+                <span class="card-edtech-mentor-name">Julie Kelleher</span>
+              </div>
+            </div>
+            <div class="card-edtech-mentor-body">
+              <span class="card-edtech-mentor-tag">Tag</span>
+              <div class="card-edtech-mentor-footer">
+                <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
+                <div class="card-edtech-mentor-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="card card--edtech-mentor">
+            <div class="card-edtech-mentor-header">
+              <div class="card-edtech-mentor-avatar"><span>JK</span></div>
+              <div class="card-edtech-mentor-meta">
+                <span class="card-edtech-mentor-role">Founder At Kelleher Consulting Group</span>
+                <span class="card-edtech-mentor-name">Julie Kelleher</span>
+              </div>
+            </div>
+            <div class="card-edtech-mentor-body">
+              <span class="card-edtech-mentor-tag">Tag</span>
+              <div class="card-edtech-mentor-footer">
+                <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
+                <div class="card-edtech-mentor-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="card card--edtech-mentor">
+            <div class="card-edtech-mentor-header">
+              <div class="card-edtech-mentor-avatar"><span>JK</span></div>
+              <div class="card-edtech-mentor-meta">
+                <span class="card-edtech-mentor-role">Founder At Kelleher Consulting Group</span>
+                <span class="card-edtech-mentor-name">Julie Kelleher</span>
+              </div>
+            </div>
+            <div class="card-edtech-mentor-body">
+              <span class="card-edtech-mentor-tag">Tag</span>
+              <div class="card-edtech-mentor-footer">
+                <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
+                <div class="card-edtech-mentor-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="#" class="card card--edtech-mentor">
+            <div class="card-edtech-mentor-header">
+              <div class="card-edtech-mentor-avatar"><span>JK</span></div>
+              <div class="card-edtech-mentor-meta">
+                <span class="card-edtech-mentor-role">Founder At Kelleher Consulting Group</span>
+                <span class="card-edtech-mentor-name">Julie Kelleher</span>
+              </div>
+            </div>
+            <div class="card-edtech-mentor-body">
+              <span class="card-edtech-mentor-tag">Tag</span>
+              <div class="card-edtech-mentor-footer">
+                <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
+                <div class="card-edtech-mentor-arrow">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
           {% endif %}
         </div>
       </div>
+
       <div class="slider-footer">
         <div class="slider-nav">
           <button class="slider-arrow" data-dir="prev" aria-label="Previous" disabled>
@@ -326,151 +581,65 @@
   </div>
 </section>
 
-{# ══ 6. TESTIMONIALS ══════════════════════════════════════════════════════ #}
+<!-- TESTIMONIALS -->
 <section class="section section--testimonials-home">
-  <div class="testi-track" id="testi-track">
-
-    {% if testimonials %}
-      {% for t in testimonials %}
-    <div class="testi-slide">
-      <div class="testi-photo">
-        <img src="{{ t.backgroundPhotoUrl }}" alt="{{ t.authorName }}" loading="lazy">
-      </div>
-      <div class="testi-content">
-        <span class="testi-quote-mark" aria-hidden="true">"</span>
-        <p class="testi-text">{{ t.quote }}</p>
-        <div class="testi-author">
-          <img src="{{ t.avatarPhotoUrl }}" alt="{{ t.authorName }}" class="testi-avatar" loading="lazy">
-          <div>
-            <div class="testi-author-name">{{ t.authorName }}</div>
-            <div class="testi-author-role">{{ t.authorRole }}</div>
+  <div class="testimonials-slider">
+    <button class="testimonials-arrow" data-dir="prev" aria-label="Previous" disabled>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </button>
+    <div class="testimonials-track-wrap">
+      <div class="testimonials-track" id="testimonialsTrack">
+        {% if testimonials %}
+          {% for t in testimonials %}
+        <div class="testimonial-item">
+          <div class="testimonial-photo">
+            <img src="{{ t.backgroundPhotoUrl }}" alt="{{ t.authorName }}" loading="lazy">
+          </div>
+          <div class="testimonial-content">
+            <p class="testimonial-quote">{{ t.quote }}</p>
+            <div class="testimonial-author">
+              <img src="{{ t.avatarPhotoUrl }}" alt="{{ t.authorName }}" class="testimonial-avatar" loading="lazy">
+              <div>
+                <div class="testimonial-name">{{ t.authorName }}</div>
+                <div class="testimonial-role">{{ t.authorRole }}</div>
+              </div>
+            </div>
           </div>
         </div>
+          {% endfor %}
+        {% endif %}
+        {# If empty, JS generates content from testimonialsTrack — leaves empty as Santiago intended #}
       </div>
     </div>
-      {% endfor %}
-    {% else %}
-    {# Fallback: hardcoded slides while Sanity has no testimonial data #}
-    <div class="testi-slide">
-      <div class="testi-photo">
-        <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/667b08b55ef5a74c7d643f66_667b05cb4d05e9cccd66b089_Captura%20de%20pantalla%202024-06-25%20a%20la(s)%201.00.18%20p.m..webp"
-             alt="Wesley Matthews" loading="lazy">
-      </div>
-      <div class="testi-content">
-        <span class="testi-quote-mark" aria-hidden="true">"</span>
-        <p class="testi-text">27Zero helped Doctums refine its brand message and develop a comprehensive marketing framework. Now, we see results: a stronger pipeline and broader market recognition.</p>
-        <div class="testi-author">
-          <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/665513a40ddcf767af8c3fdc_Wes%20Matthew%20Headshots-2.jpg"
-               alt="Wesley Matthews" class="testi-avatar" loading="lazy">
-          <div>
-            <div class="testi-author-name">Wesley Matthews</div>
-            <div class="testi-author-role">Founder and CEO at Doctums</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-slide">
-      <div class="testi-photo">
-        <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/667c70cef9db977aafae2f07_Captura%20de%20Pantalla%202024-06-26%20a%20la(s)%202.48.56%20p.m..webp"
-             alt="David Meek" loading="lazy">
-      </div>
-      <div class="testi-content">
-        <span class="testi-quote-mark" aria-hidden="true">"</span>
-        <p class="testi-text">I prefer a boutique firm like 27ZERO. Larger agencies can be impersonal, and you might get stuck with inexperienced people. 27ZERO offers a close relationship and expertise for my marketing budget.</p>
-        <div class="testi-author">
-          <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/665d4d25a184755858f77cb6_David%20Meek.jpg"
-               alt="David Meek" class="testi-avatar" loading="lazy">
-          <div>
-            <div class="testi-author-name">David Meek</div>
-            <div class="testi-author-role">Founder and CEO at Student First</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-slide">
-      <div class="testi-photo">
-        <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/667c729bcf5402a3d4debae9_Captura%20de%20Pantalla%202024-06-26%20a%20la(s)%202.55.52%20p.m..webp"
-             alt="Jonathan Fry" loading="lazy">
-      </div>
-      <div class="testi-content">
-        <span class="testi-quote-mark" aria-hidden="true">"</span>
-        <p class="testi-text">27ZERO's industry knowledge and agility allowed us to accelerate our brand and marketing strategy for the year.</p>
-        <div class="testi-author">
-          <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/662b0225ea4123556e677e07_Jonathan%20Fry.jpeg"
-               alt="Jonathan Fry" class="testi-avatar" loading="lazy">
-          <div>
-            <div class="testi-author-name">Jonathan Fry</div>
-            <div class="testi-author-role">CEO at Scholarship Magic</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    {% endif %}
-
+    <button class="testimonials-arrow" data-dir="next" aria-label="Next">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </button>
   </div>
 
-  <div class="testi-nav" role="tablist" aria-label="Testimonial slides" id="testimonialsDots">
+  <div class="testimonials-dots" id="testimonialsDots">
     {% if testimonials %}
       {% for t in testimonials %}
-    <button class="testi-dot{% if loop.first %} active{% endif %}"
+    <button class="testimonial-dot{% if loop.first %} active{% endif %}"
             data-idx="{{ loop.index0 }}"
-            role="tab"
-            aria-selected="{{ 'true' if loop.first else 'false' }}"
             aria-label="Testimonial {{ loop.index }}"></button>
       {% endfor %}
-    {% else %}
-    <button class="testi-dot active" data-idx="0" role="tab" aria-selected="true" aria-label="Testimonial 1"></button>
-    <button class="testi-dot" data-idx="1" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
-    <button class="testi-dot" data-idx="2" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
     {% endif %}
+    {# If empty, JS generates dots — leaves empty as Santiago intended #}
   </div>
 </section>
-
-{# ══ 7. NEWSLETTER ════════════════════════════════════════════════════════ #}
-<section class="section section--newsletter-home">
-  <div class="container">
-    <h2>Join the EdTech Mentor <span class="inter-accent">Newsletter.</span></h2>
-    <form class="newsletter-form" action="#" method="post"
-          onsubmit="this.querySelector('button').textContent='Subscribed ✓';this.querySelector('button').disabled=true;return false;">
-      <input type="email" name="email"
-             placeholder="{{ settings.homeNewsletter.placeholder if settings and settings.homeNewsletter and settings.homeNewsletter.placeholder else 'you@institution.edu' }}"
-             required aria-label="Email address" autocomplete="email">
-      <button type="submit" class="btn btn-white">Subscribe</button>
-    </form>
-  </div>
-</section>
-
-{# ══ 8. FOOTER CTA ════════════════════════════════════════════════════════ #}
-{{ cta_footer('Start your journey <em class="acc">to growth and impact.</em>', large=True, settings=settings) }}
 
 {% endblock %}
 
 {% block extra_js %}
-<script src="/components/shapes-slider/shapes-slider.js"></script>
+<script src="/components/navbar/navbar.js"></script>
 <script src="/components/cards-slider/cards-slider.js"></script>
 <script src="/components/marquee-logos/marquee-logos.js"></script>
-<script>
-/* ── Testimonials dot-slider ─────────────────────────────────────── */
-(function(){
-  var track = document.getElementById('testi-track');
-  var dots  = document.querySelectorAll('.testi-dot');
-  if(!track||!dots.length) return;
-  var cur = 0;
-  function goTo(idx){
-    cur = idx;
-    var slides = track.querySelectorAll('.testi-slide');
-    var w = slides[0] ? slides[0].offsetWidth + 24 : 924;
-    track.style.transform = 'translateX(-' + (idx * w) + 'px)';
-    dots.forEach(function(d,i){
-      d.classList.toggle('active', i===idx);
-      d.setAttribute('aria-selected', String(i===idx));
-    });
-  }
-  dots.forEach(function(d){
-    d.addEventListener('click', function(){ goTo(parseInt(d.dataset.idx)); });
-  });
-  /* Auto-advance */
-  setInterval(function(){ goTo((cur+1)%dots.length); }, 7000);
-}());
-</script>
+<script src="/components/shapes-slider/shapes-slider.js"></script>
+<script src="/home/script.js"></script>
 {% endblock %}
