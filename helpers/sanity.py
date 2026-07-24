@@ -50,6 +50,18 @@ def _query(groq: str) -> list[dict[str, Any]]:
         headers=headers,
         timeout=30,
     )
+
+    # On auth errors (401/403) log a warning and return empty — allows the
+    # build to complete with fallback content rather than crashing entirely.
+    if response.status_code in (401, 403):
+        logger.warning(
+            "Sanity auth error %d — SANITY_TOKEN missing or invalid. "
+            "Build will continue with empty content. "
+            "Set a valid token in Vercel Environment Variables.",
+            response.status_code,
+        )
+        return []
+
     response.raise_for_status()
 
     result = response.json().get("result", [])
