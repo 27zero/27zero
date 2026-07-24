@@ -38,7 +38,7 @@ SITE_DESCRIPTION = (
 # The project ID is not secret (it's in every Sanity API URL), but keeping
 # it as an env var makes it easy to point at a staging dataset without
 # touching source code.
-SANITY_PROJECT_ID = os.environ.get("SANITY_PROJECT_ID", "qjn4zzjc")
+SANITY_PROJECT_ID = os.environ.get("SANITY_PROJECT_ID", "u9sntfl9")
 SANITY_DATASET    = os.environ.get("SANITY_DATASET",    "production")
 SANITY_API_VERSION = "2021-10-21"
 
