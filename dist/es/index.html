@@ -25,7 +25,7 @@
   </head>
   <body>
     <!-- NAVBAR -->
-<header class="nav nav--hero" id="site-header" role="banner">
+<header class="nav nav--white" id="site-header" role="banner">
   <div class="nav-container">
 
     <a href="/" class="nav-logo" aria-label="27zero — home">
@@ -43,7 +43,9 @@
           </svg>
         </button>
         <div class="nav-dropdown-content">
-          <a href="/work" class="nav-dropdown-link">All projects</a>
+          <a href="/work?view=projects" class="nav-dropdown-link">by projects</a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="/work?view=clients" class="nav-dropdown-link">by clients</a>
         </div>
       </div>
 
@@ -52,7 +54,7 @@
       <a href="/resources">Resources</a>
       <a href="/about">About</a>
 
-      <div class="lang-switcher" role="navigation" aria-label="Select language">
+      <div class="lang-switcher" role="navigation" aria-label="Select language" style="display:none">
         <button class="lang-switcher-btn" aria-haspopup="true" aria-expanded="false"
                 aria-controls="lang-dropdown">
           <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -136,7 +138,8 @@
       </button>
       <div class="nav-mobile-group-content">
         <div class="nav-mobile-group-inner">
-          <a href="/work" class="nav-mobile-sublink">All projects</a>
+          <a href="/work?view=projects" class="nav-mobile-sublink">by projects</a>
+            <a href="/work?view=clients" class="nav-mobile-sublink">by clients</a>
         </div>
       </div>
     </div>
@@ -146,7 +149,7 @@
     <a href="/resources" class="nav-mobile-link">Resources</a>
     <a href="/about" class="nav-mobile-link">About</a>
 
-    <div class="lang-mobile-section" aria-label="Select language">
+    <div class="lang-mobile-section" aria-label="Select language" style="display:none">
       <span class="lang-mobile-label">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              aria-hidden="true" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">

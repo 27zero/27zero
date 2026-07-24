@@ -43,15 +43,10 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="stylesheet" href="/components/navbar/navbar.css">
 <link rel="stylesheet" href="/components/footer/footer.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/edtech-marketing-agency-style.css">
-<link rel="stylesheet" href="/components/navbar/navbar.css">
 <link rel="stylesheet" href="/components/shapes-slider/shapes-slider.css">
 <link rel="stylesheet" href="/components/practices-card/practices-card.css">
-<link rel="stylesheet" href="/components/service-card/service-card.css">
-<link rel="stylesheet" href="/components/footer/footer.css"></head>
+<link rel="stylesheet" href="/components/service-card/service-card.css"></head>
 <body>
 <a href="#main-content" class="sr-only" style="position:absolute;left:-9999px">Skip to content</a>
 
@@ -73,12 +68,13 @@
           </svg>
         </button>
         <div class="nav-dropdown-content">
-          <a href="/work" class="nav-dropdown-link">All projects</a>
+          <a href="/work?view=projects" class="nav-dropdown-link">by projects</a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="/work?view=clients" class="nav-dropdown-link">by clients</a>
         </div>
       </div>
 
-      <a href="/edtech-marketing-agency"
->
+      <a href="/edtech-marketing-agency">
         Edtech Marketing
       </a>
       <a href="/edtech-mentor-interviews">
@@ -91,7 +87,7 @@
         About
       </a>
 
-      <div class="lang-switcher" role="navigation" aria-label="Select language">
+      <div class="lang-switcher" role="navigation" aria-label="Select language" style="display:none">
         <button class="lang-switcher-btn" aria-haspopup="true" aria-expanded="false"
                 aria-controls="lang-dropdown">
           <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -180,7 +176,8 @@ aria-current="true">
       </button>
       <div class="nav-mobile-group-content">
         <div class="nav-mobile-group-inner">
-          <a href="/work" class="nav-mobile-sublink">All projects</a>
+          <a href="/work?view=projects" class="nav-mobile-sublink">by projects</a>
+            <a href="/work?view=clients" class="nav-mobile-sublink">by clients</a>
         </div>
       </div>
     </div>
@@ -198,7 +195,7 @@ aria-current="true">
       About
     </a>
 
-    <div class="lang-mobile-section" aria-label="Select language">
+    <div class="lang-mobile-section" aria-label="Select language" style="display:none">
       <span class="lang-mobile-label">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              aria-hidden="true" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">
