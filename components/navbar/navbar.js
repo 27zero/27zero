@@ -11,7 +11,7 @@ const nav = document.querySelector('.nav');
 const initialVariant = nav.classList.contains('nav--hero') ? 'nav--hero' : 'nav--white';
 
 function updateNav() {
-  const threshold = window.innerHeight * 0.30;
+  const threshold = 80;
   if (window.scrollY > threshold) {
     nav.classList.add('nav--scrolled');
     nav.classList.remove('nav--hero', 'nav--white');
