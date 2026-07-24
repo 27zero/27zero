@@ -23,8 +23,8 @@
   <div class="hero-marketing-bg"><span>[HERO BACKGROUND IMAGE]</span></div>
   <div class="container hero-marketing-container">
     <div class="hero-marketing-text">
-      <h1>Your extended team of EdTech marketing experts and creatives.</h1>
-      <p class="text-body">Our mission is to help drive global education transformation. With extensive hands-on experience, we understand the industry's evolving needs and enable EdTech companies to thrive.</p>
+      <h1>{{ settings.aboutHero.headline if settings and settings.aboutHero and settings.aboutHero.headline else 'Your extended team of EdTech marketing experts and creatives.' }}</h1>
+      <p class="text-body">{{ settings.aboutHero.text if settings and settings.aboutHero and settings.aboutHero.text else 'Our mission is to help drive global education transformation. With extensive hands-on experience, we understand the industry\'s evolving needs and enable EdTech companies to thrive.' }}</p>
     </div>
   </div>
 </section>
@@ -32,8 +32,8 @@
 <!-- CREATIVITY IS OUR DNA -->
 <section class="section section--dna">
   <div class="container dna-container">
-    <h2>Creativity is our DNA</h2>
-    <p class="dna-subtitle">We are experts in generating demand and growing revenue for education organizations of all kinds, from institutions to software, from b2c to b2b2c. We've been part of the transformation in education since 2001.</p>
+    <h2>{{ settings.aboutDna.headline if settings and settings.aboutDna and settings.aboutDna.headline else 'Creativity is our DNA' }}</h2>
+    <p class="dna-subtitle">{{ settings.aboutDna.text if settings and settings.aboutDna and settings.aboutDna.text else "We are experts in generating demand and growing revenue for education organizations of all kinds, from institutions to software, from b2c to b2b2c. We've been part of the transformation in education since 2001." }}</p>
   </div>
 </section>
 
@@ -45,6 +45,22 @@
       <p class="text-body">Our mission is to help drive global education transformation. With extensive hands-on experience, we understand the industry's evolving needs and enable EdTech companies to thrive.</p>
     </div>
     <div class="team-grid">
+      {% if team %}
+        {% for m in team %}
+      <div class="team-card">
+        {% if m.photoUrl %}
+        <div class="team-card-photo">
+          <img src="{{ m.photoUrl }}" alt="{{ m.name }}" loading="lazy">
+        </div>
+        {% endif %}
+        <div class="team-card-info">
+          <p class="team-card-name">{{ m.name }}</p>
+          <span class="team-card-position">{{ m.role }}</span>
+        </div>
+      </div>
+        {% endfor %}
+      {% else %}
+      {# Fallback: placeholder team cards while Sanity has no team data #}
       <div class="team-card">
         <div class="team-card-info">
           <p class="team-card-name">Laureano Díaz</p>
@@ -99,6 +115,7 @@
           <span class="team-card-position">Chief Strategy Officer — Industry &amp; Growth</span>
         </div>
       </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -108,8 +125,8 @@
   <div class="container proof-point-container">
     <div class="proof-point-media"></div>
     <div class="proof-point-text">
-      <h3 class="proof-point-title">What is Lorem Ipsum?</h3>
-      <p class="text-body">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing</p>
+      <h3 class="proof-point-title">{{ settings.aboutProofPoint.title if settings and settings.aboutProofPoint and settings.aboutProofPoint.title else 'What is Lorem Ipsum?' }}</h3>
+      <p class="text-body">{{ settings.aboutProofPoint.text if settings and settings.aboutProofPoint and settings.aboutProofPoint.text else "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing" }}</p>
     </div>
   </div>
 </section>
@@ -157,8 +174,8 @@
 <!-- SHAPES SLIDER -->
 <section class="shapes-slider section section--apart-home">
   <div class="container apart-home-container">
-    <h2>What sets 27zero apart.</h2>
-    <p class="text-body--sm">Our foundations connect insight, creativity, and efficient execution — helping EdTech brands turn purpose into lasting impact.</p>
+    <h2>{{ settings.homeApart.headline if settings and settings.homeApart and settings.homeApart.headline else 'What sets 27zero apart.' }}</h2>
+    <p class="text-body--sm">{{ settings.homeApart.description if settings and settings.homeApart and settings.homeApart.description else 'Our foundations connect insight, creativity, and efficient execution — helping EdTech brands turn purpose into lasting impact.' }}</p>
     <a href="/services" class="btn btn-dark">Our services</a>
   </div>
 
@@ -267,7 +284,7 @@
   </div>
 </section>
 
-{{ cta_footer('Work with a world-class, diverse marketing team committed to <em class="acc">enabling EdTech businesses to succeed.</em>', large=True) }}
+{{ cta_footer('Work with a world-class, diverse marketing team committed to <em class="acc">enabling EdTech businesses to succeed.</em>', large=True, settings=settings) }}
 
 {% endblock %}
 

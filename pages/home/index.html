@@ -27,8 +27,8 @@
 {# ══ 1. HERO — video background, Lora heading, single CTA ════════════════ #}
 <section class="hero hero-lg hero-home-video" aria-label="Homepage hero">
   <video class="hero-video" autoplay muted loop playsinline
-         poster="/assets/images/hero-poster.jpg" aria-hidden="true">
-    <source src="/assets/videos/27zero-hero-loop.mp4" type="video/mp4">
+         poster="{{ settings.homeHero.posterUrl if settings and settings.homeHero and settings.homeHero.posterUrl else '/assets/images/hero-poster.jpg' }}" aria-hidden="true">
+    <source src="{{ settings.homeHero.video if settings and settings.homeHero and settings.homeHero.video else '/assets/videos/27zero-hero-loop.mp4' }}" type="video/mp4">
   </video>
   <div class="hero-video-overlay" aria-hidden="true"></div>
   <div class="wrap">
@@ -53,11 +53,21 @@
 }());
 </script>
 
-{# ══ 2. CLIENT LOGO STRIP — auto-scrolling logos above fold ═════════════ #}
-{# Live site uses actual client logos from their CDN. We use their public URLs. #}
-<div class="logo-strip" aria-label="Clients we've worked with">
+{# ══ 2. CLIENT LOGO STRIP — auto-scrolling logos above fold ═════════════ #}\n<div class="logo-strip" aria-label="Clients we've worked with">
   <div class="logo-strip-track" aria-hidden="true">
-    {# Set 1 — real client logo images from live site CDN #}
+    {% if clients %}
+      {# Set 1 — visible logos with alt text #}
+      {% for c in clients %}
+    <img src="{{ c.logoUrl }}" alt="{{ c.name }}" class="logo-strip-item"
+         style="height:{{ c.logoHeight or 24 }}px;">
+      {% endfor %}
+      {# Set 2 — duplicate for seamless infinite loop, hidden from assistive tech #}
+      {% for c in clients %}
+    <img src="{{ c.logoUrl }}" alt="" aria-hidden="true" class="logo-strip-item"
+         style="height:{{ c.logoHeight or 24 }}px;">
+      {% endfor %}
+    {% else %}
+    {# Fallback: hardcoded logos while Sanity has no client data #}
     <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65d765c177039ff0aa770ee4_Scholarship%20Magic.png"
          alt="Scholarship Magic" class="logo-strip-item" style="height:28px;">
     <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/6514503cf81e333f3bca2fd7_Anthology%20logo.svg"
@@ -76,7 +86,6 @@
          alt="Turnitin" class="logo-strip-item" style="height:26px;">
     <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d3064b7806c59a4c6b247_Logo.svg"
          alt="Ellucian" class="logo-strip-item" style="height:20px;">
-    {# Set 2 — duplicate for seamless loop #}
     <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65d765c177039ff0aa770ee4_Scholarship%20Magic.png"
          alt="" aria-hidden="true" class="logo-strip-item" style="height:28px;">
     <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/6514503cf81e333f3bca2fd7_Anthology%20logo.svg"
@@ -95,6 +104,7 @@
          alt="" aria-hidden="true" class="logo-strip-item" style="height:26px;">
     <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/665d3064b7806c59a4c6b247_Logo.svg"
          alt="" aria-hidden="true" class="logo-strip-item" style="height:20px;">
+    {% endif %}
   </div>
 </div>
 
@@ -107,6 +117,19 @@
       <p>Elevating real voices, layering audiences with precision, and building brand equity that compounds — together, the engine behind every client's go-to-market success.</p>
     </div>
     <div class="pcards">
+      {% if practices %}
+        {% for p in practices %}
+      <a href="/edtech-marketing-agency/{{ p.slug }}" class="pcard">
+        <h3>{{ p.title }}</h3>
+        <p class="tag">{{ p.description }}</p>
+        <div class="clients">Clients<span>{{ p.clientNames | join(' · ') if p.clientNames else '' }}</span></div>
+        <div class="go">Explore the practice
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </a>
+        {% endfor %}
+      {% else %}
+      {# Fallback: hardcoded practices while Sanity has no data #}
       <a href="/edtech-marketing-agency/customer-marketing" class="pcard">
         <h3>Customer Marketing</h3>
         <p class="tag">Turning communities into growth engines. Peer-driven storytelling strengthens credibility because people trust those who share their experiences.</p>
@@ -131,6 +154,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </div>
       </a>
+      {% endif %}
     </div>
     <div class="center-x block-spaced">
       <a href="/edtech-marketing-agency" class="btn-primary">Explore EdTech Marketing
@@ -146,8 +170,8 @@
 <section class="shapes-slider section--apart-home" aria-label="What sets 27zero apart">
   <div class="apart-home-header">
     <div class="apart-home-header-inner">
-      <h2>What sets 27zero apart.</h2>
-      <p class="apart-home-desc">Our foundations connect insight, creativity, and efficient execution — helping EdTech brands turn purpose into lasting impact.</p>
+      <h2>{{ settings.homeApart.headline if settings and settings.homeApart and settings.homeApart.headline else 'What sets 27zero apart.' }}</h2>
+      <p class="apart-home-desc">{{ settings.homeApart.description if settings and settings.homeApart and settings.homeApart.description else 'Our foundations connect insight, creativity, and efficient execution — helping EdTech brands turn purpose into lasting impact.' }}</p>
       <a href="/edtech-marketing-agency" class="btn-primary">Our services
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
@@ -189,7 +213,7 @@
       <div>
         <div class="eyebrow" style="color:var(--ink)"><a href="/edtech-mentor-interviews" style="color:inherit">The EdTech Mentor</a></div>
         <h2 style="color:var(--ink);font-size:clamp(26px,3.5vw,44px);margin-top:14px">The EdTech Mentor<br><em class="acc" style="color:var(--ink);font-style:italic">pearls of wisdom.</em></h2>
-        <p style="color:var(--ink);opacity:.7;margin-top:10px;font-size:15px">Long-form interviews with EdTech founders, investors, and operators.</p>
+        <p style="color:var(--ink);opacity:.7;margin-top:10px;font-size:15px">{{ settings.homeMentor.subtitle if settings and settings.homeMentor and settings.homeMentor.subtitle else 'Long-form interviews with EdTech founders, investors, and operators.' }}</p>
       </div>
       <div style="display:flex;align-items:center;gap:12px;flex-shrink:0">
         <a href="/edtech-mentor-interviews" class="btn-primary" style="background:var(--ink);color:#fff">
@@ -317,7 +341,7 @@
     <div class="work-grid-header">
       <h2>The marketing team<br>EdTech brands turn to<br><em class="acc" style="color:var(--ink)">for growth and impact.</em></h2>
       <div class="work-grid-btns">
-        <a href="https://www.youtube.com/watch?v=lpQ8YHYfGdw" target="_blank" rel="noopener"
+        <a href="{{ settings.homeWork.showreelUrl if settings and settings.homeWork and settings.homeWork.showreelUrl else 'https://www.youtube.com/watch?v=lpQ8YHYfGdw' }}" target="_blank" rel="noopener"
            class="btn-primary" style="background:transparent;border:1.5px solid var(--ink);color:var(--ink);">
           Play Showreel
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/></svg>
@@ -407,6 +431,27 @@
     <div class="testi-slider-wrap" id="testi-wrap">
       <div class="testi-track" id="testi-track">
 
+        {% if testimonials %}
+          {% for t in testimonials %}
+        <div class="testi-slide">
+          <div class="testi-photo">
+            <img src="{{ t.backgroundPhotoUrl }}" alt="{{ t.authorName }}" loading="lazy">
+          </div>
+          <div class="testi-content">
+            <span class="testi-quote-mark" aria-hidden="true">"</span>
+            <p class="testi-text">{{ t.quote }}</p>
+            <div class="testi-author">
+              <img src="{{ t.avatarPhotoUrl }}" alt="{{ t.authorName }}" class="testi-avatar" loading="lazy">
+              <div>
+                <div class="testi-author-name">{{ t.authorName }}</div>
+                <div class="testi-author-role">{{ t.authorRole }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+        {% else %}
+        {# Fallback: hardcoded slides while Sanity has no testimonial data #}
         <div class="testi-slide">
           <div class="testi-photo">
             <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/667b08b55ef5a74c7d643f66_667b05cb4d05e9cccd66b089_Captura%20de%20pantalla%202024-06-25%20a%20la(s)%201.00.18%20p.m..webp"
@@ -425,7 +470,6 @@
             </div>
           </div>
         </div>
-
         <div class="testi-slide">
           <div class="testi-photo">
             <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/667c70cef9db977aafae2f07_Captura%20de%20Pantalla%202024-06-26%20a%20la(s)%202.48.56%20p.m..webp"
@@ -444,7 +488,6 @@
             </div>
           </div>
         </div>
-
         <div class="testi-slide">
           <div class="testi-photo">
             <img src="https://cdn.prod.website-files.com/651459062a0cabb77e339955/667c729bcf5402a3d4debae9_Captura%20de%20Pantalla%202024-06-26%20a%20la(s)%202.55.52%20p.m..webp"
@@ -463,13 +506,24 @@
             </div>
           </div>
         </div>
+        {% endif %}
 
       </div>
 
       <div class="testi-nav" role="tablist" aria-label="Testimonial slides">
+        {% if testimonials %}
+          {% for t in testimonials %}
+        <button class="testi-dot{% if loop.first %} active{% endif %}"
+                data-idx="{{ loop.index0 }}"
+                role="tab"
+                aria-selected="{{ 'true' if loop.first else 'false' }}"
+                aria-label="Testimonial {{ loop.index }}"></button>
+          {% endfor %}
+        {% else %}
         <button class="testi-dot active" data-idx="0" role="tab" aria-selected="true" aria-label="Testimonial 1"></button>
         <button class="testi-dot" data-idx="1" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
         <button class="testi-dot" data-idx="2" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -482,7 +536,7 @@
     <h2>Join the EdTech Mentor <em class="acc">Newsletter.</em></h2>
     <form class="newsletter-form" action="#" method="post"
           onsubmit="this.querySelector('button').textContent='Subscribed ✓';this.querySelector('button').disabled=true;return false;">
-      <input type="email" name="email" placeholder="you@institution.edu"
+      <input type="email" name="email" placeholder="{{ settings.homeNewsletter.placeholder if settings and settings.homeNewsletter and settings.homeNewsletter.placeholder else 'you@institution.edu' }}"
              required aria-label="Email address" autocomplete="email">
       <button type="submit" class="btn-primary">Subscribe
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -492,7 +546,7 @@
 </section>
 
 {# ══ 8. FINAL CTA ════════════════════════════════════════════════════════ #}
-{{ cta_footer('Start your journey <em class="acc">to growth and impact.</em>', large=True) }}
+{{ cta_footer('Start your journey <em class="acc">to growth and impact.</em>', large=True, settings=settings) }}
 
 {% endblock %}
 

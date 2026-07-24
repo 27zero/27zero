@@ -26,13 +26,13 @@
 {% endmacro %}
 
 {# Bottom CTA section ──────────────────────────────────────────────────── #}
-{% macro cta_footer(title_html, large=False, narrow=False) %}
+{% macro cta_footer(title_html, large=False, narrow=False, settings=None) %}
 <section class="ctaf{% if large %} lg{% endif %}">
   <div class="wrap{% if narrow %} narrow{% endif %}">
-    {% if large %}<div class="eyebrow center" style="justify-content:center;margin-bottom:20px">Begin your journey to growth</div>{% endif %}
+    {% if large %}<div class="eyebrow center" style="justify-content:center;margin-bottom:20px">{{ settings.footerCta.eyebrow if settings and settings.footerCta and settings.footerCta.eyebrow else 'Begin your journey to growth' }}</div>{% endif %}
     <h2>{{ title_html|safe }}</h2>
     <a href="/lets-talk" class="btn-primary" style="margin:0 auto;display:inline-flex">
-      Book a strategy session
+      {{ settings.footerCta.buttonText if settings and settings.footerCta and settings.footerCta.buttonText else 'Book a strategy session' }}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
   </div>

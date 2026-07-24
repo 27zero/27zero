@@ -62,6 +62,12 @@ def build_pages(
     posts: list[dict[str, Any]] | None = None,
     resources: list[dict[str, Any]] | None = None,
     work: list[dict[str, Any]] | None = None,
+    mentors: list[dict[str, Any]] | None = None,
+    settings: dict[str, Any] | None = None,
+    testimonials: list[dict[str, Any]] | None = None,
+    clients: list[dict[str, Any]] | None = None,
+    practices: list[dict[str, Any]] | None = None,
+    team: list[dict[str, Any]] | None = None,
 ) -> int:
     """
     Render all static page templates and write them to dist/.
@@ -81,20 +87,38 @@ def build_pages(
     env:
         Configured Jinja2 environment.
     posts:
-        List of post dicts from Sanity (passed through to templates).
+        List of post dicts from Sanity.
     resources:
-        List of resource dicts from Sanity (passed through to templates).
+        List of resource dicts from Sanity.
     work:
-        List of work project dicts from Sanity (passed through to templates).
+        List of work project dicts from Sanity.
+    mentors:
+        List of interview dicts from Sanity (EdTech Mentor).
+    settings:
+        Global site settings dict from Sanity singleton.
+    testimonials:
+        List of featured testimonial dicts for the home slider.
+    clients:
+        List of featured client dicts for the home logo strip.
+    practices:
+        List of practice dicts for the home pcard and agency page.
+    team:
+        List of active team member dicts for the About page.
 
     Returns
     -------
     int
         Number of pages built (across all locales).
     """
-    posts     = posts     or []
-    resources = resources or []
-    work      = work      or []
+    posts        = posts        or []
+    resources    = resources    or []
+    work         = work         or []
+    mentors      = mentors      or []
+    settings     = settings     or {}
+    testimonials = testimonials or []
+    clients      = clients      or []
+    practices    = practices    or []
+    team         = team         or []
     count = 0
 
     for loc in LOCALES:
@@ -130,6 +154,12 @@ def build_pages(
                     posts=posts,
                     resources=resources,
                     work=work,
+                    mentors=mentors,
+                    settings=settings,
+                    testimonials=testimonials,
+                    clients=clients,
+                    practices=practices,
+                    team=team,
                     seo=seo,
                     i18n=i18n,
                     nav_prefix=nav_prefix,

@@ -205,23 +205,67 @@ def get_settings() -> dict[str, Any]:
     """
     Fetch the global Settings singleton document.
     Returns an empty dict if no settings document exists yet.
-    This is a forward-compatible stub — the settings schema hasn't been
-    created yet, but having this function here means builders can already
-    call it and gracefully receive nothing.
+    Projection matches the fields defined in schemaTypes/settings.ts.
+    All new objects are projected so templates can access nested fields
+    (e.g. settings.navbar.cta.text, settings.home.hero.headline).
     """
     groq = """
     *[_type == "settings"][0] {
         siteTitle,
         siteDescription,
-        "logo": logo.asset->url,
-        nav,
-        footer,
-        socialLinks,
         siteUrl,
+        "logoUrl": logo.asset->url,
         defaultSeoTitle,
         defaultSeoDescription,
+        "defaultOgImageUrl": defaultOgImage.asset->url,
         gaId,
-        hubspotId
+        hubspotId,
+        linkedinUrl,
+        twitterUrl,
+
+        navbarCta,
+        navbarWorkDropdown,
+
+        footerCta,
+        footerNavigation,
+        footerCopyright,
+
+        homeHero {
+            headline,
+            subtitle,
+            video,
+            "posterUrl": poster.asset->url
+        },
+        homeWork,
+        homeMentor,
+        homeApart,
+        homeNewsletter,
+
+        aboutHero {
+            headline,
+            text,
+            "imageUrl": image.asset->url
+        },
+        aboutDna,
+        aboutProofPoint {
+            title,
+            text,
+            "imageUrl": image.asset->url
+        },
+
+        workHero,
+
+        mentorHero,
+        mentorCta,
+
+        resourcesHero,
+
+        contactHero,
+        contactEmail,
+        officeUSNew,
+        officeUS,
+        officeCONew,
+        officeCO
     }
     """
     try:
@@ -421,5 +465,139 @@ def get_mentor_interviews() -> list[dict]:
     {{
         {_MENTOR_PROJECTION}
     }}
+    """
+    return _query(groq)
+
+
+# ---------------------------------------------------------------------------
+# Testimonial queries
+# ---------------------------------------------------------------------------
+
+def get_testimonials() -> list[dict[str, Any]]:
+    """
+    Fetch all featured testimonials for the home page slider.
+    Ordered by the editor-defined order field.
+    authorName uses coalesce: client.name takes precedence if linked.
+    """
+    groq = """
+    *[_type == "testimonial" && featured == true]
+    | order(order asc)
+    {
+        _id,
+        quote,
+        authorRole,
+        featured,
+        order,
+        "authorName":       coalesce(client->name, authorName),
+        "avatarPhotoUrl":   avatarPhoto.asset->url,
+        "backgroundPhotoUrl": backgroundPhoto.asset->url,
+        "clientLogoUrl":    client->logo.asset->url,
+        "workSlug":         workProject->slug.current
+    }
+    """
+    return _query(groq)
+
+
+# ---------------------------------------------------------------------------
+# Client queries
+# ---------------------------------------------------------------------------
+
+def get_clients() -> list[dict[str, Any]]:
+    """
+    Fetch all clients for the home logo strip and work marquee.
+    Only returns clients with featured=true for the home strip.
+    Use get_all_clients() when all clients are needed (e.g. practice page).
+    """
+    groq = """
+    *[_type == "client" && featured == true]
+    | order(logoOrder asc)
+    {
+        _id,
+        name,
+        "logoUrl":      logo.asset->url,
+        "logoLightUrl": logoLight.asset->url,
+        logoHeight,
+        logoOrder,
+        url,
+        description
+    }
+    """
+    return _query(groq)
+
+
+def get_all_clients() -> list[dict[str, Any]]:
+    """
+    Fetch all client documents regardless of featured status.
+    Used when a full client list is needed (e.g. practice brand logos).
+    """
+    groq = """
+    *[_type == "client"]
+    | order(logoOrder asc, name asc)
+    {
+        _id,
+        name,
+        "logoUrl":      logo.asset->url,
+        "logoLightUrl": logoLight.asset->url,
+        logoHeight,
+        logoOrder,
+        url,
+        description
+    }
+    """
+    return _query(groq)
+
+
+# ---------------------------------------------------------------------------
+# Practice queries
+# ---------------------------------------------------------------------------
+
+def get_practices() -> list[dict[str, Any]]:
+    """
+    Fetch all practice documents ordered by display order.
+    Returns all fields needed for both the home pcard and the
+    agency practices-card.
+    """
+    groq = """
+    *[_type == "practice"]
+    | order(order asc)
+    {
+        _id,
+        title,
+        "slug": slug.current,
+        description,
+        clientNames,
+        order,
+        heroHeadline,
+        heroText,
+        "heroImageUrl": heroImage.asset->url,
+        credibilityHeadline,
+        credibilityText,
+        credibilityItems,
+        conversationItems,
+        closingCtaHeadline
+    }
+    """
+    return _query(groq)
+
+
+# ---------------------------------------------------------------------------
+# Team queries
+# ---------------------------------------------------------------------------
+
+def get_team() -> list[dict[str, Any]]:
+    """
+    Fetch all active team members for the About page grid.
+    Only returns members with active=true, ordered by display order.
+    """
+    groq = """
+    *[_type == "teamMember" && active == true]
+    | order(order asc)
+    {
+        _id,
+        name,
+        role,
+        "photoUrl": photo.asset->url,
+        order
+    }
     """
     return _query(groq)
