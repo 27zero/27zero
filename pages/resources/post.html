@@ -19,7 +19,19 @@
       <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg" alt="27zero">
     </a>
     <nav class="nav-links">
-      <a href="/work">Work</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle" aria-expanded="false">
+          Work
+          <svg class="nav-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="nav-dropdown-content">
+          <a href="/work?view=projects" class="nav-dropdown-link">by projects</a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="/work?view=clients" class="nav-dropdown-link">by clients</a>
+        </div>
+      </div>
       <a href="/edtech-marketing-agency">Edtech Marketing</a>
       <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
       <a href="/resources">Resources</a>
