@@ -1,682 +1,1204 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>27zero — EdTech Marketing Agency</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/home/style.css">
-<link rel="stylesheet" href="/components/navbar/navbar.css">
-<link rel="stylesheet" href="/components/footer/footer.css">
-<link rel="stylesheet" href="/components/work-card/work-card.css">
-<link rel="stylesheet" href="/components/cards-slider/cards-slider.css">
-<link rel="stylesheet" href="/components/marquee-logos/marquee-logos.css">
-<link rel="stylesheet" href="/components/featured-card/featured-card.css">
-<link rel="stylesheet" href="/components/edtech-mentor-card/edtech-mentor-card.css">
-<link rel="stylesheet" href="/components/shapes-slider/shapes-slider.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>27zero — EdTech Marketing Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/home/style.css" />
+    <link rel="stylesheet" href="/components/navbar/navbar.css" />
+    <link rel="stylesheet" href="/components/footer/footer.css" />
+    <link rel="stylesheet" href="/components/work-card/work-card.css" />
+    <link rel="stylesheet" href="/components/cards-slider/cards-slider.css" />
+    <link rel="stylesheet" href="/components/marquee-logos/marquee-logos.css" />
+    <link rel="stylesheet" href="/components/featured-card/featured-card.css" />
+    <link
+      rel="stylesheet"
+      href="/components/edtech-mentor-card/edtech-mentor-card.css"
+    />
+    <link rel="stylesheet" href="/components/shapes-slider/shapes-slider.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="nav nav--white">
+      <div class="nav-container">
+        <a href="/" class="nav-logo">
+          <img src="/assets/images/27zero-logo.svg" alt="27zero" />
+        </a>
+        <nav class="nav-links">
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-expanded="false">
+              Work
+              <svg
+                class="nav-dropdown-chevron"
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="nav-dropdown-content">
+              {% if settings and settings.navbarWorkDropdown and
+              settings.navbarWorkDropdown['items'] %} {% for item in
+              settings.navbarWorkDropdown['items'] %}
+              <a href="{{ item.href }}" class="nav-dropdown-link"
+                >{{ item.label }}</a
+              >
+              {% endfor %} {% else %}
+              <a href="/work?view=projects" class="nav-dropdown-link"
+                >by projects</a
+              >
+              <div class="nav-dropdown-divider"></div>
+              <a href="/work?view=clients" class="nav-dropdown-link"
+                >by clients</a
+              >
+              {% endif %}
+            </div>
+          </div>
+          <a href="/edtech-marketing">Edtech Marketing</a>
+          <a href="/the-edtech-mentor">The EdTech Mentor</a>
+          <a href="/resources">Resources</a>
+          <a href="/about">About</a>
+        </nav>
+        <a href="/contact" class="btn btn-nav">Let's Talk!</a>
 
-<!-- NAVBAR -->
-<header class="nav nav--white">
-  <div class="nav-container">
-    <a href="/" class="nav-logo">
-      <img src="/assets/images/27zero-logo.svg" alt="27zero">
-    </a>
-    <nav class="nav-links">
-      <div class="nav-dropdown">
-        <button class="nav-dropdown-toggle" aria-expanded="false">
-          Work
-          <svg class="nav-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9"></polyline>
+        <button
+          class="nav-hamburger"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          <svg
+            class="nav-hamburger-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <line x1="3" y1="7" x2="21" y2="7"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="17" x2="21" y2="17"></line>
           </svg>
         </button>
-        <div class="nav-dropdown-content">
-          {% if settings and settings.navbarWorkDropdown and settings.navbarWorkDropdown['items'] %}
-            {% for item in settings.navbarWorkDropdown['items'] %}
-          <a href="{{ item.href }}" class="nav-dropdown-link">{{ item.label }}</a>
-            {% endfor %}
-          {% else %}
-          <a href="/work?view=projects" class="nav-dropdown-link">by projects</a>
-          <div class="nav-dropdown-divider"></div>
-          <a href="/work?view=clients" class="nav-dropdown-link">by clients</a>
+      </div>
+
+      <div class="nav-mobile-menu" id="navMobileMenu">
+        <div class="nav-mobile-header">
+          <a href="/" class="nav-mobile-logo">
+            <img src="/assets/images/27zero-logo.svg" alt="27zero" />
+          </a>
+          <button class="nav-mobile-close" aria-label="Cerrar menú">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="3"
+                y1="10"
+                x2="17"
+                y2="10"
+                stroke="currentColor"
+                stroke-width="2"
+              ></line>
+              <line
+                x1="3"
+                y1="10"
+                x2="17"
+                y2="10"
+                stroke="currentColor"
+                stroke-width="2"
+                transform="rotate(45 10 10)"
+              ></line>
+              <line
+                x1="3"
+                y1="10"
+                x2="17"
+                y2="10"
+                stroke="currentColor"
+                stroke-width="2"
+                transform="rotate(135 10 10)"
+              ></line>
+            </svg>
+          </button>
+        </div>
+
+        <nav class="nav-mobile-links">
+          <div class="nav-mobile-group">
+            <button class="nav-mobile-group-toggle" aria-expanded="false">
+              Work
+              <svg
+                class="nav-mobile-group-chevron"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="nav-mobile-group-content">
+              <div class="nav-mobile-group-inner">
+                {% if settings and settings.navbarWorkDropdown and
+                settings.navbarWorkDropdown['items'] %} {% for item in
+                settings.navbarWorkDropdown['items'] %}
+                <a href="{{ item.href }}" class="nav-mobile-sublink"
+                  >{{ item.label }}</a
+                >
+                {% endfor %} {% else %}
+                <a href="/work?view=projects" class="nav-mobile-sublink"
+                  >by projects</a
+                >
+                <a href="/work?view=clients" class="nav-mobile-sublink"
+                  >by Clients</a
+                >
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <a href="/edtech-marketing" class="nav-mobile-link"
+            >Edtech Marketing</a
+          >
+          <a href="/the-edtech-mentor" class="nav-mobile-link"
+            >The EdTech Mentor</a
+          >
+          <a href="/resources" class="nav-mobile-link">Resources</a>
+          <a href="/about" class="nav-mobile-link">About</a>
+        </nav>
+        <a href="/contact" class="btn btn-nav">Let's Talk!</a>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="section section--hero-home">
+      <div class="container hero-home-container">
+        <h1>
+          Turn EdTech purpose into
+          <span class="inter-accent">Brand power.</span>
+        </h1>
+        <div class="hero-home-cta">
+          <a href="/contact" class="btn btn-white">Book a strategy session</a>
+          <p class="text-caption">Free. 30 min. No sales pitch.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="section section--intro-home">
+      <div class="container intro-home-container">
+        <div class="intro-home-row">
+          <div class="intro-home-text">
+            <h2>
+              The marketing team EdTech brands turn to
+              <span class="inter-accent">for growth and impact.</span>
+            </h2>
+            <p class="text-body--sm">
+              Lorem ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </p>
+            <a href="/work" class="btn btn-dark">See all work</a>
+          </div>
+          <div class="intro-home-media">
+            <span>[MEDIA PLACEHOLDER]</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sliders-container">
+        <div class="slider-block">
+          <div class="slider-header">
+            <h2 class="slider-title">Los mejores</h2>
+          </div>
+
+          <div class="slider-track-wrap">
+            <div class="slider-track">
+              {% if work %} {% for project in work[:8] %} {% set slug =
+              project.slug.current if project.slug is mapping else project.slug
+              %}
+              <a href="/work/{{ slug }}/" class="card card--work">
+                <div class="card-work-bg">
+                  {% if project.thumbnailUrl %}
+                  <img
+                    src="{{ project.thumbnailUrl }}"
+                    alt="{{ project.title }}"
+                    loading="lazy"
+                  />
+                  {% else %}
+                  <span>[PROJECT THUMBNAIL]</span>
+                  {% endif %}
+                </div>
+                <div class="card-work-body">
+                  <div class="card-work-content">
+                    <span class="card-work-eyebrow"
+                      >{{ project.category | default('') }}</span
+                    >
+                    <h3 class="card-work-title">{{ project.title }}</h3>
+                    <div class="card-work-client">
+                      {% if project.clientLogoUrl %}
+                      <div class="card-work-client-logo">
+                        <img
+                          src="{{ project.clientLogoUrl }}"
+                          alt="{{ project.client }}"
+                        />
+                      </div>
+                      {% else %}
+                      <div class="card-work-client-logo">
+                        <span>{{ (project.client or 'CL')[:2] | upper }}</span>
+                      </div>
+                      {% endif %}
+                      <span class="card-work-client-name"
+                        >{{ project.client }}</span
+                      >
+                    </div>
+                  </div>
+                  <div class="card-work-footer">
+                    <div class="card-work-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              {% endfor %} {% else %}
+              <a href="#" class="card card--work">
+                <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+                <div class="card-work-body">
+                  <div class="card-work-content">
+                    <span class="card-work-eyebrow"
+                      >[UX/UI &amp; WEB DESIGN]</span
+                    >
+                    <h3 class="card-work-title">[Project headline]</h3>
+                    <div class="card-work-client">
+                      <div class="card-work-client-logo"><span>CL</span></div>
+                      <span class="card-work-client-name">[CLIENT NAME]</span>
+                    </div>
+                  </div>
+                  <div class="card-work-footer">
+                    <div class="card-work-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--work">
+                <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+                <div class="card-work-body">
+                  <div class="card-work-content">
+                    <span class="card-work-eyebrow"
+                      >[UX/UI &amp; WEB DESIGN]</span
+                    >
+                    <h3 class="card-work-title">[Project headline]</h3>
+                    <div class="card-work-client">
+                      <div class="card-work-client-logo"><span>CL</span></div>
+                      <span class="card-work-client-name">[CLIENT NAME]</span>
+                    </div>
+                  </div>
+                  <div class="card-work-footer">
+                    <div class="card-work-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--work">
+                <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+                <div class="card-work-body">
+                  <div class="card-work-content">
+                    <span class="card-work-eyebrow"
+                      >[UX/UI &amp; WEB DESIGN]</span
+                    >
+                    <h3 class="card-work-title">[Project headline]</h3>
+                    <div class="card-work-client">
+                      <div class="card-work-client-logo"><span>CL</span></div>
+                      <span class="card-work-client-name">[CLIENT NAME]</span>
+                    </div>
+                  </div>
+                  <div class="card-work-footer">
+                    <div class="card-work-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--work">
+                <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+                <div class="card-work-body">
+                  <div class="card-work-content">
+                    <span class="card-work-eyebrow"
+                      >[UX/UI &amp; WEB DESIGN]</span
+                    >
+                    <h3 class="card-work-title">[Project headline]</h3>
+                    <div class="card-work-client">
+                      <div class="card-work-client-logo"><span>CL</span></div>
+                      <span class="card-work-client-name">[CLIENT NAME]</span>
+                    </div>
+                  </div>
+                  <div class="card-work-footer">
+                    <div class="card-work-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--work">
+                <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+                <div class="card-work-body">
+                  <div class="card-work-content">
+                    <span class="card-work-eyebrow"
+                      >[UX/UI &amp; WEB DESIGN]</span
+                    >
+                    <h3 class="card-work-title">[Project headline]</h3>
+                    <div class="card-work-client">
+                      <div class="card-work-client-logo"><span>CL</span></div>
+                      <span class="card-work-client-name">[CLIENT NAME]</span>
+                    </div>
+                  </div>
+                  <div class="card-work-footer">
+                    <div class="card-work-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--work">
+                <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+                <div class="card-work-body">
+                  <div class="card-work-content">
+                    <span class="card-work-eyebrow"
+                      >[UX/UI &amp; WEB DESIGN]</span
+                    >
+                    <h3 class="card-work-title">[Project headline]</h3>
+                    <div class="card-work-client">
+                      <div class="card-work-client-logo"><span>CL</span></div>
+                      <span class="card-work-client-name">[CLIENT NAME]</span>
+                    </div>
+                  </div>
+                  <div class="card-work-footer">
+                    <div class="card-work-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--work">
+                <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+                <div class="card-work-body">
+                  <div class="card-work-content">
+                    <span class="card-work-eyebrow"
+                      >[UX/UI &amp; WEB DESIGN]</span
+                    >
+                    <h3 class="card-work-title">[Project headline]</h3>
+                    <div class="card-work-client">
+                      <div class="card-work-client-logo"><span>CL</span></div>
+                      <span class="card-work-client-name">[CLIENT NAME]</span>
+                    </div>
+                  </div>
+                  <div class="card-work-footer">
+                    <div class="card-work-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--work">
+                <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
+                <div class="card-work-body">
+                  <div class="card-work-content">
+                    <span class="card-work-eyebrow"
+                      >[UX/UI &amp; WEB DESIGN]</span
+                    >
+                    <h3 class="card-work-title">[Project headline]</h3>
+                    <div class="card-work-client">
+                      <div class="card-work-client-logo"><span>CL</span></div>
+                      <span class="card-work-client-name">[CLIENT NAME]</span>
+                    </div>
+                  </div>
+                  <div class="card-work-footer">
+                    <div class="card-work-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="slider-footer">
+            <div class="slider-nav">
+              <button
+                class="slider-arrow"
+                data-dir="prev"
+                aria-label="Previous"
+                disabled
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+              </button>
+              <button class="slider-arrow" data-dir="next" aria-label="Next">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHAPES SLIDER -->
+    <section class="shapes-slider section section--apart-home">
+      <div class="container apart-home-container">
+        <h2>
+          {{ settings.homeApart.headline if settings and settings.homeApart and
+          settings.homeApart.headline else 'What sets 27zero apart.' }}
+        </h2>
+        <p class="text-body--sm">
+          {{ settings.homeApart.description if settings and settings.homeApart
+          and settings.homeApart.description else 'Our foundations connect
+          insight, creativity, and efficient execution — helping EdTech brands
+          turn purpose into lasting impact.' }}
+        </p>
+        <a href="/services" class="btn btn-dark">Our services</a>
+      </div>
+
+      <div class="apart-slider">
+        <button
+          class="apart-slider-arrow"
+          data-dir="prev"
+          aria-label="Previous"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+        <div class="apart-shapes-wrap">
+          <div class="apart-shapes" id="apartShapes">
+            <!-- Generado por JS -->
+          </div>
+          <button
+            class="apart-shapes-nav-zone apart-shapes-nav-zone--prev"
+            data-dir="prev"
+            aria-label="Previous"
+          ></button>
+          <button
+            class="apart-shapes-nav-zone apart-shapes-nav-zone--next"
+            data-dir="next"
+            aria-label="Next"
+          ></button>
+        </div>
+        <button class="apart-slider-arrow" data-dir="next" aria-label="Next">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div class="container apart-home-scales">
+        <h3 id="apartScalesTitle">Execution that Scales</h3>
+        <p class="text-body--sm" id="apartScalesText">
+          We deliver the complete capability of a full-service agency with the
+          focus of a boutique partner — with regional expertise in North America
+          and Europe, and agile production in Latin America.
+        </p>
+      </div>
+    </section>
+
+    <!-- LOGOS -->
+    <section class="section section--logos-home">
+      <div class="marquee">
+        <div class="marquee-track">
+          {% if clients %} {% for c in clients %}
+          <!-- <img
+            class="marquee-logo"
+            src="{{ c.logoUrl }}"
+            alt="{{ c.name }}"
+            style="height:{{ c.logoHeight or 24 }}px;"
+          /> -->
+          {% endfor %} {% else %}
+          <img
+            class="marquee-logo"
+            src="/assets/logos/doctums.svg"
+            alt="Doctums"
+          />
+          <img
+            class="marquee-logo"
+            src="/assets/logos/scholarship-magic.svg"
+            alt="Scholarship Magic"
+          />
+          <img
+            class="marquee-logo"
+            src="/assets/logos/skillwell.svg"
+            alt="Skillwell"
+          />
+          <img
+            class="marquee-logo"
+            src="/assets/logos/student-first.svg"
+            alt="Student First"
+          />
+          <img
+            class="marquee-logo"
+            src="/assets/logos/world-learning.svg"
+            alt="World Learning"
+          />
           {% endif %}
         </div>
       </div>
-      <a href="/edtech-marketing">Edtech Marketing</a>
-      <a href="/the-edtech-mentor">The EdTech Mentor</a>
-      <a href="/resources">Resources</a>
-      <a href="/about">About</a>
-    </nav>
-    <a href="/contact" class="btn btn-nav">Let's Talk!</a>
+    </section>
 
-    <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
-      <svg class="nav-hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="3" y1="7" x2="21" y2="7"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="17" x2="21" y2="17"></line>
-      </svg>
-    </button>
-  </div>
-
-  <div class="nav-mobile-menu" id="navMobileMenu">
-    <div class="nav-mobile-header">
-      <a href="/" class="nav-mobile-logo">
-        <img src="/assets/images/27zero-logo.svg" alt="27zero">
-      </a>
-      <button class="nav-mobile-close" aria-label="Cerrar menú">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2"></line>
-          <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" transform="rotate(45 10 10)"></line>
-          <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" transform="rotate(135 10 10)"></line>
-        </svg>
-      </button>
-    </div>
-
-    <nav class="nav-mobile-links">
-      <div class="nav-mobile-group">
-        <button class="nav-mobile-group-toggle" aria-expanded="false">
-          Work
-          <svg class="nav-mobile-group-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <div class="nav-mobile-group-content">
-          <div class="nav-mobile-group-inner">
-            {% if settings and settings.navbarWorkDropdown and settings.navbarWorkDropdown['items'] %}
-              {% for item in settings.navbarWorkDropdown['items'] %}
-            <a href="{{ item.href }}" class="nav-mobile-sublink">{{ item.label }}</a>
-              {% endfor %}
+    <!-- THE EDTECH MENTOR -->
+    <section class="section section--mentor-home">
+      <div class="container mentor-home-container">
+        <div class="mentor-home-row">
+          <div class="mentor-home-text">
+            <h2>
+              The EdTech Mentor
+              <span class="inter-accent">pearls of wisdom.</span>
+            </h2>
+            <p class="text-body--sm">
+              {{ settings.homeMentor.subtitle if settings and
+              settings.homeMentor and settings.homeMentor.subtitle else 'Lorem
+              ipsum is simply dummy text of the printing and typesetting
+              industry.' }}
+            </p>
+            <a href="/the-edtech-mentor" class="btn btn-white"
+              >The EdTech Mentor</a
+            >
+          </div>
+          <div class="mentor-home-featured-wrap">
+            {% if mentors %}{% set fm = mentors[0] %}{% set fslug =
+            fm.slug.current if fm.slug is mapping else fm.slug %}
+            <a
+              href="/edtech-mentor-interviews/{{ fslug }}/"
+              class="card card--featured"
+            >
+              <span class="card-featured-tag"
+                >{{ fm.category | default('Interview') }}</span
+              >
+              <div class="card-featured-content">
+                <div class="card-featured-meta">
+                  <div class="card-featured-avatar">
+                    {% if fm.guestPhotoUrl %}<img
+                      src="{{ fm.guestPhotoUrl }}"
+                      alt="{{ fm.guestName }}"
+                    />{% else %}<span>{{ fm.guestName[:2]|upper }}</span>{%
+                    endif %}
+                  </div>
+                  <div class="card-featured-meta-text">
+                    <span class="card-featured-role">{{ fm.guestRole }}</span>
+                    <span class="card-featured-name">{{ fm.guestName }}</span>
+                  </div>
+                </div>
+                <div class="card-featured-footer">
+                  <h3 class="card-featured-title">{{ fm.title }}</h3>
+                  <div class="card-featured-arrow">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
             {% else %}
-            <a href="/work?view=projects" class="nav-mobile-sublink">by projects</a>
-            <a href="/work?view=clients" class="nav-mobile-sublink">by Clients</a>
+            <a href="#" class="card card--featured">
+              <span class="card-featured-tag">Tag</span>
+              <div class="card-featured-content">
+                <div class="card-featured-meta">
+                  <div class="card-featured-avatar"><span>JK</span></div>
+                  <div class="card-featured-meta-text">
+                    <span class="card-featured-role"
+                      >Founder At Kelleher Consulting Group</span
+                    >
+                    <span class="card-featured-name">Julie Kelleher</span>
+                  </div>
+                </div>
+                <div class="card-featured-footer">
+                  <h3 class="card-featured-title">
+                    A Market-First Mindset in EdTech: Julie Kelleher's Blueprint
+                    for Success
+                  </h3>
+                  <div class="card-featured-arrow">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <line x1="7" y1="17" x2="17" y2="7"></line>
+                      <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
             {% endif %}
           </div>
         </div>
       </div>
-      <a href="/edtech-marketing" class="nav-mobile-link">Edtech Marketing</a>
-      <a href="/the-edtech-mentor" class="nav-mobile-link">The EdTech Mentor</a>
-      <a href="/resources" class="nav-mobile-link">Resources</a>
-      <a href="/about" class="nav-mobile-link">About</a>
-    </nav>
-    <a href="/contact" class="btn btn-nav">Let's Talk!</a>
-  </div>
-</header>
 
-<!-- HERO -->
-<section class="section section--hero-home">
-  <div class="container hero-home-container">
-    <h1>Turn EdTech purpose into <span class="inter-accent">Brand power.</span></h1>
-    <div class="hero-home-cta">
-      <a href="/contact" class="btn btn-white">Book a strategy session</a>
-      <p class="text-caption">Free. 30 min. No sales pitch.</p>
-    </div>
-  </div>
-</section>
-
-<!-- INTRO -->
-<section class="section section--intro-home">
-  <div class="container intro-home-container">
-    <div class="intro-home-row">
-      <div class="intro-home-text">
-        <h2>The marketing team EdTech brands turn to <span class="inter-accent">for growth and impact.</span></h2>
-        <p class="text-body--sm">Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
-        <a href="/work" class="btn btn-dark">See all work</a>
-      </div>
-      <div class="intro-home-media">
-        <span>[MEDIA PLACEHOLDER]</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="sliders-container">
-    <div class="slider-block">
-      <div class="slider-header">
-        <h2 class="slider-title">Los mejores</h2>
-      </div>
-
-      <div class="slider-track-wrap">
-        <div class="slider-track">
-          {% if work %}
-            {% for project in work[:8] %}
-            {% set slug = project.slug.current if project.slug is mapping else project.slug %}
-          <a href="/work/{{ slug }}/" class="card card--work">
-            <div class="card-work-bg">
-              {% if project.thumbnailUrl %}
-              <img src="{{ project.thumbnailUrl }}" alt="{{ project.title }}" loading="lazy">
-              {% else %}
-              <span>[PROJECT THUMBNAIL]</span>
+      <div class="sliders-container">
+        <div class="slider-block">
+          <div class="slider-track-wrap">
+            <div class="slider-track">
+              {% if mentors %} {% for interview in mentors %} {% set slug =
+              interview.slug.current if interview.slug is mapping else
+              interview.slug %}
+              <a
+                href="/edtech-mentor-interviews/{{ slug }}/"
+                class="card card--edtech-mentor"
+              >
+                <div class="card-edtech-mentor-header">
+                  <div class="card-edtech-mentor-avatar">
+                    {% if interview.guestPhotoUrl %}<img
+                      src="{{ interview.guestPhotoUrl }}"
+                      alt="{{ interview.guestName }}"
+                      loading="lazy"
+                    />{% else %}<span
+                      >{{ interview.guestName[:2] | upper }}</span
+                    >{% endif %}
+                  </div>
+                  <div class="card-edtech-mentor-meta">
+                    <span class="card-edtech-mentor-role"
+                      >{{ interview.guestRole }}</span
+                    >
+                    <span class="card-edtech-mentor-name"
+                      >{{ interview.guestName }}</span
+                    >
+                  </div>
+                </div>
+                <div class="card-edtech-mentor-body">
+                  <span class="card-edtech-mentor-tag"
+                    >{{ interview.category | default('Interview') }}</span
+                  >
+                  <div class="card-edtech-mentor-footer">
+                    <h3 class="card-edtech-mentor-title">
+                      {{ interview.title }}
+                    </h3>
+                    <div class="card-edtech-mentor-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              {% endfor %} {% else %}
+              <a href="#" class="card card--edtech-mentor">
+                <div class="card-edtech-mentor-header">
+                  <div class="card-edtech-mentor-avatar"><span>JK</span></div>
+                  <div class="card-edtech-mentor-meta">
+                    <span class="card-edtech-mentor-role"
+                      >Founder At Kelleher Consulting Group</span
+                    >
+                    <span class="card-edtech-mentor-name">Julie Kelleher</span>
+                  </div>
+                </div>
+                <div class="card-edtech-mentor-body">
+                  <span class="card-edtech-mentor-tag">Tag</span>
+                  <div class="card-edtech-mentor-footer">
+                    <h3 class="card-edtech-mentor-title">
+                      A Market-First Mindset in EdTech: Julie Kelleher's
+                      Blueprint for Success
+                    </h3>
+                    <div class="card-edtech-mentor-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--edtech-mentor">
+                <div class="card-edtech-mentor-header">
+                  <div class="card-edtech-mentor-avatar"><span>JK</span></div>
+                  <div class="card-edtech-mentor-meta">
+                    <span class="card-edtech-mentor-role"
+                      >Founder At Kelleher Consulting Group</span
+                    >
+                    <span class="card-edtech-mentor-name">Julie Kelleher</span>
+                  </div>
+                </div>
+                <div class="card-edtech-mentor-body">
+                  <span class="card-edtech-mentor-tag">Tag</span>
+                  <div class="card-edtech-mentor-footer">
+                    <h3 class="card-edtech-mentor-title">
+                      A Market-First Mindset in EdTech: Julie Kelleher's
+                      Blueprint for Success
+                    </h3>
+                    <div class="card-edtech-mentor-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--edtech-mentor">
+                <div class="card-edtech-mentor-header">
+                  <div class="card-edtech-mentor-avatar"><span>JK</span></div>
+                  <div class="card-edtech-mentor-meta">
+                    <span class="card-edtech-mentor-role"
+                      >Founder At Kelleher Consulting Group</span
+                    >
+                    <span class="card-edtech-mentor-name">Julie Kelleher</span>
+                  </div>
+                </div>
+                <div class="card-edtech-mentor-body">
+                  <span class="card-edtech-mentor-tag">Tag</span>
+                  <div class="card-edtech-mentor-footer">
+                    <h3 class="card-edtech-mentor-title">
+                      A Market-First Mindset in EdTech: Julie Kelleher's
+                      Blueprint for Success
+                    </h3>
+                    <div class="card-edtech-mentor-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--edtech-mentor">
+                <div class="card-edtech-mentor-header">
+                  <div class="card-edtech-mentor-avatar"><span>JK</span></div>
+                  <div class="card-edtech-mentor-meta">
+                    <span class="card-edtech-mentor-role"
+                      >Founder At Kelleher Consulting Group</span
+                    >
+                    <span class="card-edtech-mentor-name">Julie Kelleher</span>
+                  </div>
+                </div>
+                <div class="card-edtech-mentor-body">
+                  <span class="card-edtech-mentor-tag">Tag</span>
+                  <div class="card-edtech-mentor-footer">
+                    <h3 class="card-edtech-mentor-title">
+                      A Market-First Mindset in EdTech: Julie Kelleher's
+                      Blueprint for Success
+                    </h3>
+                    <div class="card-edtech-mentor-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--edtech-mentor">
+                <div class="card-edtech-mentor-header">
+                  <div class="card-edtech-mentor-avatar"><span>JK</span></div>
+                  <div class="card-edtech-mentor-meta">
+                    <span class="card-edtech-mentor-role"
+                      >Founder At Kelleher Consulting Group</span
+                    >
+                    <span class="card-edtech-mentor-name">Julie Kelleher</span>
+                  </div>
+                </div>
+                <div class="card-edtech-mentor-body">
+                  <span class="card-edtech-mentor-tag">Tag</span>
+                  <div class="card-edtech-mentor-footer">
+                    <h3 class="card-edtech-mentor-title">
+                      A Market-First Mindset in EdTech: Julie Kelleher's
+                      Blueprint for Success
+                    </h3>
+                    <div class="card-edtech-mentor-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="card card--edtech-mentor">
+                <div class="card-edtech-mentor-header">
+                  <div class="card-edtech-mentor-avatar"><span>JK</span></div>
+                  <div class="card-edtech-mentor-meta">
+                    <span class="card-edtech-mentor-role"
+                      >Founder At Kelleher Consulting Group</span
+                    >
+                    <span class="card-edtech-mentor-name">Julie Kelleher</span>
+                  </div>
+                </div>
+                <div class="card-edtech-mentor-body">
+                  <span class="card-edtech-mentor-tag">Tag</span>
+                  <div class="card-edtech-mentor-footer">
+                    <h3 class="card-edtech-mentor-title">
+                      A Market-First Mindset in EdTech: Julie Kelleher's
+                      Blueprint for Success
+                    </h3>
+                    <div class="card-edtech-mentor-arrow">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
               {% endif %}
             </div>
-            <div class="card-work-body">
-              <div class="card-work-content">
-                <span class="card-work-eyebrow">{{ project.category | default('') }}</span>
-                <h3 class="card-work-title">{{ project.title }}</h3>
-                <div class="card-work-client">
-                  {% if project.clientLogoUrl %}
-                  <div class="card-work-client-logo"><img src="{{ project.clientLogoUrl }}" alt="{{ project.client }}"></div>
-                  {% else %}
-                  <div class="card-work-client-logo"><span>{{ (project.client or 'CL')[:2] | upper }}</span></div>
-                  {% endif %}
-                  <span class="card-work-client-name">{{ project.client }}</span>
-                </div>
-              </div>
-              <div class="card-work-footer">
-                <div class="card-work-arrow">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
-                </div>
-              </div>
+          </div>
+
+          <div class="slider-footer">
+            <div class="slider-nav">
+              <button
+                class="slider-arrow"
+                data-dir="prev"
+                aria-label="Previous"
+                disabled
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+              </button>
+              <button class="slider-arrow" data-dir="next" aria-label="Next">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
             </div>
-          </a>
-            {% endfor %}
-          {% else %}
-          <a href="#" class="card card--work">
-            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
-            <div class="card-work-body">
-              <div class="card-work-content">
-                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
-                <h3 class="card-work-title">[Project headline]</h3>
-                <div class="card-work-client">
-                  <div class="card-work-client-logo"><span>CL</span></div>
-                  <span class="card-work-client-name">[CLIENT NAME]</span>
-                </div>
-              </div>
-              <div class="card-work-footer">
-                <div class="card-work-arrow">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--work">
-            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
-            <div class="card-work-body">
-              <div class="card-work-content">
-                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
-                <h3 class="card-work-title">[Project headline]</h3>
-                <div class="card-work-client">
-                  <div class="card-work-client-logo"><span>CL</span></div>
-                  <span class="card-work-client-name">[CLIENT NAME]</span>
-                </div>
-              </div>
-              <div class="card-work-footer">
-                <div class="card-work-arrow">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--work">
-            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
-            <div class="card-work-body">
-              <div class="card-work-content">
-                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
-                <h3 class="card-work-title">[Project headline]</h3>
-                <div class="card-work-client">
-                  <div class="card-work-client-logo"><span>CL</span></div>
-                  <span class="card-work-client-name">[CLIENT NAME]</span>
-                </div>
-              </div>
-              <div class="card-work-footer">
-                <div class="card-work-arrow">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--work">
-            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
-            <div class="card-work-body">
-              <div class="card-work-content">
-                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
-                <h3 class="card-work-title">[Project headline]</h3>
-                <div class="card-work-client">
-                  <div class="card-work-client-logo"><span>CL</span></div>
-                  <span class="card-work-client-name">[CLIENT NAME]</span>
-                </div>
-              </div>
-              <div class="card-work-footer">
-                <div class="card-work-arrow">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--work">
-            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
-            <div class="card-work-body">
-              <div class="card-work-content">
-                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
-                <h3 class="card-work-title">[Project headline]</h3>
-                <div class="card-work-client">
-                  <div class="card-work-client-logo"><span>CL</span></div>
-                  <span class="card-work-client-name">[CLIENT NAME]</span>
-                </div>
-              </div>
-              <div class="card-work-footer">
-                <div class="card-work-arrow">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--work">
-            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
-            <div class="card-work-body">
-              <div class="card-work-content">
-                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
-                <h3 class="card-work-title">[Project headline]</h3>
-                <div class="card-work-client">
-                  <div class="card-work-client-logo"><span>CL</span></div>
-                  <span class="card-work-client-name">[CLIENT NAME]</span>
-                </div>
-              </div>
-              <div class="card-work-footer">
-                <div class="card-work-arrow">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--work">
-            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
-            <div class="card-work-body">
-              <div class="card-work-content">
-                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
-                <h3 class="card-work-title">[Project headline]</h3>
-                <div class="card-work-client">
-                  <div class="card-work-client-logo"><span>CL</span></div>
-                  <span class="card-work-client-name">[CLIENT NAME]</span>
-                </div>
-              </div>
-              <div class="card-work-footer">
-                <div class="card-work-arrow">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--work">
-            <div class="card-work-bg"><span>[PROJECT THUMBNAIL]</span></div>
-            <div class="card-work-body">
-              <div class="card-work-content">
-                <span class="card-work-eyebrow">[UX/UI &amp; WEB DESIGN]</span>
-                <h3 class="card-work-title">[Project headline]</h3>
-                <div class="card-work-client">
-                  <div class="card-work-client-logo"><span>CL</span></div>
-                  <span class="card-work-client-name">[CLIENT NAME]</span>
-                </div>
-              </div>
-              <div class="card-work-footer">
-                <div class="card-work-arrow">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </div>
-              </div>
-            </div>
-          </a>
-          {% endif %}
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="slider-footer">
-        <div class="slider-nav">
-          <button class="slider-arrow" data-dir="prev" aria-label="Previous" disabled>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-          </button>
-          <button class="slider-arrow" data-dir="next" aria-label="Next">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
+    <!-- TESTIMONIALS -->
+    <section class="section section--testimonials-home">
+      <div class="testimonials-slider">
+        <button
+          class="testimonials-arrow"
+          data-dir="prev"
+          aria-label="Previous"
+          disabled
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+        <div class="testimonials-track-wrap">
+          <div class="testimonials-track" id="testimonialsTrack">
+            {% if testimonials %} {% for t in testimonials %}
+            <div class="testimonial-item">
+              <div class="testimonial-photo">
+                <img
+                  src="{{ t.backgroundPhotoUrl }}"
+                  alt="{{ t.authorName }}"
+                  loading="lazy"
+                />
+              </div>
+              <div class="testimonial-content">
+                <p class="testimonial-quote">{{ t.quote }}</p>
+                <div class="testimonial-author">
+                  <img
+                    src="{{ t.avatarPhotoUrl }}"
+                    alt="{{ t.authorName }}"
+                    class="testimonial-avatar"
+                    loading="lazy"
+                  />
+                  <div>
+                    <div class="testimonial-name">{{ t.authorName }}</div>
+                    <div class="testimonial-role">{{ t.authorRole }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %} {% endif %}
+            <!-- Generado por JS -->
+          </div>
         </div>
+        <button class="testimonials-arrow" data-dir="next" aria-label="Next">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- SHAPES SLIDER -->
-<section class="shapes-slider section section--apart-home">
-  <div class="container apart-home-container">
-    <h2>{{ settings.homeApart.headline if settings and settings.homeApart and settings.homeApart.headline else 'What sets 27zero apart.' }}</h2>
-    <p class="text-body--sm">{{ settings.homeApart.description if settings and settings.homeApart and settings.homeApart.description else 'Our foundations connect insight, creativity, and efficient execution — helping EdTech brands turn purpose into lasting impact.' }}</p>
-    <a href="/services" class="btn btn-dark">Our services</a>
-  </div>
-
-  <div class="apart-slider">
-    <button class="apart-slider-arrow" data-dir="prev" aria-label="Previous">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="19" y1="12" x2="5" y2="12"></line>
-        <polyline points="12 19 5 12 12 5"></polyline>
-      </svg>
-    </button>
-    <div class="apart-shapes-wrap">
-      <div class="apart-shapes" id="apartShapes">
+      <div class="testimonials-dots" id="testimonialsDots">
         <!-- Generado por JS -->
       </div>
-      <button class="apart-shapes-nav-zone apart-shapes-nav-zone--prev" data-dir="prev" aria-label="Previous"></button>
-      <button class="apart-shapes-nav-zone apart-shapes-nav-zone--next" data-dir="next" aria-label="Next"></button>
-    </div>
-    <button class="apart-slider-arrow" data-dir="next" aria-label="Next">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
-      </svg>
-    </button>
-  </div>
+    </section>
 
-  <div class="container apart-home-scales">
-    <h3 id="apartScalesTitle">Execution that Scales</h3>
-    <p class="text-body--sm" id="apartScalesText">We deliver the complete capability of a full-service agency with the focus of a boutique partner — with regional expertise in North America and Europe, and agile production in Latin America.</p>
-  </div>
-</section>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-top">
+          <a href="/" class="footer-logo">
+            <img src="/assets/images/27zero-logo.svg" alt="27zero" />
+          </a>
 
-<!-- LOGOS -->
-<section class="section section--logos-home">
-  <div class="marquee">
-    <div class="marquee-track">
-      {% if clients %}
-        {% for c in clients %}
-      <img class="marquee-logo" src="{{ c.logoUrl }}" alt="{{ c.name }}" style="height:{{ c.logoHeight or 24 }}px;">
-        {% endfor %}
-      {% else %}
-      <img class="marquee-logo" src="/assets/logos/doctums.svg" alt="Doctums">
-      <img class="marquee-logo" src="/assets/logos/scholarship-magic.svg" alt="Scholarship Magic">
-      <img class="marquee-logo" src="/assets/logos/skillwell.svg" alt="Skillwell">
-      <img class="marquee-logo" src="/assets/logos/student-first.svg" alt="Student First">
-      <img class="marquee-logo" src="/assets/logos/world-learning.svg" alt="World Learning">
-      {% endif %}
-    </div>
-  </div>
-</section>
+          <nav class="footer-links">
+            <div class="footer-links-col">
+              <a href="/">Home</a>
+              <a href="/work">Work</a>
+              <a href="/services">Services</a>
+              <a href="/about">About</a>
+            </div>
+            <div class="footer-links-col">
+              <a href="/the-edtech-mentor">The EdTech Mentor</a>
+              <a href="/careers">Careers</a>
+              <a href="/contact">Let's Talk!</a>
+            </div>
+            <div class="footer-links-col">
+              <a
+                href="{{ settings.linkedinUrl if settings and settings.linkedinUrl else 'https://www.linkedin.com/company/27zero/' }}"
+                target="_blank"
+                rel="noopener"
+                >Linkedin</a
+              >
+            </div>
+          </nav>
+        </div>
 
-<!-- THE EDTECH MENTOR -->
-<section class="section section--mentor-home">
-  <div class="container mentor-home-container">
-    <div class="mentor-home-row">
-      <div class="mentor-home-text">
-        <h2>The EdTech Mentor <span class="inter-accent">pearls of wisdom.</span></h2>
-        <p class="text-body--sm">{{ settings.homeMentor.subtitle if settings and settings.homeMentor and settings.homeMentor.subtitle else 'Lorem ipsum is simply dummy text of the printing and typesetting industry.' }}</p>
-        <a href="/the-edtech-mentor" class="btn btn-white">The EdTech Mentor</a>
-      </div>
-      <div class="mentor-home-featured-wrap">
-        {% if mentors %}{% set fm = mentors[0] %}{% set fslug = fm.slug.current if fm.slug is mapping else fm.slug %}
-        <a href="/edtech-mentor-interviews/{{ fslug }}/" class="card card--featured">
-          <span class="card-featured-tag">{{ fm.category | default('Interview') }}</span>
-          <div class="card-featured-content">
-            <div class="card-featured-meta">
-              <div class="card-featured-avatar">{% if fm.guestPhotoUrl %}<img src="{{ fm.guestPhotoUrl }}" alt="{{ fm.guestName }}">{% else %}<span>{{ fm.guestName[:2]|upper }}</span>{% endif %}</div>
-              <div class="card-featured-meta-text">
-                <span class="card-featured-role">{{ fm.guestRole }}</span>
-                <span class="card-featured-name">{{ fm.guestName }}</span>
-              </div>
-            </div>
-            <div class="card-featured-footer">
-              <h3 class="card-featured-title">{{ fm.title }}</h3>
-              <div class="card-featured-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-            </div>
-          </div>
-        </a>
-        {% else %}
-        <a href="#" class="card card--featured">
-          <span class="card-featured-tag">Tag</span>
-          <div class="card-featured-content">
-            <div class="card-featured-meta">
-              <div class="card-featured-avatar"><span>JK</span></div>
-              <div class="card-featured-meta-text">
-                <span class="card-featured-role">Founder At Kelleher Consulting Group</span>
-                <span class="card-featured-name">Julie Kelleher</span>
-              </div>
-            </div>
-            <div class="card-featured-footer">
-              <h3 class="card-featured-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
-              <div class="card-featured-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-            </div>
-          </div>
-        </a>
-        {% endif %}
-      </div>
-    </div>
-  </div>
+        <div class="footer-divider"></div>
 
-  <div class="sliders-container">
-    <div class="slider-block">
-      <div class="slider-track-wrap">
-        <div class="slider-track">
-          {% if mentors %}
-            {% for interview in mentors %}
-            {% set slug = interview.slug.current if interview.slug is mapping else interview.slug %}
-          <a href="/edtech-mentor-interviews/{{ slug }}/" class="card card--edtech-mentor">
-            <div class="card-edtech-mentor-header">
-              <div class="card-edtech-mentor-avatar">{% if interview.guestPhotoUrl %}<img src="{{ interview.guestPhotoUrl }}" alt="{{ interview.guestName }}" loading="lazy">{% else %}<span>{{ interview.guestName[:2] | upper }}</span>{% endif %}</div>
-              <div class="card-edtech-mentor-meta">
-                <span class="card-edtech-mentor-role">{{ interview.guestRole }}</span>
-                <span class="card-edtech-mentor-name">{{ interview.guestName }}</span>
-              </div>
-            </div>
-            <div class="card-edtech-mentor-body">
-              <span class="card-edtech-mentor-tag">{{ interview.category | default('Interview') }}</span>
-              <div class="card-edtech-mentor-footer">
-                <h3 class="card-edtech-mentor-title">{{ interview.title }}</h3>
-                <div class="card-edtech-mentor-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-              </div>
-            </div>
-          </a>
-            {% endfor %}
-          {% else %}
-          <a href="#" class="card card--edtech-mentor">
-            <div class="card-edtech-mentor-header">
-              <div class="card-edtech-mentor-avatar"><span>JK</span></div>
-              <div class="card-edtech-mentor-meta">
-                <span class="card-edtech-mentor-role">Founder At Kelleher Consulting Group</span>
-                <span class="card-edtech-mentor-name">Julie Kelleher</span>
-              </div>
-            </div>
-            <div class="card-edtech-mentor-body">
-              <span class="card-edtech-mentor-tag">Tag</span>
-              <div class="card-edtech-mentor-footer">
-                <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
-                <div class="card-edtech-mentor-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--edtech-mentor">
-            <div class="card-edtech-mentor-header">
-              <div class="card-edtech-mentor-avatar"><span>JK</span></div>
-              <div class="card-edtech-mentor-meta">
-                <span class="card-edtech-mentor-role">Founder At Kelleher Consulting Group</span>
-                <span class="card-edtech-mentor-name">Julie Kelleher</span>
-              </div>
-            </div>
-            <div class="card-edtech-mentor-body">
-              <span class="card-edtech-mentor-tag">Tag</span>
-              <div class="card-edtech-mentor-footer">
-                <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
-                <div class="card-edtech-mentor-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--edtech-mentor">
-            <div class="card-edtech-mentor-header">
-              <div class="card-edtech-mentor-avatar"><span>JK</span></div>
-              <div class="card-edtech-mentor-meta">
-                <span class="card-edtech-mentor-role">Founder At Kelleher Consulting Group</span>
-                <span class="card-edtech-mentor-name">Julie Kelleher</span>
-              </div>
-            </div>
-            <div class="card-edtech-mentor-body">
-              <span class="card-edtech-mentor-tag">Tag</span>
-              <div class="card-edtech-mentor-footer">
-                <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
-                <div class="card-edtech-mentor-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--edtech-mentor">
-            <div class="card-edtech-mentor-header">
-              <div class="card-edtech-mentor-avatar"><span>JK</span></div>
-              <div class="card-edtech-mentor-meta">
-                <span class="card-edtech-mentor-role">Founder At Kelleher Consulting Group</span>
-                <span class="card-edtech-mentor-name">Julie Kelleher</span>
-              </div>
-            </div>
-            <div class="card-edtech-mentor-body">
-              <span class="card-edtech-mentor-tag">Tag</span>
-              <div class="card-edtech-mentor-footer">
-                <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
-                <div class="card-edtech-mentor-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--edtech-mentor">
-            <div class="card-edtech-mentor-header">
-              <div class="card-edtech-mentor-avatar"><span>JK</span></div>
-              <div class="card-edtech-mentor-meta">
-                <span class="card-edtech-mentor-role">Founder At Kelleher Consulting Group</span>
-                <span class="card-edtech-mentor-name">Julie Kelleher</span>
-              </div>
-            </div>
-            <div class="card-edtech-mentor-body">
-              <span class="card-edtech-mentor-tag">Tag</span>
-              <div class="card-edtech-mentor-footer">
-                <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
-                <div class="card-edtech-mentor-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-              </div>
-            </div>
-          </a>
-          <a href="#" class="card card--edtech-mentor">
-            <div class="card-edtech-mentor-header">
-              <div class="card-edtech-mentor-avatar"><span>JK</span></div>
-              <div class="card-edtech-mentor-meta">
-                <span class="card-edtech-mentor-role">Founder At Kelleher Consulting Group</span>
-                <span class="card-edtech-mentor-name">Julie Kelleher</span>
-              </div>
-            </div>
-            <div class="card-edtech-mentor-body">
-              <span class="card-edtech-mentor-tag">Tag</span>
-              <div class="card-edtech-mentor-footer">
-                <h3 class="card-edtech-mentor-title">A Market-First Mindset in EdTech: Julie Kelleher's Blueprint for Success</h3>
-                <div class="card-edtech-mentor-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
-              </div>
-            </div>
-          </a>
-          {% endif %}
+        <div class="footer-bottom">
+          <span class="footer-copy"
+            >{{ settings.footerCopyright.year if settings and
+            settings.footerCopyright and settings.footerCopyright.year else
+            '2026' }} 27zero. All rights reserved.</span
+          >
+          <a href="/privacy" class="footer-legal">Privacy Security Policy</a>
         </div>
       </div>
+    </footer>
 
-      <div class="slider-footer">
-        <div class="slider-nav">
-          <button class="slider-arrow" data-dir="prev" aria-label="Previous" disabled>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-          </button>
-          <button class="slider-arrow" data-dir="next" aria-label="Next">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section section--testimonials-home">
-  <div class="testimonials-slider">
-    <button class="testimonials-arrow" data-dir="prev" aria-label="Previous" disabled>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="19" y1="12" x2="5" y2="12"></line>
-        <polyline points="12 19 5 12 12 5"></polyline>
-      </svg>
-    </button>
-    <div class="testimonials-track-wrap">
-      <div class="testimonials-track" id="testimonialsTrack">
-        {% if testimonials %}
-          {% for t in testimonials %}
-        <div class="testimonial-item">
-          <div class="testimonial-photo">
-            <img src="{{ t.backgroundPhotoUrl }}" alt="{{ t.authorName }}" loading="lazy">
-          </div>
-          <div class="testimonial-content">
-            <p class="testimonial-quote">{{ t.quote }}</p>
-            <div class="testimonial-author">
-              <img src="{{ t.avatarPhotoUrl }}" alt="{{ t.authorName }}" class="testimonial-avatar" loading="lazy">
-              <div>
-                <div class="testimonial-name">{{ t.authorName }}</div>
-                <div class="testimonial-role">{{ t.authorRole }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-          {% endfor %}
-        {% endif %}
-        <!-- Generado por JS -->
-      </div>
-    </div>
-    <button class="testimonials-arrow" data-dir="next" aria-label="Next">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
-      </svg>
-    </button>
-  </div>
-
-  <div class="testimonials-dots" id="testimonialsDots">
-    <!-- Generado por JS -->
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-top">
-      <a href="/" class="footer-logo">
-        <img src="/assets/images/27zero-logo.svg" alt="27zero">
-      </a>
-
-      <nav class="footer-links">
-        <div class="footer-links-col">
-          <a href="/">Home</a>
-          <a href="/work">Work</a>
-          <a href="/services">Services</a>
-          <a href="/about">About</a>
-        </div>
-        <div class="footer-links-col">
-          <a href="/the-edtech-mentor">The EdTech Mentor</a>
-          <a href="/careers">Careers</a>
-          <a href="/contact">Let's Talk!</a>
-        </div>
-        <div class="footer-links-col">
-          <a href="{{ settings.linkedinUrl if settings and settings.linkedinUrl else 'https://www.linkedin.com/company/27zero/' }}" target="_blank" rel="noopener">Linkedin</a>
-        </div>
-      </nav>
-    </div>
-
-    <div class="footer-divider"></div>
-
-    <div class="footer-bottom">
-      <span class="footer-copy">{{ settings.footerCopyright.year if settings and settings.footerCopyright and settings.footerCopyright.year else '2026' }} 27zero. All rights reserved.</span>
-      <a href="/privacy" class="footer-legal">Privacy Security Policy</a>
-    </div>
-  </div>
-</footer>
-
-<script src="/components/navbar/navbar.js"></script>
-<script src="/components/cards-slider/cards-slider.js"></script>
-<script src="/components/marquee-logos/marquee-logos.js"></script>
-<script src="/components/shapes-slider/shapes-slider.js"></script>
-<script src="/home/script.js"></script>
-</body>
+    <script src="/components/navbar/navbar.js"></script>
+    <script src="/components/cards-slider/cards-slider.js"></script>
+    <script src="/components/marquee-logos/marquee-logos.js"></script>
+    <script src="/components/shapes-slider/shapes-slider.js"></script>
+    <script src="/home/script.js"></script>
+  </body>
 </html>
