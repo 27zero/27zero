@@ -81,7 +81,9 @@
           <a href="{{ nav_prefix }}{{ item.href }}" class="nav-dropdown-link">{{ item.label }}</a>
             {% endfor %}
           {% else %}
-          <a href="{{ nav_prefix }}/work" class="nav-dropdown-link">All projects</a>
+          <a href="{{ nav_prefix }}/work?view=projects" class="nav-dropdown-link">by projects</a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="{{ nav_prefix }}/work?view=clients" class="nav-dropdown-link">by clients</a>
           {% endif %}
         </div>
       </div>
@@ -188,7 +190,8 @@
           <a href="{{ nav_prefix }}{{ item.href }}" class="nav-mobile-sublink">{{ item.label }}</a>
             {% endfor %}
           {% else %}
-          <a href="{{ nav_prefix }}/work" class="nav-mobile-sublink">All projects</a>
+          <a href="{{ nav_prefix }}/work?view=projects" class="nav-mobile-sublink">by projects</a>
+            <a href="{{ nav_prefix }}/work?view=clients" class="nav-mobile-sublink">by clients</a>
           {% endif %}
         </div>
       </div>
