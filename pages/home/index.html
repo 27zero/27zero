@@ -59,7 +59,7 @@
       <a href="/about">About</a>
 
       {% if i18n is defined and i18n.lang_switcher is defined %}
-      <div class="lang-switcher" role="navigation" aria-label="Select language">
+      <div class="lang-switcher" role="navigation" aria-label="Select language" style="display:none">
         <button class="lang-switcher-btn" aria-haspopup="true" aria-expanded="false"
                 aria-controls="lang-dropdown">
           <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -156,7 +156,7 @@
     <a href="/about" class="nav-mobile-link">About</a>
 
     {% if i18n is defined and i18n.lang_switcher is defined %}
-    <div class="lang-mobile-section" aria-label="Select language">
+    <div class="lang-mobile-section" aria-label="Select language" style="display:none">
       <span class="lang-mobile-label">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              aria-hidden="true" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">

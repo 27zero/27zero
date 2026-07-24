@@ -56,8 +56,8 @@
 <a href="#main-content" class="sr-only" style="position:absolute;left:-9999px">Skip to content</a>
 
 {# ── NAVIGATION ──────────────────────────────────────────────────────────── #}
-{# Santiago design: header.nav.nav--white + div.nav-container + dropdown Work  #}
-{# i18n variables: nav_prefix, i18n.nav.*, lang switcher — all preserved below #}
+{# Santiago design navbar — identical to home/index.html navbar #}
+{# nav_variant block: pages override to nav--hero (dark bg) or nav--white (light bg) #}
 <header class="nav {% block nav_variant %}nav--white{% endblock %}" id="site-header" role="banner">
   <div class="nav-container">
 
@@ -67,7 +67,6 @@
 
     <nav class="nav-links" aria-label="Primary navigation">
 
-      {# Work — dropdown on desktop #}
       <div class="nav-dropdown">
         <button class="nav-dropdown-toggle" aria-expanded="false">
           {{ i18n.nav.work if i18n is defined and i18n.nav is defined else "Work" }}
@@ -87,8 +86,7 @@
         </div>
       </div>
 
-      <a href="{{ nav_prefix }}/edtech-marketing-agency"
-         {% if nav_current == 'marketing' %}aria-current="page"{% endif %}>
+      <a href="{{ nav_prefix }}/edtech-marketing-agency">
         {{ i18n.nav.marketing if i18n is defined and i18n.nav is defined else "Edtech Marketing" }}
       </a>
       <a href="{{ nav_prefix }}/edtech-mentor-interviews">
@@ -101,9 +99,8 @@
         {{ i18n.nav.about if i18n is defined and i18n.nav is defined else "About" }}
       </a>
 
-      {# ── Language switcher — desktop ─────────────────────────────────── #}
       {% if i18n is defined and i18n.lang_switcher is defined %}
-      <div class="lang-switcher" role="navigation" aria-label="Select language">
+      <div class="lang-switcher" role="navigation" aria-label="Select language" style="display:none">
         <button class="lang-switcher-btn" aria-haspopup="true" aria-expanded="false"
                 aria-controls="lang-dropdown">
           <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -156,9 +153,6 @@
   </div>
 </header>
 
-{# ── MOBILE MENU — Santiago fullscreen modal ─────────────────────────────── #}
-{# Completely independent of .nav scroll state — always white background.     #}
-{# Preserves: all i18n nav links, language switcher, aria attributes.         #}
 <div class="nav-mobile-menu" id="navMobileMenu"
      role="dialog" aria-modal="true" aria-label="Navigation menu">
 
@@ -179,7 +173,6 @@
   </div>
 
   <nav class="nav-mobile-links" aria-label="Mobile navigation">
-    {# Work — accordion on mobile #}
     <div class="nav-mobile-group">
       <button class="nav-mobile-group-toggle" aria-expanded="false">
         {{ i18n.nav.work if i18n is defined and i18n.nav is defined else "Work" }}
@@ -214,9 +207,8 @@
       {{ i18n.nav.about if i18n is defined and i18n.nav is defined else "About" }}
     </a>
 
-    {# ── Language switcher — mobile ───────────────────────────────────── #}
     {% if i18n is defined and i18n.lang_switcher is defined %}
-    <div class="lang-mobile-section" aria-label="Select language">
+    <div class="lang-mobile-section" aria-label="Select language" style="display:none">
       <span class="lang-mobile-label">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              aria-hidden="true" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">
