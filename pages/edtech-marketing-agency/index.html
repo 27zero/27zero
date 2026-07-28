@@ -15,8 +15,8 @@
   <div class="hero-marketing-bg"><span>[HERO BACKGROUND IMAGE]</span></div>
   <div class="container hero-marketing-container">
     <div class="hero-marketing-text">
-      <h1>The first and only agency built for EdTech.</h1>
-      <p class="text-body">Three practices. One goal: helping EdTech brands turn purpose into lasting impact.</p>
+      <h1>{{ settings.agencyHero.headline if settings and settings.agencyHero and settings.agencyHero.headline else 'The first and only agency built for EdTech.' }}</h1>
+      <p class="text-body">{{ settings.agencyHero.text if settings and settings.agencyHero and settings.agencyHero.text else 'Three practices. One goal: helping EdTech brands turn purpose into lasting impact.' }}</p>
     </div>
     <div class="hero-home-cta">
       <a href="/contact" class="btn btn-white">Book a strategy session</a>
@@ -28,8 +28,8 @@
 <!-- SHAPES SLIDER -->
 <section class="shapes-slider section section--apart-home">
   <div class="container apart-home-container">
-    <h2>What sets 27zero apart.</h2>
-    <p class="text-body--sm">Our foundations connect insight, creativity, and efficient execution — helping EdTech brands turn purpose into lasting impact.</p>
+    <h2>{{ settings.homeApart.headline if settings and settings.homeApart and settings.homeApart.headline else 'What sets 27zero apart.' }}</h2>
+    <p class="text-body--sm">{{ settings.homeApart.description if settings and settings.homeApart and settings.homeApart.description else 'Our foundations connect insight, creativity, and efficient execution — helping EdTech brands turn purpose into lasting impact.' }}</p>
     <a href="/edtech-marketing-agency" class="btn btn-dark">Our services</a>
   </div>
 
@@ -65,8 +65,8 @@
 <section class="section section--practices">
   <div class="container practices-container">
     <div class="practices-intro">
-      <h2>Three practices. One goal.</h2>
-      <p class="text-body--sm">Elevating real voices, layering audiences with precision, and building brand equity that compounds — together, the engine behind every client's go-to-market success.</p>
+      <h2>{{ settings.agencyPracticesSection.headline if settings and settings.agencyPracticesSection and settings.agencyPracticesSection.headline else 'Three practices. One goal.' }}</h2>
+      <p class="text-body--sm">{{ settings.agencyPracticesSection.text if settings and settings.agencyPracticesSection and settings.agencyPracticesSection.text else 'Elevating real voices, layering audiences with precision, and building brand equity that compounds — together, the engine behind every client\'s go-to-market success.' }}</p>
     </div>
 
     <div class="practices-grid">
@@ -767,7 +767,7 @@
 <!-- CLOSING CTA -->
 <section class="section section--closing-cta">
   <div class="container closing-cta-container">
-    <h2>Let's partner to articulate and unpack meaningful results.</h2>
+    <h2>{{ settings.agencyClosingCta.headline if settings and settings.agencyClosingCta and settings.agencyClosingCta.headline else "Let's partner to articulate and unpack meaningful results." }}</h2>
     <a href="/contact" class="btn btn-dark">Book a strategy session</a>
   </div>
 </section>

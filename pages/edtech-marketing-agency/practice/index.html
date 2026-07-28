@@ -14,8 +14,9 @@
   <div class="hero-marketing-bg"><span>[HERO BACKGROUND IMAGE]</span></div>
   <div class="container hero-marketing-container">
     <div class="hero-marketing-text">
-      <h1>Turning communities into growth engines.</h1>
-      <p class="text-body">Elevating the voices of users, educators, students, and partners creates authenticity and relevance. Peer-driven storytelling strengthens credibility and drives long-term growth because people trust those who share their experiences.</p>
+      {%- set p0 = practices[0] if practices else none -%}
+      <h1>{{ p0.heroHeadline if p0 and p0.heroHeadline else 'Turning communities into growth engines.' }}</h1>
+      <p class="text-body">{{ p0.heroText if p0 and p0.heroText else 'Elevating the voices of users, educators, students, and partners creates authenticity and relevance. Peer-driven storytelling strengthens credibility and drives long-term growth because people trust those who share their experiences.' }}</p>
     </div>
     <div class="hero-home-cta">
       <a href="/contact" class="btn btn-white">Book a strategy session</a>
@@ -27,10 +28,16 @@
 <section class="section section--credibility">
   <div class="container credibility-container">
     <div class="credibility-intro">
-      <h2>We do not just observe the EdTech market, we help shape it.</h2>
-      <p class="text-body--sm">Through The EdTech Mentor, our in-house customer marketing initiative, we engage more than 6,500 subscribers and over 80 practitioners across our Essentials, Founders, and Investor series. This active community, combined with our research capabilities, keeps us close to emerging trends, audience behaviors, and product innovations — fueling every strategy with actionable insight.</p>
+      <h2>{{ p0.credibilityHeadline if p0 and p0.credibilityHeadline else 'We do not just observe the EdTech market, we help shape it.' }}</h2>
+      <p class="text-body--sm">{{ p0.credibilityText if p0 and p0.credibilityText else 'Through The EdTech Mentor, our in-house customer marketing initiative, we engage more than 6,500 subscribers and over 80 practitioners across our Essentials, Founders, and Investor series. This active community, combined with our research capabilities, keeps us close to emerging trends, audience behaviors, and product innovations — fueling every strategy with actionable insight.' }}</p>
     </div>
     <div class="credibility-list">
+      {% if p0 and p0.credibilityItems %}
+        {% for item in p0.credibilityItems %}
+      <span class="credibility-item">{{ item }}</span>
+          {% if not loop.last %}<span class="credibility-dot"></span>{% endif %}
+        {% endfor %}
+      {% else %}
       <span class="credibility-item">Case study production</span>
       <span class="credibility-dot"></span>
       <span class="credibility-item">Customer Spotlights video series</span>
@@ -42,6 +49,7 @@
       <span class="credibility-item">The EdTech Mentor initiative</span>
       <span class="credibility-dot"></span>
       <span class="credibility-item">Interview series — Essentials, Founders, Investor</span>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -51,6 +59,20 @@
   <div class="container brand-logos-container">
     <h2>Brands we've turned into growth engines.</h2>
     <div class="brand-logos-grid">
+      {% if clients %}
+        {% for c in clients %}
+      <div class="brand-logos-item">
+        {% if c.logoUrl %}
+        <img src="{{ c.logoUrl }}" alt="{{ c.name }}" class="brand-logos-logo" style="height:{{ c.logoHeight or 32 }}px;">
+        {% else %}
+        <span class="brand-logos-name">{{ c.name }}</span>
+        {% endif %}
+        {% if c.description %}
+        <p class="text-body--sm">{{ c.description }}</p>
+        {% endif %}
+      </div>
+        {% endfor %}
+      {% else %}
       <div class="brand-logos-item">
         <img src="/assets/placeholder.png" alt="Brand logo" class="brand-logos-logo">
         <p class="text-body--sm">Language learning platform. We produced a series of filmed customer spotlights with world-renowned brands across Europe, turning Busuu's best customers into its most effective advocates.</p>
@@ -67,6 +89,7 @@
         <img src="/assets/placeholder.png" alt="Brand logo" class="brand-logos-logo">
         <p class="text-body--sm">The fastest-growing LMS in US higher education. We apply deep sector knowledge of both the higher-ed and K-12 buyer landscape to support Instructure's marketing in a highly competitive market.</p>
       </div>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -207,7 +230,7 @@
 <!-- CLOSING CTA -->
 <section class="section section--closing-cta">
   <div class="container closing-cta-container">
-    <h2>Turn your customers into your growth engine.</h2>
+    <h2>{{ p0.closingCtaHeadline if p0 and p0.closingCtaHeadline else 'Turn your customers into your growth engine.' }}</h2>
     <a href="/contact" class="btn btn-dark">Book a strategy session</a>
   </div>
 </section>

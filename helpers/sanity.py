@@ -280,6 +280,9 @@ def get_settings() -> dict[str, Any]:
 
         contactHero,
         contactEmail,
+        agencyHero,
+        agencyPracticesSection,
+        agencyClosingCta,
         officeUSNew,
         officeUS,
         officeCONew,
