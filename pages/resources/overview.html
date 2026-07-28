@@ -64,8 +64,8 @@
 <section class="section section--resources-hero">
   <div class="container">
     <div class="hero-resources-header">
-      <h1><span>EdTech</span><span>Resources</span></h1>
-      <p class="text-body">Resources built from real campaigns, real strategies, and real results.</p>
+      <h1>{{ settings.resourcesHero.headline if settings and settings.resourcesHero and settings.resourcesHero.headline else "EdTech Resources" }}</h1>
+      <p class="text-body">{{ settings.resourcesHero.subtitle if settings and settings.resourcesHero and settings.resourcesHero.subtitle else "Resources built from real campaigns, real strategies, and real results." }}</p>
     </div>
 
     {% if all_resources %}

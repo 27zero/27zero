@@ -36,8 +36,8 @@
 <section class="section section--team">
   <div class="container team-container">
     <div class="team-intro">
-      <h2>The people behind the work.</h2>
-      <p class="text-body">Our mission is to help drive global education transformation. With extensive hands-on experience, we understand the industry's evolving needs and enable EdTech companies to thrive.</p>
+      <h2>{{ settings.aboutTeam.headline if settings and settings.aboutTeam and settings.aboutTeam.headline else 'The people behind the work.' }}</h2>
+      <p class="text-body">{{ settings.aboutTeam.text if settings and settings.aboutTeam and settings.aboutTeam.text else "Our mission is to help drive global education transformation. With extensive hands-on experience, we understand the industry's evolving needs and enable EdTech companies to thrive." }}</p>
     </div>
     <div class="team-grid">
       {% if team %}

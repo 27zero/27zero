@@ -163,6 +163,18 @@ class SectionBuilder:
     # Public entry point
     # =========================================================================
 
+    def __init__(self, settings: dict | None = None):
+        """
+        Initialise the builder with optional global settings.
+
+        ``settings`` is the Sanity singleton fetched by get_settings().
+        It is passed through _shared_context() so every template rendered
+        by this builder receives the full settings dict — matching exactly
+        what build_pages() provides to static page templates.
+        """
+        self._settings = settings or {}
+
+
     def build(
         self,
         env: Environment,
@@ -576,6 +588,7 @@ class SectionBuilder:
             "neutral_path":   neutral_path,
             "current_path":   f"/{localized_url}/" if localized_url else "/",
             "hreflang_links": seo["hreflang_links"],
+            "settings":       self._settings,
         }
 
     def _build_index(

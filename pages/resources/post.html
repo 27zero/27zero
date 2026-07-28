@@ -145,7 +145,7 @@
           <a href="/contact">Let's Talk!</a>
         </div>
         <div class="footer-links-col">
-          <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener">Linkedin</a>
+          <a href="{{ settings.linkedinUrl if settings and settings.linkedinUrl else 'https://www.linkedin.com/company/27zero/' }}" target="_blank" rel="noopener">Linkedin</a>
         </div>
       </nav>
     </div>
@@ -153,7 +153,7 @@
     <div class="footer-divider"></div>
 
     <div class="footer-bottom">
-      <span class="footer-copy">2026 27zero. All rights reserved.</span>
+      <span class="footer-copy">{{ settings.footerCopyright.year if settings and settings.footerCopyright and settings.footerCopyright.year else '2026' }} 27zero. All rights reserved.</span>
       <a href="/privacy" class="footer-legal">Privacy Security Policy</a>
     </div>
   </div>

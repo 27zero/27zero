@@ -137,17 +137,17 @@ def build() -> None:
     # SectionBuilder.  They continue to work unchanged.  They will migrate
     # to SectionBuilder when their templates are redesigned.
     logger.info("\nBuilding CMS content pages...")
-    n_posts      = build_posts(env, posts)
-    n_resources  = build_resources(env, resources)
+    n_posts      = build_posts(env, posts, settings=settings)
+    n_resources  = build_resources(env, resources, settings=settings)
     n_interviews = build_interviews(env, interviews)
 
     # ── Step 6: SectionBuilder sections ──────────────────────────────────
     logger.info("\nBuilding Work section...")
-    work_builder = WorkBuilder()
+    work_builder = WorkBuilder(settings=settings)
     n_work = work_builder.build(env, work)
 
     logger.info("\nBuilding EdTech Mentor section...")
-    mentor_builder = MentorBuilder()
+    mentor_builder = MentorBuilder(settings=settings)
     n_mentor = mentor_builder.build(env, mentors)
 
     # section_builders is the list of (builder_instance, items) pairs that

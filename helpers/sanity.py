@@ -248,7 +248,11 @@ def get_settings() -> dict[str, Any]:
             video,
             "posterUrl": poster.asset->url
         },
-        homeWork,
+        homeWork {
+            headline,
+            subtitle,
+            showreelUrl
+        },
         homeMentor,
         homeApart,
         homeNewsletter,
@@ -264,6 +268,8 @@ def get_settings() -> dict[str, Any]:
             text,
             "imageUrl": image.asset->url
         },
+
+        aboutTeam,
 
         workHero,
 

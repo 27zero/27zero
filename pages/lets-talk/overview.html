@@ -18,7 +18,7 @@
     <!-- Bloque de formulario -->
     <div class="main-contact-form-block">
       <div class="contact-form-header">
-        <h2>How can we help your EdTech brand thrive?</h2>
+        <h2>{{ settings.contactHero.headline if settings and settings.contactHero and settings.contactHero.headline else 'How can we help your EdTech brand thrive?' }}</h2>
         <p class="text-body">We respond to every inquiry within one business day.</p>
       </div>
 

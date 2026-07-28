@@ -31,6 +31,7 @@ logger = logging.getLogger(__name__)
 def build_posts(
     env: Environment,
     posts: list[dict[str, Any]],
+    settings: dict[str, Any] | None = None,
 ) -> int:
     """
     Generate one page per post document.
@@ -80,7 +81,7 @@ def build_posts(
         )
 
         try:
-            html = template.render(post=post, body_html=body_html, seo=seo)
+            html = template.render(post=post, body_html=body_html, seo=seo, settings=settings or {})
         except Exception as exc:
             logger.error("Error rendering post %r: %s", slug, exc)
             continue
@@ -103,6 +104,7 @@ def build_posts(
 def build_resources(
     env: Environment,
     resources: list[dict[str, Any]],
+    settings: dict[str, Any] | None = None,
 ) -> int:
     """
     Generate one page per resource document.
@@ -160,7 +162,7 @@ def build_resources(
         )
 
         try:
-            html = template.render(post=post_ctx, body_html=body_html, seo=seo)
+            html = template.render(post=post_ctx, body_html=body_html, seo=seo, settings=settings or {})
         except Exception as exc:
             logger.error("Error rendering resource %r: %s", slug, exc)
             continue
