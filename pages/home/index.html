@@ -211,8 +211,7 @@
               <span class="inter-accent">for growth and impact.</span>
             </h2>
             <p class="text-body--sm">
-              Lorem ipsum is simply dummy text of the printing and typesetting
-              industry.
+              {{ settings.homeWork.subtitle if settings and settings.homeWork and settings.homeWork.subtitle else 'First-hand expertise, innovative conceptual thinking &amp; design, client-first approach.' }}
             </p>
             <a href="/work" class="btn btn-dark">See all work</a>
           </div>
@@ -225,7 +224,7 @@
       <div class="sliders-container">
         <div class="slider-block">
           <div class="slider-header">
-            <h2 class="slider-title">Los mejores</h2>
+            <h2 class="slider-title">{{ settings.homeWork.headline if settings and settings.homeWork and settings.homeWork.headline else "Featured Work" }}</h2>
           </div>
 
           <div class="slider-track-wrap">
@@ -649,12 +648,12 @@
       <div class="marquee">
         <div class="marquee-track">
           {% if clients %} {% for c in clients %}
-          <!-- <img
+          <img
             class="marquee-logo"
             src="{{ c.logoUrl }}"
             alt="{{ c.name }}"
             style="height:{{ c.logoHeight or 24 }}px;"
-          /> -->
+          />
           {% endfor %} {% else %}
           <img
             class="marquee-logo"
