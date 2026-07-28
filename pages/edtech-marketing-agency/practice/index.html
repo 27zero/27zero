@@ -14,9 +14,9 @@
   <div class="hero-marketing-bg"><span>[HERO BACKGROUND IMAGE]</span></div>
   <div class="container hero-marketing-container">
     <div class="hero-marketing-text">
-      {%- set p0 = practices[0] if practices else none -%}
-      <h1>{{ p0.heroHeadline if p0 and p0.heroHeadline else 'Turning communities into growth engines.' }}</h1>
-      <p class="text-body">{{ p0.heroText if p0 and p0.heroText else 'Elevating the voices of users, educators, students, and partners creates authenticity and relevance. Peer-driven storytelling strengthens credibility and drives long-term growth because people trust those who share their experiences.' }}</p>
+      {%- set p = practice if practice is defined and practice else (practices[0] if practices else none) -%}
+      <h1>{{ p.heroHeadline if p and p.heroHeadline else 'Turning communities into growth engines.' }}</h1>
+      <p class="text-body">{{ p.heroText if p and p.heroText else 'Elevating the voices of users, educators, students, and partners creates authenticity and relevance. Peer-driven storytelling strengthens credibility and drives long-term growth because people trust those who share their experiences.' }}</p>
     </div>
     <div class="hero-home-cta">
       <a href="/contact" class="btn btn-white">Book a strategy session</a>
@@ -28,12 +28,12 @@
 <section class="section section--credibility">
   <div class="container credibility-container">
     <div class="credibility-intro">
-      <h2>{{ p0.credibilityHeadline if p0 and p0.credibilityHeadline else 'We do not just observe the EdTech market, we help shape it.' }}</h2>
-      <p class="text-body--sm">{{ p0.credibilityText if p0 and p0.credibilityText else 'Through The EdTech Mentor, our in-house customer marketing initiative, we engage more than 6,500 subscribers and over 80 practitioners across our Essentials, Founders, and Investor series. This active community, combined with our research capabilities, keeps us close to emerging trends, audience behaviors, and product innovations — fueling every strategy with actionable insight.' }}</p>
+      <h2>{{ p.credibilityHeadline if p and p.credibilityHeadline else 'We do not just observe the EdTech market, we help shape it.' }}</h2>
+      <p class="text-body--sm">{{ p.credibilityText if p and p.credibilityText else 'Through The EdTech Mentor, our in-house customer marketing initiative, we engage more than 6,500 subscribers and over 80 practitioners across our Essentials, Founders, and Investor series. This active community, combined with our research capabilities, keeps us close to emerging trends, audience behaviors, and product innovations — fueling every strategy with actionable insight.' }}</p>
     </div>
     <div class="credibility-list">
-      {% if p0 and p0.credibilityItems %}
-        {% for item in p0.credibilityItems %}
+      {% if p and p.credibilityItems %}
+        {% for item in p.credibilityItems %}
       <span class="credibility-item">{{ item }}</span>
           {% if not loop.last %}<span class="credibility-dot"></span>{% endif %}
         {% endfor %}
@@ -230,7 +230,7 @@
 <!-- CLOSING CTA -->
 <section class="section section--closing-cta">
   <div class="container closing-cta-container">
-    <h2>{{ p0.closingCtaHeadline if p0 and p0.closingCtaHeadline else 'Turn your customers into your growth engine.' }}</h2>
+    <h2>{{ p.closingCtaHeadline if p and p.closingCtaHeadline else 'Turn your customers into your growth engine.' }}</h2>
     <a href="/contact" class="btn btn-dark">Book a strategy session</a>
   </div>
 </section>

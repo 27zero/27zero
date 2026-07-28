@@ -57,12 +57,13 @@ from helpers.sanity import (
     get_team,
 )
 
-from builders.pages   import build_pages
-from builders.posts   import build_posts, build_resources, build_interviews
-from builders.work    import WorkBuilder
-from builders.mentor  import MentorBuilder
-from builders.sitemap import build_sitemap
-from builders.rss     import build_rss
+from builders.pages    import build_pages
+from builders.posts    import build_posts, build_resources, build_interviews
+from builders.work     import WorkBuilder
+from builders.mentor   import MentorBuilder
+from builders.practice import PracticeBuilder
+from builders.sitemap  import build_sitemap
+from builders.rss      import build_rss
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -153,9 +154,14 @@ def build() -> None:
     # section_builders is the list of (builder_instance, items) pairs that
     # the sitemap uses to collect URLs.  Add new sections here as they are
     # built — that is the only change required to the sitemap.
+    logger.info("\nBuilding Practice detail pages...")
+    practice_builder = PracticeBuilder(settings=settings)
+    n_practices = practice_builder.build(env, practices)
+
     section_builders = [
-        (work_builder,   work),
-        (mentor_builder, mentors),
+        (work_builder,     work),
+        (mentor_builder,   mentors),
+        (practice_builder, practices),
     ]
 
     # ── Step 7: Sitemap ───────────────────────────────────────────────────
@@ -202,12 +208,12 @@ def build() -> None:
             shutil.copy2(_src, _dst)
 
     # ── Summary ───────────────────────────────────────────────────────────
-    total_dynamic = n_posts + n_resources + n_interviews + n_work + n_mentor
+    total_dynamic = n_posts + n_resources + n_interviews + n_work + n_mentor + n_practices
     logger.info(
         "\nDone — %d static + %d CMS pages "
-        "(%d posts, %d resources, %d interviews, %d work, %d mentor)",
+        "(%d posts, %d resources, %d interviews, %d work, %d mentor, %d practices)",
         n_pages, total_dynamic,
-        n_posts, n_resources, n_interviews, n_work, n_mentor,
+        n_posts, n_resources, n_interviews, n_work, n_mentor, n_practices,
     )
 
 

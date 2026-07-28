@@ -56,7 +56,9 @@
 
 {% set all_resources = (posts or []) + (resources or []) %}
 {% if all_resources %}
-{% set featured = all_resources[0] %}
+{# Use the item with featured=true if it exists, otherwise the newest (first, already ordered desc) #}
+{% set featured = (all_resources | selectattr('featured', 'equalto', true) | list | first)
+                  or all_resources | first %}
 {% set featured_slug = featured.slug.current if featured.slug is mapping else featured.slug %}
 {% endif %}
 

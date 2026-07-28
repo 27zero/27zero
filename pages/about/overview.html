@@ -212,7 +212,7 @@
         <a href="/the-edtech-mentor" class="btn btn-white">The EdTech Mentor</a>
       </div>
       <div class="mentor-home-featured-wrap">
-        {% if mentors %}{% set fm = mentors[0] %}{% set fslug = fm.slug.current if fm.slug is mapping else fm.slug %}
+        {% if mentors %}{% set fm = (mentors | selectattr('featured', 'equalto', true) | list | first) or mentors | first %}{% set fslug = fm.slug.current if fm.slug is mapping else fm.slug %}
         <a href="/edtech-mentor-interviews/{{ fslug }}/" class="card card--featured">
           <span class="card-featured-tag">{{ fm.category | default("Interview") }}</span>
           <div class="card-featured-content">
