@@ -50,6 +50,11 @@ from helpers.sanity import (
     get_interviews,
     get_work_projects,
     get_mentor_interviews,
+    get_settings,
+    get_testimonials,
+    get_clients,
+    get_practices,
+    get_team,
 )
 
 from builders.pages   import build_pages
@@ -84,10 +89,19 @@ def build() -> None:
     interviews = get_interviews()
     work       = get_work_projects()
     mentors    = get_mentor_interviews()
+    settings     = get_settings()
+    testimonials = get_testimonials()
+    clients      = get_clients()
+    practices    = get_practices()
+    team         = get_team()
 
     logger.info(
         "Loaded: %d posts, %d resources, %d interviews, %d work projects, %d mentor interviews",
         len(posts), len(resources), len(interviews), len(work), len(mentors),
+    )
+    logger.info(
+        "Loaded: %d testimonials, %d clients, %d practices, %d team members",
+        len(testimonials), len(clients), len(practices), len(team),
     )
 
     # ── Step 2: Clear and recreate dist/ ────────────────────────────────
@@ -105,7 +119,18 @@ def build() -> None:
 
     # ── Step 4: Static pages ─────────────────────────────────────────────
     logger.info("\nBuilding static pages...")
-    n_pages = build_pages(env, posts=posts, resources=resources, work=work)
+    n_pages = build_pages(
+        env,
+        posts=posts,
+        resources=resources,
+        work=work,
+        mentors=mentors,
+        settings=settings,
+        testimonials=testimonials,
+        clients=clients,
+        practices=practices,
+        team=team,
+    )
 
     # ── Step 5: Legacy CMS builders ──────────────────────────────────────
     # Posts, resources, and interviews use builders/posts.py, which predates

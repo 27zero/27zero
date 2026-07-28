@@ -43,6 +43,8 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="stylesheet" href="/components/navbar/navbar.css">
 <link rel="stylesheet" href="/components/footer/footer.css">
+<link rel="stylesheet" href="/assets/css/edtech-marketing-practice-style.css">
+<link rel="stylesheet" href="/components/dropdown/dropdown.css">
 <link rel="stylesheet" href="/components/service-card/service-card.css"></head>
 <body>
 <a href="#main-content" class="sr-only" style="position:absolute;left:-9999px">Skip to content</a>
@@ -65,12 +67,13 @@
           </svg>
         </button>
         <div class="nav-dropdown-content">
-          <a href="/eu/work" class="nav-dropdown-link">All projects</a>
+          <a href="/eu/work?view=projects" class="nav-dropdown-link">by projects</a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="/eu/work?view=clients" class="nav-dropdown-link">by clients</a>
         </div>
       </div>
 
-      <a href="/eu/edtech-marketing-agency"
->
+      <a href="/eu/edtech-marketing-agency">
         Edtech Marketing
       </a>
       <a href="/eu/edtech-mentor-interviews">
@@ -83,7 +86,7 @@
         About
       </a>
 
-      <div class="lang-switcher" role="navigation" aria-label="Select language">
+      <div class="lang-switcher" role="navigation" aria-label="Select language" style="display:none">
         <button class="lang-switcher-btn" aria-haspopup="true" aria-expanded="false"
                 aria-controls="lang-dropdown">
           <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -172,7 +175,8 @@ aria-current="true">
       </button>
       <div class="nav-mobile-group-content">
         <div class="nav-mobile-group-inner">
-          <a href="/eu/work" class="nav-mobile-sublink">All projects</a>
+          <a href="/eu/work?view=projects" class="nav-mobile-sublink">by projects</a>
+            <a href="/eu/work?view=clients" class="nav-mobile-sublink">by clients</a>
         </div>
       </div>
     </div>
@@ -190,7 +194,7 @@ aria-current="true">
       About
     </a>
 
-    <div class="lang-mobile-section" aria-label="Select language">
+    <div class="lang-mobile-section" aria-label="Select language" style="display:none">
       <span class="lang-mobile-label">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              aria-hidden="true" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">

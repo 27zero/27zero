@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Getting your best customers to share their stories. Busuu - Customer Spotlights — Work — 27zero</title>
+<title>Busuu — Customer Spotlights — Work — 27zero</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/work-cms.css">
 <link rel="stylesheet" href="/components/navbar/navbar.css">
 <link rel="stylesheet" href="/components/footer/footer.css">
-</head>
 <body>
 
 <!-- NAVBAR -->
@@ -20,8 +19,20 @@
       <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg" alt="27zero">
     </a>
     <nav class="nav-links">
-      <a href="/work">Work</a>
-      <a href="/edtech-marketing">Edtech Marketing</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-toggle" aria-expanded="false">
+          Work
+          <svg class="nav-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="nav-dropdown-content">
+          <a href="/work?view=projects" class="nav-dropdown-link">by projects</a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="/work?view=clients" class="nav-dropdown-link">by clients</a>
+        </div>
+      </div>
+      <a href="edtech-marketing-agency">Edtech Marketing</a>
       <a href="/the-edtech-mentor">The EdTech Mentor</a>
       <a href="/resources">Resources</a>
       <a href="/about">About</a>
@@ -50,9 +61,9 @@
   <!-- 1. HERO -->
   <section class="section section--hero">
     <div class="container">
-      <h1>Getting your best customers to share their stories. Busuu - Customer Spotlights</h1>
+      <h1>Busuu — Customer Spotlights</h1>
       <div class="placeholder placeholder--hero">
-        <img src="https://cdn.sanity.io/images/qjn4zzjc/production/27e87acac223d1652c1d383ef7640c3d56ceb5a3-2944x1648.png?w=1600&auto=format" alt="Getting your best customers to share their stories. Busuu - Customer Spotlights" loading="lazy">
+        <img src="https://cdn.sanity.io/images/u9sntfl9/production/967a94813be0fb23cbb876a81df1c61996be70f5-524x556.png?w=1600&auto=format" alt="Busuu — Customer Spotlights" loading="lazy">
       </div>
     </div>
   </section>
@@ -65,10 +76,10 @@
         <div class="client-meta">
           <div class="client-logo-wrap">
             <div class="placeholder placeholder--logo">
-              <img src="https://cdn.sanity.io/images/qjn4zzjc/production/86b3ca817d9d2c3180fb00aa55e0f690c7d5590d-674x280.svg?w=200&auto=format" alt="busuu" loading="lazy">
+              <span>[Logo]</span>
             </div>
             <div class="client-name-wrap">
-              <span class="client-name">busuu</span>
+              <span class="client-name">Busuu</span>
               <span class="client-tagline"></span>
             </div>
           </div>
@@ -86,7 +97,7 @@
               <span class="detail-label">Location</span>
               <p>[City, Country]</p>
               <span class="detail-label">Year</span>
-              <p>2026</p>
+              <p>[Year]</p>
             </div>
           </div>
         </div>

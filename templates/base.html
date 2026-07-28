@@ -56,8 +56,8 @@
 <a href="#main-content" class="sr-only" style="position:absolute;left:-9999px">Skip to content</a>
 
 {# ── NAVIGATION ──────────────────────────────────────────────────────────── #}
-{# Santiago design: header.nav.nav--white + div.nav-container + dropdown Work  #}
-{# i18n variables: nav_prefix, i18n.nav.*, lang switcher — all preserved below #}
+{# Santiago design navbar — identical to home/index.html navbar #}
+{# nav_variant block: pages override to nav--hero (dark bg) or nav--white (light bg) #}
 <header class="nav {% block nav_variant %}nav--white{% endblock %}" id="site-header" role="banner">
   <div class="nav-container">
 
@@ -67,7 +67,6 @@
 
     <nav class="nav-links" aria-label="Primary navigation">
 
-      {# Work — dropdown on desktop #}
       <div class="nav-dropdown">
         <button class="nav-dropdown-toggle" aria-expanded="false">
           {{ i18n.nav.work if i18n is defined and i18n.nav is defined else "Work" }}
@@ -77,12 +76,19 @@
           </svg>
         </button>
         <div class="nav-dropdown-content">
-          <a href="{{ nav_prefix }}/work" class="nav-dropdown-link">All projects</a>
+          {% if settings and settings.navbarWorkDropdown and settings.navbarWorkDropdown['items'] %}
+            {% for item in settings.navbarWorkDropdown['items'] %}
+          <a href="{{ nav_prefix }}{{ item.href }}" class="nav-dropdown-link">{{ item.label }}</a>
+            {% endfor %}
+          {% else %}
+          <a href="{{ nav_prefix }}/work?view=projects" class="nav-dropdown-link">by projects</a>
+          <div class="nav-dropdown-divider"></div>
+          <a href="{{ nav_prefix }}/work?view=clients" class="nav-dropdown-link">by clients</a>
+          {% endif %}
         </div>
       </div>
 
-      <a href="{{ nav_prefix }}/edtech-marketing-agency"
-         {% if nav_current == 'marketing' %}aria-current="page"{% endif %}>
+      <a href="{{ nav_prefix }}/edtech-marketing-agency">
         {{ i18n.nav.marketing if i18n is defined and i18n.nav is defined else "Edtech Marketing" }}
       </a>
       <a href="{{ nav_prefix }}/edtech-mentor-interviews">
@@ -95,9 +101,8 @@
         {{ i18n.nav.about if i18n is defined and i18n.nav is defined else "About" }}
       </a>
 
-      {# ── Language switcher — desktop ─────────────────────────────────── #}
       {% if i18n is defined and i18n.lang_switcher is defined %}
-      <div class="lang-switcher" role="navigation" aria-label="Select language">
+      <div class="lang-switcher" role="navigation" aria-label="Select language" style="display:none">
         <button class="lang-switcher-btn" aria-haspopup="true" aria-expanded="false"
                 aria-controls="lang-dropdown">
           <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -150,9 +155,6 @@
   </div>
 </header>
 
-{# ── MOBILE MENU — Santiago fullscreen modal ─────────────────────────────── #}
-{# Completely independent of .nav scroll state — always white background.     #}
-{# Preserves: all i18n nav links, language switcher, aria attributes.         #}
 <div class="nav-mobile-menu" id="navMobileMenu"
      role="dialog" aria-modal="true" aria-label="Navigation menu">
 
@@ -173,7 +175,6 @@
   </div>
 
   <nav class="nav-mobile-links" aria-label="Mobile navigation">
-    {# Work — accordion on mobile #}
     <div class="nav-mobile-group">
       <button class="nav-mobile-group-toggle" aria-expanded="false">
         {{ i18n.nav.work if i18n is defined and i18n.nav is defined else "Work" }}
@@ -184,7 +185,14 @@
       </button>
       <div class="nav-mobile-group-content">
         <div class="nav-mobile-group-inner">
-          <a href="{{ nav_prefix }}/work" class="nav-mobile-sublink">All projects</a>
+          {% if settings and settings.navbarWorkDropdown and settings.navbarWorkDropdown['items'] %}
+            {% for item in settings.navbarWorkDropdown['items'] %}
+          <a href="{{ nav_prefix }}{{ item.href }}" class="nav-mobile-sublink">{{ item.label }}</a>
+            {% endfor %}
+          {% else %}
+          <a href="{{ nav_prefix }}/work?view=projects" class="nav-mobile-sublink">by projects</a>
+            <a href="{{ nav_prefix }}/work?view=clients" class="nav-mobile-sublink">by clients</a>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -202,9 +210,8 @@
       {{ i18n.nav.about if i18n is defined and i18n.nav is defined else "About" }}
     </a>
 
-    {# ── Language switcher — mobile ───────────────────────────────────── #}
     {% if i18n is defined and i18n.lang_switcher is defined %}
-    <div class="lang-mobile-section" aria-label="Select language">
+    <div class="lang-mobile-section" aria-label="Select language" style="display:none">
       <span class="lang-mobile-label">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              aria-hidden="true" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">
@@ -270,13 +277,13 @@
           <a href="{{ nav_prefix }}/lets-talk">Let's Talk!</a>
         </div>
         <div class="footer-links-col">
-          <a href="https://www.linkedin.com/company/27zero/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="{{ settings.linkedinUrl if settings and settings.linkedinUrl else 'https://www.linkedin.com/company/27zero/' }}" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </nav>
     </div>
     <div class="footer-divider"></div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2026 27zero. All rights reserved.</span>
+      <span class="footer-copy">© {{ settings.footerCopyright.year if settings and settings.footerCopyright and settings.footerCopyright.year else '2026' }} 27zero. All rights reserved.</span>
       <a href="/privacy" class="footer-legal">Privacy Security Policy</a>
     </div>
   </div>

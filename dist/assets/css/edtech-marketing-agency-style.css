@@ -1,0 +1,459 @@
+/* ============================
+   27zero — EdTech Marketing page
+   ============================ */
+
+:root {
+  --color-indigo: #440E92;
+  --color-purple: #B382F9;
+  --color-black:  #101010;
+  --color-gray:   #F5F5F5;
+  --color-white:  #FFFFFF;
+
+  --space-xs:  0.5em;
+  --space-sm:  1.5em;
+  --space-md:  3em;
+  --space-lg:  6em;
+  --space-xl:  9em;
+  --space-2xl: 14em;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+/* ===== Typography ===== */
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 3.45em;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.6em;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75em;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5em;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h5 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86em;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+}
+
+h6 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.text-body, .text-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.text-body--sm {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.07em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.text-caption {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.07em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--color-black);
+}
+
+.lora {
+  font-family: 'Lora', serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* ===== Base layout ===== */
+.section {
+  padding-top: 6.5em;
+  padding-bottom: 6.5em;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 6.5em;
+  padding-right: 6.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+/* ===== Botones ===== */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.85em 1.7em;
+  border-radius: 5.2em;
+  border: 0.05em solid transparent;
+  font-family: 'Lora', serif;
+  font-size: 1.15em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-purple {
+  background-color: var(--color-purple);
+  border-color: var(--color-purple);
+  color: var(--color-black);
+}
+.btn-purple:hover {
+  background-color: transparent;
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+.btn-dark {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-purple);
+}
+.btn-dark:hover {
+  background-color: transparent;
+  color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+.btn-white {
+  background-color: var(--color-white);
+  border-color: var(--color-black);
+  color: var(--color-black);
+}
+.btn-white:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-color: var(--color-black);
+}
+
+/* ===== Secciones específicas de EdTech Marketing ===== */
+/* Se agregan aquí paso a paso, documentadas en design-system-edtech-marketing.md */
+
+/* ===== Hero ===== */
+.section--hero-marketing {
+  position: relative;
+  margin-top: 10em;
+  padding-top: 4.29em;   /* 60px @ 14px base */
+  padding-bottom: 8.57em; /* 120px @ 14px base */
+  overflow: hidden;
+}
+
+.hero-marketing-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--color-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-marketing-bg span {
+  font-family: 'Inter', sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-black);
+  opacity: 0.4;
+  text-transform: uppercase;
+}
+
+.hero-marketing-container {
+  position: relative;
+  z-index: 1;
+  gap: 2.14em; /* 30px @ 14px base */
+}
+
+.hero-marketing-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  max-width: 50%;
+}
+
+.section--hero-marketing h1 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 3.43em;
+  line-height: 1.25;
+  letter-spacing: -0.48px;
+}
+
+.hero-marketing-text .text-body {
+  max-width: 90%;
+}
+
+.hero-home-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  margin-right: auto;
+}
+
+.hero-home-cta .btn-white {
+  border-color: var(--color-white);
+}
+
+/* ===== Practices ===== */
+.section--practices {
+  background-color: var(--color-indigo);
+  padding-top: 8.93em;    /* 125px @ 14px base */
+  padding-bottom: 10.71em; /* 150px @ 14px base */
+}
+
+.practices-container {
+  gap: 7.14em; /* 100px @ 14px base */
+}
+
+.practices-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.71em;
+}
+
+.section--practices h2 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  color: var(--color-white);
+}
+
+.practices-intro .text-body--sm {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 34em;
+}
+
+.practices-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.14em; /* 30px @ 14px base */
+}
+
+/* ===== Menu ===== */
+.section--menu {
+  background-color: var(--color-black);
+  padding-top: 7.14em;    /* 100px @ 14px base */
+  padding-bottom: 10.71em; /* 150px @ 14px base */
+}
+
+.menu-container {
+  display: grid;
+  grid-template-columns: 0.45fr 1fr;
+  gap: 8.21em; /* 115px @ 14px base */
+  align-items: start;
+}
+
+.menu-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em; /* 35px @ 14px base */
+}
+
+.menu-intro h2 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 2.57em; /* 36px @ 14px base */
+  line-height: 1.25;
+  letter-spacing: -0.36px; /* -1% of 36px */
+  color: var(--color-white);
+}
+
+.menu-intro .text-body {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.menu-blocks {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 3.93em; /* 55px @ 14px base */
+  overflow: hidden;
+}
+
+.menu-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3em; /* 42px @ 14px base */
+}
+
+.menu-block-title {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.71em; /* 24px @ 14px base */
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--color-white);
+}
+
+.menu-block-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.07em; /* 15px @ 14px base */
+}
+
+.menu-block-grid .service-card {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+
+/* ===== Closing CTA ===== */
+.section--closing-cta {
+  background-color: var(--color-white);
+  padding-top: 5.71em;    /* 80px @ 14px base */
+  padding-bottom: 5.71em; /* 80px @ 14px base */
+  text-align: center;
+}
+
+.closing-cta-container {
+  align-items: center;
+  gap: 2.14em; /* 30px @ 14px base */
+}
+
+.section--closing-cta h2 {
+  font-family: 'Lora', serif;
+  font-weight: 500;
+  font-style: normal;
+  color: var(--color-black);
+  max-width: 50%;
+}
+
+.closing-cta-container .btn-dark {
+  color: var(--color-white);
+}
+
+.closing-cta-container .btn-dark:hover {
+  color: var(--color-black);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  body { font-size: 9px; }
+
+  .container {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  /* Hero */
+  .section--hero-marketing {
+    margin-top: 10.67em;   /* 96px @ 9px base */
+    padding-top: 13.89em;  /* 125px @ 9px base */
+    padding-bottom: 19.44em; /* 175px @ 9px base */
+  }
+  .hero-marketing-text { max-width: 100%; }
+  .section--hero-marketing h1 { font-size: 32px; }
+  .text-body, .text-link, .text-body--sm { font-size: 13px; }
+  .text-caption { font-size: 13px; }
+  .btn { font-size: 13px; }
+
+  /* Practices */
+  .section--practices h2 { font-size: 24px; }
+  .practices-intro .text-body--sm { max-width: 100%; }
+  .practices-grid {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .practices-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .practices-grid .practices-card {
+    flex: 0 0 300px;
+    width: 300px;
+    height: 380px;
+    scroll-snap-align: start;
+  }
+
+  /* Menu */
+  .menu-container { grid-template-columns: 1fr; gap: 4.29em; }
+  .menu-intro h2 { font-size: 28px; }
+  .menu-block-title { font-size: 21px; }
+  .menu-block-grid {
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .menu-block-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .menu-block-grid .service-card {
+    flex: 0 0 60%;
+    width: 60%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    scroll-snap-align: start;
+  }
+
+  /* Closing CTA */
+  .section--closing-cta {
+    padding-top: 6.67em;    /* 60px @ 9px base */
+    padding-bottom: 6.67em; /* 60px @ 9px base */
+  }
+  .section--closing-cta h2 {
+    font-size: 24px;
+    max-width: 100%;
+  }
+}
