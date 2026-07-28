@@ -184,7 +184,12 @@ def build() -> None:
     # JavaScript that lives in pages/ and is fetched at a different URL path
     # must be listed explicitly in _page_assets.
     shutil.copytree(ASSETS_DIR, os.path.join(DIST_DIR, "assets"), dirs_exist_ok=True)
-    shutil.copytree(COMPONENTS_DIR, os.path.join(DIST_DIR, "components"), dirs_exist_ok=True)
+    shutil.copytree(
+        COMPONENTS_DIR,
+        os.path.join(DIST_DIR, "components"),
+        dirs_exist_ok=True,
+        ignore=shutil.ignore_patterns("*.html", "*.md"),
+    )
 
     # Page-level JavaScript: source lives in pages/ but is served at a URL
     # that does not match the source path. Each tuple: (source, dist_dest).
