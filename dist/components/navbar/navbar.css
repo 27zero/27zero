@@ -228,7 +228,7 @@
 /* Active page indicator — después de todas las variantes para ganar por cascada */
 .nav-links a[aria-current="page"] {
   font-weight: 700;
-  /* background-color: var(--color-indigo); */
+  background-color: var(--color-black);
   color: var(--color-white);
   padding: 0.3em 0.75em;
   border-radius: 2em;
