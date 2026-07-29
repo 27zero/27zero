@@ -453,6 +453,14 @@ _MENTOR_PROJECTION = """
     title,
     excerpt,
     body,
+    pearlOfWisdom,
+    "rapidFire": rapidFire[] {
+        question,
+        answer
+    },
+    linkedinUrl,
+    mediumUrl,
+    publishedAt,
     seoTitle,
     seoDescription,
     "ogImage": {
