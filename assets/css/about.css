@@ -1,13 +1,84 @@
-/* ============================================================
-   About page — section-specific styles
-   Design tokens live in assets/css/style.css — not duplicated here.
-   ============================================================ */
- 
 /* ============================
    27zero — About page
    ============================ */
- 
+
+:root {
+  --color-indigo: #440E92;
+  --color-purple: #B382F9;
+  --color-black:  #101010;
+  --color-gray:   #F5F5F5;
+  --color-white:  #FFFFFF;
+
+  --space-xs:  0.5em;
+  --space-sm:  1.5em;
+  --space-md:  3em;
+  --space-lg:  6em;
+  --space-xl:  9em;
+  --space-2xl: 14em;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
 /* ===== Typography ===== */
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 3.45em;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h2 {
+  font-family: 'Lora', serif;
+  font-size: 2.6em;
+  line-height: 1.25;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: -0.42px;
+}
+
+h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.75em;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5em;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+
+h5 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.86em;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+}
+
+h6 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.29em;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
 .text-body {
   font-family: 'Inter', sans-serif;
   font-size: 1.29em;
@@ -15,7 +86,7 @@
   font-weight: 400;
   letter-spacing: 0;
 }
- 
+
 .text-link {
   font-family: 'Inter', sans-serif;
   font-size: 1.29em;
@@ -23,7 +94,7 @@
   font-weight: 500;
   letter-spacing: 0;
 }
- 
+
 .text-body--sm {
   font-family: 'Inter', sans-serif;
   font-size: 1.07em;
@@ -31,7 +102,7 @@
   line-height: 1.6;
   letter-spacing: 0;
 }
- 
+
 .text-caption {
   font-family: 'Inter', sans-serif;
   font-size: 1.07em;
@@ -40,19 +111,19 @@
   letter-spacing: 0;
   color: var(--color-black);
 }
- 
+
 .lora {
   font-family: 'Lora', serif;
   font-style: normal;
   font-weight: 500;
 }
- 
+
 /* ===== Base layout ===== */
 .section {
   padding-top: 6.5em;
   padding-bottom: 6.5em;
 }
- 
+
 .container {
   max-width: 1440px;
   margin: 0 auto;
@@ -62,7 +133,7 @@
   flex-direction: column;
   gap: 2em;
 }
- 
+
 /* ===== Botones ===== */
 .btn {
   display: flex;
@@ -82,7 +153,7 @@
   transition: all 0.2s ease;
   cursor: pointer;
 }
- 
+
 .btn-purple {
   background-color: var(--color-purple);
   border-color: var(--color-purple);
@@ -93,7 +164,7 @@
   color: var(--color-black);
   border-color: var(--color-black);
 }
- 
+
 .btn-dark {
   background-color: var(--color-black);
   border-color: var(--color-black);
@@ -104,7 +175,7 @@
   color: var(--color-black);
   border-color: var(--color-black);
 }
- 
+
 .btn-white {
   background-color: var(--color-white);
   border-color: var(--color-black);
@@ -115,10 +186,10 @@
   color: var(--color-white);
   border-color: var(--color-black);
 }
- 
+
 /* ===== Secciones específicas de About ===== */
 /* Se agregan aquí paso a paso, documentadas en design-system-about.md */
- 
+
 /* ===== Hero ===== */
 /* Duplicado exacto de .section--hero-marketing de /edtech-marketing, sin .hero-home-cta */
 .section--hero-marketing {
@@ -128,7 +199,7 @@
   padding-bottom: 6.43em; /* 90px @ 14px base */
   overflow: hidden;
 }
- 
+
 .hero-marketing-bg {
   position: absolute;
   inset: 0;
@@ -138,7 +209,7 @@
   align-items: center;
   justify-content: center;
 }
- 
+
 .hero-marketing-bg span {
   font-family: 'Inter', sans-serif;
   font-size: 1em;
@@ -148,20 +219,20 @@
   opacity: 0.4;
   text-transform: uppercase;
 }
- 
+
 .hero-marketing-container {
   position: relative;
   z-index: 1;
   gap: 3.21em; /* 45px @ 14px base */
 }
- 
+
 .hero-marketing-text {
   display: flex;
   flex-direction: column;
   gap: 2.25em;
   max-width: 50%;
 }
- 
+
 .section--hero-marketing h1 {
   font-family: 'Lora', serif;
   font-weight: 500;
@@ -170,27 +241,27 @@
   line-height: 1.25;
   letter-spacing: -0.48px;
 }
- 
+
 .hero-marketing-text .text-body {
   max-width: 90%;
 }
- 
+
 /* ===== Creativity is our DNA ===== */
 .section--dna {
   background-color: var(--color-purple);
   padding-top: 5.71em;    /* 80px @ 14px base */
   padding-bottom: 5.71em; /* 80px @ 14px base */
 }
- 
+
 .dna-container {
   align-items: center;
   gap: 2.25em;
 }
- 
+
 .dna-container h2 {
   text-align: center;
 }
- 
+
 .dna-subtitle {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -200,18 +271,18 @@
   text-align: center;
   max-width: 70%;
 }
- 
+
 /* ===== Team ===== */
 .section--team {
   background-color: var(--color-indigo);
   padding-top: 8.21em;    /* 115px @ 14px base */
   padding-bottom: 8.21em; /* 115px @ 14px base */
 }
- 
+
 .team-container {
   gap: 4em;
 }
- 
+
 .team-intro {
   display: flex;
   flex-direction: column;
@@ -219,35 +290,35 @@
   text-align: center;
   gap: 1.5em;
 }
- 
+
 .team-intro h2 {
   color: var(--color-white);
 }
- 
+
 .team-intro .text-body {
   color: var(--color-white);
   max-width: 70%;
   margin: 0 auto;
 }
- 
+
 .team-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   gap: 0;
 }
- 
+
 .team-card {
   position: relative;
   width: 100%;
   height: 100%;
   aspect-ratio: 1 / 1;
-  /* background-image: url('/assets/team.png'); — asset pending */
+  background-image: url('/assets/team.png');
   background-size: cover;
   background-position: center;
   overflow: hidden;
 }
- 
+
 .team-card-info {
   position: absolute;
   top: 0;
@@ -260,7 +331,7 @@
   max-width: 15em;
   text-align: right;
 }
- 
+
 .team-card-name {
   font-family: 'Lora', serif;
   font-weight: 500;
@@ -271,7 +342,7 @@
   text-align: right;
   color: var(--color-white);
 }
- 
+
 .team-card-position {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
@@ -281,7 +352,7 @@
   text-align: right;
   color: var(--color-white);
 }
- 
+
 /* ===== Proof Point ===== */
 /* Duplicado de .section--proof-point de /edtech-marketing-service.
    Cambios: bg white (en vez de indigo), texto black (en vez de white),
@@ -291,13 +362,13 @@
   padding-top: 4.64em;    /* 65px @ 14px base */
   padding-bottom: 9.29em; /* 130px @ 14px base */
 }
- 
+
 .proof-point-container {
   display: grid;
   grid-template-columns: 2fr 1.5fr;
   gap: 3.21em; /* 45px @ 14px base */
 }
- 
+
 .proof-point-media {
   aspect-ratio: 5 / 3;
   border-radius: 0.5em;
@@ -306,7 +377,7 @@
   align-items: center;
   justify-content: center;
 }
- 
+
 .proof-point-media span {
   font-family: 'Inter', sans-serif;
   font-size: 1em;
@@ -316,7 +387,7 @@
   opacity: 0.4;
   text-transform: uppercase;
 }
- 
+
 .proof-point-text {
   display: flex;
   flex-direction: column;
@@ -324,7 +395,7 @@
   height: 100%;
   justify-content: end;
 }
- 
+
 .proof-point-title {
   font-family: 'Lora', serif;
   font-weight: 500;
@@ -334,23 +405,23 @@
   letter-spacing: -0.36px; /* -1% of 36px */
   color: var(--color-black);
 }
- 
+
 .proof-point-text .text-body {
   color: var(--color-black);
 }
- 
+
 /* ===== Work Slider ===== */
 /* Usa el componente cards-slider + work-card. Título: "Work". */
 .section--work-slider {
   padding-top: 0;
   padding-bottom: 0;
 }
- 
+
 .section--work-slider .card--work {
   height: 30em;
   min-height: 30em;
 }
- 
+
 /* ===== The EdTech Mentor ===== */
 /* Duplicado exacto de .section--mentor-home de /home (bg indigo, featured-card + cards-slider de edtech-mentor-card). */
 .section--mentor-home {
@@ -359,25 +430,25 @@
   padding-top: 10.36em;
   padding-bottom: 5.71em;
 }
- 
+
 .section--mentor-home .slider-arrow {
   background-color: transparent;
   border-color: var(--color-white);
   color: var(--color-white);
 }
- 
+
 .section--mentor-home .slider-arrow:hover:not(:disabled) {
   background-color: var(--color-white);
   color: var(--color-black);
 }
- 
+
 .mentor-home-row {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1.5em;
 }
- 
+
 .mentor-home-text {
   display: flex;
   flex-direction: column;
@@ -385,7 +456,7 @@
   gap: 1.5em;
   flex: 0 0 34%;
 }
- 
+
 .section--mentor-home h2 {
   font-family: 'Lora', serif;
   font-weight: 500;
@@ -394,7 +465,7 @@
   line-height: 1.25;
   letter-spacing: -0.36px;
 }
- 
+
 .section--mentor-home h2 .inter-accent {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
@@ -403,31 +474,31 @@
   line-height: 1.25;
   letter-spacing: -0.36px;
 }
- 
+
 .section--mentor-home .btn-white {
   border-color: var(--color-white);
 }
- 
+
 .mentor-home-featured-wrap {
   flex: 1;
   height: 30em;
 }
- 
+
 /* ===== Sliders container (wrapper de spacing para sliders embebidos en una sección) ===== */
 .sliders-container {
   padding-top: 4.29em;
   padding-bottom: 0;
 }
- 
+
 /* ===== Mobile ===== */
 @media (max-width: 768px) {
   body { font-size: 9px; }
- 
+
   .container {
     padding-left: 2em;
     padding-right: 2em;
   }
- 
+
   /* Hero */
   .section--hero-marketing {
     margin-top: 10.67em;   /* 96px @ 9px base */
@@ -440,13 +511,13 @@
   .text-link, .text-body--sm { font-size: 13px; font-weight: 500; }
   .text-caption { font-size: 13px; }
   .btn { font-size: 13px; }
- 
+
   /* Creativity is our DNA */
   .dna-subtitle {
     max-width: 100%;
     font-size: 18px;
   }
- 
+
   /* Team */
   .team-intro .text-body { max-width: 100%; }
   .team-grid {
@@ -455,7 +526,7 @@
   .team-card-info { max-width: 75%; }
   .team-card-name { font-size: 28px; }
   .team-card-position { font-size: 14px; }
- 
+
   /* Proof Point */
   .section--proof-point {
     padding-top: 6.67em;    /* 60px @ 9px base */
@@ -467,7 +538,7 @@
   }
   .proof-point-media { aspect-ratio: 16 / 9; }
   .proof-point-title { font-size: 24px; }
- 
+
   /* The EdTech Mentor */
   .sliders-container {
     padding-top: 3.93em;
