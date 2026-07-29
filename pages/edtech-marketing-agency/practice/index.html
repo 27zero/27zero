@@ -100,6 +100,28 @@
     <h2>From a single conversation to a content engine.</h2>
 
     <div class="conversation-engine-dropdowns">
+      {% if p and p.conversationItems %}
+        {% for item in p.conversationItems %}
+      <div class="dropdown{% if loop.first %} is-open{% endif %}">
+        <button class="dropdown-toggle" aria-expanded="{{ 'true' if loop.first else 'false' }}">
+          <span class="dropdown-title">{{ item.title }}</span>
+          <span class="dropdown-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </button>
+        <div class="dropdown-content"{% if loop.first %} style="height: auto;"{% endif %}>
+          <div class="dropdown-content-inner">
+            <p>{{ item.body }}</p>
+            {% if item.ctaLabel and item.ctaHref %}
+            <a href="{{ item.ctaHref }}" class="btn btn-purple dropdown-cta">{{ item.ctaLabel }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+      {% else %}
       <div class="dropdown is-open">
         <button class="dropdown-toggle" aria-expanded="true">
           <span class="dropdown-title">The EdTech Mentor</span>
@@ -148,6 +170,7 @@
           </div>
         </div>
       </div>
+      {% endif %}
     </div>
   </div>
 </section>

@@ -27,9 +27,15 @@
           </svg>
         </button>
         <div class="nav-dropdown-content">
+          {% if settings and settings.navbarWorkDropdown and settings.navbarWorkDropdown['items'] %}
+            {% for item in settings.navbarWorkDropdown['items'] %}
+          <a href="{{ item.href }}" class="nav-dropdown-link">{{ item.label }}</a>
+            {% endfor %}
+          {% else %}
           <a href="/work?view=projects" class="nav-dropdown-link">by projects</a>
           <div class="nav-dropdown-divider"></div>
           <a href="/work?view=clients" class="nav-dropdown-link">by clients</a>
+          {% endif %}
         </div>
       </div>
       <a href="edtech-marketing-agency">Edtech Marketing</a>
