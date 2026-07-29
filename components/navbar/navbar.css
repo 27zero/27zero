@@ -66,15 +66,6 @@
   font-weight: 700;
 }
 
-/* Active page indicator — matches the current page nav link */
-.nav-links a[aria-current="page"] {
-  font-weight: 700;
-  background-color: var(--color-indigo);
-  color: var(--color-white);
-  padding: 0.3em 0.75em;
-  border-radius: 2em;
-}
-
 /* ─── Dropdown "Work" (desktop) ───
    Default (nav--white / nav--black): panel bg blanco, texto negro,
    igual que en la referencia visual — ver overrides por variante abajo. */
@@ -232,6 +223,15 @@
 .nav--scrolled .nav-links a:hover {
   color: var(--color-white);
   font-weight: 700;
+}
+
+/* Active page indicator — después de todas las variantes para ganar por cascada */
+.nav-links a[aria-current="page"] {
+  font-weight: 700;
+  background-color: var(--color-indigo);
+  color: var(--color-white);
+  padding: 0.3em 0.75em;
+  border-radius: 2em;
 }
 
 /* Logo invertido solo en estado scrolled */
