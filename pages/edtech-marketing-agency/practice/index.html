@@ -11,7 +11,7 @@
 {%- block content -%}
 
 <section class="section section--hero-marketing">
-  <div class="hero-marketing-bg"><span>[HERO BACKGROUND IMAGE]</span></div>
+  <div class="hero-marketing-bg">{% if p and p.heroImageUrl %}<img src="{{ p.heroImageUrl }}" alt="{{ p.title or '' }}" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">{% else %}<span>[HERO BACKGROUND IMAGE]</span>{% endif %}</div>
   <div class="container hero-marketing-container">
     <div class="hero-marketing-text">
       {%- set p = practice if practice is defined and practice else (practices[0] if practices else none) -%}

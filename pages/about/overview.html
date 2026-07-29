@@ -15,7 +15,7 @@
 {% block content %}
 
 <section class="section section--hero-marketing">
-  <div class="hero-marketing-bg"><span> <img src="https://cdn.prod.website-files.com/65144cb53e0e9c74de079e3b/65144ded0328ecd5efb8b691_Logo.svg" alt="27zero"></span></div>
+  <div class="hero-marketing-bg">{% if settings and settings.aboutHero and settings.aboutHero.imageUrl %}<img src="{{ settings.aboutHero.imageUrl }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">{% else %}<span>[HERO BACKGROUND IMAGE]</span>{% endif %}</div>
   <div class="container hero-marketing-container">
     <div class="hero-marketing-text">
       <h1>{{ settings.aboutHero.headline if settings and settings.aboutHero and settings.aboutHero.headline else 'Your extended team of EdTech marketing experts and creatives.' }}</h1>
@@ -118,7 +118,7 @@
 <!-- PROOF POINT -->
 <section class="section section--proof-point">
   <div class="container proof-point-container">
-    <div class="proof-point-media"></div>
+    <div class="proof-point-media">{% if settings and settings.aboutProofPoint and settings.aboutProofPoint.imageUrl %}<img src="{{ settings.aboutProofPoint.imageUrl }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;" loading="lazy">{% endif %}</div>
     <div class="proof-point-text">
       <h3 class="proof-point-title">{{ settings.aboutProofPoint.title if settings and settings.aboutProofPoint and settings.aboutProofPoint.title else 'About 27zero' }}</h3>
       <p class="text-body">{{ settings.aboutProofPoint.text if settings and settings.aboutProofPoint and settings.aboutProofPoint.text else "27zero is your extended EdTech marketing partner — driving growth, engagement and brand recognition for the companies transforming education worldwide." }}</p>
