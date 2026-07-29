@@ -25,169 +25,299 @@
   </head>
   <body>
     <!-- NAVBAR -->
-<header class="nav nav--white" id="site-header" role="banner">
-  <div class="nav-container">
+    <header class="nav nav--white" id="site-header" role="banner">
+      <div class="nav-container">
+        <a href="/" class="nav-logo" aria-label="27zero — home">
+          <img
+            src="/assets/images/27zero-logo.svg"
+            alt="27zero"
+            width="115"
+            height="23"
+          />
+        </a>
 
-    <a href="/" class="nav-logo" aria-label="27zero — home">
-      <img src="/assets/images/27zero-logo.svg" alt="27zero" width="115" height="23">
-    </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <div class="nav-dropdown">
+            <button class="nav-dropdown-toggle" aria-expanded="false">
+              Work
+              <svg
+                class="nav-dropdown-chevron"
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="nav-dropdown-content">
+              {% if settings and settings.navbarWorkDropdown and
+              settings.navbarWorkDropdown['items'] %} {% for item in
+              settings.navbarWorkDropdown['items'] %}
+              <a href="{{ item.href }}" class="nav-dropdown-link"
+                >{{ item.label }}</a
+              >
+              {% endfor %} {% else %}
+              <a href="/work?view=projects" class="nav-dropdown-link"
+                >by projects</a
+              >
+              <div class="nav-dropdown-divider"></div>
+              <a href="/work?view=clients" class="nav-dropdown-link"
+                >by clients</a
+              >
+              {% endif %}
+            </div>
+          </div>
 
-    <nav class="nav-links" aria-label="Primary navigation">
+          <a href="/edtech-marketing-agency">Edtech Marketing</a>
+          <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
+          <a href="/resources">Resources</a>
+          <a href="/about">About</a>
 
-      <div class="nav-dropdown">
-        <button class="nav-dropdown-toggle" aria-expanded="false">
-          Work
-          <svg class="nav-dropdown-chevron" width="12" height="12" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <polyline points="6 9 12 15 18 9"></polyline>
+          {% if i18n is defined and i18n.lang_switcher is defined %}
+          <div
+            class="lang-switcher"
+            role="navigation"
+            aria-label="Select language"
+            style="display: none"
+          >
+            <button
+              class="lang-switcher-btn"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="lang-dropdown"
+            >
+              <svg
+                class="lang-globe"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path
+                  d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                />
+              </svg>
+              <span class="lang-label">{{ i18n.lang_switcher.label }}</span>
+              <svg
+                class="lang-chevron"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <ul
+              class="lang-dropdown"
+              id="lang-dropdown"
+              role="menu"
+              aria-label="Available languages"
+            >
+              {% for r in i18n.lang_switcher.regions %} {% if r.prefix == "" %}
+              {% set dest = "/" %} {% else %} {% set dest = "/" + r.prefix + "/"
+              %} {% endif %}
+              <li role="none">
+                <a
+                  href="{{ dest }}"
+                  role="menuitem"
+                  data-locale-prefix="{{ r.prefix }}"
+                >
+                  <span class="lang-region">{{ r.region }}</span>
+                  <span class="lang-option">{{ r.label }}</span>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </nav>
+
+        <a href="/lets-talk" class="btn btn-nav">Let's Talk!</a>
+
+        <button
+          class="nav-hamburger"
+          id="nav-hamburger-btn"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+        >
+          <svg
+            class="nav-hamburger-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <line x1="3" y1="7" x2="21" y2="7"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="17" x2="21" y2="17"></line>
           </svg>
         </button>
-        <div class="nav-dropdown-content">
-          {% if settings and settings.navbarWorkDropdown and settings.navbarWorkDropdown['items'] %}
-            {% for item in settings.navbarWorkDropdown['items'] %}
-          <a href="{{ item.href }}" class="nav-dropdown-link">{{ item.label }}</a>
-            {% endfor %}
-          {% else %}
-          <a href="/work?view=projects" class="nav-dropdown-link">by projects</a>
-          <div class="nav-dropdown-divider"></div>
-          <a href="/work?view=clients" class="nav-dropdown-link">by clients</a>
-          {% endif %}
-        </div>
+      </div>
+    </header>
+
+    <div
+      class="nav-mobile-menu"
+      id="navMobileMenu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+    >
+      <div class="nav-mobile-header">
+        <a href="/" class="nav-mobile-logo" aria-label="27zero — home">
+          <img
+            src="/assets/images/27zero-logo.svg"
+            alt="27zero"
+            width="115"
+            height="23"
+          />
+        </a>
+        <button
+          class="nav-mobile-close"
+          id="nav-mobile-close-btn"
+          aria-label="Close navigation menu"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <line
+              x1="3"
+              y1="10"
+              x2="17"
+              y2="10"
+              stroke="currentColor"
+              stroke-width="2"
+            ></line>
+            <line
+              x1="3"
+              y1="10"
+              x2="17"
+              y2="10"
+              stroke="currentColor"
+              stroke-width="2"
+              transform="rotate(45 10 10)"
+            ></line>
+            <line
+              x1="3"
+              y1="10"
+              x2="17"
+              y2="10"
+              stroke="currentColor"
+              stroke-width="2"
+              transform="rotate(135 10 10)"
+            ></line>
+          </svg>
+        </button>
       </div>
 
-      <a href="/edtech-marketing-agency">Edtech Marketing</a>
-      <a href="/edtech-mentor-interviews">The EdTech Mentor</a>
-      <a href="/resources">Resources</a>
-      <a href="/about">About</a>
+      <nav class="nav-mobile-links" aria-label="Mobile navigation">
+        <div class="nav-mobile-group">
+          <button class="nav-mobile-group-toggle" aria-expanded="false">
+            Work
+            <svg
+              class="nav-mobile-group-chevron"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="nav-mobile-group-content">
+            <div class="nav-mobile-group-inner">
+              {% if settings and settings.navbarWorkDropdown and
+              settings.navbarWorkDropdown['items'] %} {% for item in
+              settings.navbarWorkDropdown['items'] %}
+              <a href="{{ item.href }}" class="nav-mobile-sublink"
+                >{{ item.label }}</a
+              >
+              {% endfor %} {% else %}
+              <a href="/work?view=projects" class="nav-mobile-sublink"
+                >by projects</a
+              >
+              <a href="/work?view=clients" class="nav-mobile-sublink"
+                >by clients</a
+              >
+              {% endif %}
+            </div>
+          </div>
+        </div>
 
-      {% if i18n is defined and i18n.lang_switcher is defined %}
-      <div class="lang-switcher" role="navigation" aria-label="Select language" style="display:none">
-        <button class="lang-switcher-btn" aria-haspopup="true" aria-expanded="false"
-                aria-controls="lang-dropdown">
-          <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="1.8" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          <span class="lang-label">{{ i18n.lang_switcher.label }}</span>
-          <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" aria-hidden="true" focusable="false">
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        <ul class="lang-dropdown" id="lang-dropdown" role="menu" aria-label="Available languages">
-          {% for r in i18n.lang_switcher.regions %}
-          {% if r.prefix == "" %}
-            {% set dest = "/" %}
-          {% else %}
-            {% set dest = "/" + r.prefix + "/" %}
-          {% endif %}
-          <li role="none">
-            <a href="{{ dest }}" role="menuitem" data-locale-prefix="{{ r.prefix }}">
-              <span class="lang-region">{{ r.region }}</span>
-              <span class="lang-option">{{ r.label }}</span>
-            </a>
-          </li>
+        <a href="/edtech-marketing-agency" class="nav-mobile-link"
+          >Edtech Marketing</a
+        >
+        <a href="/edtech-mentor-interviews" class="nav-mobile-link"
+          >The EdTech Mentor</a
+        >
+        <a href="/resources" class="nav-mobile-link">Resources</a>
+        <a href="/about" class="nav-mobile-link">About</a>
+
+        {% if i18n is defined and i18n.lang_switcher is defined %}
+        <div
+          class="lang-mobile-section"
+          aria-label="Select language"
+          style="display: none"
+        >
+          <span class="lang-mobile-label">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+              style="
+                width: 16px;
+                height: 16px;
+                vertical-align: middle;
+                margin-right: 6px;
+              "
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path
+                d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              /></svg
+            >Language
+          </span>
+          {% for r in i18n.lang_switcher.regions %} {% if r.prefix == "" %} {%
+          set dest = "/" %} {% else %} {% set dest = "/" + r.prefix + "/" %} {%
+          endif %}
+          <a
+            href="{{ dest }}"
+            data-locale-prefix="{{ r.prefix }}"
+            class="lang-mobile-option{% if r.prefix == i18n.url_prefix %} lang-mobile-option--active{% endif %}"
+          >
+            {{ r.region }} — {{ r.label }}
+          </a>
           {% endfor %}
-        </ul>
-      </div>
-      {% endif %}
-
-    </nav>
-
-    <a href="/lets-talk" class="btn btn-nav">Let's Talk!</a>
-
-    <button class="nav-hamburger" id="nav-hamburger-btn"
-            aria-label="Open navigation menu" aria-expanded="false">
-      <svg class="nav-hamburger-icon" width="24" height="24" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-           aria-hidden="true">
-        <line x1="3" y1="7" x2="21" y2="7"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="17" x2="21" y2="17"></line>
-      </svg>
-    </button>
-
-  </div>
-</header>
-
-<div class="nav-mobile-menu" id="navMobileMenu"
-     role="dialog" aria-modal="true" aria-label="Navigation menu">
-
-  <div class="nav-mobile-header">
-    <a href="/" class="nav-mobile-logo" aria-label="27zero — home">
-      <img src="/assets/images/27zero-logo.svg" alt="27zero" width="115" height="23">
-    </a>
-    <button class="nav-mobile-close" id="nav-mobile-close-btn"
-            aria-label="Close navigation menu">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2"></line>
-        <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2"
-              transform="rotate(45 10 10)"></line>
-        <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2"
-              transform="rotate(135 10 10)"></line>
-      </svg>
-    </button>
-  </div>
-
-  <nav class="nav-mobile-links" aria-label="Mobile navigation">
-    <div class="nav-mobile-group">
-      <button class="nav-mobile-group-toggle" aria-expanded="false">
-        Work
-        <svg class="nav-mobile-group-chevron" width="16" height="16" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
-      <div class="nav-mobile-group-content">
-        <div class="nav-mobile-group-inner">
-          {% if settings and settings.navbarWorkDropdown and settings.navbarWorkDropdown['items'] %}
-            {% for item in settings.navbarWorkDropdown['items'] %}
-          <a href="{{ item.href }}" class="nav-mobile-sublink">{{ item.label }}</a>
-            {% endfor %}
-          {% else %}
-          <a href="/work?view=projects" class="nav-mobile-sublink">by projects</a>
-            <a href="/work?view=clients" class="nav-mobile-sublink">by clients</a>
-          {% endif %}
         </div>
-      </div>
+        {% endif %}
+      </nav>
+
+      <a href="/lets-talk" class="btn btn-nav">Let's Talk!</a>
     </div>
 
-    <a href="/edtech-marketing-agency" class="nav-mobile-link">Edtech Marketing</a>
-    <a href="/edtech-mentor-interviews" class="nav-mobile-link">The EdTech Mentor</a>
-    <a href="/resources" class="nav-mobile-link">Resources</a>
-    <a href="/about" class="nav-mobile-link">About</a>
-
-    {% if i18n is defined and i18n.lang_switcher is defined %}
-    <div class="lang-mobile-section" aria-label="Select language" style="display:none">
-      <span class="lang-mobile-label">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-             aria-hidden="true" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-        </svg>Language
-      </span>
-      {% for r in i18n.lang_switcher.regions %}
-      {% if r.prefix == "" %}
-        {% set dest = "/" %}
-      {% else %}
-        {% set dest = "/" + r.prefix + "/" %}
-      {% endif %}
-      <a href="{{ dest }}" data-locale-prefix="{{ r.prefix }}"
-         class="lang-mobile-option{% if r.prefix == i18n.url_prefix %} lang-mobile-option--active{% endif %}">
-        {{ r.region }} — {{ r.label }}
-      </a>
-      {% endfor %}
-    </div>
-    {% endif %}
-
-  </nav>
-
-  <a href="/lets-talk" class="btn btn-nav">Let's Talk!</a>
-
-</div>
-
-<!-- HERO -->
+    <!-- HERO -->
     <section class="section section--hero-home">
       <div class="container hero-home-container">
         <h1>
@@ -211,12 +341,23 @@
               <span class="inter-accent">for growth and impact.</span>
             </h2>
             <p class="text-body--sm">
-              {{ settings.homeWork.subtitle if settings and settings.homeWork and settings.homeWork.subtitle else 'First-hand expertise, innovative conceptual thinking &amp; design, client-first approach.' }}
+              {{ settings.homeWork.subtitle if settings and settings.homeWork
+              and settings.homeWork.subtitle else 'First-hand expertise,
+              innovative conceptual thinking &amp; design, client-first
+              approach.' }}
             </p>
             <a href="/work" class="btn btn-dark">See all work</a>
           </div>
           <div class="intro-home-media">
-            <span>[MEDIA PLACEHOLDER]</span>
+            <span
+              >{% if settings.aboutHero.imageUrl %}
+              <img
+                src="{{ settings.aboutHero.imageUrl }}"
+                alt="{{ settings.aboutHero.headline }}"
+                loading="eager"
+              />
+              {% endif %}</span
+            >
           </div>
         </div>
       </div>
@@ -224,7 +365,10 @@
       <div class="sliders-container">
         <div class="slider-block">
           <div class="slider-header">
-            <h2 class="slider-title">{{ settings.homeWork.headline if settings and settings.homeWork and settings.homeWork.headline else "Featured Work" }}</h2>
+            <h2 class="slider-title">
+              {{ settings.homeWork.headline if settings and settings.homeWork
+              and settings.homeWork.headline else "Featured Work" }}
+            </h2>
           </div>
 
           <div class="slider-track-wrap">
@@ -241,7 +385,15 @@
                     loading="lazy"
                   />
                   {% else %}
-                  <span>[PROJECT THUMBNAIL]</span>
+                  <span
+                    >{% if settings.aboutHero.imageUrl %}
+                    <img
+                      src="{{ settings.aboutHero.imageUrl }}"
+                      alt="{{ settings.aboutHero.headline }}"
+                      loading="eager"
+                    />
+                    {% endif %}</span
+                  >
                   {% endif %}
                 </div>
                 <div class="card-work-body">
@@ -705,7 +857,8 @@
             >
           </div>
           <div class="mentor-home-featured-wrap">
-            {% if mentors %}{% set fm = (mentors | selectattr('featured', 'equalto', true) | list | first) or mentors | first %}{% set fslug =
+            {% if mentors %}{% set fm = (mentors | selectattr('featured',
+            'equalto', true) | list | first) or mentors | first %}{% set fslug =
             fm.slug.current if fm.slug is mapping else fm.slug %}
             <a
               href="/edtech-mentor-interviews/{{ fslug }}/"
