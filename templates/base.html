@@ -97,7 +97,7 @@
       <a href="{{ nav_prefix }}/resources">
         {{ i18n.nav.resources if i18n is defined and i18n.nav is defined else "Resources" }}
       </a>
-      <a href="{{ nav_prefix }}/about">
+      <a href="{{ nav_prefix }}/about"{% if neutral_path == 'about' %} aria-current="page"{% endif %}>
         {{ i18n.nav.about if i18n is defined and i18n.nav is defined else "About" }}
       </a>
 
@@ -206,7 +206,7 @@
     <a href="{{ nav_prefix }}/resources" class="nav-mobile-link">
       {{ i18n.nav.resources if i18n is defined and i18n.nav is defined else "Resources" }}
     </a>
-    <a href="{{ nav_prefix }}/about" class="nav-mobile-link">
+    <a href="{{ nav_prefix }}/about" class="nav-mobile-link{% if neutral_path == 'about' %} nav-mobile-link--active{% endif %}">
       {{ i18n.nav.about if i18n is defined and i18n.nav is defined else "About" }}
     </a>
 
