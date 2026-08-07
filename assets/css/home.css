@@ -396,7 +396,8 @@ h4 {
   transition: transform 0.4s ease;
 }
 
-.testimonial-slide {
+.testimonial-slide,
+.testimonial-item {
   flex: 0 0 100%;
   display: flex;
   justify-content: center;
@@ -404,9 +405,24 @@ h4 {
   gap: 3em;
 }
 
-.testimonial-quote-icon {
+/* .testimonial-photo is the current markup's name for what this rule
+   was already written for (.testimonial-quote-icon) — the HTML was
+   renamed in a later redesign (commit 5a06e75) but this stylesheet
+   never picked up the new class name, so the photo rendered completely
+   unconstrained at its native pixel size. Selector extended, values
+   unchanged: still a fixed 30em box, matching the original design. */
+.testimonial-quote-icon,
+.testimonial-photo {
   flex-shrink: 0;
   width: 30em;
+  height: auto;
+}
+
+/* The <img> itself also needs to fill that box instead of rendering at
+   its native intrinsic size — this is the actual overflow fix. */
+.testimonial-photo img {
+  display: block;
+  width: 100%;
   height: auto;
 }
 
@@ -573,12 +589,14 @@ h4 {
     padding: 0 2em;
     gap: 1em;
   }
-  .testimonial-slide {
+  .testimonial-slide,
+  .testimonial-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5em;
   }
-  .testimonial-quote-icon {
+  .testimonial-quote-icon,
+  .testimonial-photo {
     display: none;
   }
   .testimonials-arrow {
