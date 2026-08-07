@@ -118,14 +118,19 @@ class MentorBuilder(SectionBuilder):
         Extend base enrichment with mentor-specific computed fields.
 
         Adds:
-          guestPhotoUrl — CDN-optimised guest photo URL
+          guestPhotoUrl — CDN-optimised card image URL (ogImage, falling
+                          back to guestPhoto when ogImage is empty)
           initials      — two-letter initials for the avatar fallback
           cardTitle     — title shown on index cards (title or guestName)
           seriesLabel   — human-readable series name
         """
-        # Resolve guest photo through image_url so CDN params are applied.
+        # Card image: prefer ogImage (the field editors are meant to set
+        # for this purpose), falling back to guestPhoto when ogImage is
+        # empty. Same image_url() call, same width/format params as
+        # before -- only the source field preference changed.
+        image_source = (item.get("ogImage") or {}).get("url") or item.get("guestPhoto")
         photo_url = image_url(
-            item.get("guestPhoto"), width=self.THUMB_WIDTH, auto="format"
+            image_source, width=self.THUMB_WIDTH, auto="format"
         )
 
         # Initials: first letter of first name + first letter of last name.

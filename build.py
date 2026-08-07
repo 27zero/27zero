@@ -106,6 +106,17 @@ def build() -> None:
         })
     print("=== end Mentor Interviews ===\n")
 
+    # `mentors` is shared by build_pages() (Home, About) AND MentorBuilder's
+    # own section build below -- but only MentorBuilder.enrich_item() computes
+    # guestPhotoUrl (ogImage, falling back to guestPhoto) and the other card
+    # fields templates rely on. Enrich once, here, so every page that receives
+    # this list gets the same resolved image URL. Without this, Home/About
+    # received the raw, unenriched documents and always fell back to the
+    # initials avatar, regardless of what was set in Sanity -- MentorBuilder
+    # wasn't even instantiated yet at this point in the previous version of
+    # this function.
+    mentors = [MentorBuilder().enrich_item(m) for m in mentors]
+
     settings     = get_settings()
     testimonials = get_testimonials()
     clients      = get_clients()
