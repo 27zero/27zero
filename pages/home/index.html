@@ -848,6 +848,12 @@
               href="/edtech-mentor-interviews/{{ fslug }}/"
               class="card card--featured"
             >
+              {% if fm.guestPhotoUrl %}<img
+                class="card-featured-image"
+                src="{{ fm.guestPhotoUrl }}"
+                alt="{{ fm.guestName or fm.title or '' }}"
+                loading="lazy"
+              />{% endif %}
               <span class="card-featured-tag"
                 >{{ fm.category | default('Interview') }}</span
               >
@@ -953,6 +959,12 @@
                   </div>
                 </div>
                 <div class="card-edtech-mentor-body">
+                  {% if interview.guestPhotoUrl %}<img
+                    class="card-edtech-mentor-image"
+                    src="{{ interview.guestPhotoUrl }}"
+                    alt="{{ interview.guestName or interview.title or '' }}"
+                    loading="lazy"
+                  />{% endif %}
                   <span class="card-edtech-mentor-tag"
                     >{{ interview.category | default('Interview') }}</span
                   >

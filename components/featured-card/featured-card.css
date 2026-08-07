@@ -13,9 +13,28 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Imagen principal de la card — detrás de todo el contenido (tag, content,
+   footer), que reciben position:relative + z-index:1 más abajo para
+   garantizar que queden por encima sin depender de reglas implícitas de
+   stacking (esta card no tiene overlay de gradiente ::after, a diferencia
+   de .card-edtech-mentor-body). */
+.card-featured-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 0;
 }
 
 .card-featured-tag {
+  position: relative;
+  z-index: 1;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   font-size: 0.85em;
@@ -25,6 +44,8 @@
 }
 
 .card-featured-content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 1.5em;

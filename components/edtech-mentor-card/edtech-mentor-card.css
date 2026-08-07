@@ -82,6 +82,22 @@
   overflow: hidden;
 }
 
+/* Imagen principal de la card — detrás del overlay de gradiente (::after,
+   z-index: 0) y del contenido (tag/footer, z-index: 1). Sin z-index propio
+   necesario más allá de heredar el orden del documento como primer hijo:
+   se pinta antes que ::after (los pseudo-elementos generados siempre se
+   pintan al final del contenido del elemento) y antes que los hermanos con
+   z-index: 1 explícito. */
+.card-edtech-mentor-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 0;
+}
+
 /* Overlay de gradiente — oculto por default, aparece en hover */
 .card-edtech-mentor-body::after {
   content: '';
