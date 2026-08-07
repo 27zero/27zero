@@ -152,6 +152,12 @@
               </div>
             </div>
             <div class="card-edtech-mentor-body">
+              {% if rel.guestPhotoUrl %}
+              <img class="card-edtech-mentor-image"
+                   src="{{ rel.guestPhotoUrl }}"
+                   alt="{{ rel.guestName or rel.cardTitle or '' }}"
+                   loading="lazy">
+              {% endif %}
               <span class="card-edtech-mentor-tag">{{ rel.seriesLabel }}</span>
               <div class="card-edtech-mentor-footer">
                 <h3 class="card-edtech-mentor-title">{{ rel.cardTitle }}</h3>

@@ -44,6 +44,13 @@
     <div class="featured-mentor-wrap">
       <a href="/edtech-mentor-interviews/{{ featured_interview.slug }}/" class="card card--featured">
 
+        {% if featured_interview.guestPhotoUrl %}
+        <img class="card-featured-image"
+             src="{{ featured_interview.guestPhotoUrl }}"
+             alt="{{ featured_interview.guestName or featured_interview.cardTitle or '' }}"
+             loading="lazy">
+        {% endif %}
+
         <span class="card-featured-tag">{{ featured_interview.seriesLabel }}</span>
 
         <div class="card-featured-content">
@@ -119,6 +126,12 @@
               </div>
             </div>
             <div class="card-edtech-mentor-body">
+              {% if interview.guestPhotoUrl %}
+              <img class="card-edtech-mentor-image"
+                   src="{{ interview.guestPhotoUrl }}"
+                   alt="{{ interview.guestName or interview.cardTitle or '' }}"
+                   loading="lazy">
+              {% endif %}
               <span class="card-edtech-mentor-tag">{{ interview.seriesLabel }}</span>
               <div class="card-edtech-mentor-footer">
                 <h3 class="card-edtech-mentor-title">{{ interview.cardTitle }}</h3>
