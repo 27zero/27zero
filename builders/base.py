@@ -498,11 +498,44 @@ class SectionBuilder:
 
         Preserves insertion order of first appearance of each key
         (Python 3.7+ dict ordering guarantee).
+
+        Diagnostic note
+        ----------------
+        Templates that render a fixed set of category tabs/sliders (e.g.
+        MentorBuilder's three series sliders) only ever read
+        ``groups.get(known_key, [])`` for the keys they know about. An
+        item whose ``category_key`` value doesn't match any known key —
+        because it's unset, mistyped, or uses a value the CMS schema no
+        longer offers — still lands in this dict (bucketed as "other"),
+        but is never read by the template, so it silently disappears
+        from the rendered page with no error anywhere in the pipeline.
+        When the subclass declares ``label_map`` (the known category
+        values), we log those mismatches here so they show up in the
+        Vercel build log instead of only being discoverable by a human
+        comparing Sanity content to rendered HTML.
         """
         groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
         for item in items:
             key = item.get(self.category_key) or "other"
             groups[key].append(item)
+
+        if self.label_map:
+            known = set(self.label_map.keys())
+            for key, grp in groups.items():
+                if key not in known:
+                    identifiers = [
+                        item.get("slug") or item.get("guestName")
+                        or item.get("title") or item.get("_id") or "?"
+                        for item in grp
+                    ]
+                    logger.warning(
+                        "[%s] %d item(s) have %r=%r, which doesn't match any "
+                        "configured label_map key (%s) — these will not "
+                        "appear in any %s section on the site: %s",
+                        self.section, len(grp), self.category_key, key,
+                        ", ".join(sorted(known)), self.section, identifiers,
+                    )
+
         return dict(groups)
 
     def _related(

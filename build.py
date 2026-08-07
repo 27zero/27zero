@@ -90,6 +90,22 @@ def build() -> None:
     interviews = get_interviews()
     work       = get_work_projects()
     mentors    = get_mentor_interviews()
+
+    # ── Diagnostic: print exactly what Sanity returned for each interview,
+    # before enrich_item()/_group_by() touch it. This is the fastest way to
+    # confirm whether a given interview's `series` value actually matches
+    # one of the three known keys ("essencial" | "investor" | "founders")
+    # straight from the dataset, without guessing from rendered HTML.
+    print("\n=== Mentor Interviews (raw from Sanity) ===")
+    for interview in mentors:
+        print({
+            "title":    interview.get("title"),
+            "series":   interview.get("series"),
+            "slug":     interview.get("slug"),
+            "featured": interview.get("featured"),
+        })
+    print("=== end Mentor Interviews ===\n")
+
     settings     = get_settings()
     testimonials = get_testimonials()
     clients      = get_clients()
